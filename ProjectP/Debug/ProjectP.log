@@ -1,13 +1,13 @@
-﻿Build started 2/15/2016 4:58:33 PM.
+﻿Build started 2/15/2016 5:08:09 PM.
      1>Project "C:\Users\n1507\Documents\SPtwo2\ProjectP\ProjectP.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\n1507\Documents\SPtwo2\\glew\include /IC:\Users\n1507\Documents\SPtwo2\\glfw\include /IC:\Users\n1507\Documents\SPtwo2\\Common\Source /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\Application.cpp Source\Camera.cpp Source\Camera2.cpp Source\Camera3.cpp Source\LoadOBJ.cpp Source\LoadTGA.cpp Source\main.cpp Source\Mesh.cpp Source\MeshBuilder.cpp Source\shader.cpp Source\SP2.cpp Source\Utility.cpp
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\n1507\Documents\SPtwo2\\glew\include /IC:\Users\n1507\Documents\SPtwo2\\glfw\include /IC:\Users\n1507\Documents\SPtwo2\\Common\Source /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\Application.cpp Source\Camera.cpp Source\Camera2.cpp Source\Camera3.cpp Source\LoadOBJ.cpp Source\LoadTGA.cpp Source\Mesh.cpp Source\MeshBuilder.cpp Source\SP2.cpp Source\Utility.cpp Source\main.cpp Source\shader.cpp
+         shader.cpp
+         main.cpp
          Utility.cpp
          SP2.cpp
-         shader.cpp
          MeshBuilder.cpp
          Mesh.cpp
-         main.cpp
          LoadTGA.cpp
          LoadOBJ.cpp
          Camera3.cpp
@@ -28,11 +28,9 @@
          Debug\shader.obj
          Debug\SP2.obj
          Debug\Utility.obj
-         LINK : C:\Users\n1507\Documents\SPtwo2\Debug\ProjectP.exe not found or not built by the last incremental link; performing full link
-     1>LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
          ProjectP.vcxproj -> C:\Users\n1507\Documents\SPtwo2\Debug\ProjectP.exe
      1>Done Building Project "C:\Users\n1507\Documents\SPtwo2\ProjectP\ProjectP.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:04.92
+Time Elapsed 00:00:04.58
