@@ -1,20 +1,20 @@
-﻿Build started 15/2/2016 3:06:35 AM.
-     1>Project "C:\Users\admin1\Desktop\SP2_Folder\Common\Common.vcxproj" on node 2 (Build target(s)).
+﻿Build started 2/15/2016 11:37:51 AM.
+     1>Project "C:\Users\n1507\Documents\SPtwo\Common\Common.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\MatrixStack.cpp Source\Mtx44.cpp Source\timer.cpp Source\Vector3.cpp
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\MatrixStack.cpp Source\Mtx44.cpp Source\timer.cpp Source\Vector3.cpp
          Vector3.cpp
          timer.cpp
          Mtx44.cpp
          MatrixStack.cpp
          Generating Code...
        Lib:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\admin1\Desktop\SP2_Folder\Debug\Common.lib" /NOLOGO Debug\MatrixStack.obj
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\n1507\Documents\SPtwo\Debug\Common.lib" /NOLOGO Debug\MatrixStack.obj
          Debug\Mtx44.obj
          Debug\timer.obj
          Debug\Vector3.obj
-         Common.vcxproj -> C:\Users\admin1\Desktop\SP2_Folder\Debug\Common.lib
-     1>Done Building Project "C:\Users\admin1\Desktop\SP2_Folder\Common\Common.vcxproj" (Build target(s)).
+         Common.vcxproj -> C:\Users\n1507\Documents\SPtwo\Debug\Common.lib
+     1>Done Building Project "C:\Users\n1507\Documents\SPtwo\Common\Common.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:07.16
+Time Elapsed 00:00:01.46
