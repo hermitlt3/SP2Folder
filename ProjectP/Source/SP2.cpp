@@ -81,7 +81,7 @@ void SP2::Init()
 	meshList[GEO_AXES] = MeshBuilder::GenerateAxes("AXES", 1000, 1000, 1000);
 
 	Mtx44 projection;
-	projection.SetToPerspective(45.f, 4.f / 3.f, 0.1f, 10000.f);
+	projection.SetToPerspective(45.f, 4.f / 3.f, 0.1f, 100000.f);
 	projectionStack.LoadMatrix(projection);
 
 	light[0].type = Light::LIGHT_POINT;
@@ -124,25 +124,32 @@ void SP2::Init()
 	meshList[GEO_LIGHTBALL] = MeshBuilder::GenerateSphere("LIGHT", Color(1, 1, 1), 36, 36);
 
 	meshList[GEO_FRONT] = MeshBuilder::GenerateQuad("front", Color(1, 1, 1));
-	meshList[GEO_FRONT]->textureID = LoadTGA("Image//front.tga");
+	meshList[GEO_FRONT]->textureID = LoadTGA("Image//test.tga");
 
 	meshList[GEO_RIGHT] = MeshBuilder::GenerateQuad("right", Color(1, 1, 1));
-	meshList[GEO_RIGHT]->textureID = LoadTGA("Image//right.tga");
+	meshList[GEO_RIGHT]->textureID = LoadTGA("Image//test.tga");
 
 	meshList[GEO_TOP] = MeshBuilder::GenerateQuad("top", Color(1, 1, 1));
-	meshList[GEO_TOP]->textureID = LoadTGA("Image//top.tga");
+	meshList[GEO_TOP]->textureID = LoadTGA("Image//test.tga");
 
 	meshList[GEO_BOTTOM] = MeshBuilder::GenerateQuad("bottom", Color(1, 1, 1));
-	meshList[GEO_BOTTOM]->textureID = LoadTGA("Image//bottom.tga");
+	meshList[GEO_BOTTOM]->textureID = LoadTGA("Image//test.tga");
 
 	meshList[GEO_LEFT] = MeshBuilder::GenerateQuad("left", Color(1, 1, 1));
-	meshList[GEO_LEFT]->textureID = LoadTGA("Image//left.tga");
+	meshList[GEO_LEFT]->textureID = LoadTGA("Image//test.tga");
 
 	meshList[GEO_BACK] = MeshBuilder::GenerateQuad("back", Color(1, 1, 1));
-	meshList[GEO_BACK]->textureID = LoadTGA("Image//back.tga");
+	meshList[GEO_BACK]->textureID = LoadTGA("Image//test.tga");
 
 	meshList[GEO_TEXT] = MeshBuilder::GenerateText("text", 16, 16);
 	meshList[GEO_TEXT]->textureID = LoadTGA("Image//Redressed.tga");
+
+	meshList[ASTEROID] = MeshBuilder::GenerateOBJ("asteroid", "OBJ//asteroid.obj");
+	meshList[ASTEROID]->textureID = LoadTGA("Image//asteroid.tga");
+	meshList[ASTEROID]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[ASTEROID]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[ASTEROID]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[ASTEROID]->material.kShininess = 1.5f;
 
 }
 
@@ -218,6 +225,11 @@ void SP2::Render()
 	RenderMesh(meshList[GEO_LIGHTBALL], false);
 	modelStack.PopMatrix();
 
+	modelStack.PushMatrix();
+	modelStack.Translate(0.f, 0.f, 0.f);
+	RenderMesh(meshList[ASTEROID], false);
+	modelStack.PopMatrix();
+
 	RenderSkyBox();
 }
 
@@ -266,49 +278,49 @@ void SP2::RenderMesh(Mesh *mesh, bool enableLight)
 void SP2::RenderSkyBox()
 {
 	modelStack.PushMatrix();
-
-	modelStack.Scale(1000, 1000, 1000);
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0.f, 0.f, 0.498f);
+	modelStack.Translate(0.f, 0.f, 2480.f);
 	modelStack.Rotate(180.f, 0, 1, 0);
 	modelStack.Rotate(90.f, 1, 0, 0);
-	modelStack.Scale(1.f, 1.f, 1.f);
+	modelStack.Scale(5000.f, 5000.f, 5000.f);
 	RenderMesh(meshList[GEO_FRONT], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(0.f, 0.f, -0.498f);
+	modelStack.Translate(0.f, 0.f, -2480.f);
 	modelStack.Rotate(90.f, 1, 0, 0);
+	modelStack.Scale(5000.f, 5000.f, 5000.f);
 	RenderMesh(meshList[GEO_BACK], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(0.f, 0.498f, 0.f);
+	modelStack.Translate(0.f, 2480.f, 0.f);
 	modelStack.Rotate(90.f, 0, 1, 0);
 	modelStack.Rotate(180.f, 0, 0, 1);
+	modelStack.Scale(5000.f, 5000.f, 5000.f);
 	RenderMesh(meshList[GEO_TOP], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(0.f, -0.498f, 0.f);
+	modelStack.Translate(0.f, -2480.f, 0.f);
 	modelStack.Rotate(-90.f, 0, 1, 0);
+	modelStack.Scale(5000.f, 5000.f, 5000.f);
 	RenderMesh(meshList[GEO_BOTTOM], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(-0.498f, 0, 0);
+	modelStack.Translate(-2480.f, 0, 0);
 	modelStack.Rotate(-90, 0, 0, 1);
 	modelStack.Rotate(90, 0, 1, 0);
+	modelStack.Scale(5000.f, 5000.f, 5000.f);
 	RenderMesh(meshList[GEO_RIGHT], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(0.498f, 0.f, 0.f);
+	modelStack.Translate(2480.f, 0.f, 0.f);
 	modelStack.Rotate(-90.f, 0, 1, 0);
 	modelStack.Rotate(90.f, 1, 0, 0);
+	modelStack.Scale(5000.f, 5000.f, 5000.f);
 	RenderMesh(meshList[GEO_LEFT], false);
-	modelStack.PopMatrix();
 	modelStack.PopMatrix();
 
 }
