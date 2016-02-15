@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+﻿Build started 15/2/2016 2:33:09 PM.
+     1>Project "F:\SP2\Common\Common.vcxproj" on node 2 (Build target(s)).
+     1>Lib:
+         Common.vcxproj -> F:\SP2\Debug\Common.lib
+     1>Done Building Project "F:\SP2\Common\Common.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.17
+=======
 ﻿Build started 2/15/2016 2:33:49 PM.
      1>Project "C:\Users\n1507\Documents\SPtwo2\Common\Common.vcxproj" on node 2 (Build target(s)).
      1>Lib:
@@ -7,3 +18,4 @@
 Build succeeded.
 
 Time Elapsed 00:00:00.03
+>>>>>>> 069ba1f13196c49c421a1ae1322ee67bc5fc2274

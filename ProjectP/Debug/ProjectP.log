@@ -1,4 +1,19 @@
+<<<<<<< HEAD
 ﻿Build started 2/15/2016 4:53:52 PM.
+=======
+<<<<<<< HEAD
+﻿Build started 15/2/2016 2:33:09 PM.
+     1>Project "F:\SP2\ProjectP\ProjectP.vcxproj" on node 2 (Build target(s)).
+     1>Link:
+         ProjectP.vcxproj -> F:\SP2\Debug\ProjectP.exe
+     1>Done Building Project "F:\SP2\ProjectP\ProjectP.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.27
+=======
+﻿Build started 2/15/2016 3:04:35 PM.
+>>>>>>> 7ed80a0f4b5539f73aa1668bf972e1a39cf0097f
      1>Project "C:\Users\n1507\Documents\SPtwo2\ProjectP\ProjectP.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\n1507\Documents\SPtwo2\\glew\include /IC:\Users\n1507\Documents\SPtwo2\\glfw\include /IC:\Users\n1507\Documents\SPtwo2\\Common\Source /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\SP2.cpp
@@ -21,4 +36,9 @@
 
 Build succeeded.
 
+<<<<<<< HEAD
 Time Elapsed 00:00:00.81
+=======
+Time Elapsed 00:00:00.91
+>>>>>>> 069ba1f13196c49c421a1ae1322ee67bc5fc2274
+>>>>>>> 7ed80a0f4b5539f73aa1668bf972e1a39cf0097f
