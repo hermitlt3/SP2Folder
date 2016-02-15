@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ProjectP", "ProjectP\ProjectP.vcxproj", "{5430A176-3D75-4FF9-BF41-BCCBBBF431C3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9C77E2D6-C148-4101-9F4B-579AED6E540D} = {9C77E2D6-C148-4101-9F4B-579AED6E540D}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Common", "Common\Common.vcxproj", "{9C77E2D6-C148-4101-9F4B-579AED6E540D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5430A176-3D75-4FF9-BF41-BCCBBBF431C3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5430A176-3D75-4FF9-BF41-BCCBBBF431C3}.Debug|Win32.Build.0 = Debug|Win32
+		{5430A176-3D75-4FF9-BF41-BCCBBBF431C3}.Release|Win32.ActiveCfg = Release|Win32
+		{5430A176-3D75-4FF9-BF41-BCCBBBF431C3}.Release|Win32.Build.0 = Release|Win32
+		{9C77E2D6-C148-4101-9F4B-579AED6E540D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9C77E2D6-C148-4101-9F4B-579AED6E540D}.Debug|Win32.Build.0 = Debug|Win32
+		{9C77E2D6-C148-4101-9F4B-579AED6E540D}.Release|Win32.ActiveCfg = Release|Win32
+		{9C77E2D6-C148-4101-9F4B-579AED6E540D}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

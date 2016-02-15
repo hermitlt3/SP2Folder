@@ -1,0 +1,15 @@
+﻿Build started 10/27/2015 1:44:23 PM.
+     1>Project "C:\Users\152304H\documents\visual studio 2013\Projects\ProjectP\ProjectP\ProjectP.vcxproj" on node 2 (Build target(s)).
+     1>Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\152304H\documents\visual studio 2013\Projects\ProjectP\Release\ProjectP.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\152304H\documents\visual studio 2013\Projects\ProjectP\\glew\lib" /LIBPATH:"C:\Users\152304H\documents\visual studio 2013\Projects\ProjectP\\glfw\lib-msvc120" /LIBPATH:"C:\Users\152304H\documents\visual studio 2013\Projects\ProjectP\Release" glew32.lib glfw3.lib opengl32.lib winmm.lib Common.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\152304H\documents\visual studio 2013\Projects\ProjectP\Release\ProjectP.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\152304H\documents\visual studio 2013\Projects\ProjectP\Release\ProjectP.lib" /MACHINE:X86 /SAFESEH Release\Application.obj
+         Release\main.obj
+         Release\Scene1.obj
+         Release\shader.obj
+     1>LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification
+     1>MSVCRT.lib(crtexew.obj) : error LNK2001: unresolved external symbol _WinMain@16
+     1>C:\Users\152304H\documents\visual studio 2013\Projects\ProjectP\Release\ProjectP.exe : fatal error LNK1120: 1 unresolved externals
+     1>Done Building Project "C:\Users\152304H\documents\visual studio 2013\Projects\ProjectP\ProjectP\ProjectP.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.30
