@@ -22,6 +22,7 @@ class SP2 : public Scene
 		GEO_FRONT,
 		GEO_BACK,
 		GEO_TEXT,
+		ASTEROID,
 		NUM_GEOMETRY,
 	};
 	enum UNIFORM_TYPE
