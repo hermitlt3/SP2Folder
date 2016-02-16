@@ -23,6 +23,12 @@ class SP2 : public Scene
 		GEO_BACK,
 		GEO_TEXT,
 		ASTEROID,
+		PORTALCASE,
+		PORTAL,
+		PORTAL2,
+		PORTAL3,
+		PORTAL4,
+		PORTAL5,
 		NUM_GEOMETRY,
 	};
 	enum UNIFORM_TYPE
@@ -82,6 +88,8 @@ private:
 	unsigned m_vertexArrayID;
 	unsigned m_programID;
 	unsigned m_parameters[U_TOTAL];
+	float rotateCase;
+	float rotatePortal;
 
 	Camera3 camera;
 
