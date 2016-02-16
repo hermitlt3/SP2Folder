@@ -76,7 +76,7 @@ void SP2::Init()
 	//variable to rotate geometry
 
 	//Initialize camera settings
-	camera.Init(Vector3(20, 5, 5), Vector3(0, 0, 0), Vector3(0, 1, 0));
+	camera.Init(Vector3(20, 7.2, 5), Vector3(0, 0, 0), Vector3(0, 1, 0));
 
 	meshList[GEO_AXES] = MeshBuilder::GenerateAxes("AXES", 1000, 1000, 1000);
 
@@ -151,6 +151,50 @@ void SP2::Init()
 	meshList[ASTEROID]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
 	meshList[ASTEROID]->material.kShininess = 1.5f;
 
+	meshList[GLASS] = MeshBuilder::GenerateOBJ("glass", "OBJ//glass.obj");
+	meshList[GLASS]->textureID = LoadTGA("Image//glass.tga");
+	meshList[GLASS]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
+	meshList[GLASS]->material.kDiffuse.Set(0.1f, 0.1f, 0.1f);
+	meshList[GLASS]->material.kSpecular.Set(0.0f, 0.0f, 0.0f);
+	meshList[GLASS]->material.kShininess = 1.f;
+
+	meshList[BASE] = MeshBuilder::GenerateOBJ("base", "OBJ//base.obj");
+	meshList[BASE]->textureID = LoadTGA("Image//base.tga");
+	meshList[BASE]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
+	meshList[BASE]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
+	meshList[BASE]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
+	meshList[BASE]->material.kShininess = 1.f;
+
+	meshList[WINGS] = MeshBuilder::GenerateOBJ("wings", "OBJ//wings.obj");
+	meshList[WINGS]->textureID = LoadTGA("Image//wings.tga");
+	meshList[WINGS]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
+	meshList[WINGS]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
+	meshList[WINGS]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
+	meshList[WINGS]->material.kShininess = 1.f;
+
+	meshList[SWITCH] = MeshBuilder::GenerateOBJ("switch", "OBJ//switch.obj");
+	meshList[SWITCH]->textureID = LoadTGA("Image//switch.tga");
+	meshList[SWITCH]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
+	meshList[SWITCH]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
+	meshList[SWITCH]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
+	meshList[SWITCH]->material.kShininess = 1.f;
+
+	meshList[HOLDER] = MeshBuilder::GenerateOBJ("holder", "OBJ//holder.obj");
+	meshList[HOLDER]->textureID = LoadTGA("Image//holder.tga");
+	meshList[HOLDER]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
+	meshList[HOLDER]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
+	meshList[HOLDER]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
+	meshList[HOLDER]->material.kShininess = 1.f;
+
+	//meshList[WHEEL] = MeshBuilder::GenerateOBJ("wheel", "OBJ//wheel.obj");
+	meshList[WHEEL]->textureID = LoadTGA("Image//WheelTexture.tga");
+	meshList[WHEEL]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
+	meshList[WHEEL]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
+	meshList[WHEEL]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
+	meshList[WHEEL]->material.kShininess = 1.f;
+
+	rotateSwitch = 10.0f;
+
 }
 
 static float ROT_LIMIT = 45.f;
@@ -170,6 +214,19 @@ void SP2::Update(double dt)
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //wireframe mode
 
 	camera.Update(dt);
+
+
+	if (Application::IsKeyPressed('V'))
+	{
+		toggleLight = true;
+		rotateSwitch = 10.0f;
+		
+	}
+	if (Application::IsKeyPressed('B'))
+	{
+		toggleLight = false;
+		rotateSwitch = 90.0f;
+	}
 
 	if (Application::IsKeyPressed('I'))
 		light[0].position.z -= (float)(LSPEED * dt);
@@ -230,6 +287,44 @@ void SP2::Render()
 	modelStack.Translate(0.f, 0.f, 0.f);
 	RenderMesh(meshList[ASTEROID], false);
 	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();		//PLATFORM HIERARCHY
+	modelStack.Translate(0, -30, 0);
+	modelStack.Scale(30, 30, 40);
+
+	modelStack.PushMatrix();
+	glBlendFunc(1, 1);
+	RenderMesh(meshList[GLASS], toggleLight);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	RenderMesh(meshList[BASE], false);
+	modelStack.PopMatrix();
+
+	modelStack.PopMatrix();			//END OF PLATFORM HIERARCHY
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 0, -100);
+	modelStack.Scale(25, 21, 22);
+	RenderMesh(meshList[WINGS], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();		//LIGHT SWITCH HIERARCHY
+	modelStack.Translate(-15, -18, -30);
+
+	modelStack.PushMatrix();
+	modelStack.Rotate(rotateSwitch, 1, 0, 0);
+	modelStack.Scale(1, 4, 4);
+	RenderMesh(meshList[SWITCH], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Scale(1.5, 1, 2);
+	RenderMesh(meshList[HOLDER], false);
+	modelStack.PopMatrix();
+
+	modelStack.PopMatrix();			//END OF LIGHT SWITCH HIERARCHY
 
 	RenderSkyBox();
 }
