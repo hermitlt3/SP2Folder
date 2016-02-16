@@ -1,2 +1,6 @@
 #TargetFrameworkVersion=v4.0:PlatformToolSet=v120:EnableManagedIncrementalBuild=false:VCToolArchitecture=Native32Bit
-Debug|Win32|C:\Users\n1507\Desktop\GIT\|
+<<<<<<< HEAD
+Debug|Win32|C:\Users\n1507\Documents\SP2Folder\|
+=======
+Debug|Win32|F:\SP2\|
+>>>>>>> 91bc1e7c0dd317cc896932a738d0267620fbf1db

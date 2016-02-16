@@ -151,6 +151,53 @@ void SP2::Init()
 	meshList[ASTEROID]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
 	meshList[ASTEROID]->material.kShininess = 1.5f;
 
+<<<<<<< HEAD
+	meshList[PORTALCASE] = MeshBuilder::GenerateOBJ("portalcase", "OBJ//portalcase.obj");
+	meshList[PORTALCASE]->textureID = LoadTGA("Image//portalcase.tga");
+	meshList[PORTALCASE]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[PORTALCASE]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[PORTALCASE]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[PORTALCASE]->material.kShininess = 1.5f;
+
+	meshList[PORTAL] = MeshBuilder::GenerateOBJ("portal", "OBJ//portal.obj");
+	meshList[PORTAL]->textureID = LoadTGA("Image//portal.tga");
+	meshList[PORTAL]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[PORTAL]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[PORTAL]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[PORTAL]->material.kShininess = 1.5f;
+
+	meshList[PORTAL2] = MeshBuilder::GenerateOBJ("portal", "OBJ//portal.obj");
+	meshList[PORTAL2]->textureID = LoadTGA("Image//portal2.tga");
+	meshList[PORTAL2]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[PORTAL2]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[PORTAL2]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[PORTAL2]->material.kShininess = 1.5f;
+
+	meshList[PORTAL3] = MeshBuilder::GenerateOBJ("portal", "OBJ//portal.obj");
+	meshList[PORTAL3]->textureID = LoadTGA("Image//portal3.tga");
+	meshList[PORTAL3]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[PORTAL3]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[PORTAL3]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[PORTAL3]->material.kShininess = 1.5f;
+
+	meshList[PORTAL4] = MeshBuilder::GenerateOBJ("portal", "OBJ//portal.obj");
+	meshList[PORTAL4]->textureID = LoadTGA("Image//portal4.tga");
+	meshList[PORTAL4]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[PORTAL4]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[PORTAL4]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[PORTAL4]->material.kShininess = 1.5f;	
+
+	meshList[PORTAL5] = MeshBuilder::GenerateOBJ("portal", "OBJ//portal.obj");
+	meshList[PORTAL5]->textureID = LoadTGA("Image//portal5.tga");
+	meshList[PORTAL5]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[PORTAL5]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[PORTAL5]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[PORTAL5]->material.kShininess = 1.5f;
+
+
+	rotateCase = 0;
+	rotatePortal = 0;
+=======
 	meshList[GLASS] = MeshBuilder::GenerateOBJ("glass", "OBJ//glass.obj");
 	meshList[GLASS]->textureID = LoadTGA("Image//glass.tga");
 	meshList[GLASS]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
@@ -186,6 +233,7 @@ void SP2::Init()
 	meshList[HOLDER]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
 	meshList[HOLDER]->material.kShininess = 1.f;
 
+<<<<<<< HEAD
 	//meshList[WHEEL] = MeshBuilder::GenerateOBJ("wheel", "OBJ//wheel.obj");
 	//meshList[WHEEL]->textureID = LoadTGA("Image//WheelTexture.tga");
 	//meshList[WHEEL]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
@@ -198,14 +246,60 @@ void SP2::Init()
 	meshList[GEO_QUAD]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
 	meshList[GEO_QUAD]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
 	meshList[GEO_QUAD]->material.kShininess = 1.f;
+=======
+	meshList[WHEEL] = MeshBuilder::GenerateOBJ("wheel", "OBJ//wheel.obj");
+	meshList[WHEEL]->textureID = LoadTGA("Image//WheelTexture.tga");
+	meshList[WHEEL]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
+	meshList[WHEEL]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
+	meshList[WHEEL]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
+	meshList[WHEEL]->material.kShininess = 1.f;
+>>>>>>> 8f33f8898594607f8fc593984be051cc924c4d17
+
+	meshList[PLANET1] = MeshBuilder::GenerateOBJ("Planet1", "OBJ//Planet_1.obj");
+	meshList[PLANET1]->textureID = LoadTGA("Image//Planet_1Test.tga");
+	meshList[PLANET1]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
+	meshList[PLANET1]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
+	meshList[PLANET1]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
+	meshList[PLANET1]->material.kShininess = 1.f;
+
+	meshList[PLANET2] = MeshBuilder::GenerateOBJ("Planet2", "OBJ//PLanet.obj");
+	meshList[PLANET2]->textureID = LoadTGA("Image//Planet_2.tga");
+	meshList[PLANET2]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
+	meshList[PLANET2]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
+	meshList[PLANET2]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
+	meshList[PLANET2]->material.kShininess = 1.f;
+
+	meshList[PLANET3] = MeshBuilder::GenerateOBJ("Planet3", "OBJ//PLanet.obj");
+	meshList[PLANET3]->textureID = LoadTGA("Image//Planet_3.tga");
+	meshList[PLANET3]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
+	meshList[PLANET3]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
+	meshList[PLANET3]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
+	meshList[PLANET3]->material.kShininess = 1.f;
+
+	meshList[PLANET4] = MeshBuilder::GenerateOBJ("PLanet4", "OBJ//PLanet.obj");
+	meshList[PLANET4]->textureID = LoadTGA("Image//Planet_4.tga");
+	meshList[PLANET4]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
+	meshList[PLANET4]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
+	meshList[PLANET4]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
+	meshList[PLANET4]->material.kShininess = 1.f;
+
+	meshList[PLANET5] = MeshBuilder::GenerateOBJ("PLanet5", "OBJ//PLanet.obj");
+	meshList[PLANET5]->textureID = LoadTGA("Image//Planet_5.tga");
+	meshList[PLANET5]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
+	meshList[PLANET5]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
+	meshList[PLANET5]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
+	meshList[PLANET5]->material.kShininess = 1.f;
+
 
 	rotateSwitch = 10.0f;
+>>>>>>> 91bc1e7c0dd317cc896932a738d0267620fbf1db
 
 }
 
 static float ROT_LIMIT = 45.f;
 static float SCALE_LIMIT = 5.f;
 static float LSPEED = 10.F;
+
 
 
 void SP2::Update(double dt)
@@ -246,6 +340,9 @@ void SP2::Update(double dt)
 		light[0].position.y -= (float)(LSPEED * dt);
 	if (Application::IsKeyPressed('P'))
 		light[0].position.y += (float)(LSPEED * dt);
+
+	rotateCase -= (float)(1500.0f * dt);
+	rotatePortal += (float)(750.0f * dt);
 }
 
 void SP2::Render()
@@ -290,10 +387,92 @@ void SP2::Render()
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(0.f, 0.f, 0.f);
+	modelStack.Translate(0.f, 30.0f, 0.f);
 	RenderMesh(meshList[ASTEROID], false);
 	modelStack.PopMatrix();
 
+<<<<<<< HEAD
+	modelStack.PushMatrix();
+
+	modelStack.Scale(0.3f, 0.3f, 0.3f);
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0.f, 15.0f, 0.f);
+	modelStack.Rotate(rotateCase, 0, 0, 1);
+	modelStack.Scale(5.0f, 5.0f, 5.0f);
+	RenderMesh(meshList[PORTALCASE], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0.f, 15.0f, 0.f);
+	modelStack.Rotate(180, 0, 1, 0);
+	modelStack.Rotate(rotatePortal, 0, 0, 1);
+	modelStack.Scale(12.0f, 12.0f, 12.0f);
+	RenderMesh(meshList[PORTAL], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(40.0f, 15.0f, 0.f);
+	modelStack.Rotate(rotateCase, 0, 0, 1);
+	modelStack.Scale(5.0f, 5.0f, 5.0f);
+	RenderMesh(meshList[PORTALCASE], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(40.0f,15.0f, 0.f);
+	modelStack.Rotate(180, 0, 1, 0);
+	modelStack.Rotate(rotatePortal, 0, 0, 1);
+	modelStack.Scale(12.0f, 12.0f, 12.0f);
+	RenderMesh(meshList[PORTAL2], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(80.0f, 15.0f, 0.f);
+	modelStack.Rotate(rotateCase, 0, 0, 1);
+	modelStack.Scale(5.0f, 5.0f, 5.0f);
+	RenderMesh(meshList[PORTALCASE], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(80.f, 15.0f, 0.f);
+	modelStack.Rotate(180, 0, 1, 0);
+	modelStack.Rotate(rotatePortal, 0, 0, 1);
+	modelStack.Scale(12.0f, 12.0f, 12.0f);
+	RenderMesh(meshList[PORTAL3], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(120.0f, 15.0f, 0.f);
+	modelStack.Rotate(rotateCase, 0, 0, 1);
+	modelStack.Scale(5.0f, 5.0f, 5.0f);
+	RenderMesh(meshList[PORTALCASE], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(120.f, 15.0f, 0.f);
+	modelStack.Rotate(rotatePortal, 0, 0, -1);
+	modelStack.Scale(12.0f, 12.0f, 12.0f);
+	RenderMesh(meshList[PORTAL4], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(160.0f, 15.0f, 0.f);
+	modelStack.Rotate(rotateCase, 0, 0, 1);
+	modelStack.Scale(5.0f, 5.0f, 5.0f);
+	RenderMesh(meshList[PORTALCASE], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(160.f, 15.0f, 0.f);
+	modelStack.Rotate(rotatePortal, 0, 0, -1);
+	modelStack.Scale(12.0f, 12.0f, 12.0f);
+	RenderMesh(meshList[PORTAL5], false);
+	modelStack.PopMatrix();
+
+
+	modelStack.PopMatrix();
+	
+=======
 	modelStack.PushMatrix();		//PLATFORM HIERARCHY
 	modelStack.Translate(0, -30, 0);
 	modelStack.Scale(30, 30, 40);
@@ -341,6 +520,7 @@ void SP2::Render()
 
 	modelStack.PopMatrix();			//END OF LIGHT SWITCH HIERARCHY
 
+>>>>>>> 91bc1e7c0dd317cc896932a738d0267620fbf1db
 	RenderSkyBox();
 }
 

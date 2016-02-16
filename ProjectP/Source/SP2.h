@@ -24,6 +24,19 @@ class SP2 : public Scene
 		GEO_TEXT,
 
 		ASTEROID,
+<<<<<<< HEAD
+		PORTALCASE,
+		PORTAL,
+		PORTAL2,
+		PORTAL3,
+		PORTAL4,
+		PORTAL5,
+=======
+		PLANET1,
+		PLANET2,
+		PLANET3,
+		PLANET4,
+		PLANET5,
 
 		GLASS,
 		BASE,
@@ -31,6 +44,7 @@ class SP2 : public Scene
 		SWITCH,
 		HOLDER,
 		WHEEL,
+>>>>>>> 91bc1e7c0dd317cc896932a738d0267620fbf1db
 		NUM_GEOMETRY,
 	};
 	enum UNIFORM_TYPE
@@ -90,6 +104,8 @@ private:
 	unsigned m_vertexArrayID;
 	unsigned m_programID;
 	unsigned m_parameters[U_TOTAL];
+	float rotateCase;
+	float rotatePortal;
 
 	Camera3 camera;
 

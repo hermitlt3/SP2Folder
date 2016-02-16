@@ -1,9 +1,21 @@
-﻿Build started 2/16/2016 11:25:50 AM.
-     1>Project "C:\Users\n1507\Desktop\GIT\Common\Common.vcxproj" on node 2 (Build target(s)).
+<<<<<<< HEAD
+﻿Build started 2/16/2016 10:57:27 AM.
+     1>Project "C:\Users\n1507\Documents\SP2Folder\Common\Common.vcxproj" on node 2 (Build target(s)).
      1>Lib:
-         Common.vcxproj -> C:\Users\n1507\Desktop\GIT\Debug\Common.lib
-     1>Done Building Project "C:\Users\n1507\Desktop\GIT\Common\Common.vcxproj" (Build target(s)).
+         Common.vcxproj -> C:\Users\n1507\Documents\SP2Folder\Debug\Common.lib
+     1>Done Building Project "C:\Users\n1507\Documents\SP2Folder\Common\Common.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.02
+Time Elapsed 00:00:00.03
+=======
+﻿Build started 16/2/2016 4:04:22 PM.
+     1>Project "F:\SP2\Common\Common.vcxproj" on node 2 (Build target(s)).
+     1>Lib:
+         Common.vcxproj -> F:\SP2\Debug\Common.lib
+     1>Done Building Project "F:\SP2\Common\Common.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.14
+>>>>>>> 91bc1e7c0dd317cc896932a738d0267620fbf1db
