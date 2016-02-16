@@ -22,7 +22,15 @@ class SP2 : public Scene
 		GEO_FRONT,
 		GEO_BACK,
 		GEO_TEXT,
+
 		ASTEROID,
+
+		GLASS,
+		BASE,
+		WINGS,
+		SWITCH,
+		HOLDER,
+		WHEEL,
 		NUM_GEOMETRY,
 	};
 	enum UNIFORM_TYPE
@@ -94,6 +102,9 @@ private:
 	void RenerMesh(Mesh *mesh, bool enableLight);
 	void RenderSkyBox();
 
+	bool toggleLight;
+
+	float rotateSwitch;
 	};
 
 
