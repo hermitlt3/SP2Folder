@@ -186,12 +186,48 @@ void SP2::Init()
 	meshList[HOLDER]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
 	meshList[HOLDER]->material.kShininess = 1.f;
 
-	//meshList[WHEEL] = MeshBuilder::GenerateOBJ("wheel", "OBJ//wheel.obj");
+	meshList[WHEEL] = MeshBuilder::GenerateOBJ("wheel", "OBJ//wheel.obj");
 	meshList[WHEEL]->textureID = LoadTGA("Image//WheelTexture.tga");
 	meshList[WHEEL]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
 	meshList[WHEEL]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
 	meshList[WHEEL]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
 	meshList[WHEEL]->material.kShininess = 1.f;
+
+	meshList[PLANET1] = MeshBuilder::GenerateOBJ("Planet1", "OBJ//Planet_1.obj");
+	meshList[PLANET1]->textureID = LoadTGA("Image//Planet_1Test.tga");
+	meshList[PLANET1]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
+	meshList[PLANET1]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
+	meshList[PLANET1]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
+	meshList[PLANET1]->material.kShininess = 1.f;
+
+	meshList[PLANET2] = MeshBuilder::GenerateOBJ("Planet2", "OBJ//PLanet.obj");
+	meshList[PLANET2]->textureID = LoadTGA("Image//Planet_2.tga");
+	meshList[PLANET2]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
+	meshList[PLANET2]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
+	meshList[PLANET2]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
+	meshList[PLANET2]->material.kShininess = 1.f;
+
+	meshList[PLANET3] = MeshBuilder::GenerateOBJ("Planet3", "OBJ//PLanet.obj");
+	meshList[PLANET3]->textureID = LoadTGA("Image//Planet_3.tga");
+	meshList[PLANET3]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
+	meshList[PLANET3]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
+	meshList[PLANET3]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
+	meshList[PLANET3]->material.kShininess = 1.f;
+
+	meshList[PLANET4] = MeshBuilder::GenerateOBJ("PLanet4", "OBJ//PLanet.obj");
+	meshList[PLANET4]->textureID = LoadTGA("Image//Planet_4.tga");
+	meshList[PLANET4]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
+	meshList[PLANET4]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
+	meshList[PLANET4]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
+	meshList[PLANET4]->material.kShininess = 1.f;
+
+	meshList[PLANET5] = MeshBuilder::GenerateOBJ("PLanet5", "OBJ//PLanet.obj");
+	meshList[PLANET5]->textureID = LoadTGA("Image//Planet_5.tga");
+	meshList[PLANET5]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
+	meshList[PLANET5]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
+	meshList[PLANET5]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
+	meshList[PLANET5]->material.kShininess = 1.f;
+
 
 	rotateSwitch = 10.0f;
 

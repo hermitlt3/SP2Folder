@@ -24,6 +24,11 @@ class SP2 : public Scene
 		GEO_TEXT,
 
 		ASTEROID,
+		PLANET1,
+		PLANET2,
+		PLANET3,
+		PLANET4,
+		PLANET5,
 
 		GLASS,
 		BASE,

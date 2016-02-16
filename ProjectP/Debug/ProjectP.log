@@ -1,11 +1,15 @@
-﻿Build started 2/16/2016 3:23:19 PM.
-     1>Project "C:\Users\n1507\Desktop\GIT\ProjectP\ProjectP.vcxproj" on node 2 (Build target(s)).
+﻿Build started 16/2/2016 4:12:34 PM.
+     1>Project "F:\SP2\ProjectP\ProjectP.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\n1507\Desktop\GIT\\glew\include /IC:\Users\n1507\Desktop\GIT\\glfw\include /IC:\Users\n1507\Desktop\GIT\\Common\Source /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\SP2.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IF:\SP2\\glew\include /IF:\SP2\\glfw\include /IF:\SP2\\Common\Source /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\Application.cpp Source\SP2.cpp
          SP2.cpp
-     1>c:\users\n1507\desktop\git\projectp\source\sp2.cpp(79): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>f:\sp2\projectp\source\sp2.cpp(79): warning C4305: 'argument' : truncation from 'double' to 'float'
+         Generating Code...
+         Compiling...
+         Application.cpp
+         Generating Code...
        Link:
-         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\n1507\Desktop\GIT\Debug\ProjectP.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\n1507\Desktop\GIT\\glew\lib /LIBPATH:"C:\Users\n1507\Desktop\GIT\\glfw\lib-msvc120" /LIBPATH:C:\Users\n1507\Desktop\GIT\Debug glew32.lib glfw3.lib opengl32.lib winmm.lib Common.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\n1507\Desktop\GIT\Debug\ProjectP.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\n1507\Desktop\GIT\Debug\ProjectP.lib" /MACHINE:X86 Debug\Application.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\SP2\Debug\ProjectP.exe" /INCREMENTAL /NOLOGO /LIBPATH:F:\SP2\\glew\lib /LIBPATH:"F:\SP2\\glfw\lib-msvc120" /LIBPATH:F:\SP2\Debug glew32.lib glfw3.lib opengl32.lib winmm.lib Common.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"F:\SP2\Debug\ProjectP.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\SP2\Debug\ProjectP.lib" /MACHINE:X86 Debug\Application.obj
          Debug\Camera.obj
          Debug\Camera2.obj
          Debug\Camera3.obj
@@ -17,9 +21,9 @@
          Debug\shader.obj
          Debug\SP2.obj
          Debug\Utility.obj
-         ProjectP.vcxproj -> C:\Users\n1507\Desktop\GIT\Debug\ProjectP.exe
-     1>Done Building Project "C:\Users\n1507\Desktop\GIT\ProjectP\ProjectP.vcxproj" (Build target(s)).
+         ProjectP.vcxproj -> F:\SP2\Debug\ProjectP.exe
+     1>Done Building Project "F:\SP2\ProjectP\ProjectP.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.91
+Time Elapsed 00:00:09.31
