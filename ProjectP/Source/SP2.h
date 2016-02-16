@@ -99,7 +99,7 @@ private:
 
 	Light light[2];
 
-	void RenerMesh(Mesh *mesh, bool enableLight);
+	void RenderMesh(Mesh *mesh, bool enableLight);
 	void RenderSkyBox();
 
 	bool toggleLight;

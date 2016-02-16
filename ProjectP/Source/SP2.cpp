@@ -187,11 +187,17 @@ void SP2::Init()
 	meshList[HOLDER]->material.kShininess = 1.f;
 
 	//meshList[WHEEL] = MeshBuilder::GenerateOBJ("wheel", "OBJ//wheel.obj");
-	meshList[WHEEL]->textureID = LoadTGA("Image//WheelTexture.tga");
-	meshList[WHEEL]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
-	meshList[WHEEL]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
-	meshList[WHEEL]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
-	meshList[WHEEL]->material.kShininess = 1.f;
+	//meshList[WHEEL]->textureID = LoadTGA("Image//WheelTexture.tga");
+	//meshList[WHEEL]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
+	//meshList[WHEEL]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
+	//meshList[WHEEL]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
+	//meshList[WHEEL]->material.kShininess = 1.f;
+
+	meshList[GEO_QUAD] = MeshBuilder::GenerateQuad("quad", Color(0, 0, 1));
+	meshList[GEO_QUAD]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
+	meshList[GEO_QUAD]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
+	meshList[GEO_QUAD]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
+	meshList[GEO_QUAD]->material.kShininess = 1.f;
 
 	rotateSwitch = 10.0f;
 
@@ -309,6 +315,15 @@ void SP2::Render()
 	modelStack.Scale(25, 21, 22);
 	RenderMesh(meshList[WINGS], false);
 	modelStack.PopMatrix();
+
+	//************************************************//
+	//AREA OF LIGHT SWITCH DETECTION
+	modelStack.PushMatrix();
+	modelStack.Translate(-15, -18, -50);
+	modelStack.Scale(20, 1, 25);
+	RenderMesh(meshList[GEO_QUAD], false);
+	modelStack.PopMatrix();
+	//************************************************//
 
 	modelStack.PushMatrix();		//LIGHT SWITCH HIERARCHY
 	modelStack.Translate(-15, -18, -30);
