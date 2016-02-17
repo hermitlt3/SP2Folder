@@ -28,8 +28,33 @@ class SP2 : public Scene
 		TEST_BOTTOM,
 		TEST_FRONT,
 		GEO_TEXT,
+
 		ASTEROID,
+<<<<<<< HEAD
 		PLAYER,
+=======
+<<<<<<< HEAD
+		PORTALCASE,
+		PORTAL,
+		PORTAL2,
+		PORTAL3,
+		PORTAL4,
+		PORTAL5,
+=======
+		PLANET1,
+		PLANET2,
+		PLANET3,
+		PLANET4,
+		PLANET5,
+
+		GLASS,
+		BASE,
+		WINGS,
+		SWITCH,
+		HOLDER,
+		WHEEL,
+>>>>>>> 91bc1e7c0dd317cc896932a738d0267620fbf1db
+>>>>>>> 8b3445d495d63721fe79c154a0724cedabe76e2f
 		NUM_GEOMETRY,
 	};
 	enum UNIFORM_TYPE
@@ -89,6 +114,8 @@ private:
 	unsigned m_vertexArrayID;
 	unsigned m_programID;
 	unsigned m_parameters[U_TOTAL];
+	float rotateCase;
+	float rotatePortal;
 
 	Camera3 camera;
 
@@ -98,11 +125,17 @@ private:
 
 	Light light[2];
 
-	void RenerMesh(Mesh *mesh, bool enableLight);
+	void RenderMesh(Mesh *mesh, bool enableLight);
 	void RenderSkyBox();
 
+<<<<<<< HEAD
 
 
+=======
+	bool toggleLight;
+
+	float rotateSwitch;
+>>>>>>> 8b3445d495d63721fe79c154a0724cedabe76e2f
 	};
 
 
