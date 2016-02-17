@@ -125,21 +125,45 @@ void SP2::Init()
 
 	meshList[GEO_FRONT] = MeshBuilder::GenerateQuad("front", Color(1, 1, 1));
 	meshList[GEO_FRONT]->textureID = LoadTGA("Image//surround.tga");
+	meshList[GEO_FRONT]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[GEO_FRONT]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[GEO_FRONT]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[GEO_FRONT]->material.kShininess = 1.5f;
 
 	meshList[GEO_RIGHT] = MeshBuilder::GenerateQuad("right", Color(1, 1, 1));
 	meshList[GEO_RIGHT]->textureID = LoadTGA("Image//surround.tga");
+	meshList[GEO_FRONT]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[GEO_FRONT]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[GEO_FRONT]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[GEO_FRONT]->material.kShininess = 1.5f;
 
 	meshList[GEO_TOP] = MeshBuilder::GenerateQuad("top", Color(1, 1, 1));
 	meshList[GEO_TOP]->textureID = LoadTGA("Image//top.tga");
+	meshList[GEO_TOP]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[GEO_TOP]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[GEO_TOP]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[GEO_TOP]->material.kShininess = 1.5f;
 
 	meshList[GEO_BOTTOM] = MeshBuilder::GenerateQuad("bottom", Color(1, 1, 1));
 	meshList[GEO_BOTTOM]->textureID = LoadTGA("Image//top.tga");
+	meshList[GEO_BOTTOM]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[GEO_BOTTOM]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[GEO_BOTTOM]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[GEO_BOTTOM]->material.kShininess = 1.5f;
 
 	meshList[GEO_LEFT] = MeshBuilder::GenerateQuad("left", Color(1, 1, 1));
 	meshList[GEO_LEFT]->textureID = LoadTGA("Image//surround.tga");
+	meshList[GEO_LEFT]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[GEO_LEFT]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[GEO_LEFT]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[GEO_LEFT]->material.kShininess = 1.5f;
 
 	meshList[GEO_BACK] = MeshBuilder::GenerateQuad("back", Color(1, 1, 1));
 	meshList[GEO_BACK]->textureID = LoadTGA("Image//surround.tga");
+	meshList[GEO_BACK]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[GEO_BACK]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[GEO_BACK]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[GEO_BACK]->material.kShininess = 1.5f;
 
 	meshList[GEO_TEXT] = MeshBuilder::GenerateText("text", 16, 16);
 	meshList[GEO_TEXT]->textureID = LoadTGA("Image//Redressed.tga");
@@ -151,7 +175,6 @@ void SP2::Init()
 	meshList[ASTEROID]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
 	meshList[ASTEROID]->material.kShininess = 1.5f;
 
-<<<<<<< HEAD
 	meshList[PORTALCASE] = MeshBuilder::GenerateOBJ("portalcase", "OBJ//portalcase.obj");
 	meshList[PORTALCASE]->textureID = LoadTGA("Image//portalcase.tga");
 	meshList[PORTALCASE]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
@@ -194,10 +217,9 @@ void SP2::Init()
 	meshList[PORTAL5]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
 	meshList[PORTAL5]->material.kShininess = 1.5f;
 
-
 	rotateCase = 0;
 	rotatePortal = 0;
-=======
+
 	meshList[GLASS] = MeshBuilder::GenerateOBJ("glass", "OBJ//glass.obj");
 	meshList[GLASS]->textureID = LoadTGA("Image//glass.tga");
 	meshList[GLASS]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
@@ -211,6 +233,8 @@ void SP2::Init()
 	meshList[BASE]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
 	meshList[BASE]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
 	meshList[BASE]->material.kShininess = 1.f;
+
+	colli.Set(1.0f, 0.f, 0.f);
 
 	meshList[WINGS] = MeshBuilder::GenerateOBJ("wings", "OBJ//wings.obj");
 	meshList[WINGS]->textureID = LoadTGA("Image//wings.tga");
@@ -233,27 +257,27 @@ void SP2::Init()
 	meshList[HOLDER]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
 	meshList[HOLDER]->material.kShininess = 1.f;
 
-<<<<<<< HEAD
-	//meshList[WHEEL] = MeshBuilder::GenerateOBJ("wheel", "OBJ//wheel.obj");
-	//meshList[WHEEL]->textureID = LoadTGA("Image//WheelTexture.tga");
-	//meshList[WHEEL]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
-	//meshList[WHEEL]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
-	//meshList[WHEEL]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
-	//meshList[WHEEL]->material.kShininess = 1.f;
+	rotateSwitch = 10.0f;
 
 	meshList[GEO_QUAD] = MeshBuilder::GenerateQuad("quad", Color(0, 0, 1));
 	meshList[GEO_QUAD]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
 	meshList[GEO_QUAD]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
 	meshList[GEO_QUAD]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
 	meshList[GEO_QUAD]->material.kShininess = 1.f;
-=======
-	meshList[WHEEL] = MeshBuilder::GenerateOBJ("wheel", "OBJ//wheel.obj");
+
+	meshList[WHEEL] = MeshBuilder::GenerateOBJ("wheel", "OBJ//Wheel.obj");
 	meshList[WHEEL]->textureID = LoadTGA("Image//WheelTexture.tga");
 	meshList[WHEEL]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
 	meshList[WHEEL]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
 	meshList[WHEEL]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
 	meshList[WHEEL]->material.kShininess = 1.f;
->>>>>>> 8f33f8898594607f8fc593984be051cc924c4d17
+
+	meshList[STAND] = MeshBuilder::GenerateCube("stand", Color(1, 1, 1));
+	meshList[STAND]->textureID = LoadTGA("Image//WheelTexture.tga");
+	meshList[STAND]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
+	meshList[STAND]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
+	meshList[STAND]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
+	meshList[STAND]->material.kShininess = 1.f;
 
 	meshList[PLANET1] = MeshBuilder::GenerateOBJ("Planet1", "OBJ//Planet_1.obj");
 	meshList[PLANET1]->textureID = LoadTGA("Image//Planet_1Test.tga");
@@ -290,10 +314,6 @@ void SP2::Init()
 	meshList[PLANET5]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
 	meshList[PLANET5]->material.kShininess = 1.f;
 
-
-	rotateSwitch = 10.0f;
->>>>>>> 91bc1e7c0dd317cc896932a738d0267620fbf1db
-
 }
 
 static float ROT_LIMIT = 45.f;
@@ -320,7 +340,6 @@ void SP2::Update(double dt)
 	{
 		toggleLight = true;
 		rotateSwitch = 10.0f;
-		
 	}
 	if (Application::IsKeyPressed('B'))
 	{
@@ -386,25 +405,26 @@ void SP2::Render()
 	RenderMesh(meshList[GEO_LIGHTBALL], false);
 	modelStack.PopMatrix();
 
+	RenderSkyBox();
+
 	modelStack.PushMatrix();
 	modelStack.Translate(0.f, 30.0f, 0.f);
 	RenderMesh(meshList[ASTEROID], false);
 	modelStack.PopMatrix();
 
-<<<<<<< HEAD
-	modelStack.PushMatrix();
+	modelStack.PushMatrix();			//PORTAL HIERARCHY
+	modelStack.Translate(0.f, 8.f, -190.f);
+	modelStack.Scale(1.5f, 1.5f, 1.5f);
 
-	modelStack.Scale(0.3f, 0.3f, 0.3f);
-
 	modelStack.PushMatrix();
-	modelStack.Translate(0.f, 15.0f, 0.f);
+	modelStack.Translate(-100.f, 0.0f, 0.f);
 	modelStack.Rotate(rotateCase, 0, 0, 1);
 	modelStack.Scale(5.0f, 5.0f, 5.0f);
 	RenderMesh(meshList[PORTALCASE], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(0.f, 15.0f, 0.f);
+	modelStack.Translate(-100.f, 0.f, 0.f);
 	modelStack.Rotate(180, 0, 1, 0);
 	modelStack.Rotate(rotatePortal, 0, 0, 1);
 	modelStack.Scale(12.0f, 12.0f, 12.0f);
@@ -412,14 +432,14 @@ void SP2::Render()
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(40.0f, 15.0f, 0.f);
+	modelStack.Translate(-50.f, 0.f, 0.f);
 	modelStack.Rotate(rotateCase, 0, 0, 1);
 	modelStack.Scale(5.0f, 5.0f, 5.0f);
 	RenderMesh(meshList[PORTALCASE], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(40.0f,15.0f, 0.f);
+	modelStack.Translate(-50.f, 0.f, 0.f);
 	modelStack.Rotate(180, 0, 1, 0);
 	modelStack.Rotate(rotatePortal, 0, 0, 1);
 	modelStack.Scale(12.0f, 12.0f, 12.0f);
@@ -427,14 +447,14 @@ void SP2::Render()
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(80.0f, 15.0f, 0.f);
+	modelStack.Translate(0.f, 0.f, 0.f);
 	modelStack.Rotate(rotateCase, 0, 0, 1);
 	modelStack.Scale(5.0f, 5.0f, 5.0f);
 	RenderMesh(meshList[PORTALCASE], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(80.f, 15.0f, 0.f);
+	modelStack.Translate(0.f, 0.f, 0.f);
 	modelStack.Rotate(180, 0, 1, 0);
 	modelStack.Rotate(rotatePortal, 0, 0, 1);
 	modelStack.Scale(12.0f, 12.0f, 12.0f);
@@ -442,37 +462,79 @@ void SP2::Render()
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(120.0f, 15.0f, 0.f);
+	modelStack.Translate(50.f, 0.f, 0.f);
 	modelStack.Rotate(rotateCase, 0, 0, 1);
 	modelStack.Scale(5.0f, 5.0f, 5.0f);
 	RenderMesh(meshList[PORTALCASE], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(120.f, 15.0f, 0.f);
+	modelStack.Translate(50.f, 0.f, 0.f);
 	modelStack.Rotate(rotatePortal, 0, 0, -1);
 	modelStack.Scale(12.0f, 12.0f, 12.0f);
 	RenderMesh(meshList[PORTAL4], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(160.0f, 15.0f, 0.f);
+	modelStack.Translate(100.f, 0.f, 0.f);
 	modelStack.Rotate(rotateCase, 0, 0, 1);
 	modelStack.Scale(5.0f, 5.0f, 5.0f);
 	RenderMesh(meshList[PORTALCASE], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(160.f, 15.0f, 0.f);
+	modelStack.Translate(100.f, 0.f, 0.f);
 	modelStack.Rotate(rotatePortal, 0, 0, -1);
 	modelStack.Scale(12.0f, 12.0f, 12.0f);
 	RenderMesh(meshList[PORTAL5], false);
 	modelStack.PopMatrix();
 
+	modelStack.PopMatrix();			//END OF PORTAL HIERARCHY
 
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 0, -100);
+	modelStack.Scale(25, 21, 22);
+	RenderMesh(meshList[WINGS], false);
 	modelStack.PopMatrix();
-	
-=======
+
+	//************************************************//
+	//AREA OF LIGHT SWITCH DETECTION
+	modelStack.PushMatrix();
+	modelStack.Translate(-18, -18, -50);
+	modelStack.Scale(20, 1, 25);
+	RenderMesh(meshList[GEO_QUAD], false);
+	modelStack.PopMatrix();
+	//************************************************//
+
+	modelStack.PushMatrix();		//LIGHT SWITCH HIERARCHY
+	modelStack.Translate(-18, -18, -30);
+
+	modelStack.PushMatrix();
+	modelStack.Rotate(rotateSwitch, 1, 0, 0);
+	modelStack.Scale(1, 4, 4);
+	RenderMesh(meshList[SWITCH], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Scale(1.5, 1, 2);
+	RenderMesh(meshList[HOLDER], false);
+	modelStack.PopMatrix();
+
+	modelStack.PopMatrix();			//END OF LIGHT SWITCH HIERARCHY
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, -3, -33);
+	modelStack.Rotate(90, 0, 1, 0);
+	modelStack.Scale(5, 5, 5);
+	RenderMesh(meshList[WHEEL], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, -9, -30);
+	modelStack.Scale(3, 20, 5);
+	RenderMesh(meshList[STAND], false);
+	modelStack.PopMatrix();
+
 	modelStack.PushMatrix();		//PLATFORM HIERARCHY
 	modelStack.Translate(0, -30, 0);
 	modelStack.Scale(30, 30, 40);
@@ -489,39 +551,6 @@ void SP2::Render()
 
 	modelStack.PopMatrix();			//END OF PLATFORM HIERARCHY
 
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 0, -100);
-	modelStack.Scale(25, 21, 22);
-	RenderMesh(meshList[WINGS], false);
-	modelStack.PopMatrix();
-
-	//************************************************//
-	//AREA OF LIGHT SWITCH DETECTION
-	modelStack.PushMatrix();
-	modelStack.Translate(-15, -18, -50);
-	modelStack.Scale(20, 1, 25);
-	RenderMesh(meshList[GEO_QUAD], false);
-	modelStack.PopMatrix();
-	//************************************************//
-
-	modelStack.PushMatrix();		//LIGHT SWITCH HIERARCHY
-	modelStack.Translate(-15, -18, -30);
-
-	modelStack.PushMatrix();
-	modelStack.Rotate(rotateSwitch, 1, 0, 0);
-	modelStack.Scale(1, 4, 4);
-	RenderMesh(meshList[SWITCH], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Scale(1.5, 1, 2);
-	RenderMesh(meshList[HOLDER], false);
-	modelStack.PopMatrix();
-
-	modelStack.PopMatrix();			//END OF LIGHT SWITCH HIERARCHY
-
->>>>>>> 91bc1e7c0dd317cc896932a738d0267620fbf1db
-	RenderSkyBox();
 }
 
 void SP2::RenderMesh(Mesh *mesh, bool enableLight)
@@ -616,6 +645,28 @@ void SP2::RenderSkyBox()
 
 }
 
+void SP2::collisionCheck(float colliX, float colliZ, Camera3 &camera, Vector3 radius)
+{
+	Vector3 view = (camera.target - camera.position).Normalized();
+	if (camera.position.x >= colliX - radius.x  && camera.position.x - 2.f <= colliX - radius.x && camera.position.z <= colliZ + radius.z && camera.position.z >= colliZ - radius.z)
+	{
+		camera.position.x = colliX - radius.x;
+	}
+	if (camera.position.x <= colliX + radius.x  && camera.position.x + 2.f >= colliX + radius.x && camera.position.z <= colliZ + radius.z && camera.position.z >= colliZ - radius.z)
+	{
+		camera.position.x = colliX + radius.x;
+	}
+	if (camera.position.z >= colliZ - radius.z  && camera.position.z - 2.f <= colliZ - radius.z && camera.position.x <= colliX + radius.x && camera.position.x >= colliX - radius.x)
+	{
+		camera.position.z = colliZ - radius.z;
+	}
+	if (camera.position.z <= colliZ + radius.z  && camera.position.z + 2.f >= colliZ + radius.z && camera.position.x <= colliX + radius.x && camera.position.x >= colliX - radius.x)
+	{
+		camera.position.z = colliZ + radius.z;
+	}
+	camera.target = camera.position + view;
+}
+
 void SP2::RenderText(Mesh* mesh, std::string text, Color color)
 {
 	if (!mesh || mesh->textureID <= 0) //Proper error check
@@ -688,7 +739,6 @@ void SP2::RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float si
 
 	glEnable(GL_DEPTH_TEST);
 }
-
 
 void SP2::Exit()
 {
