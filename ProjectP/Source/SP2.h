@@ -15,14 +15,21 @@ class SP2 : public Scene
 		GEO_AXES = 0,
 		GEO_LIGHTBALL,
 		GEO_QUAD,
-		GEO_LEFT,
-		GEO_RIGHT,
-		GEO_TOP,
-		GEO_BOTTOM,
-		GEO_FRONT,
-		GEO_BACK,
+		PLATFORM_LEFT,
+		PLATFORM_RIGHT,
+		PLATFORM_TOP,
+		PLATFORM_BOTTOM,
+		PLATFORM_FRONT,
+		PLATFORM_BACK,
+		TEST_BACK,
+		TEST_LEFT,
+		TEST_RIGHT,
+		TEST_TOP,
+		TEST_BOTTOM,
+		TEST_FRONT,
 		GEO_TEXT,
 		ASTEROID,
+		PLAYER,
 		NUM_GEOMETRY,
 	};
 	enum UNIFORM_TYPE
@@ -65,7 +72,7 @@ class SP2 : public Scene
 		U_NUMLIGHTS,
 		U_TOTAL,
 	};
-
+	
 public:
 	SP2();
 	~SP2();
@@ -93,6 +100,8 @@ private:
 
 	void RenerMesh(Mesh *mesh, bool enableLight);
 	void RenderSkyBox();
+
+
 
 	};
 

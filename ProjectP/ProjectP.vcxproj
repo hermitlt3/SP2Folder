@@ -91,6 +91,7 @@
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\Mesh.cpp" />
     <ClCompile Include="Source\MeshBuilder.cpp" />
+    <ClCompile Include="Source\Planet1.cpp" />
     <ClCompile Include="Source\shader.cpp" />
     <ClCompile Include="Source\SP2.cpp" />
     <ClCompile Include="Source\Utility.cpp" />
@@ -106,8 +107,10 @@
     <ClInclude Include="Source\Material.h" />
     <ClInclude Include="Source\Mesh.h" />
     <ClInclude Include="Source\MeshBuilder.h" />
+    <ClInclude Include="Source\Planet1.h" />
     <ClInclude Include="Source\Scene.h" />
     <ClInclude Include="Source\shader.hpp" />
+    <ClInclude Include="Source\SharedData.h" />
     <ClInclude Include="Source\SP2.h" />
     <ClInclude Include="Source\Utility.h" />
     <ClInclude Include="Source\Vertex.h" />
