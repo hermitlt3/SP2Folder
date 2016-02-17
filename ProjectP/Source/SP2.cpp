@@ -263,12 +263,6 @@ void SP2::Init()
 
 	rotateSwitch = 10.0f;
 
-	meshList[GEO_QUAD] = MeshBuilder::GenerateQuad("quad", Color(0, 0, 1));
-	meshList[GEO_QUAD]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
-	meshList[GEO_QUAD]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
-	meshList[GEO_QUAD]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
-	meshList[GEO_QUAD]->material.kShininess = 1.f;
-
 	meshList[WHEEL] = MeshBuilder::GenerateOBJ("wheel", "OBJ//Wheel.obj");
 	meshList[WHEEL]->textureID = LoadTGA("Image//WheelTexture.tga");
 	meshList[WHEEL]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
@@ -345,16 +339,23 @@ void SP2::Update(double dt)
 	camera.Update(dt);
 
 
-	if (Application::IsKeyPressed('V'))
+	if ((camera.position.x <= -8.f && camera.position.x >= -28.f) && (camera.position.z <= -37.5f && camera.position.z >= -62.5f))
 	{
-		toggleLight = true;
-		rotateSwitch = 10.0f;
+		if (Application::IsKeyPressed('V'))
+		{
+			toggleLight = true;
+			rotateSwitch = 10.0f;
+		}
 	}
-	if (Application::IsKeyPressed('B'))
+	if ((camera.position.x <= -8.f && camera.position.x >= -28.f) && (camera.position.z <= -37.5f && camera.position.z >= -62.5f))
 	{
-		toggleLight = false;
-		rotateSwitch = 90.0f;
+		if (Application::IsKeyPressed('B'))
+		{
+			toggleLight = false;
+			rotateSwitch = 90.0f;
+		}
 	}
+	
 
 	collisionCheck(0, 0, camera, glassFrontColli);
 	collisionCheck(0, 0, camera, glassRightColli);
@@ -515,15 +516,6 @@ void SP2::Render()
 	modelStack.Scale(25, 21, 22);
 	RenderMesh(meshList[WINGS], false);
 	modelStack.PopMatrix();
-
-	//************************************************//
-	//AREA OF LIGHT SWITCH DETECTION
-	modelStack.PushMatrix();
-	modelStack.Translate(-18, -18, -50);
-	modelStack.Scale(20, 1, 25);
-	RenderMesh(meshList[GEO_QUAD], false);
-	modelStack.PopMatrix();
-	//************************************************//
 
 	modelStack.PushMatrix();		//LIGHT SWITCH HIERARCHY
 	modelStack.Translate(-18, -18, -30);
