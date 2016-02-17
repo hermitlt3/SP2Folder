@@ -1,12 +1,28 @@
+<<<<<<< HEAD
 ﻿Build started 2/17/2016 12:14:43 PM.
+=======
+<<<<<<< HEAD
+﻿Build started 2/17/2016 11:42:24 AM.
+     1>Project "C:\Users\n1507\Documents\SPtwo2\ProjectP\ProjectP.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\n1507\Documents\SPtwo2\\glew\include /IC:\Users\n1507\Documents\SPtwo2\\glfw\include /IC:\Users\n1507\Documents\SPtwo2\\Common\Source /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\SP2.cpp
+         SP2.cpp
+=======
+<<<<<<< HEAD
+﻿Build started 2/16/2016 4:34:58 PM.
+>>>>>>> f550b65ecad16d8a2d046e6cf2f79a2028fd6e6e
      1>Project "C:\Users\n1507\Desktop\GIT\ProjectP\ProjectP.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\n1507\Desktop\GIT\\glew\include /IC:\Users\n1507\Desktop\GIT\\glfw\include /IC:\Users\n1507\Desktop\GIT\\Common\Source /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\Application.cpp Source\Camera3.cpp Source\SP2.cpp
          Application.cpp
          Generating Code...
+<<<<<<< HEAD
          Skipping... (no relevant changes detected)
          SP2.cpp
          Camera3.cpp
+=======
+>>>>>>> 8b3445d495d63721fe79c154a0724cedabe76e2f
+>>>>>>> f550b65ecad16d8a2d046e6cf2f79a2028fd6e6e
        Link:
          D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\n1507\Desktop\GIT\Debug\ProjectP.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\n1507\Desktop\GIT\\glew\lib /LIBPATH:"C:\Users\n1507\Desktop\GIT\\glfw\lib-msvc120" /LIBPATH:C:\Users\n1507\Desktop\GIT\Debug glew32.lib glfw3.lib opengl32.lib winmm.lib Common.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\n1507\Desktop\GIT\Debug\ProjectP.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\n1507\Desktop\GIT\Debug\ProjectP.lib" /MACHINE:X86 Debug\Application.obj
          Debug\Camera.obj
@@ -17,6 +33,7 @@
          Debug\main.obj
          Debug\Mesh.obj
          Debug\MeshBuilder.obj
+         Debug\Planet1.obj
          Debug\shader.obj
          Debug\SP2.obj
          Debug\Utility.obj
@@ -25,4 +42,17 @@
 
 Build succeeded.
 
+<<<<<<< HEAD
 Time Elapsed 00:00:01.10
+=======
+<<<<<<< HEAD
+Time Elapsed 00:00:00.82
+=======
+<<<<<<< HEAD
+Time Elapsed 00:00:00.85
+=======
+Time Elapsed 00:00:09.31
+>>>>>>> 91bc1e7c0dd317cc896932a738d0267620fbf1db
+>>>>>>> 8f33f8898594607f8fc593984be051cc924c4d17
+>>>>>>> 8b3445d495d63721fe79c154a0724cedabe76e2f
+>>>>>>> f550b65ecad16d8a2d046e6cf2f79a2028fd6e6e

@@ -9,6 +9,8 @@ class Application
 public:
 	Application();
 	~Application();
+	
+
 	void Init();
 	void Run();
 	void Exit();
@@ -18,6 +20,7 @@ private:
 
 	//Declare a window object
 	StopWatch m_timer;
+
 };
 
 
