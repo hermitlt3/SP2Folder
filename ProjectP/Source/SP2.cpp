@@ -162,7 +162,7 @@ void SP2::Init()
 	meshList[TEST_BACK] = MeshBuilder::GenerateQuad("back", Color(1, 1, 1));
 	meshList[TEST_BACK]->textureID = LoadTGA("Image//back.tga");*/
 
-	meshList[TEST_BACK]->textureID = LoadTGA("Image//back.tga");
+//	meshList[TEST_BACK]->textureID = LoadTGA("Image//back.tga");
 
 	meshList[GEO_TEXT] = MeshBuilder::GenerateText("text", 16, 16);
 	meshList[GEO_TEXT]->textureID = LoadTGA("Image//Redressed.tga");
