@@ -1,49 +1,13 @@
-<<<<<<< HEAD
-﻿Build started 2/16/2016 5:11:02 PM.
+﻿Build started 2/17/2016 12:36:25 PM.
      1>Project "C:\Users\n1507\Desktop\GIT\Common\Common.vcxproj" on node 2 (Build target(s)).
-=======
-﻿Build started 2/17/2016 11:21:40 AM.
-     1>Project "C:\Users\n1507\Documents\SPtwo2\Common\Common.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\MatrixStack.cpp Source\Mtx44.cpp Source\timer.cpp Source\Vector3.cpp
-         Vector3.cpp
-         timer.cpp
-         Mtx44.cpp
-         MatrixStack.cpp
-         Generating Code...
-       Lib:
-         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\n1507\Documents\SPtwo2\Debug\Common.lib" /NOLOGO Debug\MatrixStack.obj
+     1>Lib:
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\n1507\Desktop\GIT\Debug\Common.lib" /NOLOGO Debug\MatrixStack.obj
          Debug\Mtx44.obj
          Debug\timer.obj
          Debug\Vector3.obj
-         Common.vcxproj -> C:\Users\n1507\Documents\SPtwo2\Debug\Common.lib
-     1>Done Building Project "C:\Users\n1507\Documents\SPtwo2\Common\Common.vcxproj" (Build target(s)).
-
-Build succeeded.
-
-Time Elapsed 00:00:01.52
-﻿Build started 2/16/2016 10:57:27 AM.
-     1>Project "C:\Users\n1507\Documents\SP2Folder\Common\Common.vcxproj" on node 2 (Build target(s)).
->>>>>>> f550b65ecad16d8a2d046e6cf2f79a2028fd6e6e
-     1>Lib:
          Common.vcxproj -> C:\Users\n1507\Desktop\GIT\Debug\Common.lib
      1>Done Building Project "C:\Users\n1507\Desktop\GIT\Common\Common.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.03
-<<<<<<< HEAD
-=======
-=======
-﻿Build started 16/2/2016 4:04:22 PM.
-     1>Project "F:\SP2\Common\Common.vcxproj" on node 2 (Build target(s)).
-     1>Lib:
-         Common.vcxproj -> F:\SP2\Debug\Common.lib
-     1>Done Building Project "F:\SP2\Common\Common.vcxproj" (Build target(s)).
-
-Build succeeded.
-
-Time Elapsed 00:00:00.14
->>>>>>> 91bc1e7c0dd317cc896932a738d0267620fbf1db
->>>>>>> 8b3445d495d63721fe79c154a0724cedabe76e2f
->>>>>>> f550b65ecad16d8a2d046e6cf2f79a2028fd6e6e
+Time Elapsed 00:00:00.20
