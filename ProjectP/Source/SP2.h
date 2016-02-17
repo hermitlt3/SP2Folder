@@ -38,12 +38,18 @@ class SP2 : public Scene
 		PORTAL3,
 		PORTAL4,
 		PORTAL5,
-
 		PLANET1,
 		PLANET2,
 		PLANET3,
 		PLANET4,
 		PLANET5,
+
+		LEG,
+		LEG2,
+		ARM,
+		ARM2,
+		HEAD,
+		CHEST,
 
 		GLASS,
 		BASE,
@@ -115,6 +121,10 @@ private:
 	unsigned m_parameters[U_TOTAL];
 	float rotateCase;
 	float rotatePortal;
+	float rotateAngle7;
+	float rotateAngle8;
+	float translateAsteroid;
+	float translateAsteroid2;
 
 	Camera3 camera;
 
@@ -132,6 +142,7 @@ private:
 
 	float rotateSwitch;
 
+	Vector3 colli;
 	Vector3 glassFrontColli;
 	Vector3 glassRightColli;
 	Vector3 glassLeftColli;

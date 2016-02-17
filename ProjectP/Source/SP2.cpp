@@ -77,6 +77,8 @@ void SP2::Init()
 	//variable to rotate geometry
 
 	//Initialize camera settings
+	camera.Init(Vector3(20, 7.2f, 5), Vector3(0, 0, 0), Vector3(0, 1, 0));
+
 	camera.Init(Vector3(0, 7.2f, -100), Vector3(0, 0, 0), Vector3(0, 1, 0));
 
 	meshList[GEO_AXES] = MeshBuilder::GenerateAxes("AXES", 1000, 1000, 1000);
@@ -132,6 +134,7 @@ void SP2::Init()
 	meshList[PLATFORM_TOP] = MeshBuilder::GenerateQuad("top", Color(1, 1, 1));
 	meshList[PLATFORM_TOP]->textureID = LoadTGA("Image//top.tga");
 
+
 	meshList[PLATFORM_BOTTOM] = MeshBuilder::GenerateQuad("bottom", Color(1, 1, 1));
 	meshList[PLATFORM_BOTTOM]->textureID = LoadTGA("Image//top.tga");
 
@@ -141,7 +144,7 @@ void SP2::Init()
 	meshList[PLATFORM_BACK] = MeshBuilder::GenerateQuad("back", Color(1, 1, 1));
 	meshList[PLATFORM_BACK]->textureID = LoadTGA("Image//surround.tga");
 
-	meshList[TEST_FRONT] = MeshBuilder::GenerateQuad("front", Color(1, 1, 1));
+	/*meshList[TEST_FRONT] = MeshBuilder::GenerateQuad("front", Color(1, 1, 1));
 	meshList[TEST_FRONT]->textureID = LoadTGA("Image//front.tga");
 
 	meshList[TEST_RIGHT] = MeshBuilder::GenerateQuad("right", Color(1, 1, 1));
@@ -157,7 +160,9 @@ void SP2::Init()
 	meshList[TEST_LEFT]->textureID = LoadTGA("Image//left.tga");
 
 	meshList[TEST_BACK] = MeshBuilder::GenerateQuad("back", Color(1, 1, 1));
-	meshList[TEST_BACK]->textureID = LoadTGA("Image//back.tga");
+	meshList[TEST_BACK]->textureID = LoadTGA("Image//back.tga");*/
+
+//	meshList[TEST_BACK]->textureID = LoadTGA("Image//back.tga");
 
 	meshList[GEO_TEXT] = MeshBuilder::GenerateText("text", 16, 16);
 	meshList[GEO_TEXT]->textureID = LoadTGA("Image//Redressed.tga");
@@ -168,6 +173,49 @@ void SP2::Init()
 	meshList[ASTEROID]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
 	meshList[ASTEROID]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
 	meshList[ASTEROID]->material.kShininess = 1.5f;
+
+	meshList[ARM] = MeshBuilder::GenerateOBJ("arm", "OBJ//arm1.obj");
+	meshList[ARM]->textureID = LoadTGA("Image//Human1.tga");
+	meshList[ARM]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[ARM]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[ARM]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[ARM]->material.kShininess = 1.5f;
+
+	meshList[ARM2] = MeshBuilder::GenerateOBJ("arm2", "OBJ//arm2.obj");
+	meshList[ARM2]->textureID = LoadTGA("Image//Human1.tga");
+	meshList[ARM2]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[ARM2]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[ARM2]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[ARM2]->material.kShininess = 1.5f;
+
+	meshList[LEG] = MeshBuilder::GenerateOBJ("leg", "OBJ//leg1.obj");
+	meshList[LEG]->textureID = LoadTGA("Image//Human1.tga");
+	meshList[LEG]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[LEG]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[LEG]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[LEG]->material.kShininess = 1.5f;
+
+	meshList[LEG2] = MeshBuilder::GenerateOBJ("leg2", "OBJ//leg2.obj");
+	meshList[LEG2]->textureID = LoadTGA("Image//Human1.tga");
+	meshList[LEG2]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[LEG2]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[LEG2]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[LEG2]->material.kShininess = 1.5f;
+
+
+	meshList[HEAD] = MeshBuilder::GenerateOBJ("head", "OBJ//head.obj");
+	meshList[HEAD]->textureID = LoadTGA("Image//Human1.tga");
+	meshList[HEAD]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[HEAD]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[HEAD]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[HEAD]->material.kShininess = 1.5f;
+
+	meshList[CHEST] = MeshBuilder::GenerateOBJ("chest", "OBJ//chest.obj");
+	meshList[CHEST]->textureID = LoadTGA("Image//Human1.tga");
+	meshList[CHEST]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[CHEST]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[CHEST]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[CHEST]->material.kShininess = 1.5f;
 
 	meshList[PLAYER] = MeshBuilder::GenerateOBJ("asteroid", "OBJ//Model.obj");
 	meshList[PLAYER]->textureID = LoadTGA("Image//asteroid.tga");
@@ -212,7 +260,7 @@ void SP2::Init()
 	meshList[PORTAL4]->material.kShininess = 1.5f;	
 
 	meshList[PORTAL5] = MeshBuilder::GenerateOBJ("portal", "OBJ//portal.obj");
-	meshList[PORTAL5]->textureID = LoadTGA("Image//portal5.tga");
+	meshList[PORTAL5]->textureID = LoadTGA("Image//portal6.tga");
 	meshList[PORTAL5]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
 	meshList[PORTAL5]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
 	meshList[PORTAL5]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
@@ -274,44 +322,50 @@ void SP2::Init()
 	meshList[STAND]->textureID = LoadTGA("Image//WheelTexture.tga");
 	meshList[STAND]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
 	meshList[STAND]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
-	meshList[STAND]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
+	meshList[STAND]->material.kSpecular.Set(0.2f, 0.2f, 0.2f);
 	meshList[STAND]->material.kShininess = 1.f;
 
 	meshList[PLANET1] = MeshBuilder::GenerateOBJ("Planet1", "OBJ//Planet_1.obj");
 	meshList[PLANET1]->textureID = LoadTGA("Image//Planet_1Test.tga");
-	meshList[PLANET1]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
+	meshList[PLANET1]->material.kAmbient.Set(0.4f,0.4f, 0.4f);
 	meshList[PLANET1]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
-	meshList[PLANET1]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
+	meshList[PLANET1]->material.kSpecular.Set(0.2f, 0.2f, 0.2f);
 	meshList[PLANET1]->material.kShininess = 1.f;
 
 	meshList[PLANET2] = MeshBuilder::GenerateOBJ("Planet2", "OBJ//PLanet.obj");
 	meshList[PLANET2]->textureID = LoadTGA("Image//Planet_2.tga");
-	meshList[PLANET2]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
+	meshList[PLANET2]->material.kAmbient.Set(0.4f, 0.4f, 0.4f);
 	meshList[PLANET2]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
-	meshList[PLANET2]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
+	meshList[PLANET2]->material.kSpecular.Set(0.2f, 0.2f, 0.2f);
 	meshList[PLANET2]->material.kShininess = 1.f;
 
 	meshList[PLANET3] = MeshBuilder::GenerateOBJ("Planet3", "OBJ//PLanet.obj");
 	meshList[PLANET3]->textureID = LoadTGA("Image//Planet_3.tga");
-	meshList[PLANET3]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
+	meshList[PLANET3]->material.kAmbient.Set(0.4f, 0.4f, 0.4f);
 	meshList[PLANET3]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
-	meshList[PLANET3]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
+	meshList[PLANET3]->material.kSpecular.Set(0.2f, 0.2f, 0.2f);
 	meshList[PLANET3]->material.kShininess = 1.f;
 
 	meshList[PLANET4] = MeshBuilder::GenerateOBJ("PLanet4", "OBJ//PLanet.obj");
 	meshList[PLANET4]->textureID = LoadTGA("Image//Planet_4.tga");
-	meshList[PLANET4]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
+	meshList[PLANET4]->material.kAmbient.Set(0.4f, 0.4f, 0.4f);
 	meshList[PLANET4]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
-	meshList[PLANET4]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
+	meshList[PLANET4]->material.kSpecular.Set(0.2f, 0.2f, 0.2f);
 	meshList[PLANET4]->material.kShininess = 1.f;
 
 	meshList[PLANET5] = MeshBuilder::GenerateOBJ("PLanet5", "OBJ//PLanet.obj");
 	meshList[PLANET5]->textureID = LoadTGA("Image//Planet_5.tga");
-	meshList[PLANET5]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
+	meshList[PLANET5]->material.kAmbient.Set(0.4f, 0.4f, 0.4f);
 	meshList[PLANET5]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
 	meshList[PLANET5]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
 	meshList[PLANET5]->material.kShininess = 1.f;
 
+
+	rotateSwitch = 10.0f;
+	translateAsteroid2 = 0.0f;
+	rotateAngle7 = 0.0f;
+	rotateAngle8 = 0.0f;
+	translateAsteroid = 0.0f;
 	rotateSwitch = 10.0f;
 
 	meshList[POSITION] = MeshBuilder::GenerateText("keymsg", 16, 16);
@@ -377,6 +431,27 @@ void SP2::Update(double dt)
 
 	rotateCase -= (float)(1500.0f * dt);
 	rotatePortal += (float)(750.0f * dt);
+
+	rotateAngle7 += (float)(100 * dt);
+	rotateAngle8 += (float)(25 * dt);
+	if (translateAsteroid < 2000.f)
+	{
+		translateAsteroid += (float)(20 * dt);
+	}
+	else
+	{
+		translateAsteroid -= (float)(20 * dt);
+	}
+
+	if (translateAsteroid2 > -2000.f)
+	{
+		translateAsteroid2 -= (float)(20 * dt);
+	}
+	else
+	{
+		translateAsteroid2 += (float)(20 * dt);
+	}
+
 }
 
 void SP2::Render()
@@ -425,12 +500,172 @@ void SP2::Render()
 
 	RenderSkyBox();
 
+	////////////////////////ASTEROID//////////////////////////////
+	modelStack.PushMatrix();
+	modelStack.Translate(100, 20 + translateAsteroid2, 0 + translateAsteroid);
+	modelStack.Rotate(rotateAngle7, 1, 1, 1);
+	modelStack.Scale(10, 10, 10);
+	RenderMesh(meshList[ASTEROID], toggleLight); // asteroid
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(translateAsteroid2, 5 + translateAsteroid2, 200 + translateAsteroid2);
+	modelStack.Rotate(rotateAngle7, 1, 1, 1);
+	modelStack.Scale(10, 10, 10);
+	RenderMesh(meshList[ASTEROID], toggleLight); // asteroid
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(-500 + translateAsteroid, -500 + translateAsteroid2, 0);
+	modelStack.Rotate(rotateAngle7, 1, 1, 1);
+	modelStack.Scale(10, 10, 10);
+	RenderMesh(meshList[ASTEROID], toggleLight); // asteroid
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(-750 + translateAsteroid2, 50, 100 + translateAsteroid);
+	modelStack.Rotate(rotateAngle7, 1, 1, 1);
+	modelStack.Scale(10, 10, 10);
+	RenderMesh(meshList[ASTEROID],toggleLight); // asteroid
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(50, 50 + translateAsteroid2, 300);
+	modelStack.Rotate(rotateAngle7, 1, 1, 1);
+	modelStack.Scale(10, 10, 10);
+	RenderMesh(meshList[ASTEROID], toggleLight); // asteroid
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(800 + translateAsteroid2, 500, -500 + translateAsteroid);
+	modelStack.Rotate(rotateAngle7, 1, 1, 1);
+	modelStack.Scale(10, 10, 10);
+	RenderMesh(meshList[ASTEROID], toggleLight); // asteroid
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(-200, -650 + translateAsteroid, 400 + translateAsteroid2);
+	modelStack.Rotate(rotateAngle7, 1, 1, 1);
+	modelStack.Scale(10, 10, 10);
+	RenderMesh(meshList[ASTEROID], toggleLight); // asteroid
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(-700 + translateAsteroid, -300 + translateAsteroid2, 500 + translateAsteroid2);
+	modelStack.Rotate(rotateAngle7, 1, 1, 1);
+	modelStack.Scale(10, 10, 10);
+	RenderMesh(meshList[ASTEROID], toggleLight); // asteroid
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(800, 500 + translateAsteroid2, -500 + translateAsteroid);
+	modelStack.Rotate(rotateAngle7, 1, 1, 1);
+	modelStack.Scale(10, 10, 10);
+	RenderMesh(meshList[ASTEROID], toggleLight); // asteroid
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(1000 + translateAsteroid2, 500, 800 + translateAsteroid2);
+	modelStack.Rotate(rotateAngle7, 1, 1, 1);
+	modelStack.Scale(10, 10, 10);
+	RenderMesh(meshList[ASTEROID], toggleLight); // asteroid
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(100 + translateAsteroid, 5, -800 + translateAsteroid);
+	modelStack.Rotate(rotateAngle7, 1, 1, 1);
+	modelStack.Scale(10, 10, 10);
+	RenderMesh(meshList[ASTEROID], toggleLight); // asteroid
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(translateAsteroid, 50, -300);
+	modelStack.Rotate(rotateAngle7, 1, 1, 1);
+	modelStack.Scale(10, 10, 10);
+	RenderMesh(meshList[ASTEROID], toggleLight); // asteroid
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(10 + translateAsteroid, 5, 200 + translateAsteroid);
+	modelStack.Rotate(rotateAngle7, 1, 1, 1);
+	modelStack.Scale(10, 10, 10);
+	RenderMesh(meshList[ASTEROID], toggleLight); // asteroid
+	modelStack.PopMatrix();
+
+
+	////////////////////////ASTEROID//////////////////////////////
+
+
+	////////////////////////PLANETS////////////////////////////////
+
+	modelStack.PushMatrix();
+	modelStack.Translate(500,300,2000);
+	modelStack.Rotate(-30, 1, 0, 0);
+	modelStack.Rotate(rotateAngle8, 0, 1, 0);
+	modelStack.Scale(50, 50, 50);
+	RenderMesh(meshList[PLANET1], toggleLight); // PLANET 1
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(2000,600,300);
+	modelStack.Rotate(30, 0, 0, 1);
+	modelStack.Rotate(rotateAngle8, 0, 1, 0);
+	modelStack.Scale(25, 25, 25);
+	RenderMesh(meshList[PLANET2], toggleLight); // PLANET 2
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(2000,-200,2000);
+	modelStack.Rotate(rotateAngle8, 0, 1, 0);
+	modelStack.Scale(75, 75, 75);
+	RenderMesh(meshList[PLANET3], toggleLight); // PLANET 3
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(-2500,100,1000);
+	modelStack.Rotate(45, 0, 1, 0);
+	modelStack.Rotate(rotateAngle8, 1, 1, 0);
+	modelStack.Scale(50, 50, 50);
+	RenderMesh(meshList[PLANET4], toggleLight); // PLANET4
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(-1000,-300,2000);
+	modelStack.Rotate(rotateAngle8, 1, 1, 0);
+	modelStack.Scale(50, 50, 50);
+	RenderMesh(meshList[PLANET5], toggleLight); // PLANET5
+	modelStack.PopMatrix();
+
+	////////////////////////PLANETS////////////////////////////////
+
+
+	///////////////////////////HUMAN/////////////////////////////////
+
 	modelStack.PushMatrix();
 	modelStack.Translate(0.f, -0.5f, 0.f);
+	RenderMesh(meshList[ARM], toggleLight);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0.f, -0.5f, 0.f);
+	RenderMesh(meshList[ARM2], toggleLight);
 	RenderMesh(meshList[PLAYER], false);
 	modelStack.Translate(0.f, 30.0f, 0.f);
 	RenderMesh(meshList[ASTEROID], false);
 	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0.f, -0.5f, 0.f);
+	RenderMesh(meshList[LEG], toggleLight);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0.f, -0.5f, 0.f);
+	RenderMesh(meshList[LEG2], toggleLight);
+	modelStack.PopMatrix();
+
+	///////////////////////////HUMAN/////////////////////////////////
+
 
 	modelStack.PushMatrix();			//PORTAL HIERARCHY
 	modelStack.Translate(0.f, 8.f, -190.f);
@@ -561,7 +796,8 @@ void SP2::Render()
 	modelStack.PopMatrix();
 
 	modelStack.PopMatrix();			//END OF PLATFORM HIERARCHY
-	
+
+
 	RenderTextOnScreen(meshList[POSITION], fps.str(), Color(0, 1, 1), 3, 10, 10);
 }
 
