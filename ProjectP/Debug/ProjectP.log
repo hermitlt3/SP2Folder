@@ -1,7 +1,17 @@
+<<<<<<< HEAD
 ﻿Build started 2/17/2016 5:22:41 PM.
      1>Project "C:\Users\n1507\Documents\SP2Folder\ProjectP\ProjectP.vcxproj" on node 2 (Build target(s)).
      1>Link:
          D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\n1507\Documents\SP2Folder\Debug\ProjectP.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\n1507\Documents\SP2Folder\\glew\lib /LIBPATH:"C:\Users\n1507\Documents\SP2Folder\\glfw\lib-msvc120" /LIBPATH:C:\Users\n1507\Documents\SP2Folder\Debug glew32.lib glfw3.lib opengl32.lib winmm.lib Common.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\n1507\Documents\SP2Folder\Debug\ProjectP.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\n1507\Documents\SP2Folder\Debug\ProjectP.lib" /MACHINE:X86 Debug\Application.obj
+=======
+﻿Build started 2/17/2016 4:42:16 PM.
+     1>Project "C:\Users\n1507\Desktop\GIT\ProjectP\ProjectP.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\n1507\Desktop\GIT\\glew\include /IC:\Users\n1507\Desktop\GIT\\glfw\include /IC:\Users\n1507\Desktop\GIT\\Common\Source /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\SP2.cpp
+         SP2.cpp
+       Link:
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\n1507\Desktop\GIT\Debug\ProjectP.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\n1507\Desktop\GIT\\glew\lib /LIBPATH:"C:\Users\n1507\Desktop\GIT\\glfw\lib-msvc120" /LIBPATH:C:\Users\n1507\Desktop\GIT\Debug glew32.lib glfw3.lib opengl32.lib winmm.lib Common.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\n1507\Desktop\GIT\Debug\ProjectP.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\n1507\Desktop\GIT\Debug\ProjectP.lib" /MACHINE:X86 Debug\Application.obj
+>>>>>>> 4f17d1c841ac978f00c8de87d4d33d8bd49be7e8
          Debug\Camera.obj
          Debug\Camera2.obj
          Debug\Camera3.obj
@@ -20,4 +30,8 @@
 
 Build succeeded.
 
+<<<<<<< HEAD
 Time Elapsed 00:00:00.31
+=======
+Time Elapsed 00:00:00.92
+>>>>>>> 4f17d1c841ac978f00c8de87d4d33d8bd49be7e8

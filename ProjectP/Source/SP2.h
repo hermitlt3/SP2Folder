@@ -58,6 +58,8 @@ class SP2 : public Scene
 		HOLDER,
 		WHEEL,
 		STAND,
+
+		POSITION,
 		NUM_GEOMETRY,
 	};
 	enum UNIFORM_TYPE
@@ -136,12 +138,16 @@ private:
 	void RenderSkyBox();
 	void collisionCheck(float colliX, float colliZ, Camera3 &camera, Vector3 radius);
 
-
 	bool toggleLight;
 
 	float rotateSwitch;
 
 	Vector3 colli;
+	Vector3 glassFrontColli;
+	Vector3 glassRightColli;
+	Vector3 glassLeftColli;
+	Vector3 baseBackColli;
+	Vector3 portalColli;
 
 	};
 

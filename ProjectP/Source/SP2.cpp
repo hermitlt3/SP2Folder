@@ -79,8 +79,7 @@ void SP2::Init()
 	//Initialize camera settings
 	camera.Init(Vector3(20, 7.2f, 5), Vector3(0, 0, 0), Vector3(0, 1, 0));
 
-	camera.Init(Vector3(20, 7.2, 5), Vector3(0, 0, 0), Vector3(0, 1, 0));
-
+	camera.Init(Vector3(0, 7.2f, -100), Vector3(0, 0, 0), Vector3(0, 1, 0));
 
 	meshList[GEO_AXES] = MeshBuilder::GenerateAxes("AXES", 1000, 1000, 1000);
 
@@ -163,6 +162,7 @@ void SP2::Init()
 	meshList[TEST_BACK] = MeshBuilder::GenerateQuad("back", Color(1, 1, 1));
 	meshList[TEST_BACK]->textureID = LoadTGA("Image//back.tga");*/
 
+	meshList[TEST_BACK]->textureID = LoadTGA("Image//back.tga");
 
 	meshList[GEO_TEXT] = MeshBuilder::GenerateText("text", 16, 16);
 	meshList[GEO_TEXT]->textureID = LoadTGA("Image//Redressed.tga");
@@ -217,6 +217,13 @@ void SP2::Init()
 	meshList[CHEST]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
 	meshList[CHEST]->material.kShininess = 1.5f;
 
+	meshList[PLAYER] = MeshBuilder::GenerateOBJ("asteroid", "OBJ//Model.obj");
+	meshList[PLAYER]->textureID = LoadTGA("Image//asteroid.tga");
+	meshList[PLAYER]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[PLAYER]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[PLAYER]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[PLAYER]->material.kShininess = 1.5f;
+	
 	meshList[PORTALCASE] = MeshBuilder::GenerateOBJ("portalcase", "OBJ//portalcase.obj");
 	meshList[PORTALCASE]->textureID = LoadTGA("Image//portalcase.tga");
 	meshList[PORTALCASE]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
@@ -276,7 +283,10 @@ void SP2::Init()
 	meshList[BASE]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
 	meshList[BASE]->material.kShininess = 1.f;
 
-	colli.Set(1.0f, 0.f, 0.f);
+	glassFrontColli.Set(120.f, 0.f, 5.f);
+	//glassRightColli.Set(5.f, 0.f, 190.f);
+	baseBackColli.Set(240.f, 0.f, 5.f);
+	portalColli.Set(190.f, 0.f, 20.f);
 
 	meshList[WINGS] = MeshBuilder::GenerateOBJ("wings", "OBJ//wings.obj");
 	meshList[WINGS]->textureID = LoadTGA("Image//wings.tga");
@@ -362,6 +372,10 @@ void SP2::Init()
 	rotateAngle7 = 0.0f;
 	rotateAngle8 = 0.0f;
 	translateAsteroid = 0.0f;
+	rotateSwitch = 10.0f;
+
+	meshList[POSITION] = MeshBuilder::GenerateText("keymsg", 16, 16);
+	meshList[POSITION]->textureID = LoadTGA("Image//Redressed.tga");
 }
 
 static float ROT_LIMIT = 45.f;
@@ -395,6 +409,11 @@ void SP2::Update(double dt)
 		toggleLight = false;
 		rotateSwitch = 90.0f;
 	}
+
+	collisionCheck(0, 0, camera, glassFrontColli);
+	collisionCheck(0, 0, camera, glassRightColli);
+	collisionCheck(0, -200, camera, baseBackColli);
+	collisionCheck(0, -190, camera, portalColli);
 
 	if (Application::IsKeyPressed('I'))
 		light[0].position.z -= (float)(LSPEED * dt);
@@ -436,6 +455,9 @@ void SP2::Update(double dt)
 
 void SP2::Render()
 {
+	std::ostringstream fps;
+	fps << camera.position.x << " " << camera.position.y << " " << camera.position.z;
+
 	// Render VBO here
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	//These will be replaced by matrix stack soon
@@ -626,6 +648,9 @@ void SP2::Render()
 	modelStack.PushMatrix();
 	modelStack.Translate(0.f, -0.5f, 0.f);
 	RenderMesh(meshList[ARM2], toggleLight);
+	RenderMesh(meshList[PLAYER], false);
+	modelStack.Translate(0.f, 30.0f, 0.f);
+	RenderMesh(meshList[ASTEROID], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
@@ -781,6 +806,7 @@ void SP2::Render()
 	modelStack.PopMatrix();			//END OF PLATFORM HIERARCHY
 
 
+	RenderTextOnScreen(meshList[POSITION], fps.str(), Color(0, 1, 1), 3, 10, 10);
 }
 
 void SP2::RenderMesh(Mesh *mesh, bool enableLight)
