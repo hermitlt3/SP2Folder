@@ -30,26 +30,26 @@ class SP2 : public Scene
 		GEO_TEXT,
 
 		ASTEROID,
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
 		PLAYER,
-=======
-<<<<<<< HEAD
->>>>>>> f550b65ecad16d8a2d046e6cf2f79a2028fd6e6e
 		PORTALCASE,
 		PORTAL,
 		PORTAL2,
 		PORTAL3,
 		PORTAL4,
 		PORTAL5,
-
 		PLANET1,
 		PLANET2,
 		PLANET3,
 		PLANET4,
 		PLANET5,
+
+		LEG,
+		LEG2,
+		ARM,
+		ARM2,
+		HEAD,
+		CHEST,
 
 		GLASS,
 		BASE,
@@ -57,13 +57,7 @@ class SP2 : public Scene
 		SWITCH,
 		HOLDER,
 		WHEEL,
-<<<<<<< HEAD
 		STAND,
-
-=======
->>>>>>> 91bc1e7c0dd317cc896932a738d0267620fbf1db
->>>>>>> 8b3445d495d63721fe79c154a0724cedabe76e2f
->>>>>>> f550b65ecad16d8a2d046e6cf2f79a2028fd6e6e
 		NUM_GEOMETRY,
 	};
 	enum UNIFORM_TYPE
@@ -125,6 +119,10 @@ private:
 	unsigned m_parameters[U_TOTAL];
 	float rotateCase;
 	float rotatePortal;
+	float rotateAngle7;
+	float rotateAngle8;
+	float translateAsteroid;
+	float translateAsteroid2;
 
 	Camera3 camera;
 
@@ -138,19 +136,13 @@ private:
 	void RenderSkyBox();
 	void collisionCheck(float colliX, float colliZ, Camera3 &camera, Vector3 radius);
 
-<<<<<<< HEAD
 
-
-=======
 	bool toggleLight;
 
 	float rotateSwitch;
-<<<<<<< HEAD
 
 	Vector3 colli;
-=======
->>>>>>> 8b3445d495d63721fe79c154a0724cedabe76e2f
->>>>>>> f550b65ecad16d8a2d046e6cf2f79a2028fd6e6e
+
 	};
 
 
