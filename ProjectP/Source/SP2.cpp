@@ -260,7 +260,7 @@ void SP2::Init()
 	meshList[PORTAL4]->material.kShininess = 1.5f;	
 
 	meshList[PORTAL5] = MeshBuilder::GenerateOBJ("portal", "OBJ//portal.obj");
-	meshList[PORTAL5]->textureID = LoadTGA("Image//portal6.tga");
+	meshList[PORTAL5]->textureID = LoadTGA("Image//portal5.tga");
 	meshList[PORTAL5]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
 	meshList[PORTAL5]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
 	meshList[PORTAL5]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
@@ -284,8 +284,9 @@ void SP2::Init()
 	meshList[BASE]->material.kShininess = 1.f;
 
 	glassFrontColli.Set(120.f, 0.f, 5.f);
-	//glassRightColli.Set(5.f, 0.f, 190.f);
+	//glassSideColli.Set(1.f, 0.f, 1.f);
 	baseBackColli.Set(240.f, 0.f, 5.f);
+	wheelLightColli.Set(30.f, 0.f, 20.f);
 	portalColli.Set(190.f, 0.f, 20.f);
 
 	meshList[WINGS] = MeshBuilder::GenerateOBJ("wings", "OBJ//wings.obj");
@@ -311,12 +312,6 @@ void SP2::Init()
 
 	rotateSwitch = 10.0f;
 
-	meshList[GEO_QUAD] = MeshBuilder::GenerateQuad("quad", Color(0, 0, 1));
-	meshList[GEO_QUAD]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
-	meshList[GEO_QUAD]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
-	meshList[GEO_QUAD]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
-	meshList[GEO_QUAD]->material.kShininess = 1.f;
-
 	meshList[WHEEL] = MeshBuilder::GenerateOBJ("wheel", "OBJ//Wheel.obj");
 	meshList[WHEEL]->textureID = LoadTGA("Image//WheelTexture.tga");
 	meshList[WHEEL]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
@@ -324,7 +319,7 @@ void SP2::Init()
 	meshList[WHEEL]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
 	meshList[WHEEL]->material.kShininess = 1.f;
 
-	meshList[STAND] = MeshBuilder::GenerateCube("stand", Color(1, 1, 1));
+	meshList[STAND] = MeshBuilder::GenerateOBJ("wheelstand", "OBJ//stand.obj");
 	meshList[STAND]->textureID = LoadTGA("Image//WheelTexture.tga");
 	meshList[STAND]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
 	meshList[STAND]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
@@ -394,25 +389,33 @@ void SP2::Update(double dt)
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); //default fill mode
 	if (Application::IsKeyPressed('4'))
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //wireframe mode
-	if (Application::IsKeyPressed('E'))
+	if (Application::IsKeyPressed('E') && (camera.position.x <= -130) && (camera.position.x >= -170) && (camera.position.z <= -150))
+	{
 		SharedData::GetInstance()->gameState = 1;
+	}
 	camera.Update(dt);
 
 
-	if (Application::IsKeyPressed('V'))
+	if ((camera.position.x <= -8.f && camera.position.x >= -28.f) && (camera.position.z <= -37.5f && camera.position.z >= -62.5f))
 	{
-		toggleLight = true;
-		rotateSwitch = 10.0f;
+		if (Application::IsKeyPressed('V'))
+		{
+			toggleLight = true;
+			rotateSwitch = 10.0f;
+		}
 	}
-	if (Application::IsKeyPressed('B'))
+	if ((camera.position.x <= -8.f && camera.position.x >= -28.f) && (camera.position.z <= -37.5f && camera.position.z >= -62.5f))
 	{
-		toggleLight = false;
-		rotateSwitch = 90.0f;
+		if (Application::IsKeyPressed('B'))
+		{
+			toggleLight = false;
+			rotateSwitch = 90.0f;
+		}
 	}
 
 	collisionCheck(0, 0, camera, glassFrontColli);
-	collisionCheck(0, 0, camera, glassRightColli);
 	collisionCheck(0, -200, camera, baseBackColli);
+	collisionCheck(-5, -29, camera, wheelLightColli);
 	collisionCheck(0, -190, camera, portalColli);
 
 	if (Application::IsKeyPressed('I'))
@@ -667,18 +670,18 @@ void SP2::Render()
 
 
 	modelStack.PushMatrix();			//PORTAL HIERARCHY
-	modelStack.Translate(0.f, 8.f, -190.f);
+	modelStack.Translate(0.f, 8.f, -190);
 	modelStack.Scale(1.5f, 1.5f, 1.5f);
 
 	modelStack.PushMatrix();
-	modelStack.Translate(-100.f, 0.0f, 0.f);
+	modelStack.Translate(-100, 0.0f, 0.f);
 	modelStack.Rotate(rotateCase, 0, 0, 1);
 	modelStack.Scale(5.0f, 5.0f, 5.0f);
 	RenderMesh(meshList[PORTALCASE], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(-100.f, 0.f, 0.f);
+	modelStack.Translate(-100, 0.f, 0.f);
 	modelStack.Rotate(180, 0, 1, 0);
 	modelStack.Rotate(rotatePortal, 0, 0, 1);
 	modelStack.Scale(12.0f, 12.0f, 12.0f);
@@ -751,15 +754,6 @@ void SP2::Render()
 	RenderMesh(meshList[WINGS], false);
 	modelStack.PopMatrix();
 
-	//************************************************//
-	//AREA OF LIGHT SWITCH DETECTION
-	modelStack.PushMatrix();
-	modelStack.Translate(-18, -18, -50);
-	modelStack.Scale(20, 1, 25);
-	RenderMesh(meshList[GEO_QUAD], false);
-	modelStack.PopMatrix();
-	//************************************************//
-
 	modelStack.PushMatrix();		//LIGHT SWITCH HIERARCHY
 	modelStack.Translate(-18, -18, -30);
 
@@ -784,8 +778,8 @@ void SP2::Render()
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(0, -9, -30);
-	modelStack.Scale(3, 20, 5);
+	modelStack.Translate(0, -20, -31);
+	modelStack.Scale(4, 6, 3);
 	RenderMesh(meshList[STAND], false);
 	modelStack.PopMatrix();
 

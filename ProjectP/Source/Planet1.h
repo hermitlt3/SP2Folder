@@ -23,8 +23,13 @@ class PLANET1 : public Scene
 		TEST_FRONT,
 		GEO_TEXT,
 		ASTEROID,
+<<<<<<< HEAD
 		SPIN,
 		SPINCAP,
+=======
+		POSITION,
+		GALLERY_WALL,
+>>>>>>> 30ae59f77bcd68082db73f34f56a0276bdbb666e
 		NUM_GEOMETRY,
 	};
 	enum UNIFORM_TYPE
