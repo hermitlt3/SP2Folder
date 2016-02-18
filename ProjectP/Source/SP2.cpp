@@ -369,7 +369,12 @@ void SP2::Init()
 	meshList[PLANET5]->material.kShininess = 1.f;
 
 
+<<<<<<< HEAD
 	rotateSwitch = -20.0f;
+=======
+
+	rotateSwitch = 10.0f;
+>>>>>>> 13ee25131f09d2b52497d3ac7bfcdc9957e75dbc
 	translateAsteroid2 = 0.0f;
 	rotateAngle7 = 0.0f;
 	rotateAngle8 = 0.0f;
@@ -396,6 +401,26 @@ void SP2::Update(double dt)
 	if (Application::IsKeyPressed('E') && (camera.position.x <= -130) && (camera.position.x >= -170) && (camera.position.z <= -150))
 	{
 		SharedData::GetInstance()->gameState = 1;
+	}
+
+	if (Application::IsKeyPressed('E') && (camera.position.x <= -50) && (camera.position.x >= -90) && (camera.position.z <= -150))
+	{
+		SharedData::GetInstance()->gameState = 3;
+	}
+
+	if (Application::IsKeyPressed('E') && (camera.position.x <= 20) && (camera.position.x >= -20) && (camera.position.z <= -150))
+	{
+		SharedData::GetInstance()->gameState = 4;
+	}
+
+	if (Application::IsKeyPressed('E') && (camera.position.x <= 90) && (camera.position.x >= 50) && (camera.position.z <= -150))
+	{
+		SharedData::GetInstance()->gameState = 5;
+	}
+
+	if (Application::IsKeyPressed('E') && (camera.position.x <= 170) && (camera.position.x >= 130) && (camera.position.z <= -150))
+	{
+		SharedData::GetInstance()->gameState = 6;
 	}
 	camera.Update(dt);
 

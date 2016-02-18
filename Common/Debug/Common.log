@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 ﻿Build started 18/2/2016 2:18:16 PM.
      1>Project "C:\Users\iL.Mestys\Desktop\Documents\GIT_TRANSFER\Common\Common.vcxproj" on node 2 (Build target(s)).
+=======
+﻿Build started 2/18/2016 1:51:07 PM.
+     1>Project "C:\Users\n1507\Documents\SP2Folder\Common\Common.vcxproj" on node 2 (Build target(s)).
+>>>>>>> 13ee25131f09d2b52497d3ac7bfcdc9957e75dbc
      1>Lib:
-         Common.vcxproj -> C:\Users\iL.Mestys\Desktop\Documents\GIT_TRANSFER\Debug\Common.lib
-     1>Done Building Project "C:\Users\iL.Mestys\Desktop\Documents\GIT_TRANSFER\Common\Common.vcxproj" (Build target(s)).
+         Common.vcxproj -> C:\Users\n1507\Documents\SP2Folder\Debug\Common.lib
+     1>Done Building Project "C:\Users\n1507\Documents\SP2Folder\Common\Common.vcxproj" (Build target(s)).
 
 Build succeeded.
 

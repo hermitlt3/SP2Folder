@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿Build started 18/2/2016 5:43:41 PM.
      1>Project "C:\Users\iL.Mestys\Desktop\Documents\GIT_TRANSFER\ProjectP\ProjectP.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
@@ -6,6 +7,49 @@
      1>c:\users\il.mestys\desktop\documents\git_transfer\projectp\source\sp2.cpp(881): warning C4305: 'argument' : truncation from 'double' to 'float'
        Link:
          D:\Visual Studio 2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\iL.Mestys\Desktop\Documents\GIT_TRANSFER\Debug\ProjectP.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\iL.Mestys\Desktop\Documents\GIT_TRANSFER\\glew\lib /LIBPATH:"C:\Users\iL.Mestys\Desktop\Documents\GIT_TRANSFER\\glfw\lib-msvc120" /LIBPATH:C:\Users\iL.Mestys\Desktop\Documents\GIT_TRANSFER\Debug glew32.lib glfw3.lib opengl32.lib winmm.lib Common.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\iL.Mestys\Desktop\Documents\GIT_TRANSFER\Debug\ProjectP.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\iL.Mestys\Desktop\Documents\GIT_TRANSFER\Debug\ProjectP.lib" /MACHINE:X86 Debug\Application.obj
+=======
+<<<<<<< HEAD
+﻿Build started 2/18/2016 4:51:52 PM.
+=======
+<<<<<<< HEAD
+﻿Build started 18/2/2016 4:45:05 PM.
+=======
+<<<<<<< HEAD
+﻿Build started 2/18/2016 1:23:34 PM.
+=======
+<<<<<<< HEAD
+﻿Build started 18/2/2016 1:25:19 PM.
+     1>Project "C:\Users\iL.Mestys\Desktop\Documents\GIT_TRANSFER\ProjectP\ProjectP.vcxproj" on node 2 (Build target(s)).
+=======
+<<<<<<< HEAD
+﻿Build started 18/2/2016 10:36:41 AM.
+>>>>>>> f41d26dce52e7ecebe8398a54657aaa121c23257
+     1>Project "F:\SP2\ProjectP\ProjectP.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IF:\SP2\\glew\include /IF:\SP2\\glfw\include /IF:\SP2\\Common\Source /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\SP2.cpp
+         SP2.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\SP2\Debug\ProjectP.exe" /INCREMENTAL /NOLOGO /LIBPATH:F:\SP2\\glew\lib /LIBPATH:"F:\SP2\\glfw\lib-msvc120" /LIBPATH:F:\SP2\Debug glew32.lib glfw3.lib opengl32.lib winmm.lib Common.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"F:\SP2\Debug\ProjectP.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\SP2\Debug\ProjectP.lib" /MACHINE:X86 Debug\Application.obj
+<<<<<<< HEAD
+=======
+=======
+﻿Build started 2/17/2016 5:43:39 PM.
+>>>>>>> 30ae59f77bcd68082db73f34f56a0276bdbb666e
+>>>>>>> 8d4eaa54a5e77f39f3b2af8adcfee8f8f73b7335
+     1>Project "C:\Users\n1507\Documents\SP2Folder\ProjectP\ProjectP.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\n1507\Documents\SP2Folder\\glew\include /IC:\Users\n1507\Documents\SP2Folder\\glfw\include /IC:\Users\n1507\Documents\SP2Folder\\Common\Source /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\Planet1.cpp
+         Planet1.cpp
+     1>c:\users\n1507\documents\sp2folder\projectp\source\planet1.cpp(313): warning C4305: 'argument' : truncation from 'double' to 'float'
+       Link:
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\n1507\Documents\SP2Folder\Debug\ProjectP.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\n1507\Documents\SP2Folder\\glew\lib /LIBPATH:"C:\Users\n1507\Documents\SP2Folder\\glfw\lib-msvc120" /LIBPATH:C:\Users\n1507\Documents\SP2Folder\Debug glew32.lib glfw3.lib opengl32.lib winmm.lib Common.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\n1507\Documents\SP2Folder\Debug\ProjectP.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\n1507\Documents\SP2Folder\Debug\ProjectP.lib" /MACHINE:X86 Debug\Application.obj
+<<<<<<< HEAD
+=======
+>>>>>>> 0f3d96efb599a63dd987acf074c15bb5e3c0cd52
+>>>>>>> 0d40a5b3d58ddad72592ab713d9acd73cf55c485
+>>>>>>> f41d26dce52e7ecebe8398a54657aaa121c23257
+>>>>>>> 8d4eaa54a5e77f39f3b2af8adcfee8f8f73b7335
+>>>>>>> 13ee25131f09d2b52497d3ac7bfcdc9957e75dbc
          Debug\Camera.obj
          Debug\Camera2.obj
          Debug\Camera3.obj
@@ -18,9 +62,52 @@
          Debug\shader.obj
          Debug\SP2.obj
          Debug\Utility.obj
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 13ee25131f09d2b52497d3ac7bfcdc9957e75dbc
          ProjectP.vcxproj -> C:\Users\iL.Mestys\Desktop\Documents\GIT_TRANSFER\Debug\ProjectP.exe
      1>Done Building Project "C:\Users\iL.Mestys\Desktop\Documents\GIT_TRANSFER\ProjectP\ProjectP.vcxproj" (Build target(s)).
 
 Build succeeded.
 
+<<<<<<< HEAD
 Time Elapsed 00:00:01.20
+=======
+Time Elapsed 00:00:01.25
+=======
+<<<<<<< HEAD
+>>>>>>> f41d26dce52e7ecebe8398a54657aaa121c23257
+         ProjectP.vcxproj -> F:\SP2\Debug\ProjectP.exe
+     1>Done Building Project "F:\SP2\ProjectP\ProjectP.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+<<<<<<< HEAD
+Time Elapsed 00:00:04.64
+=======
+Time Elapsed 00:00:04.89
+=======
+>>>>>>> 8d4eaa54a5e77f39f3b2af8adcfee8f8f73b7335
+         ProjectP.vcxproj -> C:\Users\n1507\Documents\SP2Folder\Debug\ProjectP.exe
+     1>Done Building Project "C:\Users\n1507\Documents\SP2Folder\ProjectP\ProjectP.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+<<<<<<< HEAD
+Time Elapsed 00:00:00.89
+=======
+<<<<<<< HEAD
+Time Elapsed 00:00:00.88
+=======
+Time Elapsed 00:00:00.90
+>>>>>>> 0f3d96efb599a63dd987acf074c15bb5e3c0cd52
+>>>>>>> 0d40a5b3d58ddad72592ab713d9acd73cf55c485
+>>>>>>> 30ae59f77bcd68082db73f34f56a0276bdbb666e
+>>>>>>> f41d26dce52e7ecebe8398a54657aaa121c23257
+>>>>>>> 8d4eaa54a5e77f39f3b2af8adcfee8f8f73b7335
+>>>>>>> 13ee25131f09d2b52497d3ac7bfcdc9957e75dbc
