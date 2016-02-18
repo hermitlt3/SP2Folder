@@ -27,8 +27,16 @@ class PLANET1 : public Scene
 		SPINCAP,
 		POSITION,
 		GALLERY_WALL,
+<<<<<<< HEAD
 		BUTTON,
 		BUTTONSTAND,
+=======
+<<<<<<< HEAD
+		PICFRAME,
+=======
+>>>>>>> 30ae59f77bcd68082db73f34f56a0276bdbb666e
+>>>>>>> f41d26dce52e7ecebe8398a54657aaa121c23257
+>>>>>>> 8d4eaa54a5e77f39f3b2af8adcfee8f8f73b7335
 		NUM_GEOMETRY,
 	};
 	enum UNIFORM_TYPE
