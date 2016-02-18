@@ -369,12 +369,9 @@ void SP2::Init()
 	meshList[PLANET5]->material.kShininess = 1.f;
 
 
-<<<<<<< HEAD
 	rotateSwitch = -20.0f;
-=======
 
 	rotateSwitch = 10.0f;
->>>>>>> 13ee25131f09d2b52497d3ac7bfcdc9957e75dbc
 	translateAsteroid2 = 0.0f;
 	rotateAngle7 = 0.0f;
 	rotateAngle8 = 0.0f;
@@ -387,12 +384,9 @@ void SP2::Init()
 static float ROT_LIMIT = 45.f;
 static float SCALE_LIMIT = 5.f;
 static float LSPEED = 10.F;
-<<<<<<< HEAD
 float test1 = 0.0f;
 float test2 = 0.0f;
 
-=======
->>>>>>> ffc8e77f8a6cb3211221ac052d7a1004edc044f3
 
 void SP2::Update(double dt)
 {

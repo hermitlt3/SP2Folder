@@ -152,24 +152,12 @@ void PLANET1::Init()
 	meshList[ASTEROID]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
 	meshList[ASTEROID]->material.kShininess = 1.5f;
 
-<<<<<<< HEAD
 	meshList[PICFRAME] = MeshBuilder::GenerateOBJ("asteroid", "OBJ//PicFrame.obj");
 	meshList[PICFRAME]->textureID = LoadTGA("Image//PictureFrameTextures.tga");
 
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 	meshList[PICFRAME] = MeshBuilder::GenerateOBJ("asteroid", "OBJ//PicFrame.obj");
 	meshList[PICFRAME]->textureID = LoadTGA("Image//PictureFrameTextures.tga");
 
-=======
-<<<<<<< HEAD
->>>>>>> 8d4eaa54a5e77f39f3b2af8adcfee8f8f73b7335
->>>>>>> 13ee25131f09d2b52497d3ac7bfcdc9957e75dbc
->>>>>>> ffc8e77f8a6cb3211221ac052d7a1004edc044f3
 	meshList[SPIN] = MeshBuilder::GenerateOBJ("spin", "OBJ//spin.obj");
 	meshList[SPIN]->textureID = LoadTGA("Image//spin.tga");
 	meshList[SPIN]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
@@ -202,26 +190,11 @@ void PLANET1::Init()
 	spin1 = false;	
 	translateButton = 3.55f; 
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-=======
->>>>>>> f41d26dce52e7ecebe8398a54657aaa121c23257
->>>>>>> 8d4eaa54a5e77f39f3b2af8adcfee8f8f73b7335
->>>>>>> 13ee25131f09d2b52497d3ac7bfcdc9957e75dbc
->>>>>>> ffc8e77f8a6cb3211221ac052d7a1004edc044f3
 	meshList[POSITION] = MeshBuilder::GenerateText("keymsg", 16, 16);
 	meshList[POSITION]->textureID = LoadTGA("Image//Redressed.tga");
 
 	meshList[GALLERY_WALL] = MeshBuilder::GenerateOBJ("asteroid", "OBJ//GalleryBox.obj");
 	meshList[GALLERY_WALL]->textureID = LoadTGA("Image//BiegeWall.tga");
-<<<<<<< HEAD
-=======
-
->>>>>>> 13ee25131f09d2b52497d3ac7bfcdc9957e75dbc
 }
 
 static float ROT_LIMIT = 45.f;
