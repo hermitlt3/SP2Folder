@@ -152,6 +152,9 @@ void PLANET1::Init()
 	meshList[ASTEROID]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
 	meshList[ASTEROID]->material.kShininess = 1.5f;
 
+	meshList[PICFRAME] = MeshBuilder::GenerateOBJ("asteroid", "OBJ//PicFrame.obj");
+	meshList[PICFRAME]->textureID = LoadTGA("Image//PictureFrameTextures.tga");
+
 	meshList[POSITION] = MeshBuilder::GenerateText("keymsg", 16, 16);
 	meshList[POSITION]->textureID = LoadTGA("Image//Redressed.tga");
 

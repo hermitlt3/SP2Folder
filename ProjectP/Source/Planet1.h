@@ -25,6 +25,7 @@ class PLANET1 : public Scene
 		ASTEROID,
 		POSITION,
 		GALLERY_WALL,
+		PICFRAME,
 		NUM_GEOMETRY,
 	};
 	enum UNIFORM_TYPE
