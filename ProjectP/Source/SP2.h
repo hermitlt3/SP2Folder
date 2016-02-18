@@ -52,6 +52,7 @@ class SP2 : public Scene
 		CHEST,
 
 		GLASS,
+		GLASSDESIGN,
 		BASE,
 		WINGS,
 		SWITCH,
@@ -146,6 +147,7 @@ private:
 	void collisionCheck(float colliX, float colliZ, Camera3 &camera, Vector3 radius);
 
 	bool toggleLight;
+	bool displayOn;
 
 	float rotateSwitch;
 
