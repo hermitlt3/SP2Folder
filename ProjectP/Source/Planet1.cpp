@@ -152,6 +152,11 @@ void PLANET1::Init()
 	meshList[ASTEROID]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
 	meshList[ASTEROID]->material.kShininess = 1.5f;
 
+	meshList[POSITION] = MeshBuilder::GenerateText("keymsg", 16, 16);
+	meshList[POSITION]->textureID = LoadTGA("Image//Redressed.tga");
+
+	meshList[GALLERY_WALL] = MeshBuilder::GenerateOBJ("asteroid", "OBJ//GalleryBox.obj");
+	meshList[GALLERY_WALL]->textureID = LoadTGA("Image//BiegeWall.tga");
 }
 
 static float ROT_LIMIT = 45.f;
@@ -228,11 +233,21 @@ void PLANET1::Render()
 	RenderMesh(meshList[GEO_LIGHTBALL], false);
 	modelStack.PopMatrix();
 
-		modelStack.PushMatrix();
+	/*	modelStack.PushMatrix();
 		modelStack.Translate(0.f, 0.f, 0.f);
 		RenderMesh(meshList[ASTEROID], false);
-		modelStack.PopMatrix();
+		modelStack.PopMatrix();*/
 	
+	modelStack.PushMatrix();
+	modelStack.Translate(0.f, 25.f, 0.f);
+	modelStack.Scale(10.f, 2.f, 10.f);
+	RenderMesh(meshList[GALLERY_WALL], false);
+	modelStack.PopMatrix();
+
+	std::ostringstream fps;
+	fps << camera.position.x << " " << camera.position.y << " " << camera.position.z;
+	RenderTextOnScreen(meshList[POSITION], fps.str(), Color(0, 1, 1), 3, 10, 10);
+
 	RenderSkyBox();
 }
 

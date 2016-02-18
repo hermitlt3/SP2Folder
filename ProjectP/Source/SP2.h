@@ -115,6 +115,13 @@ public:
 	virtual void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
 	virtual void Exit();
 
+	void certainCalculations();
+
+	float portal1X;
+	float portal1Z;
+	float rangePortal1X;
+	float rangePortal1Z;
+
 private:
 	unsigned m_vertexArrayID;
 	unsigned m_programID;

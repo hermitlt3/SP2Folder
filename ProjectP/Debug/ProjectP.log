@@ -1,10 +1,29 @@
+<<<<<<< HEAD
 ﻿Build started 18/2/2016 1:25:19 PM.
      1>Project "C:\Users\iL.Mestys\Desktop\Documents\GIT_TRANSFER\ProjectP\ProjectP.vcxproj" on node 2 (Build target(s)).
+=======
+<<<<<<< HEAD
+﻿Build started 18/2/2016 10:36:41 AM.
+     1>Project "F:\SP2\ProjectP\ProjectP.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IF:\SP2\\glew\include /IF:\SP2\\glfw\include /IF:\SP2\\Common\Source /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\SP2.cpp
+         SP2.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\SP2\Debug\ProjectP.exe" /INCREMENTAL /NOLOGO /LIBPATH:F:\SP2\\glew\lib /LIBPATH:"F:\SP2\\glfw\lib-msvc120" /LIBPATH:F:\SP2\Debug glew32.lib glfw3.lib opengl32.lib winmm.lib Common.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"F:\SP2\Debug\ProjectP.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\SP2\Debug\ProjectP.lib" /MACHINE:X86 Debug\Application.obj
+=======
+﻿Build started 2/17/2016 5:43:39 PM.
+     1>Project "C:\Users\n1507\Documents\SP2Folder\ProjectP\ProjectP.vcxproj" on node 2 (Build target(s)).
+>>>>>>> 0d40a5b3d58ddad72592ab713d9acd73cf55c485
      1>ClCompile:
          D:\Visual Studio 2013\VC\bin\CL.exe /c /IC:\Users\iL.Mestys\Desktop\Documents\GIT_TRANSFER\\glew\include /IC:\Users\iL.Mestys\Desktop\Documents\GIT_TRANSFER\\glfw\include /IC:\Users\iL.Mestys\Desktop\Documents\GIT_TRANSFER\\Common\Source /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\SP2.cpp
          SP2.cpp
        Link:
+<<<<<<< HEAD
          D:\Visual Studio 2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\iL.Mestys\Desktop\Documents\GIT_TRANSFER\Debug\ProjectP.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\iL.Mestys\Desktop\Documents\GIT_TRANSFER\\glew\lib /LIBPATH:"C:\Users\iL.Mestys\Desktop\Documents\GIT_TRANSFER\\glfw\lib-msvc120" /LIBPATH:C:\Users\iL.Mestys\Desktop\Documents\GIT_TRANSFER\Debug glew32.lib glfw3.lib opengl32.lib winmm.lib Common.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\iL.Mestys\Desktop\Documents\GIT_TRANSFER\Debug\ProjectP.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\iL.Mestys\Desktop\Documents\GIT_TRANSFER\Debug\ProjectP.lib" /MACHINE:X86 Debug\Application.obj
+=======
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\n1507\Documents\SP2Folder\Debug\ProjectP.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\n1507\Documents\SP2Folder\\glew\lib /LIBPATH:"C:\Users\n1507\Documents\SP2Folder\\glfw\lib-msvc120" /LIBPATH:C:\Users\n1507\Documents\SP2Folder\Debug glew32.lib glfw3.lib opengl32.lib winmm.lib Common.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\n1507\Documents\SP2Folder\Debug\ProjectP.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\n1507\Documents\SP2Folder\Debug\ProjectP.lib" /MACHINE:X86 Debug\Application.obj
+>>>>>>> 0f3d96efb599a63dd987acf074c15bb5e3c0cd52
+>>>>>>> 0d40a5b3d58ddad72592ab713d9acd73cf55c485
          Debug\Camera.obj
          Debug\Camera2.obj
          Debug\Camera3.obj
@@ -17,9 +36,27 @@
          Debug\shader.obj
          Debug\SP2.obj
          Debug\Utility.obj
+<<<<<<< HEAD
          ProjectP.vcxproj -> C:\Users\iL.Mestys\Desktop\Documents\GIT_TRANSFER\Debug\ProjectP.exe
      1>Done Building Project "C:\Users\iL.Mestys\Desktop\Documents\GIT_TRANSFER\ProjectP\ProjectP.vcxproj" (Build target(s)).
 
 Build succeeded.
 
 Time Elapsed 00:00:01.25
+=======
+<<<<<<< HEAD
+         ProjectP.vcxproj -> F:\SP2\Debug\ProjectP.exe
+     1>Done Building Project "F:\SP2\ProjectP\ProjectP.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:04.89
+=======
+         ProjectP.vcxproj -> C:\Users\n1507\Documents\SP2Folder\Debug\ProjectP.exe
+     1>Done Building Project "C:\Users\n1507\Documents\SP2Folder\ProjectP\ProjectP.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.90
+>>>>>>> 0f3d96efb599a63dd987acf074c15bb5e3c0cd52
+>>>>>>> 0d40a5b3d58ddad72592ab713d9acd73cf55c485
