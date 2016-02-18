@@ -23,13 +23,12 @@ class PLANET1 : public Scene
 		TEST_FRONT,
 		GEO_TEXT,
 		ASTEROID,
-<<<<<<< HEAD
 		SPIN,
 		SPINCAP,
-=======
 		POSITION,
 		GALLERY_WALL,
->>>>>>> 30ae59f77bcd68082db73f34f56a0276bdbb666e
+		BUTTON,
+		BUTTONSTAND,
 		NUM_GEOMETRY,
 	};
 	enum UNIFORM_TYPE
@@ -90,6 +89,7 @@ private:
 	unsigned m_programID;
 	unsigned m_parameters[U_TOTAL];
 	float rotatespin;
+	float translateButton;
 	bool spin1;
 
 	Camera3 camera;

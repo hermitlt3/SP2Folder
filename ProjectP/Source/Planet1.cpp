@@ -140,7 +140,7 @@ void PLANET1::Init()
 	meshList[TEST_LEFT]->textureID = LoadTGA("Image//surround.tga");
 
 	meshList[TEST_BACK] = MeshBuilder::GenerateQuad("back", Color(1, 1, 1));
-	meshList[TEST_BACK]->textureID = LoadTGA("Image//portal6.tga");
+	meshList[TEST_BACK]->textureID = LoadTGA("Image//surround.tga");
 
 	meshList[GEO_TEXT] = MeshBuilder::GenerateText("text", 16, 16);
 	meshList[GEO_TEXT]->textureID = LoadTGA("Image//Redressed.tga");
@@ -152,7 +152,6 @@ void PLANET1::Init()
 	meshList[ASTEROID]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
 	meshList[ASTEROID]->material.kShininess = 1.5f;
 
-<<<<<<< HEAD
 	meshList[SPIN] = MeshBuilder::GenerateOBJ("spin", "OBJ//spin.obj");
 	meshList[SPIN]->textureID = LoadTGA("Image//spin.tga");
 	meshList[SPIN]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
@@ -167,16 +166,30 @@ void PLANET1::Init()
 	meshList[SPINCAP]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
 	meshList[SPINCAP]->material.kShininess = 1.5f;
 
+	meshList[BUTTON] = MeshBuilder::GenerateOBJ("button", "OBJ//button.obj");
+	meshList[BUTTON]->textureID = LoadTGA("Image//redbutton.tga");
+	meshList[BUTTON]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[BUTTON]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[BUTTON]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[BUTTON]->material.kShininess = 1.5f;
+
+	meshList[BUTTONSTAND] = MeshBuilder::GenerateOBJ("spincap", "OBJ//buttonstand.obj");
+	meshList[BUTTONSTAND]->textureID = LoadTGA("Image//buttonstand.tga");
+	meshList[BUTTONSTAND]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[BUTTONSTAND]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[BUTTONSTAND]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[BUTTONSTAND]->material.kShininess = 1.5f;
+
 	rotatespin = 0;
 	spin1 = false;	
+	translateButton = 3.55f; 
 
-=======
 	meshList[POSITION] = MeshBuilder::GenerateText("keymsg", 16, 16);
 	meshList[POSITION]->textureID = LoadTGA("Image//Redressed.tga");
 
 	meshList[GALLERY_WALL] = MeshBuilder::GenerateOBJ("asteroid", "OBJ//GalleryBox.obj");
 	meshList[GALLERY_WALL]->textureID = LoadTGA("Image//BiegeWall.tga");
->>>>>>> 30ae59f77bcd68082db73f34f56a0276bdbb666e
+
 }
 
 static float ROT_LIMIT = 45.f;
@@ -221,6 +234,19 @@ void PLANET1::Update(double dt)
 
 	}
 
+	if ((translateButton > 3.4) && (spin1 == true))
+	{
+		translateButton -= (float)(1 * dt);
+	}
+
+	if (Application::IsKeyPressed('X') && ((camera.position.x < 30) && (camera.position.x > -1000) && (camera.position.y > -1000) && (camera.position.y < 3000) && (camera.position.z < 1000) && (camera.position.z > -3000)))
+	{
+		spin1 = false;
+	}
+	if ((translateButton < 3.55) && (spin1 == false))
+	{
+		translateButton += (float)(1 * dt);
+	}
 }
 
 void PLANET1::Render()
@@ -292,6 +318,20 @@ void PLANET1::Render()
 	modelStack.Translate(0.0f, 3.8f, 0.f);
 	modelStack.Scale(1.0f, 1.2f, 1.0f);
 	RenderMesh(meshList[SPINCAP], false);
+	modelStack.PopMatrix();
+
+
+	modelStack.PushMatrix();
+	modelStack.Translate(4.6f, translateButton, 0.f);
+	modelStack.Rotate(-22.5, 0, 0, 1);
+	modelStack.Scale(0.8f, 1.0f, 0.8f);
+	RenderMesh(meshList[BUTTON], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(5.0f, 1.0f, 0.f);
+	modelStack.Scale(1.0f, 1.0f, 1.0f);
+	RenderMesh(meshList[BUTTONSTAND], false);
 	modelStack.PopMatrix();
 }
 
