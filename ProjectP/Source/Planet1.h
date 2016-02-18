@@ -23,6 +23,8 @@ class PLANET1 : public Scene
 		TEST_FRONT,
 		GEO_TEXT,
 		ASTEROID,
+		POSITION,
+		GALLERY_WALL,
 		NUM_GEOMETRY,
 	};
 	enum UNIFORM_TYPE

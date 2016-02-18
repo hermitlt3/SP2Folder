@@ -340,8 +340,10 @@ void SP2::Update(double dt)
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); //default fill mode
 	if (Application::IsKeyPressed('4'))
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //wireframe mode
-	if (Application::IsKeyPressed('E'))
+	if (Application::IsKeyPressed('E') && (camera.position.x <= -130) && (camera.position.x >= -170) && (camera.position.z <= -150))
+	{
 		SharedData::GetInstance()->gameState = 1;
+	}
 	camera.Update(dt);
 
 
@@ -432,18 +434,18 @@ void SP2::Render()
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();			//PORTAL HIERARCHY
-	modelStack.Translate(0.f, 8.f, -190.f);
+	modelStack.Translate(0.f, 8.f, -190);
 	modelStack.Scale(1.5f, 1.5f, 1.5f);
 
 	modelStack.PushMatrix();
-	modelStack.Translate(-100.f, 0.0f, 0.f);
+	modelStack.Translate(-100, 0.0f, 0.f);
 	modelStack.Rotate(rotateCase, 0, 0, 1);
 	modelStack.Scale(5.0f, 5.0f, 5.0f);
 	RenderMesh(meshList[PORTALCASE], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(-100.f, 0.f, 0.f);
+	modelStack.Translate(-100, 0.f, 0.f);
 	modelStack.Rotate(180, 0, 1, 0);
 	modelStack.Rotate(rotatePortal, 0, 0, 1);
 	modelStack.Scale(12.0f, 12.0f, 12.0f);
