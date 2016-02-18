@@ -260,7 +260,7 @@ void SP2::Init()
 	meshList[PORTAL4]->material.kShininess = 1.5f;	
 
 	meshList[PORTAL5] = MeshBuilder::GenerateOBJ("portal", "OBJ//portal.obj");
-	meshList[PORTAL5]->textureID = LoadTGA("Image//portal6.tga");
+	meshList[PORTAL5]->textureID = LoadTGA("Image//portal5.tga");
 	meshList[PORTAL5]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
 	meshList[PORTAL5]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
 	meshList[PORTAL5]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
@@ -284,8 +284,9 @@ void SP2::Init()
 	meshList[BASE]->material.kShininess = 1.f;
 
 	glassFrontColli.Set(120.f, 0.f, 5.f);
-	//glassRightColli.Set(5.f, 0.f, 190.f);
+	//glassSideColli.Set(1.f, 0.f, 1.f);
 	baseBackColli.Set(240.f, 0.f, 5.f);
+	wheelLightColli.Set(30.f, 0.f, 20.f);
 	portalColli.Set(190.f, 0.f, 20.f);
 
 	meshList[WINGS] = MeshBuilder::GenerateOBJ("wings", "OBJ//wings.obj");
@@ -318,7 +319,7 @@ void SP2::Init()
 	meshList[WHEEL]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
 	meshList[WHEEL]->material.kShininess = 1.f;
 
-	meshList[STAND] = MeshBuilder::GenerateCube("stand", Color(1, 1, 1));
+	meshList[STAND] = MeshBuilder::GenerateOBJ("wheelstand", "OBJ//stand.obj");
 	meshList[STAND]->textureID = LoadTGA("Image//WheelTexture.tga");
 	meshList[STAND]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
 	meshList[STAND]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
@@ -409,11 +410,10 @@ void SP2::Update(double dt)
 			rotateSwitch = 90.0f;
 		}
 	}
-	
 
 	collisionCheck(0, 0, camera, glassFrontColli);
-	collisionCheck(0, 0, camera, glassRightColli);
 	collisionCheck(0, -200, camera, baseBackColli);
+	collisionCheck(-5, -29, camera, wheelLightColli);
 	collisionCheck(0, -190, camera, portalColli);
 
 	if (Application::IsKeyPressed('I'))
@@ -776,8 +776,8 @@ void SP2::Render()
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(0, -9, -30);
-	modelStack.Scale(3, 20, 5);
+	modelStack.Translate(0, -20, -31);
+	modelStack.Scale(4, 6, 3);
 	RenderMesh(meshList[STAND], false);
 	modelStack.PopMatrix();
 
