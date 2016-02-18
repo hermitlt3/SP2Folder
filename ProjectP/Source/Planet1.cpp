@@ -152,7 +152,6 @@ void PLANET1::Init()
 	meshList[ASTEROID]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
 	meshList[ASTEROID]->material.kShininess = 1.5f;
 
-<<<<<<< HEAD
 	meshList[SPIN] = MeshBuilder::GenerateOBJ("spin", "OBJ//spin.obj");
 	meshList[SPIN]->textureID = LoadTGA("Image//spin.tga");
 	meshList[SPIN]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
@@ -170,13 +169,11 @@ void PLANET1::Init()
 	rotatespin = 0;
 	spin1 = false;	
 
-=======
 	meshList[POSITION] = MeshBuilder::GenerateText("keymsg", 16, 16);
 	meshList[POSITION]->textureID = LoadTGA("Image//Redressed.tga");
 
 	meshList[GALLERY_WALL] = MeshBuilder::GenerateOBJ("asteroid", "OBJ//GalleryBox.obj");
 	meshList[GALLERY_WALL]->textureID = LoadTGA("Image//BiegeWall.tga");
->>>>>>> 30ae59f77bcd68082db73f34f56a0276bdbb666e
 }
 
 static float ROT_LIMIT = 45.f;

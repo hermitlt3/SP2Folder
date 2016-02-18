@@ -77,9 +77,9 @@ void SP2::Init()
 	//variable to rotate geometry
 
 	//Initialize camera settings
-	camera.Init(Vector3(20, 7.2f, 5), Vector3(0, 0, 0), Vector3(0, 1, 0));
+	camera.Init(Vector3(0, 7.2f, -20), Vector3(0, 0, 0), Vector3(0, 1, 0));
 
-	camera.Init(Vector3(0, 7.2f, -100), Vector3(0, 0, 0), Vector3(0, 1, 0));
+	//camera.Init(Vector3(-125, 7.2f, -5), Vector3(0, 0, 0), Vector3(0, 1, 0));
 
 	meshList[GEO_AXES] = MeshBuilder::GenerateAxes("AXES", 1000, 1000, 1000);
 
@@ -276,6 +276,13 @@ void SP2::Init()
 	meshList[GLASS]->material.kSpecular.Set(0.0f, 0.0f, 0.0f);
 	meshList[GLASS]->material.kShininess = 1.f;
 
+	meshList[GLASSDESIGN] = MeshBuilder::GenerateOBJ("glassDesign", "OBJ//glassDesign.obj");
+	meshList[GLASSDESIGN]->textureID = LoadTGA("Image//glassDesign.tga");
+	meshList[GLASSDESIGN]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
+	meshList[GLASSDESIGN]->material.kDiffuse.Set(0.3f, 0.3f, 0.3f);
+	meshList[GLASSDESIGN]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
+	meshList[GLASSDESIGN]->material.kShininess = 1.f;
+
 	meshList[BASE] = MeshBuilder::GenerateOBJ("base", "OBJ//base.obj");
 	meshList[BASE]->textureID = LoadTGA("Image//base.tga");
 	meshList[BASE]->material.kAmbient.Set(0.1f, 0.1f, 0.1f);
@@ -284,7 +291,7 @@ void SP2::Init()
 	meshList[BASE]->material.kShininess = 1.f;
 
 	glassFrontColli.Set(120.f, 0.f, 5.f);
-	//glassSideColli.Set(1.f, 0.f, 1.f);
+	glassSideColli.Set(5.f, 0.f, 5.f);
 	baseBackColli.Set(240.f, 0.f, 5.f);
 	wheelLightColli.Set(30.f, 0.f, 20.f);
 	portalColli.Set(190.f, 0.f, 20.f);
@@ -310,7 +317,7 @@ void SP2::Init()
 	meshList[HOLDER]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
 	meshList[HOLDER]->material.kShininess = 1.f;
 
-	rotateSwitch = 10.0f;
+	rotateSwitch = 20.0f;
 
 	meshList[WHEEL] = MeshBuilder::GenerateOBJ("wheel", "OBJ//Wheel.obj");
 	meshList[WHEEL]->textureID = LoadTGA("Image//WheelTexture.tga");
@@ -362,12 +369,11 @@ void SP2::Init()
 	meshList[PLANET5]->material.kShininess = 1.f;
 
 
-	rotateSwitch = 10.0f;
+	rotateSwitch = -20.0f;
 	translateAsteroid2 = 0.0f;
 	rotateAngle7 = 0.0f;
 	rotateAngle8 = 0.0f;
 	translateAsteroid = 0.0f;
-	rotateSwitch = 10.0f;
 
 	meshList[POSITION] = MeshBuilder::GenerateText("keymsg", 16, 16);
 	meshList[POSITION]->textureID = LoadTGA("Image//Redressed.tga");
@@ -376,8 +382,6 @@ void SP2::Init()
 static float ROT_LIMIT = 45.f;
 static float SCALE_LIMIT = 5.f;
 static float LSPEED = 10.F;
-
-
 
 void SP2::Update(double dt)
 {
@@ -400,20 +404,98 @@ void SP2::Update(double dt)
 	{
 		if (Application::IsKeyPressed('V'))
 		{
+			displayOn = false;
 			toggleLight = true;
-			rotateSwitch = 10.0f;
+			rotateSwitch = -20.0f;
 		}
 	}
 	if ((camera.position.x <= -8.f && camera.position.x >= -28.f) && (camera.position.z <= -37.5f && camera.position.z >= -62.5f))
 	{
 		if (Application::IsKeyPressed('B'))
 		{
+			displayOn = true;
 			toggleLight = false;
-			rotateSwitch = 90.0f;
+			rotateSwitch = 20.0f;
 		}
 	}
 
 	collisionCheck(0, 0, camera, glassFrontColli);
+	collisionCheck(-120, 0, camera, glassSideColli);
+	collisionCheck(-125, -5, camera, glassSideColli);
+	collisionCheck(-127, -15, camera, glassSideColli);
+	collisionCheck(-129, -20, camera, glassSideColli);
+	collisionCheck(-134, -25, camera, glassSideColli);
+	collisionCheck(-139, -30, camera, glassSideColli);
+	collisionCheck(-141, -35, camera, glassSideColli);
+	collisionCheck(-146, -45, camera, glassSideColli);
+	collisionCheck(-148, -50, camera, glassSideColli);
+	collisionCheck(-153, -55, camera, glassSideColli);
+	collisionCheck(-155, -60, camera, glassSideColli);
+	collisionCheck(-160, -65, camera, glassSideColli);
+	collisionCheck(-162, -70, camera, glassSideColli);
+	collisionCheck(-167, -75, camera, glassSideColli);
+	collisionCheck(-169, -80, camera, glassSideColli);
+	collisionCheck(-174, -85, camera, glassSideColli);
+	collisionCheck(-176, -90, camera, glassSideColli);
+	collisionCheck(-178, -95, camera, glassSideColli);
+	collisionCheck(-180, -100, camera, glassSideColli);
+	collisionCheck(-182, -105, camera, glassSideColli);
+	collisionCheck(-184, -110, camera, glassSideColli);
+	collisionCheck(-186, -115, camera, glassSideColli);
+	collisionCheck(-188, -120, camera, glassSideColli);
+	collisionCheck(-190, -125, camera, glassSideColli);
+	collisionCheck(-192, -130, camera, glassSideColli);
+	collisionCheck(-194, -135, camera, glassSideColli);
+	collisionCheck(-196, -140, camera, glassSideColli);
+	collisionCheck(-198, -145, camera, glassSideColli);
+	collisionCheck(-200, -150, camera, glassSideColli);
+	collisionCheck(-203, -155, camera, glassSideColli);
+	collisionCheck(-206, -160, camera, glassSideColli);
+	collisionCheck(-209, -165, camera, glassSideColli);
+	collisionCheck(-211, -170, camera, glassSideColli);
+	collisionCheck(-213, -175, camera, glassSideColli);
+	collisionCheck(-215, -180, camera, glassSideColli);
+	collisionCheck(-218, -185, camera, glassSideColli);
+	collisionCheck(-221, -190, camera, glassSideColli);
+	collisionCheck(-223, -195, camera, glassSideColli);
+	collisionCheck(120, 0, camera, glassSideColli);
+	collisionCheck(125, -5, camera, glassSideColli);
+	collisionCheck(127, -15, camera, glassSideColli);
+	collisionCheck(129, -20, camera, glassSideColli);
+	collisionCheck(134, -25, camera, glassSideColli);
+	collisionCheck(139, -30, camera, glassSideColli);
+	collisionCheck(141, -35, camera, glassSideColli);
+	collisionCheck(146, -45, camera, glassSideColli);
+	collisionCheck(148, -50, camera, glassSideColli);
+	collisionCheck(153, -55, camera, glassSideColli);
+	collisionCheck(155, -60, camera, glassSideColli);
+	collisionCheck(160, -65, camera, glassSideColli);
+	collisionCheck(162, -70, camera, glassSideColli);
+	collisionCheck(167, -75, camera, glassSideColli);
+	collisionCheck(169, -80, camera, glassSideColli);
+	collisionCheck(174, -85, camera, glassSideColli);
+	collisionCheck(176, -90, camera, glassSideColli);
+	collisionCheck(178, -95, camera, glassSideColli);
+	collisionCheck(180, -100, camera, glassSideColli);
+	collisionCheck(182, -105, camera, glassSideColli);
+	collisionCheck(184, -110, camera, glassSideColli);
+	collisionCheck(186, -115, camera, glassSideColli);
+	collisionCheck(188, -120, camera, glassSideColli);
+	collisionCheck(190, -125, camera, glassSideColli);
+	collisionCheck(192, -130, camera, glassSideColli);
+	collisionCheck(194, -135, camera, glassSideColli);
+	collisionCheck(196, -140, camera, glassSideColli);
+	collisionCheck(198, -145, camera, glassSideColli);
+	collisionCheck(200, -150, camera, glassSideColli);
+	collisionCheck(203, -155, camera, glassSideColli);
+	collisionCheck(206, -160, camera, glassSideColli);
+	collisionCheck(209, -165, camera, glassSideColli);
+	collisionCheck(211, -170, camera, glassSideColli);
+	collisionCheck(213, -175, camera, glassSideColli);
+	collisionCheck(215, -180, camera, glassSideColli);
+	collisionCheck(218, -185, camera, glassSideColli);
+	collisionCheck(221, -190, camera, glassSideColli);
+	collisionCheck(223, -195, camera, glassSideColli);
 	collisionCheck(0, -200, camera, baseBackColli);
 	collisionCheck(-5, -29, camera, wheelLightColli);
 	collisionCheck(0, -190, camera, portalColli);
@@ -792,6 +874,14 @@ void SP2::Render()
 	RenderMesh(meshList[GLASS], toggleLight);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	modelStack.PopMatrix();
+
+	if (displayOn == true)
+	{
+		modelStack.PushMatrix();
+		modelStack.Translate(0, 0, -0.01);
+		RenderMesh(meshList[GLASSDESIGN], false);
+		modelStack.PopMatrix();
+	}
 
 	modelStack.PushMatrix();
 	RenderMesh(meshList[BASE], false);
