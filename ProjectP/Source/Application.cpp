@@ -119,6 +119,10 @@ void Application::Run()
 
 	scene1->Init();
 	scene2->Init();
+	scene3->Init();
+	scene4->Init();
+	scene5->Init();
+	scene6->Init();
 
 	m_timer.startTimer();    // Start timer to calculate how long it takes to render this frame
 	while (!glfwWindowShouldClose(m_window) && !IsKeyPressed(VK_ESCAPE))
@@ -129,13 +133,13 @@ void Application::Run()
 			SharedData::GetInstance()->gameState = 0;
 		}
 
-		else if (SharedData::GetInstance()->gameState == 2)
+		if (SharedData::GetInstance()->gameState == 2)
 		{
 			currScene = scene2;
 			SharedData::GetInstance()->gameState = 0;
 		}
 
-		else if (SharedData::GetInstance()->gameState == 3)
+		if (SharedData::GetInstance()->gameState == 3)
 		{
 			currScene = scene3;
 			SharedData::GetInstance()->gameState = 0;
@@ -143,19 +147,19 @@ void Application::Run()
 
 		else if (SharedData::GetInstance()->gameState == 4)
 		{
-			currScene = scene4;
+			//currScene = scene4;
 			SharedData::GetInstance()->gameState = 0;
 		}
 
 		else if (SharedData::GetInstance()->gameState == 5)
 		{
-			currScene = scene5;
+		//	currScene = scene5;
 			SharedData::GetInstance()->gameState = 0;
 		}
 
 		else if (SharedData::GetInstance()->gameState == 6)
 		{
-			currScene = scene6;
+			//currScene = scene6;
 			SharedData::GetInstance()->gameState = 0;
 		}
 		currScene->Update(m_timer.getElapsedTime());
