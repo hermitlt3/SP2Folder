@@ -23,9 +23,17 @@ class PLANET1 : public Scene
 		TEST_FRONT,
 		GEO_TEXT,
 		ASTEROID,
+<<<<<<< HEAD
+		SPIN,
+		SPINCAP,
+=======
 		POSITION,
 		GALLERY_WALL,
+<<<<<<< HEAD
 		PICFRAME,
+=======
+>>>>>>> 30ae59f77bcd68082db73f34f56a0276bdbb666e
+>>>>>>> f41d26dce52e7ecebe8398a54657aaa121c23257
 		NUM_GEOMETRY,
 	};
 	enum UNIFORM_TYPE
@@ -85,6 +93,8 @@ private:
 	unsigned m_vertexArrayID;
 	unsigned m_programID;
 	unsigned m_parameters[U_TOTAL];
+	float rotatespin;
+	bool spin1;
 
 	Camera3 camera;
 

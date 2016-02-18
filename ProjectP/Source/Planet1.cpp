@@ -125,10 +125,10 @@ void PLANET1::Init()
 	meshList[GEO_LIGHTBALL] = MeshBuilder::GenerateSphere("LIGHT", Color(1, 1, 1), 36, 36);
 
 	meshList[TEST_FRONT] = MeshBuilder::GenerateQuad("front", Color(1, 1, 1));
-	meshList[TEST_FRONT]->textureID = LoadTGA("Image//front.tga");
+	meshList[TEST_FRONT]->textureID = LoadTGA("Image//surround.tga");
 
 	meshList[TEST_RIGHT] = MeshBuilder::GenerateQuad("right", Color(1, 1, 1));
-	meshList[TEST_RIGHT]->textureID = LoadTGA("Image//right.tga");
+	meshList[TEST_RIGHT]->textureID = LoadTGA("Image//surround.tga");
 
 	meshList[TEST_TOP] = MeshBuilder::GenerateQuad("top", Color(1, 1, 1));
 	meshList[TEST_TOP]->textureID = LoadTGA("Image//top.tga");
@@ -137,10 +137,10 @@ void PLANET1::Init()
 	meshList[TEST_BOTTOM]->textureID = LoadTGA("Image//top.tga");
 
 	meshList[TEST_LEFT] = MeshBuilder::GenerateQuad("left", Color(1, 1, 1));
-	meshList[TEST_LEFT]->textureID = LoadTGA("Image//left.tga");
+	meshList[TEST_LEFT]->textureID = LoadTGA("Image//surround.tga");
 
 	meshList[TEST_BACK] = MeshBuilder::GenerateQuad("back", Color(1, 1, 1));
-	meshList[TEST_BACK]->textureID = LoadTGA("Image//back.tga");
+	meshList[TEST_BACK]->textureID = LoadTGA("Image//portal6.tga");
 
 	meshList[GEO_TEXT] = MeshBuilder::GenerateText("text", 16, 16);
 	meshList[GEO_TEXT]->textureID = LoadTGA("Image//Redressed.tga");
@@ -152,14 +152,37 @@ void PLANET1::Init()
 	meshList[ASTEROID]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
 	meshList[ASTEROID]->material.kShininess = 1.5f;
 
+<<<<<<< HEAD
 	meshList[PICFRAME] = MeshBuilder::GenerateOBJ("asteroid", "OBJ//PicFrame.obj");
 	meshList[PICFRAME]->textureID = LoadTGA("Image//PictureFrameTextures.tga");
 
+=======
+<<<<<<< HEAD
+	meshList[SPIN] = MeshBuilder::GenerateOBJ("spin", "OBJ//spin.obj");
+	meshList[SPIN]->textureID = LoadTGA("Image//spin.tga");
+	meshList[SPIN]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[SPIN]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[SPIN]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[SPIN]->material.kShininess = 1.5f;
+
+	meshList[SPINCAP] = MeshBuilder::GenerateOBJ("spincap", "OBJ//spincap.obj");
+	meshList[SPINCAP]->textureID = LoadTGA("Image//portal6.tga");
+	meshList[SPINCAP]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[SPINCAP]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[SPINCAP]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[SPINCAP]->material.kShininess = 1.5f;
+
+	rotatespin = 0;
+	spin1 = false;	
+
+=======
+>>>>>>> f41d26dce52e7ecebe8398a54657aaa121c23257
 	meshList[POSITION] = MeshBuilder::GenerateText("keymsg", 16, 16);
 	meshList[POSITION]->textureID = LoadTGA("Image//Redressed.tga");
 
 	meshList[GALLERY_WALL] = MeshBuilder::GenerateOBJ("asteroid", "OBJ//GalleryBox.obj");
 	meshList[GALLERY_WALL]->textureID = LoadTGA("Image//BiegeWall.tga");
+>>>>>>> 30ae59f77bcd68082db73f34f56a0276bdbb666e
 }
 
 static float ROT_LIMIT = 45.f;
@@ -193,6 +216,17 @@ void PLANET1::Update(double dt)
 		light[0].position.y -= (float)(LSPEED * dt);
 	if (Application::IsKeyPressed('P'))
 		light[0].position.y += (float)(LSPEED * dt);
+
+	if (Application::IsKeyPressed('Z') && ((camera.position.x < 30) && (camera.position.x > -1000) && (camera.position.y > -1000) && (camera.position.y < 3000) && (camera.position.z < 1000) && (camera.position.z > -3000)))
+	{
+		spin1 = true;
+	}
+	if (spin1 == true)
+	{
+		rotatespin += (float)(25 * dt);
+
+	}
+
 }
 
 void PLANET1::Render()
@@ -231,7 +265,7 @@ void PLANET1::Render()
 
 	RenderMesh(meshList[GEO_AXES], false);
 
-	modelStack.PushMatrix();
+	/*modelStack.PushMatrix();
 	modelStack.Translate(light[0].position.x, light[0].position.y, light[0].position.z);
 	RenderMesh(meshList[GEO_LIGHTBALL], false);
 	modelStack.PopMatrix();
@@ -252,6 +286,19 @@ void PLANET1::Render()
 	RenderTextOnScreen(meshList[POSITION], fps.str(), Color(0, 1, 1), 3, 10, 10);
 
 	RenderSkyBox();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0.0f, -0.1f, 0.f);
+	modelStack.Rotate(rotatespin - 45, 0, 1, 0);
+	modelStack.Scale(2.5, 2.4, 2.5);
+	RenderMesh(meshList[SPIN], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0.0f, 3.8f, 0.f);
+	modelStack.Scale(1.0f, 1.2f, 1.0f);
+	RenderMesh(meshList[SPINCAP], false);
+	modelStack.PopMatrix();
 }
 
 void PLANET1::RenderMesh(Mesh *mesh, bool enableLight)
@@ -309,6 +356,7 @@ void PLANET1::RenderSkyBox()
 		modelStack.PushMatrix();
 		modelStack.Translate(0.f, 0.f, -2500.f);
 		modelStack.Rotate(90.f, 1, 0, 0);
+		modelStack.Rotate(rotatespin, 0, 1, 0);
 		modelStack.Scale(5000.f, 5000.f, 5000.f);
 		RenderMesh(meshList[TEST_BACK], false);
 		modelStack.PopMatrix();

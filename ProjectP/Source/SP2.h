@@ -149,11 +149,10 @@ private:
 
 	float rotateSwitch;
 
-	Vector3 colli;
 	Vector3 glassFrontColli;
-	Vector3 glassRightColli;
-	Vector3 glassLeftColli;
+	Vector3 glassSideColli;
 	Vector3 baseBackColli;
+	Vector3 wheelLightColli;
 	Vector3 portalColli;
 
 	};
