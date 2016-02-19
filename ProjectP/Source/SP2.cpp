@@ -7,7 +7,8 @@
 #include "MeshBuilder.h"
 #include "Application.h"
 #include "Utility.h"
-#include "SharedData.h"
+#include "GameMode.h"
+#include "Movement.h"
 
 #include <sstream>
 #include <iomanip>
@@ -376,17 +377,18 @@ void SP2::Init()
 	rotateAngle7 = 0.0f;
 	rotateAngle8 = 0.0f;
 	translateAsteroid = 0.0f;
+	
+	MS_rotate = 0.f;
+	MS_reverse = false;
 
 	meshList[POSITION] = MeshBuilder::GenerateText("keymsg", 16, 16);
 	meshList[POSITION]->textureID = LoadTGA("Image//Redressed.tga");
 }
-
 static float ROT_LIMIT = 45.f;
 static float SCALE_LIMIT = 5.f;
 static float LSPEED = 10.F;
-float test1 = 0.0f;
-float test2 = 0.0f;
-
+float MS_rotate = 0.0f;
+bool MS_reverse = false;
 
 void SP2::Update(double dt)
 {
@@ -400,48 +402,42 @@ void SP2::Update(double dt)
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //wireframe mode
 	if (Application::IsKeyPressed('E') && (camera.position.x <= -130) && (camera.position.x >= -170) && (camera.position.z <= -150))
 	{
-		SharedData::GetInstance()->gameState = 2;
+		GameMode::GetInstance()->gameState = 2;
 	}
 
 	if (Application::IsKeyPressed('E') && (camera.position.x <= -50) && (camera.position.x >= -90) && (camera.position.z <= -150))
 	{
-		SharedData::GetInstance()->gameState = 3;
+		GameMode::GetInstance()->gameState = 3;
 	}
 
 	if (Application::IsKeyPressed('E') && (camera.position.x <= 20) && (camera.position.x >= -20) && (camera.position.z <= -150))
 	{
-		SharedData::GetInstance()->gameState = 4;
+		GameMode::GetInstance()->gameState = 4;
 	}
 
 	if (Application::IsKeyPressed('E') && (camera.position.x <= 90) && (camera.position.x >= 50) && (camera.position.z <= -150))
 	{
-		SharedData::GetInstance()->gameState = 5;
+		GameMode::GetInstance()->gameState = 5;
 	}
 
 	if (Application::IsKeyPressed('E') && (camera.position.x <= 170) && (camera.position.x >= 130) && (camera.position.z <= -150))
 	{
-		SharedData::GetInstance()->gameState = 6;
+		GameMode::GetInstance()->gameState = 6;
 	}
 	camera.Update(dt);
 
 
-	if ((camera.position.x <= -8.f && camera.position.x >= -28.f) && (camera.position.z <= -37.5f && camera.position.z >= -62.5f))
+	if ((Application::IsKeyPressed(VK_LBUTTON)) && (camera.position.x <= -8.f && camera.position.x >= -28.f) && (camera.position.z <= -37.5f && camera.position.z >= -62.5f))
 	{
-		if (Application::IsKeyPressed('V'))
-		{
 			displayOn = false;
 			toggleLight = true;
 			rotateSwitch = -20.0f;
-		}
 	}
-	if ((camera.position.x <= -8.f && camera.position.x >= -28.f) && (camera.position.z <= -37.5f && camera.position.z >= -62.5f))
+	if ((Application::IsKeyPressed(VK_RBUTTON)) && (camera.position.x <= -8.f && camera.position.x >= -28.f) && (camera.position.z <= -37.5f && camera.position.z >= -62.5f))
 	{
-		if (Application::IsKeyPressed('B'))
-		{
 			displayOn = true;
 			toggleLight = false;
 			rotateSwitch = 20.0f;
-		}
 	}
 
 	collisionCheck(0, 0, camera, glassFrontColli);
@@ -560,15 +556,14 @@ void SP2::Update(double dt)
 	{
 		translateAsteroid2 += (float)(20 * dt);
 	}
-	test1 += (float)(20 * dt);
-	test2 += (float)(20 * dt);
+	charMovement(MS_reverse, 20.f, MS_rotate, dt);
 }
 
 void SP2::Render()
 {
 	std::ostringstream fps;
-	fps << camera.position.x << " " << camera.position.y << " " << camera.position.z;
-
+	//fps << camera.position.x << " " << camera.position.y << " " << camera.position.z;
+	fps << MS_rotate;
 	// Render VBO here
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	//These will be replaced by matrix stack soon
@@ -903,7 +898,7 @@ void SP2::Render()
 	if (displayOn == true)
 	{
 		modelStack.PushMatrix();
-		modelStack.Translate(0, 0, -0.01);
+		modelStack.Translate(0, 0, -0.01f);
 		RenderMesh(meshList[GLASSDESIGN], false);
 		modelStack.PopMatrix();
 	}
@@ -916,6 +911,8 @@ void SP2::Render()
 
 
 	RenderTextOnScreen(meshList[POSITION], fps.str(), Color(0, 1, 1), 3, 10, 10);
+
+	RenderHandOnScreen();
 }
 
 void SP2::RenderMesh(Mesh *mesh, bool enableLight)
@@ -1095,6 +1092,34 @@ void SP2::RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float si
 	}
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glUniform1i(m_parameters[U_TEXT_ENABLED], 0);
+
+	//Add these code just before glEnable(GL_DEPTH_TEST);
+	projectionStack.PopMatrix();
+	viewStack.PopMatrix();
+	modelStack.PopMatrix();
+
+	glEnable(GL_DEPTH_TEST);
+}
+
+void SP2::RenderHandOnScreen()
+{
+	glDisable(GL_DEPTH_TEST);
+
+	//Add these code just after glDisable(GL_DEPTH_TEST);
+	Mtx44 ortho;
+	ortho.SetToOrtho(0, 80, 0, 60, -20, 20); //size of screen UI
+	projectionStack.PushMatrix();
+	projectionStack.LoadMatrix(ortho);
+	viewStack.PushMatrix();
+	viewStack.LoadIdentity(); //No need camera for ortho mode
+	modelStack.PushMatrix();
+	modelStack.LoadIdentity(); //Reset modelStack
+	modelStack.Translate(55 + MS_rotate/2, -10 - MS_rotate/6, 15);
+	modelStack.Rotate(155, 1, 0, 0);
+	modelStack.Rotate(-127, 0, 1, 0);
+	modelStack.Rotate(23, 0, 0, 1);
+	modelStack.Scale(6, 12, 8);
+	RenderMesh(meshList[ARM2], false);
 
 	//Add these code just before glEnable(GL_DEPTH_TEST);
 	projectionStack.PopMatrix();

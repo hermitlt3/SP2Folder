@@ -25,7 +25,7 @@ void Camera3::Init(const Vector3& pos, const Vector3& target, const Vector3& up)
 void Camera3::Update(double dt)
 {
 	const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
-	static const float CAMERA_SPEED = 40.f;
+	static const float CAMERA_SPEED = 50.f;
 	POINT mousepos;
 	int midX = mode->width / 2;
 	int midY = mode->height / 2;

@@ -114,6 +114,7 @@ public:
 	virtual void RenderMesh(Mesh *mesh, bool enableLight);
 	virtual void RenderText(Mesh* mesh, std::string text, Color color);
 	virtual void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
+	virtual void RenderHandOnScreen();
 	virtual void Exit();
 
 	void certainCalculations();
@@ -148,6 +149,10 @@ private:
 
 	bool toggleLight;
 	bool displayOn;
+
+	float MS_rotate;
+	bool MS_reverse;
+	bool shadowPlay;
 
 	float rotateSwitch;
 

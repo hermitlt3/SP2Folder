@@ -7,7 +7,7 @@
 #include "MeshBuilder.h"
 #include "Application.h"
 #include "Utility.h"
-#include "SharedData.h"
+#include "Gamemode.h"
 
 #include <sstream>
 #include <iomanip>
@@ -170,7 +170,7 @@ void PLANET2::Update(double dt)
 	if (Application::IsKeyPressed('4'))
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //wireframe mode
 	if (Application::IsKeyPressed('F'))
-		SharedData::GetInstance()->gameState = 2;
+		GameMode::GetInstance()->gameState = 2;
 	camera.Update(dt);
 
 	if (Application::IsKeyPressed('I'))

@@ -17,7 +17,7 @@
 #include "Planet3.h"
 #include "Planet4.h"
 #include "Planet5.h"
-#include "SharedData.h"
+#include "Gamemode.h"
 
 GLFWwindow* m_window;
 const unsigned char FPS = 60; // FPS of this game
@@ -127,40 +127,40 @@ void Application::Run()
 	m_timer.startTimer();    // Start timer to calculate how long it takes to render this frame
 	while (!glfwWindowShouldClose(m_window) && !IsKeyPressed(VK_ESCAPE))
 	{
-		if (SharedData::GetInstance()->gameState == 1)
+		if (GameMode::GetInstance()->gameState == 1)
 		{
 			currScene = scene1;
-			SharedData::GetInstance()->gameState = 0;
+			GameMode::GetInstance()->gameState = 0;
 		}
 
-		if (SharedData::GetInstance()->gameState == 2)
+		else if (GameMode::GetInstance()->gameState == 2)
 		{
 			currScene = scene2;
-			SharedData::GetInstance()->gameState = 0;
+			GameMode::GetInstance()->gameState = 0;
 		}
 
-		if (SharedData::GetInstance()->gameState == 3)
+		else if (GameMode::GetInstance()->gameState == 3)
 		{
 			currScene = scene3;
-			SharedData::GetInstance()->gameState = 0;
+			GameMode::GetInstance()->gameState = 0;
 		}
 
-		else if (SharedData::GetInstance()->gameState == 4)
+		else if (GameMode::GetInstance()->gameState == 4)
 		{
 			//currScene = scene4;
-			SharedData::GetInstance()->gameState = 0;
+			GameMode::GetInstance()->gameState = 0;
 		}
 
-		else if (SharedData::GetInstance()->gameState == 5)
+		else if (GameMode::GetInstance()->gameState == 5)
 		{
 		//	currScene = scene5;
-			SharedData::GetInstance()->gameState = 0;
+			GameMode::GetInstance()->gameState = 0;
 		}
 
-		else if (SharedData::GetInstance()->gameState == 6)
+		else if (GameMode::GetInstance()->gameState == 6)
 		{
 			//currScene = scene6;
-			SharedData::GetInstance()->gameState = 0;
+			GameMode::GetInstance()->gameState = 0;
 		}
 		currScene->Update(m_timer.getElapsedTime());
 		currScene->Render();
