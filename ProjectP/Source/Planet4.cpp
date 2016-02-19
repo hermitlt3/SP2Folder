@@ -1,4 +1,4 @@
-#include "PLANET1.h"
+#include "PLANET4.h"
 #include "GL\glew.h"
 #include "LoadTGA.h"
 #include "timer.h"
@@ -12,15 +12,15 @@
 #include <sstream>
 #include <iomanip>
 #include <fstream>
-PLANET1::PLANET1()
+PLANET4::PLANET4()
 {
 }
 
-PLANET1::~PLANET1()
+PLANET4::~PLANET4()
 {
 }
 
-void PLANET1::Init()
+void PLANET4::Init()
 {
 	// Init VBO here
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f); // Set background color
@@ -125,10 +125,10 @@ void PLANET1::Init()
 	meshList[GEO_LIGHTBALL] = MeshBuilder::GenerateSphere("LIGHT", Color(1, 1, 1), 36, 36);
 
 	meshList[TEST_FRONT] = MeshBuilder::GenerateQuad("front", Color(1, 1, 1));
-	meshList[TEST_FRONT]->textureID = LoadTGA("Image//surround.tga");
+	meshList[TEST_FRONT]->textureID = LoadTGA("Image//front.tga");
 
 	meshList[TEST_RIGHT] = MeshBuilder::GenerateQuad("right", Color(1, 1, 1));
-	meshList[TEST_RIGHT]->textureID = LoadTGA("Image//surround.tga");
+	meshList[TEST_RIGHT]->textureID = LoadTGA("Image//right.tga");
 
 	meshList[TEST_TOP] = MeshBuilder::GenerateQuad("top", Color(1, 1, 1));
 	meshList[TEST_TOP]->textureID = LoadTGA("Image//top.tga");
@@ -137,10 +137,10 @@ void PLANET1::Init()
 	meshList[TEST_BOTTOM]->textureID = LoadTGA("Image//top.tga");
 
 	meshList[TEST_LEFT] = MeshBuilder::GenerateQuad("left", Color(1, 1, 1));
-	meshList[TEST_LEFT]->textureID = LoadTGA("Image//surround.tga");
+	meshList[TEST_LEFT]->textureID = LoadTGA("Image//left.tga");
 
 	meshList[TEST_BACK] = MeshBuilder::GenerateQuad("back", Color(1, 1, 1));
-	meshList[TEST_BACK]->textureID = LoadTGA("Image//surround.tga");
+	meshList[TEST_BACK]->textureID = LoadTGA("Image//back.tga");
 
 	meshList[GEO_TEXT] = MeshBuilder::GenerateText("text", 16, 16);
 	meshList[GEO_TEXT]->textureID = LoadTGA("Image//Redressed.tga");
@@ -152,49 +152,6 @@ void PLANET1::Init()
 	meshList[ASTEROID]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
 	meshList[ASTEROID]->material.kShininess = 1.5f;
 
-	meshList[PICFRAME] = MeshBuilder::GenerateOBJ("asteroid", "OBJ//PicFrame.obj");
-	meshList[PICFRAME]->textureID = LoadTGA("Image//PictureFrameTextures.tga");
-
-	meshList[PICFRAME] = MeshBuilder::GenerateOBJ("asteroid", "OBJ//PicFrame.obj");
-	meshList[PICFRAME]->textureID = LoadTGA("Image//PictureFrameTextures.tga");
-
-	meshList[SPIN] = MeshBuilder::GenerateOBJ("spin", "OBJ//spin.obj");
-	meshList[SPIN]->textureID = LoadTGA("Image//spin.tga");
-	meshList[SPIN]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
-	meshList[SPIN]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
-	meshList[SPIN]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
-	meshList[SPIN]->material.kShininess = 1.5f;
-
-	meshList[SPINCAP] = MeshBuilder::GenerateOBJ("spincap", "OBJ//spincap.obj");
-	meshList[SPINCAP]->textureID = LoadTGA("Image//portal6.tga");
-	meshList[SPINCAP]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
-	meshList[SPINCAP]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
-	meshList[SPINCAP]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
-	meshList[SPINCAP]->material.kShininess = 1.5f;
-
-	meshList[BUTTON] = MeshBuilder::GenerateOBJ("button", "OBJ//button.obj");
-	meshList[BUTTON]->textureID = LoadTGA("Image//redbutton.tga");
-	meshList[BUTTON]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
-	meshList[BUTTON]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
-	meshList[BUTTON]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
-	meshList[BUTTON]->material.kShininess = 1.5f;
-
-	meshList[BUTTONSTAND] = MeshBuilder::GenerateOBJ("spincap", "OBJ//buttonstand.obj");
-	meshList[BUTTONSTAND]->textureID = LoadTGA("Image//buttonstand.tga");
-	meshList[BUTTONSTAND]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
-	meshList[BUTTONSTAND]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
-	meshList[BUTTONSTAND]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
-	meshList[BUTTONSTAND]->material.kShininess = 1.5f;
-
-	rotatespin = 0;
-	spin1 = false;	
-	translateButton = 3.55f; 
-
-	meshList[POSITION] = MeshBuilder::GenerateText("keymsg", 16, 16);
-	meshList[POSITION]->textureID = LoadTGA("Image//Redressed.tga");
-
-	meshList[GALLERY_WALL] = MeshBuilder::GenerateOBJ("asteroid", "OBJ//GalleryBox.obj");
-	meshList[GALLERY_WALL]->textureID = LoadTGA("Image//BiegeWall.tga");
 }
 
 static float ROT_LIMIT = 45.f;
@@ -202,7 +159,7 @@ static float SCALE_LIMIT = 5.f;
 static float LSPEED = 10.F;
 
 
-void PLANET1::Update(double dt)
+void PLANET4::Update(double dt)
 {
 	if (Application::IsKeyPressed('1')) //enable back face culling
 		glEnable(GL_CULL_FACE);
@@ -213,7 +170,7 @@ void PLANET1::Update(double dt)
 	if (Application::IsKeyPressed('4'))
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //wireframe mode
 	if (Application::IsKeyPressed('F'))
-		SharedData::GetInstance()->gameState = 1;
+		SharedData::GetInstance()->gameState = 2;
 	camera.Update(dt);
 
 	if (Application::IsKeyPressed('I'))
@@ -228,33 +185,9 @@ void PLANET1::Update(double dt)
 		light[0].position.y -= (float)(LSPEED * dt);
 	if (Application::IsKeyPressed('P'))
 		light[0].position.y += (float)(LSPEED * dt);
-
-	if (Application::IsKeyPressed('Z') && ((camera.position.x < 30) && (camera.position.x > -1000) && (camera.position.y > -1000) && (camera.position.y < 3000) && (camera.position.z < 1000) && (camera.position.z > -3000)))
-	{
-		spin1 = true;
-	}
-	if (spin1 == true)
-	{
-		rotatespin += (float)(25 * dt);
-
-	}
-
-	if ((translateButton > 3.4) && (spin1 == true))
-	{
-		translateButton -= (float)(1 * dt);
-	}
-
-	if (Application::IsKeyPressed('X') && ((camera.position.x < 30) && (camera.position.x > -1000) && (camera.position.y > -1000) && (camera.position.y < 3000) && (camera.position.z < 1000) && (camera.position.z > -3000)))
-	{
-		spin1 = false;
-	}
-	if ((translateButton < 3.55) && (spin1 == false))
-	{
-		translateButton += (float)(1 * dt);
-	}
 }
 
-void PLANET1::Render()
+void PLANET4::Render()
 {
 	// Render VBO here
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -290,57 +223,20 @@ void PLANET1::Render()
 
 	RenderMesh(meshList[GEO_AXES], false);
 
-	/*modelStack.PushMatrix();
+	modelStack.PushMatrix();
 	modelStack.Translate(light[0].position.x, light[0].position.y, light[0].position.z);
 	RenderMesh(meshList[GEO_LIGHTBALL], false);
 	modelStack.PopMatrix();
 
-	/*	modelStack.PushMatrix();
-		modelStack.Translate(0.f, 0.f, 0.f);
-		RenderMesh(meshList[ASTEROID], false);
-		modelStack.PopMatrix();*/
-	
 	modelStack.PushMatrix();
-	modelStack.Translate(0.f, 25.f, 0.f);
-	modelStack.Scale(10.f, 2.f, 10.f);
-	RenderMesh(meshList[GALLERY_WALL], false);
+	modelStack.Translate(0.f, 0.f, 0.f);
+	RenderMesh(meshList[ASTEROID], false);
 	modelStack.PopMatrix();
-
-	std::ostringstream fps;
-	fps << camera.position.x << " " << camera.position.y << " " << camera.position.z;
-	RenderTextOnScreen(meshList[POSITION], fps.str(), Color(0, 1, 1), 3, 10, 10);
 
 	RenderSkyBox();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0.0f, -0.1f, 0.f);
-	modelStack.Rotate(rotatespin - 45, 0, 1, 0);
-	modelStack.Scale(2.5, 2.4, 2.5);
-	RenderMesh(meshList[SPIN], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0.0f, 3.8f, 0.f);
-	modelStack.Scale(1.0f, 1.2f, 1.0f);
-	RenderMesh(meshList[SPINCAP], false);
-	modelStack.PopMatrix();
-
-
-	modelStack.PushMatrix();
-	modelStack.Translate(4.6f, translateButton, 0.f);
-	modelStack.Rotate(-22.5, 0, 0, 1);
-	modelStack.Scale(0.8f, 1.0f, 0.8f);
-	RenderMesh(meshList[BUTTON], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(5.0f, 1.0f, 0.f);
-	modelStack.Scale(1.0f, 1.0f, 1.0f);
-	RenderMesh(meshList[BUTTONSTAND], false);
-	modelStack.PopMatrix();
 }
 
-void PLANET1::RenderMesh(Mesh *mesh, bool enableLight)
+void PLANET4::RenderMesh(Mesh *mesh, bool enableLight)
 {
 	Mtx44 MVP, modelView, modelView_inverse_transpose;
 	MVP = projectionStack.Top() * viewStack.Top() * modelStack.Top();
@@ -382,57 +278,56 @@ void PLANET1::RenderMesh(Mesh *mesh, bool enableLight)
 
 }
 
-void PLANET1::RenderSkyBox()
+void PLANET4::RenderSkyBox()
 {
-		modelStack.PushMatrix();
-		modelStack.Translate(0.f, 0.f, 2500.f);
-		modelStack.Rotate(180.f, 0, 1, 0);
-		modelStack.Rotate(90.f, 1, 0, 0);
-		modelStack.Scale(5000.f, 5000.f, 5000.f);
-		RenderMesh(meshList[TEST_FRONT], false);
-		modelStack.PopMatrix();
+	modelStack.PushMatrix();
+	modelStack.Translate(0.f, 0.f, 2500.f);
+	modelStack.Rotate(180.f, 0, 1, 0);
+	modelStack.Rotate(90.f, 1, 0, 0);
+	modelStack.Scale(5000.f, 5000.f, 5000.f);
+	RenderMesh(meshList[TEST_FRONT], false);
+	modelStack.PopMatrix();
 
-		modelStack.PushMatrix();
-		modelStack.Translate(0.f, 0.f, -2500.f);
-		modelStack.Rotate(90.f, 1, 0, 0);
-		modelStack.Rotate(rotatespin, 0, 1, 0);
-		modelStack.Scale(5000.f, 5000.f, 5000.f);
-		RenderMesh(meshList[TEST_BACK], false);
-		modelStack.PopMatrix();
+	modelStack.PushMatrix();
+	modelStack.Translate(0.f, 0.f, -2500.f);
+	modelStack.Rotate(90.f, 1, 0, 0);
+	modelStack.Scale(5000.f, 5000.f, 5000.f);
+	RenderMesh(meshList[TEST_BACK], false);
+	modelStack.PopMatrix();
 
-		modelStack.PushMatrix();
-		modelStack.Translate(0.f, 2500.f, 0.f);
-		modelStack.Rotate(90.f, 0, 1, 0);
-		modelStack.Rotate(180.f, 0, 0, 1);
-		modelStack.Scale(5000.f, 5000.f, 5000.f);
-		RenderMesh(meshList[TEST_TOP], false);
-		modelStack.PopMatrix();
+	modelStack.PushMatrix();
+	modelStack.Translate(0.f, 2500.f, 0.f);
+	modelStack.Rotate(90.f, 0, 1, 0);
+	modelStack.Rotate(180.f, 0, 0, 1);
+	modelStack.Scale(5000.f, 5000.f, 5000.f);
+	RenderMesh(meshList[TEST_TOP], false);
+	modelStack.PopMatrix();
 
-		modelStack.PushMatrix();
-		modelStack.Translate(0.f, -2500.f, 0.f);
-		modelStack.Rotate(-90.f, 0, 1, 0);
-		modelStack.Scale(5000.f, 5000.f, 5000.f);
-		RenderMesh(meshList[TEST_BOTTOM], false);
-		modelStack.PopMatrix();
+	modelStack.PushMatrix();
+	modelStack.Translate(0.f, -2500.f, 0.f);
+	modelStack.Rotate(-90.f, 0, 1, 0);
+	modelStack.Scale(5000.f, 5000.f, 5000.f);
+	RenderMesh(meshList[TEST_BOTTOM], false);
+	modelStack.PopMatrix();
 
-		modelStack.PushMatrix();
-		modelStack.Translate(-2500.f, 0, 0);
-		modelStack.Rotate(-90, 0, 0, 1);
-		modelStack.Rotate(90, 0, 1, 0);
-		modelStack.Scale(5000.f, 5000.f, 5000.f);
-		RenderMesh(meshList[TEST_RIGHT], false);
-		modelStack.PopMatrix();
+	modelStack.PushMatrix();
+	modelStack.Translate(-2500.f, 0, 0);
+	modelStack.Rotate(-90, 0, 0, 1);
+	modelStack.Rotate(90, 0, 1, 0);
+	modelStack.Scale(5000.f, 5000.f, 5000.f);
+	RenderMesh(meshList[TEST_RIGHT], false);
+	modelStack.PopMatrix();
 
-		modelStack.PushMatrix();
-		modelStack.Translate(2500.f, 0.f, 0.f);
-		modelStack.Rotate(-90.f, 0, 1, 0);
-		modelStack.Rotate(90.f, 1, 0, 0);
-		modelStack.Scale(5000.f, 5000.f, 5000.f);
-		RenderMesh(meshList[TEST_LEFT], false);
-		modelStack.PopMatrix();
+	modelStack.PushMatrix();
+	modelStack.Translate(2500.f, 0.f, 0.f);
+	modelStack.Rotate(-90.f, 0, 1, 0);
+	modelStack.Rotate(90.f, 1, 0, 0);
+	modelStack.Scale(5000.f, 5000.f, 5000.f);
+	RenderMesh(meshList[TEST_LEFT], false);
+	modelStack.PopMatrix();
 }
 
-void PLANET1::RenderText(Mesh* mesh, std::string text, Color color)
+void PLANET4::RenderText(Mesh* mesh, std::string text, Color color)
 {
 	if (!mesh || mesh->textureID <= 0) //Proper error check
 		return;
@@ -459,7 +354,7 @@ void PLANET1::RenderText(Mesh* mesh, std::string text, Color color)
 	glEnable(GL_DEPTH_TEST);
 }
 
-void PLANET1::RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y)
+void PLANET4::RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y)
 {
 	if (!mesh || mesh->textureID <= 0) //Proper error check
 		return;
@@ -506,7 +401,7 @@ void PLANET1::RenderTextOnScreen(Mesh* mesh, std::string text, Color color, floa
 }
 
 
-void PLANET1::Exit()
+void PLANET4::Exit()
 {
 	// Cleanup VBO here
 	glDeleteVertexArrays(1, &m_vertexArrayID);

@@ -1,5 +1,5 @@
-#ifndef PLANET1_H_
-#define PLANET1_H_
+#ifndef PLANET5_H_
+#define PLANET5_H_
 
 #include "Scene.h"
 #include "Camera3.h"
@@ -8,7 +8,7 @@
 #include "Light.h"
 #include "Vector3.h"
 
-class PLANET1 : public Scene
+class PLANET5 : public Scene
 {
 	enum GEOMETRY_TYPE
 	{
@@ -23,13 +23,6 @@ class PLANET1 : public Scene
 		TEST_FRONT,
 		GEO_TEXT,
 		ASTEROID,
-		SPIN,
-		SPINCAP,
-		POSITION,
-		GALLERY_WALL,
-		BUTTON,
-		BUTTONSTAND,
-		PICFRAME,
 		NUM_GEOMETRY,
 	};
 	enum UNIFORM_TYPE
@@ -74,8 +67,8 @@ class PLANET1 : public Scene
 	};
 
 public:
-	PLANET1();
-	~PLANET1();
+	PLANET5();
+	~PLANET5();
 
 	virtual void Init();
 	virtual void Update(double dt);
@@ -89,9 +82,6 @@ private:
 	unsigned m_vertexArrayID;
 	unsigned m_programID;
 	unsigned m_parameters[U_TOTAL];
-	float rotatespin;
-	float translateButton;
-	bool spin1;
 
 	Camera3 camera;
 
@@ -107,5 +97,5 @@ private:
 };
 
 
-#endif // PLANET1_H
+#endif // PLANET5_H
 

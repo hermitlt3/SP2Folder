@@ -175,28 +175,28 @@ void SP2::Init()
 	meshList[ASTEROID]->material.kShininess = 1.5f;
 
 	meshList[ARM] = MeshBuilder::GenerateOBJ("arm", "OBJ//arm1.obj");
-	meshList[ARM]->textureID = LoadTGA("Image//Human1.tga");
+	meshList[ARM]->textureID = LoadTGA("Image//Human.tga");
 	meshList[ARM]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
 	meshList[ARM]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
 	meshList[ARM]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
 	meshList[ARM]->material.kShininess = 1.5f;
 
 	meshList[ARM2] = MeshBuilder::GenerateOBJ("arm2", "OBJ//arm2.obj");
-	meshList[ARM2]->textureID = LoadTGA("Image//Human1.tga");
+	meshList[ARM2]->textureID = LoadTGA("Image//Human.tga");
 	meshList[ARM2]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
 	meshList[ARM2]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
 	meshList[ARM2]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
 	meshList[ARM2]->material.kShininess = 1.5f;
 
 	meshList[LEG] = MeshBuilder::GenerateOBJ("leg", "OBJ//leg1.obj");
-	meshList[LEG]->textureID = LoadTGA("Image//Human1.tga");
+	meshList[LEG]->textureID = LoadTGA("Image//Human.tga");
 	meshList[LEG]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
 	meshList[LEG]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
 	meshList[LEG]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
 	meshList[LEG]->material.kShininess = 1.5f;
 
 	meshList[LEG2] = MeshBuilder::GenerateOBJ("leg2", "OBJ//leg2.obj");
-	meshList[LEG2]->textureID = LoadTGA("Image//Human1.tga");
+	meshList[LEG2]->textureID = LoadTGA("Image//Human.tga");
 	meshList[LEG2]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
 	meshList[LEG2]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
 	meshList[LEG2]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
@@ -204,14 +204,14 @@ void SP2::Init()
 
 
 	meshList[HEAD] = MeshBuilder::GenerateOBJ("head", "OBJ//head.obj");
-	meshList[HEAD]->textureID = LoadTGA("Image//Human1.tga");
+	meshList[HEAD]->textureID = LoadTGA("Image//Human.tga");
 	meshList[HEAD]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
 	meshList[HEAD]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
 	meshList[HEAD]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
 	meshList[HEAD]->material.kShininess = 1.5f;
 
 	meshList[CHEST] = MeshBuilder::GenerateOBJ("chest", "OBJ//chest.obj");
-	meshList[CHEST]->textureID = LoadTGA("Image//Human1.tga");
+	meshList[CHEST]->textureID = LoadTGA("Image//Human.tga");
 	meshList[CHEST]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
 	meshList[CHEST]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
 	meshList[CHEST]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
@@ -369,12 +369,9 @@ void SP2::Init()
 	meshList[PLANET5]->material.kShininess = 1.f;
 
 
-<<<<<<< HEAD
 	rotateSwitch = -20.0f;
-=======
 
 	rotateSwitch = 10.0f;
->>>>>>> 13ee25131f09d2b52497d3ac7bfcdc9957e75dbc
 	translateAsteroid2 = 0.0f;
 	rotateAngle7 = 0.0f;
 	rotateAngle8 = 0.0f;
@@ -387,6 +384,9 @@ void SP2::Init()
 static float ROT_LIMIT = 45.f;
 static float SCALE_LIMIT = 5.f;
 static float LSPEED = 10.F;
+float test1 = 0.0f;
+float test2 = 0.0f;
+
 
 void SP2::Update(double dt)
 {
@@ -400,7 +400,7 @@ void SP2::Update(double dt)
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //wireframe mode
 	if (Application::IsKeyPressed('E') && (camera.position.x <= -130) && (camera.position.x >= -170) && (camera.position.z <= -150))
 	{
-		SharedData::GetInstance()->gameState = 1;
+		SharedData::GetInstance()->gameState = 2;
 	}
 
 	if (Application::IsKeyPressed('E') && (camera.position.x <= -50) && (camera.position.x >= -90) && (camera.position.z <= -150))
@@ -560,7 +560,8 @@ void SP2::Update(double dt)
 	{
 		translateAsteroid2 += (float)(20 * dt);
 	}
-
+	test1 += (float)(20 * dt);
+	test2 += (float)(20 * dt);
 }
 
 void SP2::Render()
@@ -751,28 +752,27 @@ void SP2::Render()
 	///////////////////////////HUMAN/////////////////////////////////
 
 	modelStack.PushMatrix();
-	modelStack.Translate(0.f, -0.5f, 0.f);
+	modelStack.Translate(0.f, 0.f, -80.f);
+	modelStack.Scale(3.f, 3.f, 3.f);
+
+	modelStack.PushMatrix();
 	RenderMesh(meshList[ARM], toggleLight);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(0.f, -0.5f, 0.f);
 	RenderMesh(meshList[ARM2], toggleLight);
-	RenderMesh(meshList[PLAYER], false);
-	modelStack.Translate(0.f, 30.0f, 0.f);
-	RenderMesh(meshList[ASTEROID], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(0.f, -0.5f, 0.f);
+	modelStack.Translate(0.f, -3.f, 0.f);
 	RenderMesh(meshList[LEG], toggleLight);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0.f, -0.5f, 0.f);
 	RenderMesh(meshList[LEG2], toggleLight);
 	modelStack.PopMatrix();
 
+	RenderMesh(meshList[CHEST], toggleLight);
+	RenderMesh(meshList[HEAD], toggleLight);
+
+	modelStack.PopMatrix();
 	///////////////////////////HUMAN/////////////////////////////////
 
 
