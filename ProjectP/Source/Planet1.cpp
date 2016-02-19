@@ -166,7 +166,7 @@ void PLANET1::Init()
 	meshList[SPIN]->material.kShininess = 1.5f;
 
 	meshList[SPINCAP] = MeshBuilder::GenerateOBJ("spincap", "OBJ//spincap.obj");
-	meshList[SPINCAP]->textureID = LoadTGA("Image//portal6.tga");
+	meshList[SPINCAP]->textureID = LoadTGA("Image//spincap.tga");
 	meshList[SPINCAP]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
 	meshList[SPINCAP]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
 	meshList[SPINCAP]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
@@ -313,28 +313,29 @@ void PLANET1::Render()
 	RenderSkyBox();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(0.0f, -0.1f, 0.f);
+	modelStack.Translate(0.0f, -13.0f, 0.f);
 	modelStack.Rotate(rotatespin - 45, 0, 1, 0);
-	modelStack.Scale(2.5, 2.4, 2.5);
+	modelStack.Scale(12.0f, 11.0f, 12.0f);
 	RenderMesh(meshList[SPIN], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(0.0f, 3.8f, 0.f);
-	modelStack.Scale(1.0f, 1.2f, 1.0f);
+	modelStack.Translate(0.0f, 7.0f, 0.f);
+	modelStack.Scale(5.0f, 4.5f, 5.0f);
 	RenderMesh(meshList[SPINCAP], false);
 	modelStack.PopMatrix();
 
 
 	modelStack.PushMatrix();
-	modelStack.Translate(4.6f, translateButton, 0.f);
-	modelStack.Rotate(-22.5, 0, 0, 1);
+	modelStack.Translate(5.0f, translateButton, 23.5f);
+	modelStack.Rotate(25.0f, 1, 0, 0);
 	modelStack.Scale(0.8f, 1.0f, 0.8f);
 	RenderMesh(meshList[BUTTON], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(5.0f, 1.0f, 0.f);
+	modelStack.Translate(5.0f, 1.0f, 24.0f);
+	modelStack.Rotate(-90.0f, 0, 1, 0);
 	modelStack.Scale(1.0f, 1.0f, 1.0f);
 	RenderMesh(meshList[BUTTONSTAND], false);
 	modelStack.PopMatrix();
