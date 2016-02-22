@@ -368,7 +368,7 @@ void SP2::Init()
 
 	LoadCollision("PlatformColli.txt", ColliX, ColliZ);
 
-	platNPCone.tx = 30.f;
+/*	platNPCone.tx = 30.f;
 	platNPCone.ty = 3.f;
 	platNPCone.tz = -30.f;
 	platNPCone.r_angle = 180.f;
@@ -376,7 +376,7 @@ void SP2::Init()
 	platNPCtwo.tx = 60.f;
 	platNPCtwo.ty = 3.f;
 	platNPCtwo.tz = -50.f;
-	platNPCtwo.r_angle = 0.f;
+	platNPCtwo.r_angle = 0.f;*/
 }
 static float ROT_LIMIT = 45.f;
 static float SCALE_LIMIT = 5.f;
@@ -479,7 +479,7 @@ void SP2::Update(double dt)
 		translateAsteroid2 += (float)(20 * dt);
 	}
 	charMovement(MS_reverse, 20.f, MS_rotate, 3.f, dt);
-	platNPCone.rotateNPC =	platNPCone.Interaction(camera, 20.f);
+//	platNPCone.rotateNPC =	platNPCone.Interaction(camera, 20.f);
 	if (test < platNPCone.rotateNPC)// && (platNPCone.rotateP))
 		test += (float)(50 * dt);
 	if (test > platNPCone.rotateNPC)// && (platNPCone.rotateN))
@@ -825,7 +825,7 @@ void SP2::RenderNPC(StopNPC &temp, bool enableLight)
 	///////////////////////////HUMAN/////////////////////////////////
 
 	modelStack.PushMatrix();
-	modelStack.Translate(temp.tx, temp.ty, temp.tz);
+	//modelStack.Translate(temp.tx, temp.ty, temp.tz);
 	modelStack.Rotate(test, 0, 1, 0);
 	modelStack.Scale(3.f, 4.f, 3.f);
 

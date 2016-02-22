@@ -215,8 +215,6 @@ void PLANET2::Init()
 
 	meshList[BACK] = MeshBuilder::GenerateQuad("back", Color(1, 1, 1));
 	meshList[BACK]->textureID = LoadTGA("Image//redplanet_bk.tga");
-	pla2npc.tx = 160.f;
-	pla2npc.r_angle = 180.f;
 
 	MS_rotate = 0.f;
 	MS_reverse = false;
@@ -266,8 +264,8 @@ void PLANET2::Update(double dt)
 	collisionCheck(-190.f, 210.f, camera, Vector3(50.f, 0.f, 50.f));
 	collisionCheck(170.f, 0.f, camera, Vector3(30.f, 0.f, 60.f));
 
-	if (pla2npc.rotateNPC < pla2npc.Interaction(camera, 15.f))
-		pla2npc.rotateNPC += (float)(50.0 * dt);
+	//if (pla2npc.rotateNPC < pla2npc.Interaction(camera, 15.f))
+	//	pla2npc.rotateNPC += (float)(50.0 * dt);
 
 }
 
@@ -370,7 +368,7 @@ void PLANET2::Render()
 	RenderMesh(meshList[GUN], false);
 	modelStack.PopMatrix();
 
-	RenderNPC(pla2npc, false);
+	RenderNPC(false);
 	RenderHandOnScreen();
 	RenderSkyBox();
 }
@@ -544,8 +542,8 @@ void PLANET2::RenderNPC(bool enableLight)
 	///////////////////////////HUMAN/////////////////////////////////
 
 	modelStack.PushMatrix();
-	modelStack.Translate(temp.tx, temp.ty, temp.tz);
-	modelStack.Rotate(temp.r_angle - temp.rotateNPC, 0, 1, 0);
+	//modelStack.Translate(temp.tx, temp.ty, temp.tz);
+	//modelStack.Rotate(temp.r_angle - temp.rotateNPC, 0, 1, 0);
 	modelStack.Scale(3.f, 4.f, 3.f);
 
 	RenderMesh(meshList[ARM], enableLight);

@@ -88,7 +88,7 @@ public:
 	virtual void RenderMesh(Mesh *mesh, bool enableLight);
 	virtual void RenderText(Mesh* mesh, std::string text, Color color);
 	virtual void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
-	virtual void RenderNPC(StopNPC &temp, bool enableLight);
+	virtual void RenderNPC(bool enableLight);
 	virtual void RenderHandOnScreen();
 	virtual void Exit();
 
