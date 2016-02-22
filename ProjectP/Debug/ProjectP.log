@@ -1,31 +1,34 @@
-﻿Build started 2/18/2016 6:09:57 PM.
-     1>Project "C:\Users\n1507\Documents\SPtwo2\ProjectP\ProjectP.vcxproj" on node 2 (Build target(s)).
+﻿Build started 2/22/2016 5:54:12 PM.
+     1>Project "C:\Users\n1507\Desktop\GIT\ProjectP\ProjectP.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\n1507\Documents\SPtwo2\\glew\include /IC:\Users\n1507\Documents\SPtwo2\\glfw\include /IC:\Users\n1507\Documents\SPtwo2\\Common\Source /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\SP2.cpp
-         SP2.cpp
-     1>c:\users\n1507\documents\sptwo2\projectp\source\sp2.cpp(906): warning C4305: 'argument' : truncation from 'double' to 'float'
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\n1507\Desktop\GIT\\glew\include /IC:\Users\n1507\Desktop\GIT\\glfw\include /IC:\Users\n1507\Desktop\GIT\\Common\Source /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\Planet1.cpp
+         Planet1.cpp
        Link:
-         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\n1507\Documents\SPtwo2\Debug\ProjectP.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\n1507\Documents\SPtwo2\\glew\lib /LIBPATH:"C:\Users\n1507\Documents\SPtwo2\\glfw\lib-msvc120" /LIBPATH:C:\Users\n1507\Documents\SPtwo2\Debug glew32.lib glfw3.lib opengl32.lib winmm.lib Common.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\n1507\Documents\SPtwo2\Debug\ProjectP.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\n1507\Documents\SPtwo2\Debug\ProjectP.lib" /MACHINE:X86 Debug\Application.obj
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\n1507\Desktop\GIT\Debug\ProjectP.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\n1507\Desktop\GIT\\glew\lib /LIBPATH:"C:\Users\n1507\Desktop\GIT\\glfw\lib-msvc120" /LIBPATH:C:\Users\n1507\Desktop\GIT\Debug glew32.lib glfw3.lib opengl32.lib winmm.lib Common.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\n1507\Desktop\GIT\Debug\ProjectP.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\n1507\Desktop\GIT\Debug\ProjectP.lib" /MACHINE:X86 Debug\Application.obj
          Debug\Camera.obj
          Debug\Camera2.obj
          Debug\Camera3.obj
+         Debug\Collision.obj
+         Debug\Movement.obj
          Debug\LoadOBJ.obj
          Debug\LoadTGA.obj
          Debug\main.obj
          Debug\Mesh.obj
          Debug\MeshBuilder.obj
+         Debug\NPC.obj
          Debug\Planet1.obj
          Debug\Planet2.obj
          Debug\Planet3.obj
          Debug\Planet4.obj
          Debug\Planet5.obj
+         Debug\Quest.obj
+         Debug\ReadFromExtern.obj
          Debug\shader.obj
          Debug\SP2.obj
          Debug\Utility.obj
-     1>LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
-         ProjectP.vcxproj -> C:\Users\n1507\Documents\SPtwo2\Debug\ProjectP.exe
-     1>Done Building Project "C:\Users\n1507\Documents\SPtwo2\ProjectP\ProjectP.vcxproj" (Build target(s)).
+         ProjectP.vcxproj -> C:\Users\n1507\Desktop\GIT\Debug\ProjectP.exe
+     1>Done Building Project "C:\Users\n1507\Desktop\GIT\ProjectP\ProjectP.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.97
+Time Elapsed 00:00:00.88

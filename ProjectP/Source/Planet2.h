@@ -7,6 +7,7 @@
 #include "MatrixStack.h"
 #include "Light.h"
 #include "Vector3.h"
+#include "NPC.h"
 
 class PLANET2 : public Scene
 {
@@ -15,12 +16,23 @@ class PLANET2 : public Scene
 		GEO_AXES = 0,
 		GEO_LIGHTBALL,
 		GEO_QUAD,
-		TEST_BACK,
-		TEST_LEFT,
-		TEST_RIGHT,
-		TEST_TOP,
-		TEST_BOTTOM,
-		TEST_FRONT,
+		BACK,
+		LEFT,
+		RIGHT,
+		TOP,
+		BOTTOM,
+		FRONT,
+		WALL,
+		GUN,
+		GROUND,
+
+		LEG,
+		LEG2,
+		ARM,
+		ARM2,
+		HEAD,
+		CHEST,
+
 		GEO_TEXT,
 		ASTEROID,
 		NUM_GEOMETRY,
@@ -76,6 +88,8 @@ public:
 	virtual void RenderMesh(Mesh *mesh, bool enableLight);
 	virtual void RenderText(Mesh* mesh, std::string text, Color color);
 	virtual void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
+	virtual void RenderNPC(bool enableLight);
+	virtual void RenderHandOnScreen();
 	virtual void Exit();
 
 private:
@@ -94,6 +108,10 @@ private:
 	void RenerMesh(Mesh *mesh, bool enableLight);
 	void RenderSkyBox();
 
+	StopNPC pla2npc;
+	float MS_rotate;
+	bool MS_reverse;
+	float test2 = 0;
 };
 
 
