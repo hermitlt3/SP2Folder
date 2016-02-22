@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿Build started 2/22/2016 3:20:36 PM.
      1>Project "C:\Users\n1507\Desktop\GIT\Common\Common.vcxproj" on node 2 (Build target(s)).
      1>Lib:
@@ -7,3 +8,14 @@
 Build succeeded.
 
 Time Elapsed 00:00:00.14
+=======
+﻿Build started 22/2/2016 11:08:33 AM.
+     1>Project "F:\SP2\Common\Common.vcxproj" on node 2 (Build target(s)).
+     1>Lib:
+         Common.vcxproj -> F:\SP2\Debug\Common.lib
+     1>Done Building Project "F:\SP2\Common\Common.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.39
+>>>>>>> ea4740ac38f3a560fbbdd2b62de7412821296ba5
