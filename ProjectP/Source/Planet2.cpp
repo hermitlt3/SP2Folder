@@ -8,6 +8,8 @@
 #include "Application.h"
 #include "Utility.h"
 #include "Gamemode.h"
+#include "Collision.h"
+#include "Movement.h"
 
 #include <sstream>
 #include <iomanip>
@@ -124,24 +126,6 @@ void PLANET2::Init()
 
 	meshList[GEO_LIGHTBALL] = MeshBuilder::GenerateSphere("LIGHT", Color(1, 1, 1), 36, 36);
 
-	meshList[TEST_FRONT] = MeshBuilder::GenerateQuad("front", Color(1, 1, 1));
-	meshList[TEST_FRONT]->textureID = LoadTGA("Image//front.tga");
-
-	meshList[TEST_RIGHT] = MeshBuilder::GenerateQuad("right", Color(1, 1, 1));
-	meshList[TEST_RIGHT]->textureID = LoadTGA("Image//right.tga");
-
-	meshList[TEST_TOP] = MeshBuilder::GenerateQuad("top", Color(1, 1, 1));
-	meshList[TEST_TOP]->textureID = LoadTGA("Image//top.tga");
-
-	meshList[TEST_BOTTOM] = MeshBuilder::GenerateQuad("bottom", Color(1, 1, 1));
-	meshList[TEST_BOTTOM]->textureID = LoadTGA("Image//top.tga");
-
-	meshList[TEST_LEFT] = MeshBuilder::GenerateQuad("left", Color(1, 1, 1));
-	meshList[TEST_LEFT]->textureID = LoadTGA("Image//left.tga");
-
-	meshList[TEST_BACK] = MeshBuilder::GenerateQuad("back", Color(1, 1, 1));
-	meshList[TEST_BACK]->textureID = LoadTGA("Image//back.tga");
-
 	meshList[GEO_TEXT] = MeshBuilder::GenerateText("text", 16, 16);
 	meshList[GEO_TEXT]->textureID = LoadTGA("Image//Redressed.tga");
 
@@ -152,6 +136,90 @@ void PLANET2::Init()
 	meshList[ASTEROID]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
 	meshList[ASTEROID]->material.kShininess = 1.5f;
 
+	meshList[WALL] = MeshBuilder::GenerateOBJ("wall", "OBJ//oldWall.obj");
+	meshList[WALL]->textureID = LoadTGA("Image//oldWall.tga");
+	meshList[WALL]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[WALL]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[WALL]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[WALL]->material.kShininess = 1.5f;
+
+	meshList[GUN] = MeshBuilder::GenerateOBJ("wall", "OBJ//Gun.obj");
+	meshList[GUN]->textureID = LoadTGA("Image//Gun.tga");
+	meshList[GUN]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[GUN]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[GUN]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[GUN]->material.kShininess = 1.5f;
+
+	meshList[GROUND] = MeshBuilder::GenerateQuad("ground", Color(0, 0, 0));
+	meshList[GROUND]->textureID = LoadTGA("Image//ground2.tga");
+
+
+	meshList[ARM] = MeshBuilder::GenerateOBJ("arm", "OBJ//arm1.obj");
+	meshList[ARM]->textureID = LoadTGA("Image//Alien1.tga");
+	meshList[ARM]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[ARM]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[ARM]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[ARM]->material.kShininess = 1.5f;
+
+	meshList[ARM2] = MeshBuilder::GenerateOBJ("arm2", "OBJ//arm2.obj");
+	meshList[ARM2]->textureID = LoadTGA("Image//Alien1.tga");
+	meshList[ARM2]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[ARM2]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[ARM2]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[ARM2]->material.kShininess = 1.5f;
+
+	meshList[LEG] = MeshBuilder::GenerateOBJ("leg", "OBJ//leg1.obj");
+	meshList[LEG]->textureID = LoadTGA("Image//Alien1.tga");
+	meshList[LEG]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[LEG]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[LEG]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[LEG]->material.kShininess = 1.5f;
+
+	meshList[LEG2] = MeshBuilder::GenerateOBJ("leg2", "OBJ//leg2.obj");
+	meshList[LEG2]->textureID = LoadTGA("Image//Alien1.tga");
+	meshList[LEG2]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[LEG2]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[LEG2]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[LEG2]->material.kShininess = 1.5f;
+
+
+	meshList[HEAD] = MeshBuilder::GenerateOBJ("head", "OBJ//head.obj");
+	meshList[HEAD]->textureID = LoadTGA("Image//Alien1.tga");
+	meshList[HEAD]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[HEAD]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[HEAD]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[HEAD]->material.kShininess = 1.5f;
+
+	meshList[CHEST] = MeshBuilder::GenerateOBJ("chest", "OBJ//chest.obj");
+	meshList[CHEST]->textureID = LoadTGA("Image//Alien1.tga");
+	meshList[CHEST]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[CHEST]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[CHEST]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[CHEST]->material.kShininess = 1.5f;
+
+	meshList[FRONT] = MeshBuilder::GenerateQuad("front", Color(1, 1, 1));
+	meshList[FRONT]->textureID = LoadTGA("Image//redplanet_ft.tga");
+
+	meshList[RIGHT] = MeshBuilder::GenerateQuad("right", Color(1, 1, 1));
+	meshList[RIGHT]->textureID = LoadTGA("Image//redplanet_rt.tga");
+
+	meshList[TOP] = MeshBuilder::GenerateQuad("top", Color(1, 1, 1));
+	meshList[TOP]->textureID = LoadTGA("Image//redplanet_up.tga");
+
+
+	meshList[BOTTOM] = MeshBuilder::GenerateQuad("bottom", Color(1, 1, 1));
+	meshList[BOTTOM]->textureID = LoadTGA("Image//redplanet_dn.tga");
+
+	meshList[LEFT] = MeshBuilder::GenerateQuad("left", Color(1, 1, 1));
+	meshList[LEFT]->textureID = LoadTGA("Image//redplanet_lf.tga");
+
+	meshList[BACK] = MeshBuilder::GenerateQuad("back", Color(1, 1, 1));
+	meshList[BACK]->textureID = LoadTGA("Image//redplanet_bk.tga");
+	pla2npc.tx = 160.f;
+	pla2npc.r_angle = 180.f;
+
+	MS_rotate = 0.f;
+	MS_reverse = false;
 }
 
 static float ROT_LIMIT = 45.f;
@@ -170,7 +238,7 @@ void PLANET2::Update(double dt)
 	if (Application::IsKeyPressed('4'))
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //wireframe mode
 	if (Application::IsKeyPressed('F'))
-		GameMode::GetInstance()->gameState = 2;
+		GameMode::GetInstance()->gameState = 1;
 	camera.Update(dt);
 
 	if (Application::IsKeyPressed('I'))
@@ -185,6 +253,22 @@ void PLANET2::Update(double dt)
 		light[0].position.y -= (float)(LSPEED * dt);
 	if (Application::IsKeyPressed('P'))
 		light[0].position.y += (float)(LSPEED * dt);
+
+	charMovement(MS_reverse, 20.f, MS_rotate, 3.f, dt);
+
+	collisionCheck(0.f, -190.f, camera, Vector3(200.f, 0.f, 20.f));
+	collisionCheck(0.f, 210.f, camera, Vector3(200.f, 0.f, 20.f));
+	collisionCheck(210.f, 0.f, camera, Vector3(20.f, 0.f, 200.f));
+	collisionCheck(210.f, 210.f, camera, Vector3(50.f, 0.f, 50.f));
+	collisionCheck(-210.f, -190.f, camera, Vector3(50.f, 0.f, 50.f));
+	collisionCheck(210.f, 190.f, camera, Vector3(50.f, 0.f, 50.f));
+	collisionCheck(190.f, -210.f, camera, Vector3(50.f, 0.f, 50.f));
+	collisionCheck(-190.f, 210.f, camera, Vector3(50.f, 0.f, 50.f));
+	collisionCheck(170.f, 0.f, camera, Vector3(30.f, 0.f, 60.f));
+
+	if (pla2npc.rotateNPC < pla2npc.Interaction(camera, 15.f))
+		pla2npc.rotateNPC += (float)(50.0 * dt);
+
 }
 
 void PLANET2::Render()
@@ -228,11 +312,66 @@ void PLANET2::Render()
 	RenderMesh(meshList[GEO_LIGHTBALL], false);
 	modelStack.PopMatrix();
 
+	///////////////////////     GROUND      ///////////////////////////
 	modelStack.PushMatrix();
-	modelStack.Translate(0.f, 0.f, 0.f);
-	RenderMesh(meshList[ASTEROID], false);
+	modelStack.Translate(0.f, -20.f, 0.f);
+	modelStack.Scale(2500.f, 0.f, 2500.f);
+	RenderMesh(meshList[GROUND], false);
+	modelStack.PopMatrix();
+	///////////////////////     GROUND      ///////////////////////////
+
+	///////////////////////   GIANT WALLS   ///////////////////////////
+	modelStack.PushMatrix();
+	modelStack.Translate(0.f, -20.f, 200.f);
+	modelStack.Scale(50.f, 20.f, 50.f);
+	RenderMesh(meshList[WALL], false);
 	modelStack.PopMatrix();
 
+	modelStack.PushMatrix();
+	modelStack.Translate(0.f, -20.f, -200.f);
+	modelStack.Scale(50.f, 20.f, 50.f);
+	RenderMesh(meshList[WALL], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(200.f, -20.f, 0.f);
+	modelStack.Rotate(90.f, 0, 1, 0);
+	modelStack.Scale(50.f, 20.f, 50.f);
+	RenderMesh(meshList[WALL], false);
+	modelStack.PopMatrix();
+	///////////////////////   GIANT WALLS   ///////////////////////////
+
+	///////////////////////   SMALL WALLS   ///////////////////////////
+	modelStack.PushMatrix();
+	modelStack.Translate(150.f, -20.f, 0.f);
+	modelStack.Rotate(90.f, 0, 1, 0);
+	modelStack.Scale(12.f, 6.f, 12.f);
+	RenderMesh(meshList[WALL], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(180.f, -20.f, 50.f);
+	modelStack.Scale(5.f, 6.f, 5.f);
+	RenderMesh(meshList[WALL], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(180.f, -20.f, -50.f);
+	modelStack.Scale(5.f, 6.f, 5.f);
+	RenderMesh(meshList[WALL], false);
+	modelStack.PopMatrix();
+	///////////////////////   SMALL WALLS   ///////////////////////////
+
+	modelStack.PushMatrix();
+	modelStack.Translate(202.f, 0.f, 0.f);
+	modelStack.Rotate(90.f, 0, 1, 0);
+	modelStack.Rotate(15.f, 0, 0, 1);
+	modelStack.Scale(5.f, 5.f, 5.f);
+	RenderMesh(meshList[GUN], false);
+	modelStack.PopMatrix();
+
+	RenderNPC(pla2npc, false);
+	RenderHandOnScreen();
 	RenderSkyBox();
 }
 
@@ -285,29 +424,29 @@ void PLANET2::RenderSkyBox()
 	modelStack.Rotate(180.f, 0, 1, 0);
 	modelStack.Rotate(90.f, 1, 0, 0);
 	modelStack.Scale(5000.f, 5000.f, 5000.f);
-	RenderMesh(meshList[TEST_FRONT], false);
+	RenderMesh(meshList[FRONT], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
 	modelStack.Translate(0.f, 0.f, -2500.f);
 	modelStack.Rotate(90.f, 1, 0, 0);
 	modelStack.Scale(5000.f, 5000.f, 5000.f);
-	RenderMesh(meshList[TEST_BACK], false);
+	RenderMesh(meshList[BACK], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
 	modelStack.Translate(0.f, 2500.f, 0.f);
-	modelStack.Rotate(90.f, 0, 1, 0);
+	modelStack.Rotate(-90.f, 0, 1, 0);
 	modelStack.Rotate(180.f, 0, 0, 1);
 	modelStack.Scale(5000.f, 5000.f, 5000.f);
-	RenderMesh(meshList[TEST_TOP], false);
+	RenderMesh(meshList[TOP], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
 	modelStack.Translate(0.f, -2500.f, 0.f);
 	modelStack.Rotate(-90.f, 0, 1, 0);
 	modelStack.Scale(5000.f, 5000.f, 5000.f);
-	RenderMesh(meshList[TEST_BOTTOM], false);
+	RenderMesh(meshList[BOTTOM], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
@@ -315,7 +454,7 @@ void PLANET2::RenderSkyBox()
 	modelStack.Rotate(-90, 0, 0, 1);
 	modelStack.Rotate(90, 0, 1, 0);
 	modelStack.Scale(5000.f, 5000.f, 5000.f);
-	RenderMesh(meshList[TEST_RIGHT], false);
+	RenderMesh(meshList[RIGHT], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
@@ -323,7 +462,7 @@ void PLANET2::RenderSkyBox()
 	modelStack.Rotate(-90.f, 0, 1, 0);
 	modelStack.Rotate(90.f, 1, 0, 0);
 	modelStack.Scale(5000.f, 5000.f, 5000.f);
-	RenderMesh(meshList[TEST_LEFT], false);
+	RenderMesh(meshList[LEFT], false);
 	modelStack.PopMatrix();
 }
 
@@ -400,6 +539,63 @@ void PLANET2::RenderTextOnScreen(Mesh* mesh, std::string text, Color color, floa
 	glEnable(GL_DEPTH_TEST);
 }
 
+void PLANET2::RenderNPC(bool enableLight)
+{
+	///////////////////////////HUMAN/////////////////////////////////
+
+	modelStack.PushMatrix();
+	modelStack.Translate(temp.tx, temp.ty, temp.tz);
+	modelStack.Rotate(temp.r_angle - temp.rotateNPC, 0, 1, 0);
+	modelStack.Scale(3.f, 4.f, 3.f);
+
+	RenderMesh(meshList[ARM], enableLight);
+
+	RenderMesh(meshList[ARM2], enableLight);
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0.f, -2.95f, 0.f);
+	RenderMesh(meshList[LEG], enableLight);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0.f, -2.95f, 0.f);
+	RenderMesh(meshList[LEG2], enableLight);
+	modelStack.PopMatrix();
+
+	RenderMesh(meshList[CHEST], enableLight);
+	RenderMesh(meshList[HEAD], enableLight);
+
+	modelStack.PopMatrix();
+	///////////////////////////HUMAN/////////////////////////////////
+}
+
+void PLANET2::RenderHandOnScreen()
+{
+	glDisable(GL_DEPTH_TEST);
+
+	//Add these code just after glDisable(GL_DEPTH_TEST);
+	Mtx44 ortho;
+	ortho.SetToOrtho(0, 80, 0, 60, -20, 20); //size of screen UI
+	projectionStack.PushMatrix();
+	projectionStack.LoadMatrix(ortho);
+	viewStack.PushMatrix();
+	viewStack.LoadIdentity(); //No need camera for ortho mode
+	modelStack.PushMatrix();
+	modelStack.LoadIdentity(); //Reset modelStack
+	modelStack.Translate(55 + MS_rotate / 2, -10 - MS_rotate / 6, 15);
+	modelStack.Rotate(155, 1, 0, 0);
+	modelStack.Rotate(-127, 0, 1, 0);
+	modelStack.Rotate(23, 0, 0, 1);
+	modelStack.Scale(6, 12, 8);
+	RenderMesh(meshList[ARM2], false);
+
+	//Add these code just before glEnable(GL_DEPTH_TEST);
+	projectionStack.PopMatrix();
+	viewStack.PopMatrix();
+	modelStack.PopMatrix();
+
+	glEnable(GL_DEPTH_TEST);
+}
 
 void PLANET2::Exit()
 {

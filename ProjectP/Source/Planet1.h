@@ -15,14 +15,6 @@ class PLANET1 : public Scene
 		GEO_AXES = 0,
 		GEO_LIGHTBALL,
 		GEO_QUAD,
-		TEST_BACK,
-		TEST_LEFT,
-		TEST_RIGHT,
-		TEST_TOP,
-		TEST_BOTTOM,
-		TEST_FRONT,
-		GEO_TEXT,
-		ASTEROID,
 		SPIN,
 		SPINCAP,
 		POSITION,
@@ -30,6 +22,7 @@ class PLANET1 : public Scene
 		BUTTON,
 		BUTTONSTAND,
 		PICFRAME,
+		ARM2,
 		NUM_GEOMETRY,
 	};
 	enum UNIFORM_TYPE
@@ -83,6 +76,7 @@ public:
 	virtual void RenderMesh(Mesh *mesh, bool enableLight);
 	virtual void RenderText(Mesh* mesh, std::string text, Color color);
 	virtual void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
+	virtual void RenderHandOnScreen();
 	virtual void Exit();
 
 private:
@@ -92,7 +86,6 @@ private:
 	float rotatespin;
 	float translateButton;
 	bool spin1;
-
 	Camera3 camera;
 
 	Mesh* meshList[NUM_GEOMETRY];
@@ -102,8 +95,11 @@ private:
 	Light light[2];
 
 	void RenerMesh(Mesh *mesh, bool enableLight);
+	
 	void RenderSkyBox();
 
+	float MS_rotate;
+	bool MS_reverse;
 };
 
 

@@ -2,7 +2,6 @@
 #define GAME_MODE_H
 
 
-
 class GameMode {
 public:
 	static GameMode* GetInstance() {

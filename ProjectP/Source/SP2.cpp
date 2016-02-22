@@ -9,6 +9,8 @@
 #include "Utility.h"
 #include "GameMode.h"
 #include "Movement.h"
+#include "Collision.h"
+#include "NPC.h"
 
 #include <sstream>
 #include <iomanip>
@@ -145,26 +147,6 @@ void SP2::Init()
 	meshList[PLATFORM_BACK] = MeshBuilder::GenerateQuad("back", Color(1, 1, 1));
 	meshList[PLATFORM_BACK]->textureID = LoadTGA("Image//surround.tga");
 
-	/*meshList[TEST_FRONT] = MeshBuilder::GenerateQuad("front", Color(1, 1, 1));
-	meshList[TEST_FRONT]->textureID = LoadTGA("Image//front.tga");
-
-	meshList[TEST_RIGHT] = MeshBuilder::GenerateQuad("right", Color(1, 1, 1));
-	meshList[TEST_RIGHT]->textureID = LoadTGA("Image//right.tga");
-
-	meshList[TEST_TOP] = MeshBuilder::GenerateQuad("top", Color(1, 1, 1));
-	meshList[TEST_TOP]->textureID = LoadTGA("Image//top.tga");
-
-	meshList[TEST_BOTTOM] = MeshBuilder::GenerateQuad("bottom", Color(1, 1, 1));
-	meshList[TEST_BOTTOM]->textureID = LoadTGA("Image//top.tga");
-
-	meshList[TEST_LEFT] = MeshBuilder::GenerateQuad("left", Color(1, 1, 1));
-	meshList[TEST_LEFT]->textureID = LoadTGA("Image//left.tga");
-
-	meshList[TEST_BACK] = MeshBuilder::GenerateQuad("back", Color(1, 1, 1));
-	meshList[TEST_BACK]->textureID = LoadTGA("Image//back.tga");*/
-
-//	meshList[TEST_BACK]->textureID = LoadTGA("Image//back.tga");
-
 	meshList[GEO_TEXT] = MeshBuilder::GenerateText("text", 16, 16);
 	meshList[GEO_TEXT]->textureID = LoadTGA("Image//Redressed.tga");
 
@@ -291,7 +273,7 @@ void SP2::Init()
 	meshList[BASE]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
 	meshList[BASE]->material.kShininess = 1.f;
 
-	glassFrontColli.Set(120.f, 0.f, 5.f);
+	glassFrontColli.Set(120.f, 0.f, 30.1f);
 	glassSideColli.Set(5.f, 0.f, 5.f);
 	baseBackColli.Set(240.f, 0.f, 5.f);
 	wheelLightColli.Set(30.f, 0.f, 20.f);
@@ -383,6 +365,18 @@ void SP2::Init()
 
 	meshList[POSITION] = MeshBuilder::GenerateText("keymsg", 16, 16);
 	meshList[POSITION]->textureID = LoadTGA("Image//Redressed.tga");
+
+	LoadCollision("PlatformColli.txt", ColliX, ColliZ);
+
+	platNPCone.tx = 30.f;
+	platNPCone.ty = 3.f;
+	platNPCone.tz = -30.f;
+	platNPCone.r_angle = 180.f;
+
+	platNPCtwo.tx = 60.f;
+	platNPCtwo.ty = 3.f;
+	platNPCtwo.tz = -50.f;
+	platNPCtwo.r_angle = 0.f;
 }
 static float ROT_LIMIT = 45.f;
 static float SCALE_LIMIT = 5.f;
@@ -429,94 +423,22 @@ void SP2::Update(double dt)
 
 	if ((Application::IsKeyPressed(VK_LBUTTON)) && (camera.position.x <= -8.f && camera.position.x >= -28.f) && (camera.position.z <= -37.5f && camera.position.z >= -62.5f))
 	{
-			displayOn = false;
-			toggleLight = true;
-			rotateSwitch = -20.0f;
+		displayOn = false;
+		toggleLight = true;
+		rotateSwitch = -20.0f;
 	}
 	if ((Application::IsKeyPressed(VK_RBUTTON)) && (camera.position.x <= -8.f && camera.position.x >= -28.f) && (camera.position.z <= -37.5f && camera.position.z >= -62.5f))
 	{
-			displayOn = true;
-			toggleLight = false;
-			rotateSwitch = 20.0f;
+		displayOn = true;
+		toggleLight = false;
+		rotateSwitch = 20.0f;
 	}
-
+	for (std::vector<float>::iterator xf = ColliX.begin(), zf = ColliZ.begin(); xf != ColliX.end(), zf != ColliZ.end(); ++xf, ++zf)
+	{
+		collisionCheck(*xf, *zf, camera, glassSideColli);
+	}
 	collisionCheck(0, 0, camera, glassFrontColli);
-	collisionCheck(-120, 0, camera, glassSideColli);
-	collisionCheck(-125, -5, camera, glassSideColli);
-	collisionCheck(-127, -15, camera, glassSideColli);
-	collisionCheck(-129, -20, camera, glassSideColli);
-	collisionCheck(-134, -25, camera, glassSideColli);
-	collisionCheck(-139, -30, camera, glassSideColli);
-	collisionCheck(-141, -35, camera, glassSideColli);
-	collisionCheck(-146, -45, camera, glassSideColli);
-	collisionCheck(-148, -50, camera, glassSideColli);
-	collisionCheck(-153, -55, camera, glassSideColli);
-	collisionCheck(-155, -60, camera, glassSideColli);
-	collisionCheck(-160, -65, camera, glassSideColli);
-	collisionCheck(-162, -70, camera, glassSideColli);
-	collisionCheck(-167, -75, camera, glassSideColli);
-	collisionCheck(-169, -80, camera, glassSideColli);
-	collisionCheck(-174, -85, camera, glassSideColli);
-	collisionCheck(-176, -90, camera, glassSideColli);
-	collisionCheck(-178, -95, camera, glassSideColli);
-	collisionCheck(-180, -100, camera, glassSideColli);
-	collisionCheck(-182, -105, camera, glassSideColli);
-	collisionCheck(-184, -110, camera, glassSideColli);
-	collisionCheck(-186, -115, camera, glassSideColli);
-	collisionCheck(-188, -120, camera, glassSideColli);
-	collisionCheck(-190, -125, camera, glassSideColli);
-	collisionCheck(-192, -130, camera, glassSideColli);
-	collisionCheck(-194, -135, camera, glassSideColli);
-	collisionCheck(-196, -140, camera, glassSideColli);
-	collisionCheck(-198, -145, camera, glassSideColli);
-	collisionCheck(-200, -150, camera, glassSideColli);
-	collisionCheck(-203, -155, camera, glassSideColli);
-	collisionCheck(-206, -160, camera, glassSideColli);
-	collisionCheck(-209, -165, camera, glassSideColli);
-	collisionCheck(-211, -170, camera, glassSideColli);
-	collisionCheck(-213, -175, camera, glassSideColli);
-	collisionCheck(-215, -180, camera, glassSideColli);
-	collisionCheck(-218, -185, camera, glassSideColli);
-	collisionCheck(-221, -190, camera, glassSideColli);
-	collisionCheck(-223, -195, camera, glassSideColli);
-	collisionCheck(120, 0, camera, glassSideColli);
-	collisionCheck(125, -5, camera, glassSideColli);
-	collisionCheck(127, -15, camera, glassSideColli);
-	collisionCheck(129, -20, camera, glassSideColli);
-	collisionCheck(134, -25, camera, glassSideColli);
-	collisionCheck(139, -30, camera, glassSideColli);
-	collisionCheck(141, -35, camera, glassSideColli);
-	collisionCheck(146, -45, camera, glassSideColli);
-	collisionCheck(148, -50, camera, glassSideColli);
-	collisionCheck(153, -55, camera, glassSideColli);
-	collisionCheck(155, -60, camera, glassSideColli);
-	collisionCheck(160, -65, camera, glassSideColli);
-	collisionCheck(162, -70, camera, glassSideColli);
-	collisionCheck(167, -75, camera, glassSideColli);
-	collisionCheck(169, -80, camera, glassSideColli);
-	collisionCheck(174, -85, camera, glassSideColli);
-	collisionCheck(176, -90, camera, glassSideColli);
-	collisionCheck(178, -95, camera, glassSideColli);
-	collisionCheck(180, -100, camera, glassSideColli);
-	collisionCheck(182, -105, camera, glassSideColli);
-	collisionCheck(184, -110, camera, glassSideColli);
-	collisionCheck(186, -115, camera, glassSideColli);
-	collisionCheck(188, -120, camera, glassSideColli);
-	collisionCheck(190, -125, camera, glassSideColli);
-	collisionCheck(192, -130, camera, glassSideColli);
-	collisionCheck(194, -135, camera, glassSideColli);
-	collisionCheck(196, -140, camera, glassSideColli);
-	collisionCheck(198, -145, camera, glassSideColli);
-	collisionCheck(200, -150, camera, glassSideColli);
-	collisionCheck(203, -155, camera, glassSideColli);
-	collisionCheck(206, -160, camera, glassSideColli);
-	collisionCheck(209, -165, camera, glassSideColli);
-	collisionCheck(211, -170, camera, glassSideColli);
-	collisionCheck(213, -175, camera, glassSideColli);
-	collisionCheck(215, -180, camera, glassSideColli);
-	collisionCheck(218, -185, camera, glassSideColli);
-	collisionCheck(221, -190, camera, glassSideColli);
-	collisionCheck(223, -195, camera, glassSideColli);
+
 	collisionCheck(0, -200, camera, baseBackColli);
 	collisionCheck(-5, -29, camera, wheelLightColli);
 	collisionCheck(0, -190, camera, portalColli);
@@ -556,14 +478,21 @@ void SP2::Update(double dt)
 	{
 		translateAsteroid2 += (float)(20 * dt);
 	}
-	charMovement(MS_reverse, 20.f, MS_rotate, dt);
+	charMovement(MS_reverse, 20.f, MS_rotate, 3.f, dt);
+	platNPCone.rotateNPC =	platNPCone.Interaction(camera, 20.f);
+	if (test < platNPCone.rotateNPC)// && (platNPCone.rotateP))
+		test += (float)(50 * dt);
+	if (test > platNPCone.rotateNPC)// && (platNPCone.rotateN))
+		test -= (float)(50 * dt);
 }
 
 void SP2::Render()
 {
 	std::ostringstream fps;
-	//fps << camera.position.x << " " << camera.position.y << " " << camera.position.z;
-	fps << MS_rotate;
+	std::ostringstream aaa;
+	fps << "tar: " << platNPCone.rotateNPC;
+	aaa << "pos: " <<camera.position.x << " " << camera.position.y << " " << camera.position.z;
+	
 	// Render VBO here
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	//These will be replaced by matrix stack soon
@@ -744,33 +673,6 @@ void SP2::Render()
 	////////////////////////PLANETS////////////////////////////////
 
 
-	///////////////////////////HUMAN/////////////////////////////////
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0.f, 0.f, -80.f);
-	modelStack.Scale(3.f, 3.f, 3.f);
-
-	modelStack.PushMatrix();
-	RenderMesh(meshList[ARM], toggleLight);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	RenderMesh(meshList[ARM2], toggleLight);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0.f, -3.f, 0.f);
-	RenderMesh(meshList[LEG], toggleLight);
-	RenderMesh(meshList[LEG2], toggleLight);
-	modelStack.PopMatrix();
-
-	RenderMesh(meshList[CHEST], toggleLight);
-	RenderMesh(meshList[HEAD], toggleLight);
-
-	modelStack.PopMatrix();
-	///////////////////////////HUMAN/////////////////////////////////
-
-
 	modelStack.PushMatrix();			//PORTAL HIERARCHY
 	modelStack.Translate(0.f, 8.f, -190);
 	modelStack.Scale(1.5f, 1.5f, 1.5f);
@@ -910,9 +812,42 @@ void SP2::Render()
 	modelStack.PopMatrix();			//END OF PLATFORM HIERARCHY
 
 
-	RenderTextOnScreen(meshList[POSITION], fps.str(), Color(0, 1, 1), 3, 10, 10);
-
+	RenderNPC(platNPCone, false);
+	RenderNPC(platNPCtwo, false);
 	RenderHandOnScreen();
+	RenderTextOnScreen(meshList[POSITION], fps.str(), Color(0, 1, 1), 2, 5, 6);
+	RenderTextOnScreen(meshList[POSITION], aaa.str(), Color(0, 1, 1), 2, 5, 3);
+
+}
+
+void SP2::RenderNPC(StopNPC &temp, bool enableLight)
+{
+	///////////////////////////HUMAN/////////////////////////////////
+
+	modelStack.PushMatrix();
+	modelStack.Translate(temp.tx, temp.ty, temp.tz);
+	modelStack.Rotate(test, 0, 1, 0);
+	modelStack.Scale(3.f, 4.f, 3.f);
+
+	RenderMesh(meshList[ARM], enableLight);
+
+	RenderMesh(meshList[ARM2], enableLight);
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0.f, -2.95f, 0.f);
+	RenderMesh(meshList[LEG], enableLight);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0.f, -2.95f, 0.f);
+	RenderMesh(meshList[LEG2], enableLight);
+	modelStack.PopMatrix();
+
+	RenderMesh(meshList[CHEST], toggleLight);
+	RenderMesh(meshList[HEAD], enableLight);
+
+	modelStack.PopMatrix();
+	///////////////////////////HUMAN/////////////////////////////////
 }
 
 void SP2::RenderMesh(Mesh *mesh, bool enableLight)
@@ -1004,28 +939,6 @@ void SP2::RenderSkyBox()
 		modelStack.Scale(5000.f, 5000.f, 5000.f);
 		RenderMesh(meshList[PLATFORM_LEFT], false);
 		modelStack.PopMatrix();
-}
-
-void SP2::collisionCheck(float colliX, float colliZ, Camera3 &camera, Vector3 radius)
-{
-	Vector3 view = (camera.target - camera.position).Normalized();
-	if (camera.position.x >= colliX - radius.x  && camera.position.x - 2.f <= colliX - radius.x && camera.position.z <= colliZ + radius.z && camera.position.z >= colliZ - radius.z)
-	{
-		camera.position.x = colliX - radius.x;
-	}
-	if (camera.position.x <= colliX + radius.x  && camera.position.x + 2.f >= colliX + radius.x && camera.position.z <= colliZ + radius.z && camera.position.z >= colliZ - radius.z)
-	{
-		camera.position.x = colliX + radius.x;
-	}
-	if (camera.position.z >= colliZ - radius.z  && camera.position.z - 2.f <= colliZ - radius.z && camera.position.x <= colliX + radius.x && camera.position.x >= colliX - radius.x)
-	{
-		camera.position.z = colliZ - radius.z;
-	}
-	if (camera.position.z <= colliZ + radius.z  && camera.position.z + 2.f >= colliZ + radius.z && camera.position.x <= colliX + radius.x && camera.position.x >= colliX - radius.x)
-	{
-		camera.position.z = colliZ + radius.z;
-	}
-	camera.target = camera.position + view;
 }
 
 void SP2::RenderText(Mesh* mesh, std::string text, Color color)
