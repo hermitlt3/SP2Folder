@@ -35,6 +35,10 @@ class PLANET2 : public Scene
 
 		GEO_TEXT,
 		ASTEROID,
+
+		BULLET,
+
+		POSITION,
 		NUM_GEOMETRY,
 	};
 	enum UNIFORM_TYPE
@@ -111,6 +115,15 @@ private:
 	StopNPC pla2npc;
 	float MS_rotate;
 	bool MS_reverse;
+	float GunX, GunZ, rangeGunX, rangeGunZ;
+	bool inRange, holdingGun;
+	float rotateA, rotateB, rotateC;
+	void SimpleVariables();
+	void MethCalculations();
+	void gunFunctioning();
+	void renderGunOnHand();
+	void renderGunUI();
+	void shooting();
 	float test2 = 0;
 };
 

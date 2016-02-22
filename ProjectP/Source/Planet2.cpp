@@ -126,6 +126,8 @@ void PLANET2::Init()
 
 	meshList[GEO_LIGHTBALL] = MeshBuilder::GenerateSphere("LIGHT", Color(1, 1, 1), 36, 36);
 
+	meshList[BULLET] = MeshBuilder::GenerateSphere("Bullet", Color(1, 0, 0), 36, 36);
+
 	meshList[GEO_TEXT] = MeshBuilder::GenerateText("text", 16, 16);
 	meshList[GEO_TEXT]->textureID = LoadTGA("Image//Redressed.tga");
 
@@ -216,14 +218,29 @@ void PLANET2::Init()
 	meshList[BACK] = MeshBuilder::GenerateQuad("back", Color(1, 1, 1));
 	meshList[BACK]->textureID = LoadTGA("Image//redplanet_bk.tga");
 
+	meshList[POSITION] = MeshBuilder::GenerateText("keymsg", 16, 16);
+	meshList[POSITION]->textureID = LoadTGA("Image//Redressed.tga");
+
 	MS_rotate = 0.f;
 	MS_reverse = false;
+	SimpleVariables();
+	
 }
 
 static float ROT_LIMIT = 45.f;
 static float SCALE_LIMIT = 5.f;
 static float LSPEED = 10.F;
 
+void PLANET2::SimpleVariables()
+{
+	inRange = false;
+	holdingGun = false;
+	GunX = 202.f;
+	GunZ = 0.f;
+	rotateA = 5.f;
+	rotateB = 110.f;
+	rotateC = 5.f;
+}
 
 void PLANET2::Update(double dt)
 {
@@ -238,6 +255,46 @@ void PLANET2::Update(double dt)
 	if (Application::IsKeyPressed('F'))
 		GameMode::GetInstance()->gameState = 1;
 	camera.Update(dt);
+
+	MethCalculations();
+
+	if ((rangeGunX <= 70) && (rangeGunZ <= 30) && (inRange == false))
+	{
+		inRange = true;
+		if ((Application::IsKeyPressed('E')))
+		{
+			holdingGun = true;
+		}
+	}
+	else
+	{
+		inRange = false;
+	}
+
+	//if (Application::IsKeyPressed('7'))
+	//{
+	//	rotateA += 1;
+	//	if (rotateA > 360)
+	//	{
+	//		rotateA = 0;
+	//	}
+	//}
+	//if (Application::IsKeyPressed('8'))
+	//{
+	//	rotateB += 1;
+	//	if (rotateB > 360)
+	//	{
+	//		rotateB = 0;
+	//	}
+	//}
+	//if (Application::IsKeyPressed('9'))
+	//{
+	//	rotateC += 1;
+	//	if (rotateC > 360)
+	//	{
+	//		rotateC = 0;
+	//	}
+	//}
 
 	if (Application::IsKeyPressed('I'))
 		light[0].position.z -= (float)(LSPEED * dt);
@@ -267,6 +324,20 @@ void PLANET2::Update(double dt)
 	//if (pla2npc.rotateNPC < pla2npc.Interaction(camera, 15.f))
 	//	pla2npc.rotateNPC += (float)(50.0 * dt);
 
+}
+
+void PLANET2::MethCalculations()
+{
+	rangeGunX = camera.position.x - GunX;
+	if (rangeGunX <= 0)
+	{
+		rangeGunX *= -1;
+	}
+	rangeGunZ = camera.position.z - GunZ;
+	if (rangeGunZ <= 0)
+	{
+		rangeGunZ *= -1;
+	}
 }
 
 void PLANET2::Render()
@@ -309,6 +380,8 @@ void PLANET2::Render()
 	modelStack.Translate(light[0].position.x, light[0].position.y, light[0].position.z);
 	RenderMesh(meshList[GEO_LIGHTBALL], false);
 	modelStack.PopMatrix();
+
+	RenderSkyBox();
 
 	///////////////////////     GROUND      ///////////////////////////
 	modelStack.PushMatrix();
@@ -360,17 +433,43 @@ void PLANET2::Render()
 	modelStack.PopMatrix();
 	///////////////////////   SMALL WALLS   ///////////////////////////
 
-	modelStack.PushMatrix();
-	modelStack.Translate(202.f, 0.f, 0.f);
-	modelStack.Rotate(90.f, 0, 1, 0);
-	modelStack.Rotate(15.f, 0, 0, 1);
-	modelStack.Scale(5.f, 5.f, 5.f);
-	RenderMesh(meshList[GUN], false);
-	modelStack.PopMatrix();
-
 	RenderNPC(false);
 	RenderHandOnScreen();
-	RenderSkyBox();
+
+	if (holdingGun == false)
+	{
+		std::ostringstream inRangeGunz;
+		inRangeGunz << "Press E to pick up the Gun ";
+		if (inRange == true)
+		{
+			RenderTextOnScreen(meshList[POSITION], inRangeGunz.str(), Color(0, 0, 0), 2, 10, 15);
+		}
+
+		modelStack.PushMatrix();
+		modelStack.Translate(GunX, 0.f, GunZ);
+		modelStack.Rotate(90.f, 0, 1, 0);
+		modelStack.Rotate(15.f, 0, 0, 1);
+		modelStack.Scale(5.f, 5.f, 5.f);
+		RenderMesh(meshList[GUN], false);
+		modelStack.PopMatrix();
+
+	}
+	else if (holdingGun == true)
+	{
+		renderGunUI();
+		renderGunOnHand();
+		std::ostringstream Ammunition;
+		Ammunition << "You have Unlimited Power. Its ok :)";
+		RenderTextOnScreen(meshList[POSITION], Ammunition.str(), Color(0, 1, 1), 2, 1, 28);
+	}
+
+	std::ostringstream position;
+	position << "pos: X= " << camera.position.x << " Y= " << camera.position.y << " Z= " << camera.position.z;
+	RenderTextOnScreen(meshList[POSITION], position.str(), Color(0, 1, 1), 2, 1, 29);
+
+	/*std::ostringstream Testing;
+	Testing << "RotateA= " << rotateA << " RotateB= " << rotateB << " RotateC= " << rotateC;
+	RenderTextOnScreen(meshList[POSITION], Testing.str(), Color(0, 0, 0), 2, 10, 17);*/
 }
 
 void PLANET2::RenderMesh(Mesh *mesh, bool enableLight)
@@ -593,6 +692,64 @@ void PLANET2::RenderHandOnScreen()
 	modelStack.PopMatrix();
 
 	glEnable(GL_DEPTH_TEST);
+}
+
+void PLANET2::renderGunUI()
+{
+	glDisable(GL_DEPTH_TEST);
+
+	//Add these code just after glDisable(GL_DEPTH_TEST);
+	Mtx44 ortho;
+	ortho.SetToOrtho(0, 80, 0, 60, -40, 40); //size of screen UI
+	projectionStack.PushMatrix();
+	projectionStack.LoadMatrix(ortho);
+	viewStack.PushMatrix();
+	viewStack.LoadIdentity(); //No need camera for ortho mode
+	modelStack.PushMatrix();
+	modelStack.LoadIdentity(); //Reset modelStack
+	modelStack.Translate(5, 50, 15);
+	modelStack.Scale(1, 1, 1);
+	RenderMesh(meshList[GUN], false);
+
+	//Add these code just before glEnable(GL_DEPTH_TEST);
+	projectionStack.PopMatrix();
+	viewStack.PopMatrix();
+	modelStack.PopMatrix();
+
+	glEnable(GL_DEPTH_TEST);
+}
+
+void PLANET2::renderGunOnHand()
+{
+	glDisable(GL_DEPTH_TEST);
+
+	//Add these code just after glDisable(GL_DEPTH_TEST);
+	Mtx44 ortho;
+	ortho.SetToOrtho(0, 80, 0, 60, -40, 40); //size of screen UI
+	projectionStack.PushMatrix();
+	projectionStack.LoadMatrix(ortho);
+	viewStack.PushMatrix();
+	viewStack.LoadIdentity(); //No need camera for ortho mode
+	modelStack.PushMatrix();
+	modelStack.LoadIdentity(); //Reset modelStack
+	modelStack.Translate(55 + MS_rotate / 2, 10 - MS_rotate / 6, 0);
+	modelStack.Rotate(rotateA, 1, 0, 0);
+	modelStack.Rotate(rotateB, 0, 1, 0);
+	modelStack.Rotate(rotateC, 0, 0, 1);
+	modelStack.Scale(5, 5, 5);
+	RenderMesh(meshList[GUN], false);
+
+	//Add these code just before glEnable(GL_DEPTH_TEST);
+	projectionStack.PopMatrix();
+	viewStack.PopMatrix();
+	modelStack.PopMatrix();
+
+	glEnable(GL_DEPTH_TEST);
+}
+
+void PLANET2::shooting()
+{
+	
 }
 
 void PLANET2::Exit()
