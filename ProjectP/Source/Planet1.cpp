@@ -129,7 +129,6 @@ void PLANET1::Init()
 
 	meshList[GEO_LIGHTBALL] = MeshBuilder::GenerateSphere("LIGHT", Color(1, 1, 1), 36, 36);
 
-<<<<<<< HEAD
 	meshList[BULLET] = MeshBuilder::GenerateSphere("Bullet", Color(1, 0, 0), 36, 36);
 
 	meshList[QUAD] = MeshBuilder::GenerateQuad("TestingQuad", Color(1, 0, 0));
@@ -168,38 +167,6 @@ void PLANET1::Init()
 	meshList[ARM]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
 	meshList[ARM]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
 	meshList[ARM]->material.kShininess = 1.5f;
-=======
-	meshList[PICFRAME] = MeshBuilder::GenerateOBJ("frame", "OBJ//PicFrame.obj");
-	meshList[PICFRAME]->textureID = LoadTGA("Image//Painting.tga");
-
-	meshList[SPIN] = MeshBuilder::GenerateOBJ("spin", "OBJ//spin.obj");
-	meshList[SPIN]->textureID = LoadTGA("Image//spin.tga");
-	meshList[SPIN]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
-	meshList[SPIN]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
-	meshList[SPIN]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
-	meshList[SPIN]->material.kShininess = 1.5f;
-
-	meshList[SPINCAP] = MeshBuilder::GenerateOBJ("spincap", "OBJ//spincap.obj");
-	meshList[SPINCAP]->textureID = LoadTGA("Image//spincap.tga");
-	meshList[SPINCAP]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
-	meshList[SPINCAP]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
-	meshList[SPINCAP]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
-	meshList[SPINCAP]->material.kShininess = 1.5f;
-
-	meshList[BUTTON] = MeshBuilder::GenerateOBJ("button", "OBJ//button.obj");
-	meshList[BUTTON]->textureID = LoadTGA("Image//redbutton.tga");
-	meshList[BUTTON]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
-	meshList[BUTTON]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
-	meshList[BUTTON]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
-	meshList[BUTTON]->material.kShininess = 1.5f;
-
-	meshList[BUTTONSTAND] = MeshBuilder::GenerateOBJ("spincap", "OBJ//buttonstand.obj");
-	meshList[BUTTONSTAND]->textureID = LoadTGA("Image//buttonstand.tga");
-	meshList[BUTTONSTAND]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
-	meshList[BUTTONSTAND]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
-	meshList[BUTTONSTAND]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
-	meshList[BUTTONSTAND]->material.kShininess = 1.5f;
->>>>>>> 68816d2da8270236f56e0672128d121ca9fcf7aa
 
 	meshList[ARM2] = MeshBuilder::GenerateOBJ("arm2", "OBJ//arm2.obj");
 	meshList[ARM2]->textureID = LoadTGA("Image//Alien1.tga");
@@ -208,41 +175,12 @@ void PLANET1::Init()
 	meshList[ARM2]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
 	meshList[ARM2]->material.kShininess = 1.5f;
 
-<<<<<<< HEAD
 	meshList[LEG] = MeshBuilder::GenerateOBJ("leg", "OBJ//leg1.obj");
 	meshList[LEG]->textureID = LoadTGA("Image//Alien1.tga");
 	meshList[LEG]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
 	meshList[LEG]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
 	meshList[LEG]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
 	meshList[LEG]->material.kShininess = 1.5f;
-=======
-	rotatespin = 0;
-	rotategem1 = 0;
-	rotategem2 = 0;
-	rotategem3 = 0;
-	rotategem4 = 0;
-	spin1 = false;	
-	gem1 = false;
-	gem2 = false;
-	gem3 = false;
-	gem4 = false;
-	complete1 = false;
-	complete2 = false;
-	complete3 = false;
-	complete4 = false;
-	translateButton = 3.55f; 
-	translategem1 = 3.55f;
-	translategem2 = 3.55f;
-	translategem3 = 3.55f;
-	translategem4 = 3.55f;
-	flygem1 = 6.0f;
-	flygem2 = 6.3f;
-	flygem3 = 5.7f;
-	flygem4 = 5.5f;
-	scaleFinish = 0.1f;
-	MS_rotate = 0.f;
-	MS_reverse = false;
->>>>>>> 68816d2da8270236f56e0672128d121ca9fcf7aa
 
 	meshList[LEG2] = MeshBuilder::GenerateOBJ("leg2", "OBJ//leg2.obj");
 	meshList[LEG2]->textureID = LoadTGA("Image//Alien1.tga");
@@ -291,30 +229,6 @@ void PLANET1::Init()
 	MS_rotate = 0.f;
 	MS_reverse = false;
 	SimpleVariables();
-
-<<<<<<< HEAD
-=======
-	meshList[GEM4] = MeshBuilder::GenerateOBJ("gem4", "OBJ//gem4.obj");
-	meshList[GEM4]->textureID = LoadTGA("Image//portal4.tga");
-	meshList[GEM4]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
-	meshList[GEM4]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
-	meshList[GEM4]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
-	meshList[GEM4]->material.kShininess = 1.5f;
-
-	meshList[GEMCASE] = MeshBuilder::GenerateOBJ("gemcase", "OBJ//Barrier.obj");
-	meshList[GEMCASE]->textureID = LoadTGA("Image//BarrierTextures.tga");
-	meshList[GEMCASE]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
-	meshList[GEMCASE]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
-	meshList[GEMCASE]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
-	meshList[GEMCASE]->material.kShininess = 1.5f;
-
-	meshList[END] = MeshBuilder::GenerateOBJ("end", "OBJ//END.obj");
-	meshList[END]->textureID = LoadTGA("Image//END.tga");
-	meshList[END]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
-	meshList[END]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
-	meshList[END]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
-	meshList[END]->material.kShininess = 1.5f;
->>>>>>> 68816d2da8270236f56e0672128d121ca9fcf7aa
 }
 
 static float ROT_LIMIT = 45.f;
@@ -386,96 +300,8 @@ void PLANET1::Update(double dt)
 	if (Application::IsKeyPressed('P'))
 		light[0].position.y += (float)(LSPEED * dt);
 
-<<<<<<< HEAD
 	//Shooting
 	if (Application::IsKeyPressed(VK_LBUTTON))
-=======
-	if (Application::IsKeyPressed(VK_LBUTTON) && ((camera.position.x < 10) && (camera.position.x > 0) && (camera.position.z < 52) && (camera.position.z > 40)))
-	{
-		spin1 = true;
-	}
-	if (spin1 == true)
-	{
-		rotatespin += (float)(25 * dt);
-
-	}
-
-	if ((translateButton > 3.4f) && (spin1 == true))
-	{
-		translateButton -= (float)(1 * dt);
-	}
-
-	if (Application::IsKeyPressed(VK_RBUTTON) && ((camera.position.x < 10) && (camera.position.x > 0) && (camera.position.z < 52) && (camera.position.z > 40)))
-	{
-		spin1 = false;
-	}
-	if ((translateButton < 3.55f) && (spin1 == false))
-	{
-		translateButton += (float)(1 * dt);
-	}
-
-
-	if (Application::IsKeyPressed(VK_LBUTTON) && ((camera.position.x < -45) && (camera.position.x > -55) && (camera.position.z < -69.5) && (camera.position.z > -93.5)))
-	{
-		gem1 = true;
-	}
-	if (gem1 == true)
-	{
-		if (flygem1 <= 8.0f)
-		{
-			flygem1 += (float)(3 * dt);
-		}
-
-		if (flygem1 > 7.99f)
-		{
-			rotategem1 += (float)(150 * dt);
-		}
-		complete1 = true;
-
-	}
-	if ((translategem1 > 3.4f) && (gem1 == true))
-	{
-		translategem1 -= (float)(1 * dt);
-	}
-
-
-	if (Application::IsKeyPressed(VK_RBUTTON) && ((camera.position.x < -45) && (camera.position.x > -55) && (camera.position.z < -69.5) && (camera.position.z > -93.5)))
-	{
-		gem1 = false;
-	}
-	if ((translategem1 < 3.55f) && (gem1 == false))
-	{
-		translategem1 += (float)(1 * dt);
-
-	}
-	if (gem1 == false)
-	{
-		if (flygem1 > 6.0f)
-		{
-			flygem1 -= (float)(3 * dt);
-		}
-	}
-	
-
-	if (Application::IsKeyPressed(VK_LBUTTON) && ((camera.position.x < -20) && (camera.position.x > -30) && (camera.position.z < -69.5) && (camera.position.z > -93.5)))
-	{
-		gem2 = true;
-	}
-	if (gem2 == true)
-	{
-		if (flygem2 <= 8.1f)
-		{
-			flygem2 += (float)(3 * dt);
-		}
-
-		if (flygem2 > 8.09f)
-		{
-			rotategem2 += (float)(150 * dt);
-		}
-		complete2 = true;
-	}
-	if ((translategem2 > 3.4f) && (gem2 == true))
->>>>>>> 68816d2da8270236f56e0672128d121ca9fcf7aa
 	{
 		something.push_back(Camera3::positions);
 		anotherSomething.push_back(Camera3::bullets);
@@ -488,7 +314,6 @@ void PLANET1::Update(double dt)
 	}
 	moreShooting();
 
-<<<<<<< HEAD
 	charMovement(MS_reverse, 20.f, MS_rotate, 3.f, dt);
 
 	collisionCheck(0.f, -190.f, camera, Vector3(200.f, 0.f, 20.f));
@@ -515,89 +340,6 @@ void PLANET1::Update(double dt)
 	//if (pla2npc.rotateNPC < pla2npc.Interaction(camera, 15.f))
 	//	pla2npc.rotateNPC += (float)(50.0 * dt);
 }
-=======
-	if (Application::IsKeyPressed(VK_RBUTTON) && ((camera.position.x < -20) && (camera.position.x > -30) && (camera.position.z < -69.5) && (camera.position.z > -93.5)))
-	{
-		gem2 = false;
-	}
-	if ((translategem2 < 3.55f) && (gem2 == false))
-	{
-		translategem2 += (float)(1 * dt);
-
-	}
-	if (gem2 == false)
-	{
-		if (flygem2 > 6.3f)
-		{
-			flygem2 -= (float)(3 * dt);
-		}
-	}
-
-
-	if (Application::IsKeyPressed(VK_LBUTTON) && ((camera.position.x < 5) && (camera.position.x > -5) && (camera.position.z < -69.5) && (camera.position.z > -93.5)))
-	{
-		gem3 = true;
-	}
-	if (gem3 == true)
-	{
-		if (flygem3 <= 7.5f)
-		{
-			flygem3 += (float)(3 * dt);
-		}
-
-		if (flygem3 > 7.49f)
-		{
-			rotategem3 += (float)(150 * dt);
-		}
-		complete3 = true;
-	}
-	if ((translategem3 > 3.4f) && (gem3 == true))
-	{
-		translategem3 -= (float)(1 * dt);
-	}
-
-
-	if (Application::IsKeyPressed(VK_RBUTTON) && ((camera.position.x < 5) && (camera.position.x > -5) && (camera.position.z < -69.5) && (camera.position.z > -93.5)))
-	{
-		gem3 = false;
-	}
-	if ((translategem3 < 3.55f) && (gem3 == false))
-	{
-		translategem3 += (float)(1 * dt);
-
-	}
-	if (gem3 == false)
-	{
-		if (flygem3 > 5.5f)
-		{
-			flygem3 -= (float)(3 * dt);
-		}
-	}
-
-
-
-	if (Application::IsKeyPressed(VK_LBUTTON) && ((camera.position.x < 30) && (camera.position.x > 20) && (camera.position.z < -69.5) && (camera.position.z > -93.5)))
-	{
-		gem4 = true;
-	}
-	if (gem4 == true)
-	{
-		if (flygem4 <= 7.5f)
-		{
-			flygem4 += (float)(3 * dt);
-		}
-
-		if (flygem4 > 7.49f)
-		{
-			rotategem4 += (float)(150 * dt);
-		}
-		complete4 = true;
-	}
-	if ((translategem4 > 3.4f) && (gem4 == true))
-	{
-		translategem4 -= (float)(1 * dt);
-	}
->>>>>>> 68816d2da8270236f56e0672128d121ca9fcf7aa
 
 void PLANET1::MethCalculations()
 {
@@ -609,44 +351,21 @@ void PLANET1::MethCalculations()
 	rangeGunZ = camera.position.z - GunZ;
 	if (rangeGunZ <= 0)
 	{
-<<<<<<< HEAD
 		rangeGunZ *= -1;
-=======
-		translategem4 += (float)(1 * dt);
-		
-	}
-	if (gem4 == false)
-	{
-		if (flygem4 > 5.5f)
-		{
-			flygem4 -= (float)(3 * dt);
-		}
->>>>>>> 68816d2da8270236f56e0672128d121ca9fcf7aa
 	}
 	rangeFiringRangeX = camera.position.x - firingRangeX;
 	if (rangeFiringRangeX < 0) { rangeFiringRangeX *= -1; }
-
-<<<<<<< HEAD
 	rangeFiringRangeZ = camera.position.z - firingRangeZ;
 	if (rangeFiringRangeZ < 0) { rangeFiringRangeZ *= -1; }
-=======
-	if (complete1 == true && complete2 == true && complete3 == true && complete4 == true)
-	{
-		if (scaleFinish < 10)
-		{
-			scaleFinish += (float)(1 * dt);
-		}
-		translateEND = 20.0f;
-	}
 
-	charMovement(MS_reverse, 20.f, MS_rotate, 3.f, dt);
+	//charMovement(MS_reverse, 20.f, MS_rotate, 3.f, dt);
+
 	collisionCheck(125.f, 0.f, camera, Vector3(2.f,0.f,126.f));
 	collisionCheck(-125.f, 0.f, camera, Vector3(2.f, 0.f, 126.f));
 	collisionCheck(0.f, 125.f, camera, Vector3(126.f, 0.f, 2.f));
 	collisionCheck(0.f, -125.f, camera, Vector3(126.f, 0.f, 2.f));
 	collisionCheck(0.f, 0.f, camera, Vector3(40.f, 0.f, 40.f));
 	collisionCheck(5.f, 45.f, camera, Vector3(3.f, 0.f, 3.f));
->>>>>>> 68816d2da8270236f56e0672128d121ca9fcf7aa
 }
 
 void PLANET1::Render()
@@ -694,76 +413,9 @@ void PLANET1::Render()
 
 	///////////////////////     GROUND      ///////////////////////////
 	modelStack.PushMatrix();
-<<<<<<< HEAD
 	modelStack.Translate(0.f, -20.f, 0.f);
 	modelStack.Scale(2500.f, 0.f, 2500.f);
 	RenderMesh(meshList[GROUND], false);
-=======
-	modelStack.Translate(0.0f, -35.0f, 0.f);
-	modelStack.Rotate(rotatespin - 45, 0, 1, 0);
-	modelStack.Scale(22.0f, 24.0f, 22.0f);
-	RenderMesh(meshList[SPIN], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0.0f, 8.0f, 0.f);
-	modelStack.Scale(10.0f, 10.f, 10.f);
-	RenderMesh(meshList[SPINCAP], false);
-	modelStack.PopMatrix();
-
-
-	modelStack.PushMatrix();
-	modelStack.Translate(5.0f, translateButton - 6.f, 43.5f);
-	modelStack.Rotate(25.0f, 1, 0, 0);
-	modelStack.Scale(2.f, 3.0f, 2.f);
-	RenderMesh(meshList[BUTTON], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(5.0f, -6.0f, 45.0f);
-	modelStack.Rotate(-90.0f, 0, 1, 0);
-	modelStack.Scale(2.0f, 2.0f, 2.0f);
-	RenderMesh(meshList[BUTTONSTAND], false);
-	modelStack.PopMatrix();
-
-	//////////////////////GEMS ARE OUTRAGREOUS//////////////////////////
-
-
-	modelStack.PushMatrix();
-	modelStack.Translate(-50.0f, translategem1 - 5.7f, -81.5f);
-	modelStack.Rotate(22.0f, 1, 0, 0);
-	modelStack.Scale(2.f, 3.0f, 2.f);
-	RenderMesh(meshList[BUTTON], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(-50.0f, -6.0f, -80.0f);
-	modelStack.Rotate(-90.0f, 0, 1, 0);
-	modelStack.Scale(2.0f, 2.0f, 2.0f);
-	RenderMesh(meshList[BUTTONSTAND], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(-50.0f, flygem1, -90.0f);
-	modelStack.Rotate(rotategem1, 0 , 1, 0);
-	modelStack.Scale(2.f, 3.0f, 2.f);
-	RenderMesh(meshList[GEM], true);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(-50.0f, -5.0f, -90.0f);
-	modelStack.Scale(2.f, 2.0f, 2.f);
-	RenderMesh(meshList[GEMCASE], true);
-	modelStack.PopMatrix();
-
-
-
-	modelStack.PushMatrix();
-	modelStack.Translate(-25.0f, translategem2 - 5.7f, -81.5f);
-	modelStack.Rotate(22.0f, 1, 0, 0);
-	modelStack.Scale(2.f, 3.0f, 2.f);
-	RenderMesh(meshList[BUTTON], false);
->>>>>>> 68816d2da8270236f56e0672128d121ca9fcf7aa
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
@@ -775,28 +427,11 @@ void PLANET1::Render()
 
 	///////////////////////   GIANT WALLS   ///////////////////////////
 	modelStack.PushMatrix();
-<<<<<<< HEAD
 	modelStack.Translate(0.f, -20.f, 200.f);
 	modelStack.Scale(50.f, 20.f, 50.f);
 	RenderMesh(meshList[WALL], false);
 	modelStack.PopMatrix();
 
-=======
-	modelStack.Translate(-25.0f,flygem2, -90.0f);
-	modelStack.Rotate(rotategem2, 0, 1, 0);
-	modelStack.Scale(2.f, 3.0f, 2.f);
-	RenderMesh(meshList[GEM2], true);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(-25.0f, -5.0f, -90.0f);
-	modelStack.Scale(2.f, 2.0f, 2.f);
-	RenderMesh(meshList[GEMCASE], true);
-	modelStack.PopMatrix();
-
-
-
->>>>>>> 68816d2da8270236f56e0672128d121ca9fcf7aa
 	modelStack.PushMatrix();
 	modelStack.Translate(0.f, -20.f, -200.f);
 	modelStack.Scale(50.f, 20.f, 50.f);
@@ -813,67 +448,11 @@ void PLANET1::Render()
 
 	///////////////////////   SMALL WALLS   ///////////////////////////
 	modelStack.PushMatrix();
-<<<<<<< HEAD
 	modelStack.Translate(150.f, -20.f, 0.f);
 	modelStack.Rotate(90.f, 0, 1, 0);
 	modelStack.Scale(12.f, 6.f, 12.f);
 	RenderMesh(meshList[WALL], false);
-=======
-	modelStack.Translate(0.0f, flygem3, -90.0f);
-	modelStack.Rotate(rotategem3, 0, 1, 0);
-	modelStack.Scale(2.f, 3.0f, 2.f);
-	RenderMesh(meshList[GEM3], true);
-	modelStack.PopMatrix();
 
-	modelStack.PushMatrix();
-	modelStack.Translate(0.0f, -5.0f, -90.0f);
-	modelStack.Scale(2.f, 2.0f, 2.f);
-	RenderMesh(meshList[GEMCASE], true);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(25.0f, translategem4 - 5.7f, -81.5f);
-	modelStack.Rotate(22.0f, 1, 0, 0);
-	modelStack.Scale(2.f, 3.0f, 2.f);
-	RenderMesh(meshList[BUTTON], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(25.0f, -6.0f, -80.0f);
-	modelStack.Rotate(-90.0f, 0, 1, 0);
-	modelStack.Scale(2.0f, 2.0f, 2.0f);
-	RenderMesh(meshList[BUTTONSTAND], false);
-	modelStack.PopMatrix();
-
-
-	modelStack.PushMatrix();
-	modelStack.Translate(25.0f, flygem4, -90.0f);
-	modelStack.Rotate(rotategem4, 0, 2, 0);
-	modelStack.Scale(2.f, 3.0f, 2.f);
-	RenderMesh(meshList[GEM4], true);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(25.0f, -5.0f, -90.0f);
-	modelStack.Scale(2.f, 2.0f, 2.f);
-	RenderMesh(meshList[GEMCASE], true);
-	modelStack.PopMatrix();
-	//////////////////////THEY ARE TRULY, TRULY, TRULY OUTRAGREOUS//////////////////////////
-
-
-	modelStack.PushMatrix();
-	modelStack.Translate(-10.0f, translateEND , -123.0f);
-	modelStack.Scale(scaleFinish,scaleFinish,scaleFinish);
-	RenderMesh(meshList[END], true);
-	modelStack.PopMatrix();
-
-
-	modelStack.PushMatrix();
-	modelStack.Translate(124.0f, 12.0f, -40.f);
-	modelStack.Rotate(-90.0f, 0, 1, 0);
-	modelStack.Scale(10.0f, 10.0f, 3.0f);
-	RenderMesh(meshList[PICFRAME], false);
->>>>>>> 68816d2da8270236f56e0672128d121ca9fcf7aa
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
