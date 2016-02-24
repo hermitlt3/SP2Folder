@@ -26,6 +26,7 @@ void Camera3::Update(double dt)
 {
 	const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 	static const float CAMERA_SPEED = 100.f;
+	static const float BULLET_SPEED = 300.f;
 	POINT mousepos;
 	int midX = mode->width / 2;
 	int midY = mode->height / 2;
@@ -106,6 +107,12 @@ void Camera3::Update(double dt)
 			position.x += right.x * (float)(CAMERA_SPEED * dt);
 			position.z += right.z * (float)(CAMERA_SPEED * dt);
 		}
+		//Part of shooting
+		Vector3 view = (target - position).Normalized();
+		Vector3 right = view.Cross(up);
+		bullets = view * (float)(BULLET_SPEED * dt);
+		positions = position + view * (float)(BULLET_SPEED * dt);
+
 	if (Application::IsKeyPressed('R'))
 	{
 		Reset();

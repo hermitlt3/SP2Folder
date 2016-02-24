@@ -7,6 +7,12 @@
 #include "MatrixStack.h"
 #include "Light.h"
 #include "Vector3.h"
+#include "NPC.h"
+
+#include <vector>
+#include <iterator>
+
+using std::vector;
 
 class PLANET1 : public Scene
 {
@@ -15,18 +21,30 @@ class PLANET1 : public Scene
 		GEO_AXES = 0,
 		GEO_LIGHTBALL,
 		GEO_QUAD,
-		SPIN,
-		SPINCAP,
-		POSITION,
-		GALLERY_WALL,
-		BUTTON,
-		BUTTONSTAND,
-		GEM,
-		GEM2,
-		GEM3,
-		GEM4,
-		PICFRAME,
+		BACK,
+		LEFT,
+		RIGHT,
+		TOP,
+		BOTTOM,
+		FRONT,
+		WALL,
+		GUN,
+		GROUND,
+
+		LEG,
+		LEG2,
+		ARM,
 		ARM2,
+		HEAD,
+		CHEST,
+
+		GEO_TEXT,
+		ASTEROID,
+
+		BULLET,
+		QUAD,
+
+		POSITION,
 		NUM_GEOMETRY,
 	};
 	enum UNIFORM_TYPE
@@ -80,6 +98,7 @@ public:
 	virtual void RenderMesh(Mesh *mesh, bool enableLight);
 	virtual void RenderText(Mesh* mesh, std::string text, Color color);
 	virtual void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
+	virtual void RenderNPC(bool enableLight);
 	virtual void RenderHandOnScreen();
 	virtual void Exit();
 
@@ -87,28 +106,6 @@ private:
 	unsigned m_vertexArrayID;
 	unsigned m_programID;
 	unsigned m_parameters[U_TOTAL];
-	float rotatespin;
-	float translateButton;
-	bool spin1;
-
-	bool gem1;
-	bool gem2;
-	bool gem3;
-	bool gem4;
-	float rotategem1;
-	float rotategem2;
-	float rotategem3;
-	float rotategem4;
-
-	float translategem1;
-	float translategem2;
-	float translategem3;
-	float translategem4;
-
-
-
-
-
 
 	Camera3 camera;
 
@@ -119,13 +116,30 @@ private:
 	Light light[2];
 
 	void RenerMesh(Mesh *mesh, bool enableLight);
-	
 	void RenderSkyBox();
 
+	StopNPC pla2npc;
 	float MS_rotate;
 	bool MS_reverse;
+	float GunX, GunZ, rangeGunX, rangeGunZ;
+	bool inRange, holdingGun;
+	float rotateA, rotateB, rotateC;
+	float firingRangeX, firingRangeZ;
+	float rangeFiringRangeX, rangeFiringRangeZ;
+	bool nearFiringRange;
+	void SimpleVariables();
+	void MethCalculations();
+	void gunFunctioning();
+	void renderGunOnHand();
+	void renderGunUI();
+	void shooting();
+	float test2 = 0;
+	//For Shooting
+	vector<Vector3> something;
+	vector<Vector3> anotherSomething;
+	void moreShooting();
 };
 
 
-#endif // PLANET1_H
+#endif
 
