@@ -7,8 +7,6 @@
 #include "MatrixStack.h"
 #include "Light.h"
 #include "Vector3.h"
-#include "ReadFromExtern.h"
-#include "NPC.h"
 
 class SP2 : public Scene
 {
@@ -115,9 +113,7 @@ public:
 	virtual void Render();
 	virtual void RenderMesh(Mesh *mesh, bool enableLight);
 	virtual void RenderText(Mesh* mesh, std::string text, Color color);
-	virtual void RenderNPC(StopNPC &temp, bool enableLight);
 	virtual void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
-	virtual void RenderHandOnScreen();
 	virtual void Exit();
 
 	void certainCalculations();
@@ -146,20 +142,14 @@ private:
 
 	Light light[2];
 
+	//void RenderMesh(Mesh *mesh, bool enableLight);
 	void RenderSkyBox();
+	void collisionCheck(float colliX, float colliZ, Camera3 &camera, Vector3 radius);
 
 	bool toggleLight;
 	bool displayOn;
 
-	float MS_rotate;
-	bool MS_reverse;
-
 	float rotateSwitch;
-
-	float test = 0.f;
-
-	bool armReverse;
-	bool legReverse;
 
 	Vector3 glassFrontColli;
 	Vector3 glassSideColli;
@@ -167,12 +157,7 @@ private:
 	Vector3 wheelLightColli;
 	Vector3 portalColli;
 
-	std::vector<float>ColliX;
-	std::vector<float>ColliZ;
-
-	StopNPC platNPCone;
-	StopNPC platNPCtwo;
-};
+	};
 
 
 #endif // SP2_H

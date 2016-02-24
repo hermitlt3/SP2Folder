@@ -15,20 +15,14 @@ class PLANET5 : public Scene
 		GEO_AXES = 0,
 		GEO_LIGHTBALL,
 		GEO_QUAD,
-		SPIN,
-		SPINCAP,
-		POSITION,
-		GALLERY_WALL,
-		BUTTON,
-		BUTTONSTAND,
-		GEM,
-		GEM2,
-		GEM3,
-		GEM4,
-		GEMCASE,
-		END,
-		PICFRAME,
-		ARM2,
+		TEST_BACK,
+		TEST_LEFT,
+		TEST_RIGHT,
+		TEST_TOP,
+		TEST_BOTTOM,
+		TEST_FRONT,
+		GEO_TEXT,
+		ASTEROID,
 		NUM_GEOMETRY,
 	};
 	enum UNIFORM_TYPE
@@ -82,42 +76,12 @@ public:
 	virtual void RenderMesh(Mesh *mesh, bool enableLight);
 	virtual void RenderText(Mesh* mesh, std::string text, Color color);
 	virtual void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
-	virtual void RenderHandOnScreen();
 	virtual void Exit();
 
 private:
 	unsigned m_vertexArrayID;
 	unsigned m_programID;
 	unsigned m_parameters[U_TOTAL];
-	float rotatespin;
-	float translateButton;
-	bool spin1;
-
-	bool gem1;
-	bool gem2;
-	bool gem3;
-	bool gem4;
-	bool complete1;
-	bool complete2;
-	bool complete3;
-	bool complete4;
-	float rotategem1;
-	float rotategem2;
-	float rotategem3;
-	float rotategem4;
-	float translateEND;
-	float translategem1;
-	float translategem2;
-	float translategem3;
-	float translategem4;
-	float flygem1;
-	float flygem2;
-	float flygem3;
-	float flygem4;
-
-	float scaleFinish;
-
-
 
 	Camera3 camera;
 
@@ -128,11 +92,8 @@ private:
 	Light light[2];
 
 	void RenerMesh(Mesh *mesh, bool enableLight);
-
 	void RenderSkyBox();
 
-	float MS_rotate;
-	bool MS_reverse;
 };
 
 
