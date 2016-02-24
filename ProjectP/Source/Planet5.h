@@ -21,6 +21,12 @@ class PLANET5 : public Scene
 		GALLERY_WALL,
 		BUTTON,
 		BUTTONSTAND,
+		GEM,
+		GEM2,
+		GEM3,
+		GEM4,
+		GEMCASE,
+		END,
 		PICFRAME,
 		ARM2,
 		NUM_GEOMETRY,
@@ -86,6 +92,33 @@ private:
 	float rotatespin;
 	float translateButton;
 	bool spin1;
+
+	bool gem1;
+	bool gem2;
+	bool gem3;
+	bool gem4;
+	bool complete1;
+	bool complete2;
+	bool complete3;
+	bool complete4;
+	float rotategem1;
+	float rotategem2;
+	float rotategem3;
+	float rotategem4;
+	float translateEND;
+	float translategem1;
+	float translategem2;
+	float translategem3;
+	float translategem4;
+	float flygem1;
+	float flygem2;
+	float flygem3;
+	float flygem4;
+
+	float scaleFinish;
+
+
+
 	Camera3 camera;
 
 	Mesh* meshList[NUM_GEOMETRY];
@@ -103,5 +136,5 @@ private:
 };
 
 
-#endif // PLANET1_H
+#endif // PLANET5_H
 

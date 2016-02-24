@@ -113,7 +113,7 @@ void Application::Run()
 	Scene *scene3 = new PLANET2();
 //	Scene *scene4 = new PLANET3();
 //	Scene *scene5 = new PLANET4();
-//	Scene *scene6 = new PLANET5();
+	Scene *scene6 = new PLANET5();
 
 	Scene *currScene = scene3;
 
@@ -122,7 +122,7 @@ void Application::Run()
 	scene3->Init();
 //	scene4->Init();
 //	scene5->Init();
-//	scene6->Init();
+	scene6->Init();
 
 	m_timer.startTimer();    // Start timer to calculate how long it takes to render this frame
 	while (!glfwWindowShouldClose(m_window) && !IsKeyPressed(VK_ESCAPE))
@@ -159,7 +159,7 @@ void Application::Run()
 
 		else if (GameMode::GetInstance()->gameState == 6)
 		{
-			//currScene = scene6;
+			currScene = scene6;
 			GameMode::GetInstance()->gameState = 0;
 		}
 		currScene->Update(m_timer.getElapsedTime());
