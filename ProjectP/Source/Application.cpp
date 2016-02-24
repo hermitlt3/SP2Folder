@@ -110,16 +110,16 @@ void Application::Run()
 	//Main Loop
 	Scene *scene1 = new SP2();
 	Scene *scene2 = new PLANET1();
-	Scene *scene3 = new PLANET2();
+//	Scene *scene3 = new PLANET2();
 //	Scene *scene4 = new PLANET3();
 //	Scene *scene5 = new PLANET4();
 	Scene *scene6 = new PLANET5();
 
-	Scene *currScene = scene3;
+	Scene *currScene = scene2;
 
 	scene1->Init();
 	scene2->Init();
-	scene3->Init();
+//	scene3->Init();
 //	scene4->Init();
 //	scene5->Init();
 	scene6->Init();
@@ -139,11 +139,11 @@ void Application::Run()
 			GameMode::GetInstance()->gameState = 0;
 		}
 
-		else if (GameMode::GetInstance()->gameState == 3)
+		/*else if (GameMode::GetInstance()->gameState == 3)
 		{
 			currScene = scene3;
 			GameMode::GetInstance()->gameState = 0;
-		}
+		}*/
 
 		else if (GameMode::GetInstance()->gameState == 4)
 		{
