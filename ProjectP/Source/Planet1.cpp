@@ -1,4 +1,4 @@
-#include "Planet1.h"
+#include "PLANET1.h"
 #include "GL\glew.h"
 #include "LoadTGA.h"
 #include "timer.h"
@@ -10,6 +10,9 @@
 #include "Gamemode.h"
 #include "Collision.h"
 #include "Movement.h"
+
+Vector3 Camera3::bullets(0, 0, 0);
+Vector3 Camera3::positions(0, 0, 0);
 
 #include <sstream>
 #include <iomanip>
@@ -79,7 +82,7 @@ void PLANET1::Init()
 	//variable to rotate geometry
 
 	//Initialize camera settings
-	camera.Init(Vector3(0, 5, 100), Vector3(0, 5, 0), Vector3(0, 1, 0));
+	camera.Init(Vector3(20, 5, 5), Vector3(0, 0, 0), Vector3(0, 1, 0));
 
 	meshList[GEO_AXES] = MeshBuilder::GenerateAxes("AXES", 1000, 1000, 1000);
 
@@ -126,61 +129,125 @@ void PLANET1::Init()
 
 	meshList[GEO_LIGHTBALL] = MeshBuilder::GenerateSphere("LIGHT", Color(1, 1, 1), 36, 36);
 
-	meshList[PICFRAME] = MeshBuilder::GenerateOBJ("frame", "OBJ//PicFrame.obj");
-	meshList[PICFRAME]->textureID = LoadTGA("Image//PictureFrameTextures.tga");
+	meshList[BULLET] = MeshBuilder::GenerateSphere("Bullet", Color(1, 0, 0), 36, 36);
 
-	meshList[SPIN] = MeshBuilder::GenerateOBJ("spin", "OBJ//spin.obj");
-	meshList[SPIN]->textureID = LoadTGA("Image//spin.tga");
-	meshList[SPIN]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
-	meshList[SPIN]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
-	meshList[SPIN]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
-	meshList[SPIN]->material.kShininess = 1.5f;
+	meshList[QUAD] = MeshBuilder::GenerateQuad("TestingQuad", Color(1, 0, 0));
 
-	meshList[SPINCAP] = MeshBuilder::GenerateOBJ("spincap", "OBJ//spincap.obj");
-	meshList[SPINCAP]->textureID = LoadTGA("Image//spincap.tga");
-	meshList[SPINCAP]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
-	meshList[SPINCAP]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
-	meshList[SPINCAP]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
-	meshList[SPINCAP]->material.kShininess = 1.5f;
+	meshList[GEO_TEXT] = MeshBuilder::GenerateText("text", 16, 16);
+	meshList[GEO_TEXT]->textureID = LoadTGA("Image//Redressed.tga");
 
-	meshList[BUTTON] = MeshBuilder::GenerateOBJ("button", "OBJ//button.obj");
-	meshList[BUTTON]->textureID = LoadTGA("Image//redbutton.tga");
-	meshList[BUTTON]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
-	meshList[BUTTON]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
-	meshList[BUTTON]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
-	meshList[BUTTON]->material.kShininess = 1.5f;
+	meshList[ASTEROID] = MeshBuilder::GenerateOBJ("asteroid", "OBJ//asteroid.obj");
+	meshList[ASTEROID]->textureID = LoadTGA("Image//asteroid.tga");
+	meshList[ASTEROID]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[ASTEROID]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[ASTEROID]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[ASTEROID]->material.kShininess = 1.5f;
 
-	meshList[BUTTONSTAND] = MeshBuilder::GenerateOBJ("spincap", "OBJ//buttonstand.obj");
-	meshList[BUTTONSTAND]->textureID = LoadTGA("Image//buttonstand.tga");
-	meshList[BUTTONSTAND]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
-	meshList[BUTTONSTAND]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
-	meshList[BUTTONSTAND]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
-	meshList[BUTTONSTAND]->material.kShininess = 1.5f;
+	meshList[WALL] = MeshBuilder::GenerateOBJ("wall", "OBJ//oldWall.obj");
+	meshList[WALL]->textureID = LoadTGA("Image//oldWall.tga");
+	meshList[WALL]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[WALL]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[WALL]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[WALL]->material.kShininess = 1.5f;
+
+	meshList[GUN] = MeshBuilder::GenerateOBJ("Gun", "OBJ//Gun.obj");
+	meshList[GUN]->textureID = LoadTGA("Image//Gun.tga");
+	meshList[GUN]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[GUN]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[GUN]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[GUN]->material.kShininess = 1.5f;
+
+	meshList[GROUND] = MeshBuilder::GenerateQuad("ground", Color(0, 0, 0));
+	meshList[GROUND]->textureID = LoadTGA("Image//ground2.tga");
+
+
+	meshList[ARM] = MeshBuilder::GenerateOBJ("arm", "OBJ//arm1.obj");
+	meshList[ARM]->textureID = LoadTGA("Image//Alien1.tga");
+	meshList[ARM]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[ARM]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[ARM]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[ARM]->material.kShininess = 1.5f;
 
 	meshList[ARM2] = MeshBuilder::GenerateOBJ("arm2", "OBJ//arm2.obj");
-	meshList[ARM2]->textureID = LoadTGA("Image//Human.tga");
+	meshList[ARM2]->textureID = LoadTGA("Image//Alien1.tga");
 	meshList[ARM2]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
 	meshList[ARM2]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
 	meshList[ARM2]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
 	meshList[ARM2]->material.kShininess = 1.5f;
 
-	rotatespin = 0;
-	spin1 = false;	
-	translateButton = 3.55f; 
-	MS_rotate = 0.f;
-	MS_reverse = false;
+	meshList[LEG] = MeshBuilder::GenerateOBJ("leg", "OBJ//leg1.obj");
+	meshList[LEG]->textureID = LoadTGA("Image//Alien1.tga");
+	meshList[LEG]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[LEG]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[LEG]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[LEG]->material.kShininess = 1.5f;
+
+	meshList[LEG2] = MeshBuilder::GenerateOBJ("leg2", "OBJ//leg2.obj");
+	meshList[LEG2]->textureID = LoadTGA("Image//Alien1.tga");
+	meshList[LEG2]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[LEG2]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[LEG2]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[LEG2]->material.kShininess = 1.5f;
+
+
+	meshList[HEAD] = MeshBuilder::GenerateOBJ("head", "OBJ//head.obj");
+	meshList[HEAD]->textureID = LoadTGA("Image//Alien1.tga");
+	meshList[HEAD]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[HEAD]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[HEAD]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[HEAD]->material.kShininess = 1.5f;
+
+	meshList[CHEST] = MeshBuilder::GenerateOBJ("chest", "OBJ//chest.obj");
+	meshList[CHEST]->textureID = LoadTGA("Image//Alien1.tga");
+	meshList[CHEST]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[CHEST]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[CHEST]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[CHEST]->material.kShininess = 1.5f;
+
+	meshList[FRONT] = MeshBuilder::GenerateQuad("front", Color(1, 1, 1));
+	meshList[FRONT]->textureID = LoadTGA("Image//redplanet_ft.tga");
+
+	meshList[RIGHT] = MeshBuilder::GenerateQuad("right", Color(1, 1, 1));
+	meshList[RIGHT]->textureID = LoadTGA("Image//redplanet_rt.tga");
+
+	meshList[TOP] = MeshBuilder::GenerateQuad("top", Color(1, 1, 1));
+	meshList[TOP]->textureID = LoadTGA("Image//redplanet_up.tga");
+
+
+	meshList[BOTTOM] = MeshBuilder::GenerateQuad("bottom", Color(1, 1, 1));
+	meshList[BOTTOM]->textureID = LoadTGA("Image//redplanet_dn.tga");
+
+	meshList[LEFT] = MeshBuilder::GenerateQuad("left", Color(1, 1, 1));
+	meshList[LEFT]->textureID = LoadTGA("Image//redplanet_lf.tga");
+
+	meshList[BACK] = MeshBuilder::GenerateQuad("back", Color(1, 1, 1));
+	meshList[BACK]->textureID = LoadTGA("Image//redplanet_bk.tga");
 
 	meshList[POSITION] = MeshBuilder::GenerateText("keymsg", 16, 16);
 	meshList[POSITION]->textureID = LoadTGA("Image//Redressed.tga");
 
-	meshList[GALLERY_WALL] = MeshBuilder::GenerateOBJ("asteroid", "OBJ//GalleryBox.obj");
-	meshList[GALLERY_WALL]->textureID = LoadTGA("Image//BiegeWall.tga");
+	MS_rotate = 0.f;
+	MS_reverse = false;
+	SimpleVariables();
 }
 
 static float ROT_LIMIT = 45.f;
 static float SCALE_LIMIT = 5.f;
 static float LSPEED = 10.F;
 
+void PLANET1::SimpleVariables()
+{
+	inRange = false;
+	holdingGun = false;
+	GunX = 202.f;
+	GunZ = 0.f;
+	rotateA = 5.f;
+	rotateB = 110.f;
+	rotateC = 5.f;
+	nearFiringRange = false;
+	firingRangeX = 500.f;
+	firingRangeZ = 0.f;
+}
 
 void PLANET1::Update(double dt)
 {
@@ -196,6 +263,30 @@ void PLANET1::Update(double dt)
 		GameMode::GetInstance()->gameState = 1;
 	camera.Update(dt);
 
+	MethCalculations();
+
+	if ((rangeGunX <= 70) && (rangeGunZ <= 30) && (inRange == false))
+	{
+		inRange = true;
+		if ((Application::IsKeyPressed('E')))
+		{
+			holdingGun = true;
+		}
+	}
+	else
+	{
+		inRange = false;
+	}
+
+	if ((rangeFiringRangeX <= 50) && (rangeFiringRangeZ <= 50) && (nearFiringRange == false))
+	{
+		nearFiringRange = true;
+	}
+	else
+	{
+		nearFiringRange = false;
+	}
+
 	if (Application::IsKeyPressed('I'))
 		light[0].position.z -= (float)(LSPEED * dt);
 	if (Application::IsKeyPressed('K'))
@@ -209,30 +300,66 @@ void PLANET1::Update(double dt)
 	if (Application::IsKeyPressed('P'))
 		light[0].position.y += (float)(LSPEED * dt);
 
-	if (Application::IsKeyPressed(VK_LBUTTON) && ((camera.position.x < 10) && (camera.position.x > 0) && (camera.position.z < 52) && (camera.position.z > 40)))
+	//Shooting
+	if (Application::IsKeyPressed(VK_LBUTTON))
 	{
-		spin1 = true;
+		something.push_back(Camera3::positions);
+		anotherSomething.push_back(Camera3::bullets);
+		if (((Camera3::positions.x > 2500) || (Camera3::positions.x < -2500)) || ((Camera3::positions.y > 2500) || (Camera3::positions.y < -2500)) || ((Camera3::positions.z > 2500) || (Camera3::positions.z < -2500)))
+			if ((((Camera3::bullets.x > 2500) || (Camera3::bullets.x < -2500)) || ((Camera3::bullets.y > 2500) || (Camera3::bullets.y < -2500)) || ((Camera3::bullets.z > 2500) || (Camera3::bullets.z < -2500))))
+			{
+				something.erase(something.begin() + 200);
+				anotherSomething.pop_back();
+			}
 	}
-	if (spin1 == true)
-	{
-		rotatespin += (float)(25 * dt);
+	moreShooting();
 
-	}
-
-	if ((translateButton > 3.4f) && (spin1 == true))
-	{
-		translateButton -= (float)(1 * dt);
-	}
-
-	if (Application::IsKeyPressed(VK_RBUTTON) && ((camera.position.x < 10) && (camera.position.x > 0) && (camera.position.z < 52) && (camera.position.z > 40)))
-	{
-		spin1 = false;
-	}
-	if ((translateButton < 3.55f) && (spin1 == false))
-	{
-		translateButton += (float)(1 * dt);
-	}
 	charMovement(MS_reverse, 20.f, MS_rotate, 3.f, dt);
+
+	collisionCheck(0.f, -190.f, camera, Vector3(200.f, 0.f, 20.f));
+	collisionCheck(0.f, 210.f, camera, Vector3(200.f, 0.f, 20.f));
+	collisionCheck(210.f, 0.f, camera, Vector3(20.f, 0.f, 200.f));
+	collisionCheck(210.f, 210.f, camera, Vector3(50.f, 0.f, 50.f));
+	collisionCheck(-210.f, -190.f, camera, Vector3(50.f, 0.f, 50.f));
+	collisionCheck(210.f, 190.f, camera, Vector3(50.f, 0.f, 50.f));
+	collisionCheck(190.f, -210.f, camera, Vector3(50.f, 0.f, 50.f));
+	collisionCheck(-190.f, 210.f, camera, Vector3(50.f, 0.f, 50.f));
+	collisionCheck(170.f, 0.f, camera, Vector3(30.f, 0.f, 60.f));
+
+	collisionCheck(2500.f, 0.f, camera, Vector3(1250.f, 0.f, 1250.f));
+	collisionCheck(0.f, 2500.f, camera, Vector3(1250.f, 0.f, 1250.f));
+	collisionCheck(0.f, -2500.f, camera, Vector3(1250.f, 0.f, 1250.f));
+	collisionCheck(-2500.f, 0.f, camera, Vector3(1250.f, 0.f, 1250.f));
+
+	collisionCheck(2500.f, 0.f, camera, Vector3(1250.f, 0.f, 1250.f));
+	collisionCheck(0.f, 2500.f, camera, Vector3(1250.f, 0.f, 1250.f));
+	collisionCheck(0.f, -2500.f, camera, Vector3(1250.f, 0.f, 1250.f));
+	collisionCheck(-2500.f, 0.f, camera, Vector3(1250.f, 0.f, 1250.f));
+
+
+	//if (pla2npc.rotateNPC < pla2npc.Interaction(camera, 15.f))
+	//	pla2npc.rotateNPC += (float)(50.0 * dt);
+}
+
+void PLANET1::MethCalculations()
+{
+	rangeGunX = camera.position.x - GunX;
+	if (rangeGunX <= 0)
+	{
+		rangeGunX *= -1;
+	}
+	rangeGunZ = camera.position.z - GunZ;
+	if (rangeGunZ <= 0)
+	{
+		rangeGunZ *= -1;
+	}
+	rangeFiringRangeX = camera.position.x - firingRangeX;
+	if (rangeFiringRangeX < 0) { rangeFiringRangeX *= -1; }
+	rangeFiringRangeZ = camera.position.z - firingRangeZ;
+	if (rangeFiringRangeZ < 0) { rangeFiringRangeZ *= -1; }
+
+	//charMovement(MS_reverse, 20.f, MS_rotate, 3.f, dt);
+
 	collisionCheck(125.f, 0.f, camera, Vector3(2.f,0.f,126.f));
 	collisionCheck(-125.f, 0.f, camera, Vector3(2.f, 0.f, 126.f));
 	collisionCheck(0.f, 125.f, camera, Vector3(126.f, 0.f, 2.f));
@@ -277,83 +404,109 @@ void PLANET1::Render()
 
 	RenderMesh(meshList[GEO_AXES], false);
 
-	/*modelStack.PushMatrix();
+	modelStack.PushMatrix();
 	modelStack.Translate(light[0].position.x, light[0].position.y, light[0].position.z);
 	RenderMesh(meshList[GEO_LIGHTBALL], false);
 	modelStack.PopMatrix();
 
-	/*	modelStack.PushMatrix();
-		modelStack.Translate(0.f, 0.f, 0.f);
-		RenderMesh(meshList[ASTEROID], false);
-		modelStack.PopMatrix();*/
-
-	std::ostringstream fps;
-	fps << camera.position.x << " " << camera.position.y << " " << camera.position.z;
-	std::ostringstream fpss;
-	fpss << camera.target.x << " " << camera.target.y << " " << camera.target.z;
 	RenderSkyBox();
 
+	///////////////////////     GROUND      ///////////////////////////
 	modelStack.PushMatrix();
-	modelStack.Translate(0.0f, -35.0f, 0.f);
-	modelStack.Rotate(rotatespin - 45, 0, 1, 0);
-	modelStack.Scale(22.0f, 24.0f, 22.0f);
-	RenderMesh(meshList[SPIN], false);
+	modelStack.Translate(0.f, -20.f, 0.f);
+	modelStack.Scale(2500.f, 0.f, 2500.f);
+	RenderMesh(meshList[GROUND], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(0.0f, 8.0f, 0.f);
-	modelStack.Scale(10.0f, 10.f, 10.f);
-	RenderMesh(meshList[SPINCAP], false);
+	modelStack.Translate(firingRangeX, -19.9f, firingRangeZ);
+	modelStack.Scale(20.f, 0.f, 20.f);
+	RenderMesh(meshList[QUAD], false);
 	modelStack.PopMatrix();
+	///////////////////////     GROUND      ///////////////////////////
 
-
+	///////////////////////   GIANT WALLS   ///////////////////////////
 	modelStack.PushMatrix();
-	modelStack.Translate(5.0f, translateButton - 5.f, 43.5f);
-	modelStack.Rotate(25.0f, 1, 0, 0);
-	modelStack.Scale(2.f, 3.0f, 2.f);
-	RenderMesh(meshList[BUTTON], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(5.0f, -6.0f, 45.0f);
-	modelStack.Rotate(-90.0f, 0, 1, 0);
-	modelStack.Scale(2.0f, 2.0f, 2.0f);
-	RenderMesh(meshList[BUTTONSTAND], false);
+	modelStack.Translate(0.f, -20.f, 200.f);
+	modelStack.Scale(50.f, 20.f, 50.f);
+	RenderMesh(meshList[WALL], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(124.0f, 12.0f, -40.f);
-	modelStack.Rotate(-90.0f, 0, 1, 0);
-	modelStack.Scale(10.0f, 10.0f, 3.0f);
-	RenderMesh(meshList[PICFRAME], false);
+	modelStack.Translate(0.f, -20.f, -200.f);
+	modelStack.Scale(50.f, 20.f, 50.f);
+	RenderMesh(meshList[WALL], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(124.0f, 12.0f, 40.f);
-	modelStack.Rotate(-90.0f, 0, 1, 0);
-	modelStack.Scale(10.0f, 10.0f, 3.0f);
-	RenderMesh(meshList[PICFRAME], false);
+	modelStack.Translate(200.f, -20.f, 0.f);
+	modelStack.Rotate(90.f, 0, 1, 0);
+	modelStack.Scale(50.f, 20.f, 50.f);
+	RenderMesh(meshList[WALL], false);
+	modelStack.PopMatrix();
+	///////////////////////   GIANT WALLS   ///////////////////////////
+
+	///////////////////////   SMALL WALLS   ///////////////////////////
+	modelStack.PushMatrix();
+	modelStack.Translate(150.f, -20.f, 0.f);
+	modelStack.Rotate(90.f, 0, 1, 0);
+	modelStack.Scale(12.f, 6.f, 12.f);
+	RenderMesh(meshList[WALL], false);
+
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(-124.0f, 12.0f, -40.f);
-	modelStack.Rotate(90.0f, 0, 1, 0);
-	modelStack.Scale(10.0f, 10.0f, 3.0f);
-	RenderMesh(meshList[PICFRAME], false);
+	modelStack.Translate(180.f, -20.f, 50.f);
+	modelStack.Scale(5.f, 6.f, 5.f);
+	RenderMesh(meshList[WALL], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(-124.0f, 12.0f, 40.f);
-	modelStack.Rotate(90.0f, 0, 1, 0);
-	modelStack.Scale(10.0f, 10.0f, 3.0f);
-	RenderMesh(meshList[PICFRAME], false);
+	modelStack.Translate(180.f, -20.f, -50.f);
+	modelStack.Scale(5.f, 6.f, 5.f);
+	RenderMesh(meshList[WALL], false);
 	modelStack.PopMatrix();
+	///////////////////////   SMALL WALLS   ///////////////////////////
 
+	RenderNPC(false);
 	RenderHandOnScreen();
 
-	RenderTextOnScreen(meshList[POSITION], fps.str(), Color(0, 1, 1), 3, 10, 10);
-	RenderTextOnScreen(meshList[POSITION], fpss.str(), Color(0, 1, 1), 3, 10, 7);
+	if (holdingGun == false)
+	{
+		std::ostringstream inRangeGunz;
+		inRangeGunz << "Press E to pick up the Gun ";
+		if (inRange == true)
+		{
+			RenderTextOnScreen(meshList[POSITION], inRangeGunz.str(), Color(0, 0, 0), 2, 10, 15);
+		}
+		modelStack.PushMatrix();
+		modelStack.Translate(GunX, 0.f, GunZ);
+		modelStack.Rotate(90.f, 0, 1, 0);
+		modelStack.Rotate(15.f, 0, 0, 1);
+		modelStack.Scale(5.f, 5.f, 5.f);
+		RenderMesh(meshList[GUN], false);
+		modelStack.PopMatrix();
+	}
+	else if (holdingGun == true)
+	{
+		renderGunUI();
+		renderGunOnHand();
+		shooting();
 
+		std::ostringstream Ammunition;
+		Ammunition << "You have Unlimited Power. Its ok :)";
+		RenderTextOnScreen(meshList[POSITION], Ammunition.str(), Color(0, 1, 1), 2, 1, 28);
+	}
+
+	if (nearFiringRange == true)
+	{
+		std::ostringstream firingRange;
+		firingRange << "Press E to toggle Asteroids";
+		RenderTextOnScreen(meshList[POSITION], firingRange.str(), Color(0, 1, 1), 2, 1, 14);
+	}
+	std::ostringstream position;
+	position << "pos: X= " << camera.position.x << " Y= " << camera.position.y << " Z= " << camera.position.z;
+	RenderTextOnScreen(meshList[POSITION], position.str(), Color(0, 1, 1), 2, 1, 29);
 }
 
 void PLANET1::RenderMesh(Mesh *mesh, bool enableLight)
@@ -401,9 +554,49 @@ void PLANET1::RenderMesh(Mesh *mesh, bool enableLight)
 void PLANET1::RenderSkyBox()
 {
 	modelStack.PushMatrix();
-	modelStack.Translate(0.f, 30.f, 0.f);
-	modelStack.Scale(5.f, 3.f, 5.f);
-	RenderMesh(meshList[GALLERY_WALL], false);
+	modelStack.Translate(0.f, 0.f, 2500.f);
+	modelStack.Rotate(180.f, 0, 1, 0);
+	modelStack.Rotate(90.f, 1, 0, 0);
+	modelStack.Scale(5000.f, 5000.f, 5000.f);
+	RenderMesh(meshList[FRONT], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0.f, 0.f, -2500.f);
+	modelStack.Rotate(90.f, 1, 0, 0);
+	modelStack.Scale(5000.f, 5000.f, 5000.f);
+	RenderMesh(meshList[BACK], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0.f, 2500.f, 0.f);
+	modelStack.Rotate(-90.f, 0, 1, 0);
+	modelStack.Rotate(180.f, 0, 0, 1);
+	modelStack.Scale(5000.f, 5000.f, 5000.f);
+	RenderMesh(meshList[TOP], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0.f, -2500.f, 0.f);
+	modelStack.Rotate(-90.f, 0, 1, 0);
+	modelStack.Scale(5000.f, 5000.f, 5000.f);
+	RenderMesh(meshList[BOTTOM], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(-2500.f, 0, 0);
+	modelStack.Rotate(-90, 0, 0, 1);
+	modelStack.Rotate(90, 0, 1, 0);
+	modelStack.Scale(5000.f, 5000.f, 5000.f);
+	RenderMesh(meshList[RIGHT], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(2500.f, 0.f, 0.f);
+	modelStack.Rotate(-90.f, 0, 1, 0);
+	modelStack.Rotate(90.f, 1, 0, 0);
+	modelStack.Scale(5000.f, 5000.f, 5000.f);
+	RenderMesh(meshList[LEFT], false);
 	modelStack.PopMatrix();
 }
 
@@ -480,6 +673,36 @@ void PLANET1::RenderTextOnScreen(Mesh* mesh, std::string text, Color color, floa
 	glEnable(GL_DEPTH_TEST);
 }
 
+void PLANET1::RenderNPC(bool enableLight)
+{
+	///////////////////////////HUMAN/////////////////////////////////
+
+	modelStack.PushMatrix();
+	//modelStack.Translate(temp.tx, temp.ty, temp.tz);
+	//modelStack.Rotate(temp.r_angle - temp.rotateNPC, 0, 1, 0);
+	modelStack.Scale(3.f, 4.f, 3.f);
+
+	RenderMesh(meshList[ARM], enableLight);
+
+	RenderMesh(meshList[ARM2], enableLight);
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0.f, -2.95f, 0.f);
+	RenderMesh(meshList[LEG], enableLight);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0.f, -2.95f, 0.f);
+	RenderMesh(meshList[LEG2], enableLight);
+	modelStack.PopMatrix();
+
+	RenderMesh(meshList[CHEST], enableLight);
+	RenderMesh(meshList[HEAD], enableLight);
+
+	modelStack.PopMatrix();
+	///////////////////////////HUMAN/////////////////////////////////
+}
+
 void PLANET1::RenderHandOnScreen()
 {
 	glDisable(GL_DEPTH_TEST);
@@ -506,6 +729,86 @@ void PLANET1::RenderHandOnScreen()
 	modelStack.PopMatrix();
 
 	glEnable(GL_DEPTH_TEST);
+}
+
+void PLANET1::renderGunUI()
+{
+	glDisable(GL_DEPTH_TEST);
+
+	//Add these code just after glDisable(GL_DEPTH_TEST);
+	Mtx44 ortho;
+	ortho.SetToOrtho(0, 80, 0, 60, -40, 40); //size of screen UI
+	projectionStack.PushMatrix();
+	projectionStack.LoadMatrix(ortho);
+	viewStack.PushMatrix();
+	viewStack.LoadIdentity(); //No need camera for ortho mode
+	modelStack.PushMatrix();
+	modelStack.LoadIdentity(); //Reset modelStack
+	modelStack.Translate(5, 50, 15);
+	modelStack.Scale(1, 1, 1);
+	RenderMesh(meshList[GUN], false);
+
+	//Add these code just before glEnable(GL_DEPTH_TEST);
+	projectionStack.PopMatrix();
+	viewStack.PopMatrix();
+	modelStack.PopMatrix();
+
+	glEnable(GL_DEPTH_TEST);
+}
+
+void PLANET1::renderGunOnHand()
+{
+	glDisable(GL_DEPTH_TEST);
+
+	//Add these code just after glDisable(GL_DEPTH_TEST);
+	Mtx44 ortho;
+	ortho.SetToOrtho(0, 80, 0, 60, -40, 40); //size of screen UI
+	projectionStack.PushMatrix();
+	projectionStack.LoadMatrix(ortho);
+	viewStack.PushMatrix();
+	viewStack.LoadIdentity(); //No need camera for ortho mode
+	modelStack.PushMatrix();
+	modelStack.LoadIdentity(); //Reset modelStack
+	modelStack.Translate(55 + MS_rotate / 2, 10 - MS_rotate / 6, 0);
+	modelStack.Rotate(rotateA, 1, 0, 0);
+	modelStack.Rotate(rotateB, 0, 1, 0);
+	modelStack.Rotate(rotateC, 0, 0, 1);
+	modelStack.Scale(5, 5, 5);
+	RenderMesh(meshList[GUN], false);
+
+	//Add these code just before glEnable(GL_DEPTH_TEST);
+	projectionStack.PopMatrix();
+	viewStack.PopMatrix();
+	modelStack.PopMatrix();
+
+	glEnable(GL_DEPTH_TEST);
+}
+
+//Shooting Functions
+void PLANET1::shooting()
+{
+	for (std::vector<Vector3>::iterator counter = something.begin(); counter != something.end(); ++counter)
+	{
+		Vector3 store = *counter;
+		modelStack.PushMatrix();
+		modelStack.Translate(store.x, store.y, store.z);
+		modelStack.Scale(.1f, .1f, .1f);
+		RenderMesh(meshList[BULLET], false);
+		modelStack.PopMatrix();
+	}
+}
+void PLANET1::moreShooting()
+{
+	std::vector<Vector3>::iterator one = something.begin();
+	std::vector<Vector3>::iterator two = anotherSomething.begin();
+	while (one != something.end())
+	{
+		*one += *two;
+		*one++;
+		*two++;
+	}
+
+	std::cout << "Distance is= " << std::distance(something.begin(), something.end()) << '/n' << std::endl;
 }
 
 void PLANET1::Exit()

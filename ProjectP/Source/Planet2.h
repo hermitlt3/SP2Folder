@@ -7,7 +7,6 @@
 #include "MatrixStack.h"
 #include "Light.h"
 #include "Vector3.h"
-#include "NPC.h"
 
 class PLANET2 : public Scene
 {
@@ -16,22 +15,40 @@ class PLANET2 : public Scene
 		GEO_AXES = 0,
 		GEO_LIGHTBALL,
 		GEO_QUAD,
-		BACK,
-		LEFT,
-		RIGHT,
-		TOP,
-		BOTTOM,
-		FRONT,
-		WALL,
-		GUN,
-		GROUND,
+		TEST_BACK,
+		TEST_LEFT,
+		TEST_RIGHT,
+		TEST_TOP,
+		TEST_BOTTOM,
+		TEST_FRONT,
 
-		LEG,
-		LEG2,
-		ARM,
-		ARM2,
-		HEAD,
-		CHEST,
+		MAZE_BOUND,
+		MAZE_FLOOR,
+		GUESS_FLOOR,
+		GUESS_WALLS,
+		GUESS_DOORS,
+		GUESS_WRONG,
+		BLUFF_TWALLS,
+		BLUFF_FWALLS1,
+		BLUFF_FWALLS2,
+		BLUFF_FWALLS3,
+		BLUFF_FWALLS4,
+		BLUFF_FWALLS5,
+		BLUFF_FWALLS6,
+		BLUFF_FWALLS7,
+		BLUFF_FWALLS8,
+		BLUFF_FWALLS9,
+		BLUFF_FWALLS10,
+		BLUFF_FWALLS11,
+		BLUFF_FWALLS12,
+		INFER_FLOOR,
+		INFER_CEILING,
+		INFER_WALLS,
+		GLASS_BOUND,
+		GLASS_FLOOR,
+		GLASS_WALLS,
+
+		KEYSHARDS,
 
 		GEO_TEXT,
 		ASTEROID,
@@ -88,8 +105,6 @@ public:
 	virtual void RenderMesh(Mesh *mesh, bool enableLight);
 	virtual void RenderText(Mesh* mesh, std::string text, Color color);
 	virtual void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
-	virtual void RenderNPC(bool enableLight);
-	virtual void RenderHandOnScreen();
 	virtual void Exit();
 
 private:
@@ -105,15 +120,81 @@ private:
 
 	Light light[2];
 
-	void RenerMesh(Mesh *mesh, bool enableLight);
+	//void RenerMesh(Mesh *mesh, bool enableLight);
 	void RenderSkyBox();
 
-	StopNPC pla2npc;
-	float MS_rotate;
-	bool MS_reverse;
-	float test2 = 0;
+	Vector3 mazeColliOne;
+	Vector3 mazeColliTwo;
+	Vector3 mazeColliThree;
+	Vector3 mazeColliFour;
+	Vector3 mazeColliFive;
+	Vector3 mazeColliSix;
+	Vector3 mazeColliSeven;
+	Vector3 mazeColliEight;
+	Vector3 mazeColliNine;			//VECTORS FOR MAZE BOUNDARIES
+	Vector3 guessColliWall;
+	Vector3 guessColliWallplusDoor;	//VECTORS FOR GUESS AREA
+	Vector3 guessColliRow;			//VECTOR FOR BEFORE FINDING ACTUAL DOOR
+	Vector3 wallsColliOne;
+	Vector3 wallsColliTwo;
+	Vector3 wallsColliThree;
+	Vector3 wallsColliFour;
+	Vector3 wallsColliFive;
+	Vector3 wallsColliSix;
+	Vector3 wallsColliSeven;
+	Vector3 wallsColliEight;
+	Vector3 wallsColliNine;
+	Vector3 wallsColliTen;
+	Vector3 wallsColliEleven;
+	Vector3 wallsColliTwelve;
+	Vector3 wallsColliThirteen;
+	Vector3 wallsColliFourteen;
+	Vector3 wallsColliFifteen;
+	Vector3 wallsColliSixteen;
+	Vector3 wallsColliSeventeen;
+	Vector3 wallsColliEighteen;
+	Vector3 wallsColliNineteen;
+	Vector3 wallsColliTwenty;
+	Vector3 wallsColliTwentyone;
+	Vector3 wallsColliTwentytwo;
+	Vector3 wallsColliTwentythree;
+	Vector3 wallsColliTwentyfour;
+	Vector3 wallsColliTwentyfive;	//VECTORS FOR BLUFF AND INFER AREA
+	Vector3 glassColliOne;
+	Vector3 glassColli;				//VECTORS FOR SKILL AREA
+	//Vector3 shardColli;
+
+	bool wrongDoorA;
+	bool wrongDoorB;
+	bool wrongDoorC;
+	bool wrongDoorD;
+	bool wrongDoorE;
+	bool wrongDoorF;
+	bool wrongDoorG;
+	bool wrongDoorH;
+	bool actualDoor1;
+	bool actualDoor2;
+	bool actualDoor3;
+	bool actualDoor4;
+	bool fakeWall1;
+	bool fakeWall2;
+	bool fakeWall3;
+	bool fakeWall4;
+	bool fakeWall5;
+	bool fakeWall6;
+	bool fakeWall7;
+	bool fakeWall8;
+	bool fakeWall9;
+	bool fakeWall10;
+	bool fakeWall11;
+	bool fakeWall12;
+	bool pickUpShard1;
+	bool pickUpShard2;
+	bool pickUpShard3;
+	bool pickUpShard4;
+	bool pickUpShard5;
+
 };
 
 
 #endif // PLANET2_H
-

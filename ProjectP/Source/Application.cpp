@@ -112,19 +112,18 @@ void Application::Run()
 	Scene *scene0 = new MAINMENU();
 	Scene *scene1 = new SP2();
 	Scene *scene2 = new PLANET1();
-	Scene *scene3 = new PLANET2();
-	Scene *scene4 = new PLANET3();
-	Scene *scene5 = new PLANET4();
+//	Scene *scene3 = new PLANET2();
+//	Scene *scene4 = new PLANET3();
+//	Scene *scene5 = new PLANET4();
 	Scene *scene6 = new PLANET5();
 
 	Scene *currScene = scene0;
 
-	scene0->Init();
 	scene1->Init();
 	scene2->Init();
-	scene3->Init();
-	scene4->Init();
-	scene5->Init();
+	//scene3->Init();
+//	scene4->Init();
+//	scene5->Init();
 	scene6->Init();
 
 	m_timer.startTimer();    // Start timer to calculate how long it takes to render this frame
@@ -139,17 +138,19 @@ void Application::Run()
 			currScene = scene1;
 		}
 
-		else if (GameMode::GetInstance()->gameState == 2)
+		/*else if (GameMode::GetInstance()->gameState == 2)
 		{
 			currScene = scene2;
+			GameMode::GetInstance()->gameState = 0;
 		}
 
 		else if (GameMode::GetInstance()->gameState == 3)
 		{
 			currScene = scene3;
-		}
+			GameMode::GetInstance()->gameState = 0;
+		}*/
 
-		else if (GameMode::GetInstance()->gameState == 4)
+		/*else if (GameMode::GetInstance()->gameState == 4)
 		{
 			currScene = scene4;
 		}
@@ -157,11 +158,12 @@ void Application::Run()
 		else if (GameMode::GetInstance()->gameState == 5)
 		{
 			currScene = scene5;
-		}
+		}*/
 
 		else if (GameMode::GetInstance()->gameState == 6)
 		{
 			currScene = scene6;
+			GameMode::GetInstance()->gameState = 0;
 		}
 		currScene->Update(m_timer.getElapsedTime());
 		currScene->Render();
