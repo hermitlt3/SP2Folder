@@ -36,3 +36,20 @@ bool LoadCollision(
 	return true;
 }
 
+bool LoadText(const char *file_path, std::vector<std::string> & List)
+{
+	std::ifstream fileStream(file_path, std::ios::binary);
+	if (!fileStream.is_open())
+	{
+		std::cout << "Impossible to open " << file_path << ". Are you in the right directory ?\n";
+		return false;
+	}
+	while (!fileStream.eof())
+	{
+		char buf[256];
+		fileStream.getline(buf, 256);
+		List.push_back(buf);
+	}
+	fileStream.close();
+	return true;
+}

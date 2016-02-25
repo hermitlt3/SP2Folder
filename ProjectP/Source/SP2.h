@@ -9,6 +9,8 @@
 #include "Vector3.h"
 #include "ReadFromExtern.h"
 #include "NPC.h"
+#include "Quest.h"
+#include "QuestSystem.h"
 
 class SP2 : public Scene
 {
@@ -62,6 +64,7 @@ class SP2 : public Scene
 		WHEEL,
 		STAND,
 
+		TEXTBOX,
 		POSITION,
 		NUM_GEOMETRY,
 	};
@@ -118,6 +121,7 @@ public:
 	virtual void RenderNPC(StopNPC &temp, bool enableLight);
 	virtual void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
 	virtual void RenderHandOnScreen();
+	virtual void RenderTextbox(StopNPC temp);
 	virtual void Exit();
 
 	void certainCalculations();
@@ -170,8 +174,14 @@ private:
 	std::vector<float>ColliX;
 	std::vector<float>ColliZ;
 
-	StopNPC platNPCone;
-	StopNPC platNPCtwo;
+	Vector3 translate;
+	Vector3 rotate;
+
+	StopNPC One;
+	Quest Q_One;
+
+	bool testes = true;
+
 };
 
 
