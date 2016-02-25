@@ -7,7 +7,8 @@
 #include "MeshBuilder.h"
 #include "Application.h"
 #include "Utility.h"
-#include "SharedData.h"
+#include "Gamemode.h"
+#include "Collision.h"
 
 #include <sstream>
 #include <iomanip>
@@ -78,7 +79,7 @@ void PLANET2::Init()
 
 	//Initialize camera settings
 	//camera.Init(Vector3(-20, 7.2, -5), Vector3(0, 0, 0), Vector3(0, 1, 0));
-	camera.Init(Vector3(-20, 50, 5), Vector3(0, 0, 0), Vector3(0, 1, 0));
+	camera.Init(Vector3(20, 50, 5), Vector3(0, 0, 0), Vector3(0, 1, 0));
 
 	meshList[GEO_AXES] = MeshBuilder::GenerateAxes("AXES", 1000, 1000, 1000);
 
@@ -395,6 +396,7 @@ void PLANET2::Init()
 	pickUpShard2 = false;
 	pickUpShard3 = false;
 	pickUpShard4 = false;
+	pickUpShard5 = false;
 
 }
 
@@ -415,7 +417,7 @@ void PLANET2::Update(double dt)
 	if (Application::IsKeyPressed('4'))
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //wireframe mode
 	if (Application::IsKeyPressed('F'))
-		SharedData::GetInstance()->gameState = 2;
+		GameMode::GetInstance()->gameState = 2;
 	camera.Update(dt);
 
 	if (Application::IsKeyPressed('I'))
@@ -609,7 +611,7 @@ void PLANET2::Update(double dt)
 		{
 			wrongDoorH = true;
 		}
-	}	
+	}
 	if (guessCount == 1)
 	{
 		if (Application::IsKeyPressed('E') && (camera.position.x <= 92.f && camera.position.x >= 60.f) && (camera.position.z <= -164.f && camera.position.z >= -196.f))
@@ -821,6 +823,22 @@ void PLANET2::Update(double dt)
 	{
 		pickUpShard1 = true;
 	}
+	if (Application::IsKeyPressed('E') && (camera.position.x <= 100.f && camera.position.x >= 80.f) && (camera.position.z <= 20.f && camera.position.z >= 0.f))
+	{
+		pickUpShard2 = true;
+	}
+	if (Application::IsKeyPressed('E') && (camera.position.x <= 100.f && camera.position.x >= 80.f) && (camera.position.z <= 140.f && camera.position.z >= 120.f))
+	{
+		pickUpShard3 = true;
+	}
+	if (Application::IsKeyPressed('E') && (camera.position.x <= 20.f && camera.position.x >= 0.f) && (camera.position.z <= 60.f && camera.position.z >= 40.f))
+	{
+		pickUpShard4 = true;
+	}
+	if (Application::IsKeyPressed('E') && (camera.position.x <= 180.f && camera.position.x >= 160.f) && (camera.position.z <= 100.f && camera.position.z >= 80.f))
+	{
+		pickUpShard5 = true;
+	}
 
 }
 
@@ -882,28 +900,37 @@ void PLANET2::Render()
 	//**************** OBJS IN INFER AREA ****************//
 
 	//**************** OBJS IN BLUFF AREA ****************//
-	//modelStack.PushMatrix();
-	//modelStack.Translate(4.5, -1.3, 0.5);
-	//RenderMesh(meshList[KEYSHARDS], false);
-	//modelStack.PopMatrix();
-
-	//modelStack.PushMatrix();
-	//modelStack.Translate(4.5, -1.3, 6.5);
-	//modelStack.Rotate(90, 0, 1, 0);
-	//RenderMesh(meshList[KEYSHARDS], false);
-	//modelStack.PopMatrix();
-
-	//modelStack.PushMatrix();
-	//modelStack.Translate(0.5, -1.3, 2.5);
-	//modelStack.Rotate(90, 0, 1, 0);
-	//RenderMesh(meshList[KEYSHARDS], false);
-	//modelStack.PopMatrix();
-
-	//modelStack.PushMatrix();
-	//modelStack.Translate(8.5, -1.3, 4.5);
-	//modelStack.Rotate(90, 0, 1, 0);
-	//RenderMesh(meshList[KEYSHARDS], false);
-	//modelStack.PopMatrix();
+	if (pickUpShard2 == false)
+	{
+		modelStack.PushMatrix();
+		modelStack.Translate(4.5, -1.3, 0.5);
+		RenderMesh(meshList[KEYSHARDS], false);
+		modelStack.PopMatrix();
+	}
+	if (pickUpShard3 == false)
+	{
+		modelStack.PushMatrix();
+		modelStack.Translate(4.5, -1.3, 6.5);
+		modelStack.Rotate(90, 0, 1, 0);
+		RenderMesh(meshList[KEYSHARDS], false);
+		modelStack.PopMatrix();
+	}
+	if (pickUpShard4 == false)
+	{
+		modelStack.PushMatrix();
+		modelStack.Translate(0.5, -1.3, 2.5);
+		modelStack.Rotate(90, 0, 1, 0);
+		RenderMesh(meshList[KEYSHARDS], false);
+		modelStack.PopMatrix();
+	}
+	if (pickUpShard5 == false)
+	{
+		modelStack.PushMatrix();
+		modelStack.Translate(8.5, -1.3, 4.5);
+		modelStack.Rotate(90, 0, 1, 0);
+		RenderMesh(meshList[KEYSHARDS], false);
+		modelStack.PopMatrix();
+	}
 	//**************** OBJS IN BLUFF AREA ****************//
 
 	//**************** OBJS IN GUESS AREA ****************//
@@ -1465,7 +1492,7 @@ void PLANET2::Render()
 	modelStack.PushMatrix();
 	RenderMesh(meshList[BLUFF_TWALLS], false);
 	modelStack.PopMatrix();
-	
+
 	modelStack.PushMatrix();
 	RenderMesh(meshList[GUESS_WALLS], false);
 	modelStack.PopMatrix();
@@ -1526,28 +1553,6 @@ void PLANET2::Render()
 
 	modelStack.PopMatrix();			//END OF 2ND HIERARCHY
 
-}
-
-void PLANET2::collisionCheck(float colliX, float colliZ, Camera3 &camera, Vector3 radius)
-{
-	Vector3 view = (camera.target - camera.position).Normalized();
-	if (camera.position.x >= colliX - radius.x  && camera.position.x - 2.f <= colliX - radius.x && camera.position.z <= colliZ + radius.z && camera.position.z >= colliZ - radius.z)
-	{
-		camera.position.x = colliX - radius.x;
-	}
-	if (camera.position.x <= colliX + radius.x  && camera.position.x + 2.f >= colliX + radius.x && camera.position.z <= colliZ + radius.z && camera.position.z >= colliZ - radius.z)
-	{
-		camera.position.x = colliX + radius.x;
-	}
-	if (camera.position.z >= colliZ - radius.z  && camera.position.z - 2.f <= colliZ - radius.z && camera.position.x <= colliX + radius.x && camera.position.x >= colliX - radius.x)
-	{
-		camera.position.z = colliZ - radius.z;
-	}
-	if (camera.position.z <= colliZ + radius.z  && camera.position.z + 2.f >= colliZ + radius.z && camera.position.x <= colliX + radius.x && camera.position.x >= colliX - radius.x)
-	{
-		camera.position.z = colliZ + radius.z;
-	}
-	camera.target = camera.position + view;
 }
 
 void PLANET2::RenderMesh(Mesh *mesh, bool enableLight)

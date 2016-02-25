@@ -1,43 +1,41 @@
-﻿Build started 24/2/2016 5:57:12 PM.
+﻿Build started 25/2/2016 9:24:29 AM.
      1>Project "C:\Users\iL.Mestys\Desktop\Documents\ORIGINAL\ProjectP\ProjectP.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          D:\Visual Studio 2013\VC\bin\CL.exe /c /IC:\Users\iL.Mestys\Desktop\Documents\ORIGINAL\\glew\include /IC:\Users\iL.Mestys\Desktop\Documents\ORIGINAL\\glfw\include /IC:\Users\iL.Mestys\Desktop\Documents\ORIGINAL\\Common\Source /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\Planet2.cpp
          Planet2.cpp
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(463): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(465): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(466): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(467): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(468): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(469): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(470): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(471): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(472): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(473): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(474): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(476): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(489): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(495): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(501): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(502): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(511): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(478): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(491): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(497): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(503): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(504): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(513): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(514): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(515): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(516): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(517): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(518): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(519): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(520): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(521): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(522): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(524): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(537): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(543): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(549): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(550): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(878): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(915): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(917): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(924): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(926): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(933): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(935): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(526): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(539): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(545): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(551): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(552): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(896): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(906): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(913): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(921): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(929): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(942): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(944): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(951): warning C4305: 'argument' : truncation from 'double' to 'float'
@@ -48,12 +46,12 @@
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(971): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(978): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(980): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(990): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(992): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(999): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1001): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1008): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1010): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(987): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(989): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(996): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(998): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1005): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1007): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1017): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1019): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1026): warning C4305: 'argument' : truncation from 'double' to 'float'
@@ -64,12 +62,12 @@
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1046): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1053): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1055): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1065): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1067): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1074): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1076): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1083): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1085): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1062): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1064): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1071): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1073): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1080): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1082): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1092): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1094): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1101): warning C4305: 'argument' : truncation from 'double' to 'float'
@@ -80,12 +78,12 @@
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1121): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1128): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1130): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1140): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1142): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1149): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1151): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1158): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1160): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1137): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1139): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1146): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1148): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1155): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1157): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1167): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1169): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1176): warning C4305: 'argument' : truncation from 'double' to 'float'
@@ -96,23 +94,34 @@
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1196): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1203): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1205): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1515): warning C4244: 'argument' : conversion from 'double' to 'GLenum', possible loss of data
-     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1521): warning C4244: 'argument' : conversion from 'double' to 'GLenum', possible loss of data
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1212): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1214): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1221): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1223): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1230): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1232): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1542): warning C4244: 'argument' : conversion from 'double' to 'GLenum', possible loss of data
+     1>c:\users\il.mestys\desktop\documents\original\projectp\source\planet2.cpp(1548): warning C4244: 'argument' : conversion from 'double' to 'GLenum', possible loss of data
        Link:
          D:\Visual Studio 2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\iL.Mestys\Desktop\Documents\ORIGINAL\Debug\ProjectP.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\iL.Mestys\Desktop\Documents\ORIGINAL\\glew\lib /LIBPATH:"C:\Users\iL.Mestys\Desktop\Documents\ORIGINAL\\glfw\lib-msvc120" /LIBPATH:C:\Users\iL.Mestys\Desktop\Documents\ORIGINAL\Debug glew32.lib glfw3.lib opengl32.lib winmm.lib Common.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\iL.Mestys\Desktop\Documents\ORIGINAL\Debug\ProjectP.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\iL.Mestys\Desktop\Documents\ORIGINAL\Debug\ProjectP.lib" /MACHINE:X86 Debug\Application.obj
          Debug\Camera.obj
          Debug\Camera2.obj
          Debug\Camera3.obj
+         Debug\Collision.obj
+         Debug\Movement.obj
          Debug\LoadOBJ.obj
          Debug\LoadTGA.obj
          Debug\main.obj
          Debug\Mesh.obj
          Debug\MeshBuilder.obj
+         Debug\NPC.obj
          Debug\Planet1.obj
          Debug\Planet2.obj
          Debug\Planet3.obj
          Debug\Planet4.obj
          Debug\Planet5.obj
+         Debug\Quest.obj
+         Debug\ReadFromExtern.obj
          Debug\shader.obj
          Debug\SP2.obj
          Debug\Utility.obj
@@ -121,4 +130,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.26
+Time Elapsed 00:00:01.24

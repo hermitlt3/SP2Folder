@@ -122,7 +122,6 @@ private:
 
 	//void RenerMesh(Mesh *mesh, bool enableLight);
 	void RenderSkyBox();
-	void collisionCheck(float colliX, float colliZ, Camera3 &camera, Vector3 radius);
 
 	Vector3 mazeColliOne;
 	Vector3 mazeColliTwo;
@@ -199,4 +198,3 @@ private:
 
 
 #endif // PLANET2_H
-

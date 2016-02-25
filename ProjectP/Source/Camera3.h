@@ -19,7 +19,8 @@ public:
 	virtual void Init(const Vector3& pos, const Vector3& target, const Vector3& up);
 	virtual void Update(double dt);
 	virtual void Reset();
-
+	static Vector3 bullets;
+	static Vector3 positions;
 };
 
 #endif
