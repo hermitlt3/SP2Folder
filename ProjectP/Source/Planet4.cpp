@@ -122,36 +122,78 @@ void PLANET4::Init()
 
 	glUniform1i(m_parameters[U_NUMLIGHTS], 2);
 
+	meshList[SKYBOX_FRONT] = MeshBuilder::GenerateQuad("front", Color(1, 1, 1));
+	meshList[SKYBOX_FRONT]->textureID = LoadTGA("Image//organic_ft.tga");
+
+	meshList[SKYBOX_RIGHT] = MeshBuilder::GenerateQuad("right", Color(1, 1, 1));
+	meshList[SKYBOX_RIGHT]->textureID = LoadTGA("Image//organic_rt.tga");
+
+	meshList[SKYBOX_TOP] = MeshBuilder::GenerateQuad("top", Color(1, 1, 1));
+	meshList[SKYBOX_TOP]->textureID = LoadTGA("Image//organic_up.tga");
+
+	meshList[SKYBOX_BOTTOM] = MeshBuilder::GenerateQuad("bottom", Color(1, 1, 1));
+	meshList[SKYBOX_BOTTOM]->textureID = LoadTGA("Image//organic_dn.tga");
+
+	meshList[SKYBOX_LEFT] = MeshBuilder::GenerateQuad("left", Color(1, 1, 1));
+	meshList[SKYBOX_LEFT]->textureID = LoadTGA("Image//organic_lf.tga");
+
+	meshList[SKYBOX_BACK] = MeshBuilder::GenerateQuad("back", Color(1, 1, 1));
+	meshList[SKYBOX_BACK]->textureID = LoadTGA("Image//organic_bk.tga");
+
 	meshList[GEO_LIGHTBALL] = MeshBuilder::GenerateSphere("LIGHT", Color(1, 1, 1), 36, 36);
 
-	meshList[TEST_FRONT] = MeshBuilder::GenerateQuad("front", Color(1, 1, 1));
-	meshList[TEST_FRONT]->textureID = LoadTGA("Image//front.tga");
+	meshList[GROUND_MESH] = MeshBuilder::GenerateQuad("GROUND", Color(1, 1, 1));
+	meshList[GROUND_MESH]->textureID = LoadTGA("Image//grass_ground.tga");
 
-	meshList[TEST_RIGHT] = MeshBuilder::GenerateQuad("right", Color(1, 1, 1));
-	meshList[TEST_RIGHT]->textureID = LoadTGA("Image//right.tga");
+	meshList[NPC1_ARM] = MeshBuilder::GenerateOBJ("arm", "OBJ//arm1.obj");
+	meshList[NPC1_ARM]->textureID = LoadTGA("Image//Human1.tga");
+	meshList[NPC1_ARM]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[NPC1_ARM]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[NPC1_ARM]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[NPC1_ARM]->material.kShininess = 1.5f;
 
-	meshList[TEST_TOP] = MeshBuilder::GenerateQuad("top", Color(1, 1, 1));
-	meshList[TEST_TOP]->textureID = LoadTGA("Image//top.tga");
+	meshList[NPC1_ARM2] = MeshBuilder::GenerateOBJ("arm2", "OBJ//arm2.obj");
+	meshList[NPC1_ARM2]->textureID = LoadTGA("Image//Human1.tga");
+	meshList[NPC1_ARM2]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[NPC1_ARM2]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[NPC1_ARM2]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[NPC1_ARM2]->material.kShininess = 1.5f;
 
-	meshList[TEST_BOTTOM] = MeshBuilder::GenerateQuad("bottom", Color(1, 1, 1));
-	meshList[TEST_BOTTOM]->textureID = LoadTGA("Image//top.tga");
+	meshList[NPC1_LEG] = MeshBuilder::GenerateOBJ("leg", "OBJ//leg1.obj");
+	meshList[NPC1_LEG]->textureID = LoadTGA("Image//Human1.tga");
+	meshList[NPC1_LEG]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[NPC1_LEG]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[NPC1_LEG]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[NPC1_LEG]->material.kShininess = 1.5f;
 
-	meshList[TEST_LEFT] = MeshBuilder::GenerateQuad("left", Color(1, 1, 1));
-	meshList[TEST_LEFT]->textureID = LoadTGA("Image//left.tga");
+	meshList[NPC1_LEG2] = MeshBuilder::GenerateOBJ("leg2", "OBJ//leg2.obj");
+	meshList[NPC1_LEG2]->textureID = LoadTGA("Image//Human1.tga");
+	meshList[NPC1_LEG2]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[NPC1_LEG2]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[NPC1_LEG2]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[NPC1_LEG2]->material.kShininess = 1.5f;
 
-	meshList[TEST_BACK] = MeshBuilder::GenerateQuad("back", Color(1, 1, 1));
-	meshList[TEST_BACK]->textureID = LoadTGA("Image//back.tga");
 
-	meshList[GEO_TEXT] = MeshBuilder::GenerateText("text", 16, 16);
-	meshList[GEO_TEXT]->textureID = LoadTGA("Image//Redressed.tga");
+	meshList[NPC1_HEAD] = MeshBuilder::GenerateOBJ("head", "OBJ//head.obj");
+	meshList[NPC1_HEAD]->textureID = LoadTGA("Image//Human1.tga");
+	meshList[NPC1_HEAD]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[NPC1_HEAD]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[NPC1_HEAD]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[NPC1_HEAD]->material.kShininess = 1.5f;
 
-	meshList[ASTEROID] = MeshBuilder::GenerateOBJ("asteroid", "OBJ//asteroid.obj");
-	meshList[ASTEROID]->textureID = LoadTGA("Image//asteroid.tga");
-	meshList[ASTEROID]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
-	meshList[ASTEROID]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
-	meshList[ASTEROID]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
-	meshList[ASTEROID]->material.kShininess = 1.5f;
+	meshList[NPC1_CHEST] = MeshBuilder::GenerateOBJ("chest", "OBJ//chest.obj");
+	meshList[NPC1_CHEST]->textureID = LoadTGA("Image//Human1.tga");
+	meshList[NPC1_CHEST]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[NPC1_CHEST]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[NPC1_CHEST]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[NPC1_CHEST]->material.kShininess = 1.5f;
 
+	meshList[TEXT] = MeshBuilder::GenerateText("text", 16, 16);
+	meshList[TEXT]->textureID = LoadTGA("Image//Redressed.tga");
+
+	NPC1_t.Set(90.f, 0.f, 0.f);
+	NPC1_r.Set(0.f, 90.f, 0.f);
+	One.attriSet(NPC1_t, NPC1_r, "P4_1.txt");
 }
 
 static float ROT_LIMIT = 45.f;
@@ -185,6 +227,9 @@ void PLANET4::Update(double dt)
 		light[0].position.y -= (float)(LSPEED * dt);
 	if (Application::IsKeyPressed('P'))
 		light[0].position.y += (float)(LSPEED * dt);
+
+	One.Interaction(camera, Vector3(90.f, 0.f, -20.f), Vector3(20.f, 0.f, 20.f), true);
+	One.Communication();
 }
 
 void PLANET4::Render()
@@ -228,12 +273,12 @@ void PLANET4::Render()
 	RenderMesh(meshList[GEO_LIGHTBALL], false);
 	modelStack.PopMatrix();
 
-	modelStack.PushMatrix();
-	modelStack.Translate(0.f, 0.f, 0.f);
-	RenderMesh(meshList[ASTEROID], false);
-	modelStack.PopMatrix();
+	std::ostringstream std;
+	std << camera.position;
 
 	RenderSkyBox();
+
+	RenderTextOnScreen(meshList[TEXT], std.str(), Color(1, 1, 1), 2, 5, 3);
 }
 
 void PLANET4::RenderMesh(Mesh *mesh, bool enableLight)
@@ -281,50 +326,106 @@ void PLANET4::RenderMesh(Mesh *mesh, bool enableLight)
 void PLANET4::RenderSkyBox()
 {
 	modelStack.PushMatrix();
-	modelStack.Translate(0.f, 0.f, 2500.f);
+	modelStack.Translate(0.f, 0.f, 2480.f);
 	modelStack.Rotate(180.f, 0, 1, 0);
 	modelStack.Rotate(90.f, 1, 0, 0);
 	modelStack.Scale(5000.f, 5000.f, 5000.f);
-	RenderMesh(meshList[TEST_FRONT], false);
+	RenderMesh(meshList[SKYBOX_FRONT], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(0.f, 0.f, -2500.f);
+	modelStack.Translate(0.f, 0.f, -2480.f);
 	modelStack.Rotate(90.f, 1, 0, 0);
 	modelStack.Scale(5000.f, 5000.f, 5000.f);
-	RenderMesh(meshList[TEST_BACK], false);
+	RenderMesh(meshList[SKYBOX_BACK], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(0.f, 2500.f, 0.f);
+	modelStack.Translate(0.f, 2480.f, 0.f);
 	modelStack.Rotate(90.f, 0, 1, 0);
 	modelStack.Rotate(180.f, 0, 0, 1);
 	modelStack.Scale(5000.f, 5000.f, 5000.f);
-	RenderMesh(meshList[TEST_TOP], false);
+	RenderMesh(meshList[SKYBOX_TOP], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(0.f, -2500.f, 0.f);
+	modelStack.Translate(0.f, -2480.f, 0.f);
 	modelStack.Rotate(-90.f, 0, 1, 0);
 	modelStack.Scale(5000.f, 5000.f, 5000.f);
-	RenderMesh(meshList[TEST_BOTTOM], false);
+	RenderMesh(meshList[SKYBOX_BOTTOM], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(-2500.f, 0, 0);
+	modelStack.Translate(-2480.f, 0, 0);
 	modelStack.Rotate(-90, 0, 0, 1);
 	modelStack.Rotate(90, 0, 1, 0);
 	modelStack.Scale(5000.f, 5000.f, 5000.f);
-	RenderMesh(meshList[TEST_RIGHT], false);
+	RenderMesh(meshList[SKYBOX_RIGHT], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(2500.f, 0.f, 0.f);
+	modelStack.Translate(2480.f, 0.f, 0.f);
 	modelStack.Rotate(-90.f, 0, 1, 0);
 	modelStack.Rotate(90.f, 1, 0, 0);
 	modelStack.Scale(5000.f, 5000.f, 5000.f);
-	RenderMesh(meshList[TEST_LEFT], false);
+	RenderMesh(meshList[SKYBOX_LEFT], false);
 	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(500.f, -20.f, 500.f);
+	modelStack.Scale(500.f, 0.f, 500.f);
+	RenderMesh(meshList[GROUND_MESH], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(-500.f, -20.f, 500.f);
+	modelStack.Scale(500.f, 0.f, 500.f);
+	RenderMesh(meshList[GROUND_MESH], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(-500.f, -20.f, -500.f);
+	modelStack.Scale(500.f, 0.f, 500.f);
+	RenderMesh(meshList[GROUND_MESH], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(500.f, -20.f, -500.f);
+	modelStack.Scale(500.f, 0.f, 500.f);
+	RenderMesh(meshList[GROUND_MESH], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0.f, -20.f, 0.f);
+	modelStack.Scale(500.f, 0.f, 500.f);
+	RenderMesh(meshList[GROUND_MESH], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(500.f, -20.f, 0.f);
+	modelStack.Scale(500.f, 0.f, 500.f);
+	RenderMesh(meshList[GROUND_MESH], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0.f, -20.f, 500.f);
+	modelStack.Scale(500.f, 0.f, 500.f);
+	RenderMesh(meshList[GROUND_MESH], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(-500.f, -20.f, 0.f);
+	modelStack.Scale(500.f, 0.f, 500.f);
+	RenderMesh(meshList[GROUND_MESH], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0.f, -20.f, -500.f);
+	modelStack.Scale(500.f, 0.f, 500.f);
+	RenderMesh(meshList[GROUND_MESH], false);
+	modelStack.PopMatrix();
+
+	RenderNPC(One, false);
 }
 
 void PLANET4::RenderText(Mesh* mesh, std::string text, Color color)
@@ -400,6 +501,36 @@ void PLANET4::RenderTextOnScreen(Mesh* mesh, std::string text, Color color, floa
 	glEnable(GL_DEPTH_TEST);
 }
 
+void PLANET4::RenderNPC(StopNPC &temp, bool enableLight)
+{
+	///////////////////////////HUMAN/////////////////////////////////
+
+	modelStack.PushMatrix();
+	modelStack.Translate(temp.getTranslate().x, temp.getTranslate().y, temp.getTranslate().z);
+	modelStack.Rotate(temp.getRotate().x, 1, 0, 0);
+	modelStack.Rotate(temp.getRotate().y + temp.rotateNPC, 0, 1, 0);
+	modelStack.Rotate(temp.getRotate().z, 0, 0, 1);
+	modelStack.Scale(3.f, 3.f, 3.f);
+	RenderMesh(meshList[NPC1_ARM], enableLight);
+
+	RenderMesh(meshList[NPC1_ARM2], enableLight);
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0.f, -2.95f, 0.f);
+	RenderMesh(meshList[NPC1_LEG], enableLight);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0.f, -2.95f, 0.f);
+	RenderMesh(meshList[NPC1_LEG2], enableLight);
+	modelStack.PopMatrix();
+
+	RenderMesh(meshList[NPC1_CHEST], enableLight);
+	RenderMesh(meshList[NPC1_HEAD], enableLight);
+
+	modelStack.PopMatrix();
+	///////////////////////////HUMAN/////////////////////////////////
+}
 
 void PLANET4::Exit()
 {

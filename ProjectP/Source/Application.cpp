@@ -117,7 +117,7 @@ void Application::Run()
 	Scene *scene5 = new PLANET4();
 	Scene *scene6 = new PLANET5();
 
-	Scene *currScene = scene0;
+	Scene *currScene = scene5;
 
 	scene0->Init();
 	scene1->Init();

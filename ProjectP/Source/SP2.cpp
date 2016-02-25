@@ -366,7 +366,7 @@ void SP2::Init()
 	MS_rotate = 0.f;
 	MS_reverse = false;
 
-	meshList[POSITION] = MeshBuilder::GenerateText("keymsg", 16, 16);
+	meshList[POSITION] = MeshBuilder::GenerateText("text", 16, 16);
 	meshList[POSITION]->textureID = LoadTGA("Image//Redressed.tga");
 
 	LoadCollision("PlatformColli.txt", ColliX, ColliZ);
@@ -390,9 +390,11 @@ void SP2::Update(double dt)
 		testes = true;
 	else
 		testes = false;
+
 	One.Interaction(camera, testes);
 	
 	One.Communication();
+
 	if (Application::IsKeyPressed('1')) //enable back face culling
 		glEnable(GL_CULL_FACE);
 	if (Application::IsKeyPressed('2')) //disable back face culling
@@ -487,7 +489,7 @@ void SP2::Update(double dt)
 	}
 	charMovement(MS_reverse, 20.f, MS_rotate, 3.f, dt);
 	One.delayTime(dt);
-	One.Interaction(camera, Vector3(60.f, 0.f, -50.f), Vector3(30.f, 0.f, 20.f));
+	One.Interaction(camera, Vector3(60.f, 0.f, -50.f), Vector3(30.f, 0.f, 20.f), true);
 }
 
 void SP2::Render()
@@ -817,6 +819,7 @@ void SP2::Render()
 	RenderNPC(One,false);
 	RenderHandOnScreen();
 	fps << *One.talk;
+
 	std::ostringstream ooo;
 	ooo << One.rotateNPC;
 	if (!One.b_Quest && One.b_Chat)
@@ -827,11 +830,11 @@ void SP2::Render()
 		QuestSystem::GetInstance()->QuestList.push_back(Q_One);
 		
 	}
-/*	if (QuestSystem::GetInstance()->QuestList.size() != 0 && Application::IsKeyPressed('Q'))
+	if (QuestSystem::GetInstance()->QuestList.size() != 0 && Application::IsKeyPressed('Q'))
 	{
 		vector<Quest>::iterator qt = QuestSystem::GetInstance()->QuestList.begin();
 		RenderTextOnScreen(meshList[POSITION], qt->getName(), Color(0, 1, 1), 2, 5, 8);
-	}*/
+	}
 
 	RenderTextbox(One);
 

@@ -17,13 +17,17 @@ void StopNPC::attriSet(Vector3 translate, Vector3 rotate, const char *file_path)
 	talk = sentences.begin();
 }
 
-void StopNPC::Interaction(Camera3 camera, Vector3 interactCoord, Vector3 radius)
+void StopNPC::Interaction(Camera3 camera, Vector3 interactCoord, Vector3 radius, bool bool_)
 {
 	if (camera.position.x <= interactCoord.x + radius.x && camera.position.x >= interactCoord.x - radius.x && camera.position.z <= interactCoord.z + radius.z && camera.position.z >= interactCoord.z - radius.z)
 	{
 		float tempx = camera.position.x - translate.x;
 		float tempz = camera.position.z - translate.z;
-		rotateNPC = atan(tempx / tempz) * 180 / Math::PI;
+		if (bool_)
+			rotateNPC = atan(tempx / tempz) * 180 / Math::PI;
+		else
+			rotateNPC = atan(tempz / tempx) * 180 / Math::PI;
+
 	}
 	else
 		rotateNPC = 0.f;

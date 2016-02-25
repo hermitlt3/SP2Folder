@@ -7,23 +7,35 @@
 #include "MatrixStack.h"
 #include "Light.h"
 #include "Vector3.h"
+#include "NPC.h"
+#include "Quest.h"
+#include "QuestSystem.h"
 
 class PLANET4 : public Scene
 {
 	enum GEOMETRY_TYPE
 	{
 		GEO_AXES = 0,
+		SKYBOX_TOP,
+		SKYBOX_BOTTOM,
+		SKYBOX_LEFT,
+		SKYBOX_RIGHT,
+		SKYBOX_FRONT,
+		SKYBOX_BACK,
+		GROUND_MESH,
 		GEO_LIGHTBALL,
-		GEO_QUAD,
-		TEST_BACK,
-		TEST_LEFT,
-		TEST_RIGHT,
-		TEST_TOP,
-		TEST_BOTTOM,
-		TEST_FRONT,
-		GEO_TEXT,
-		ASTEROID,
+
+		NPC1_ARM,
+		NPC1_ARM2,
+		NPC1_LEG,
+		NPC1_LEG2,
+		NPC1_CHEST,
+		NPC1_HEAD,
+
+		TEXT, 
+
 		NUM_GEOMETRY,
+
 	};
 	enum UNIFORM_TYPE
 	{
@@ -76,6 +88,7 @@ public:
 	virtual void RenderMesh(Mesh *mesh, bool enableLight);
 	virtual void RenderText(Mesh* mesh, std::string text, Color color);
 	virtual void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
+	virtual void RenderNPC(StopNPC &temp, bool enableLight);
 	virtual void Exit();
 
 private:
@@ -94,6 +107,11 @@ private:
 	void RenerMesh(Mesh *mesh, bool enableLight);
 	void RenderSkyBox();
 
+	StopNPC One;
+
+
+	Vector3 NPC1_t;
+	Vector3 NPC1_r;
 };
 
 

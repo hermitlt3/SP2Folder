@@ -785,7 +785,7 @@ void PLANET1::AstroidFunction()
 	}
 	else if (astralHit1 == true)
 	{
-		astralCounter + 1;
+		astralCounter += 1;
 	}
 	if (astralHit2 == false)
 	{
@@ -798,7 +798,7 @@ void PLANET1::AstroidFunction()
 	}
 	else if (astralHit2 == true)
 	{
-		astralCounter + 1;
+		astralCounter += 1;
 	}
 	if (astralHit3 == false)
 	{
@@ -811,7 +811,7 @@ void PLANET1::AstroidFunction()
 	}
 	else if (astralHit3 == true)
 	{
-		astralCounter + 1;
+		astralCounter += 1;
 	}
 	if (astralHit4 == false)
 	{
@@ -824,7 +824,7 @@ void PLANET1::AstroidFunction()
 	}
 	else if (astralHit4 == true)
 	{
-		astralCounter + 1;
+		astralCounter += 1;
 	}
 	if (astralHit5 == false)
 	{
@@ -837,7 +837,7 @@ void PLANET1::AstroidFunction()
 	}
 	else if (astralHit5 == true)
 	{
-		astralCounter + 1;
+		astralCounter += 1;
 	}
 	if (astralHit6 == false)
 	{
@@ -850,7 +850,7 @@ void PLANET1::AstroidFunction()
 	}
 	else if (astralHit6 == true)
 	{
-		astralCounter + 1;
+		astralCounter += 1;
 	}
 	if (astralHit7 == false)
 	{
@@ -863,7 +863,7 @@ void PLANET1::AstroidFunction()
 	}
 	else if (astralHit7 == true)
 	{
-		astralCounter + 1;
+		astralCounter += 1;
 	}
 	if (astralHit8 == false)
 	{
@@ -876,7 +876,7 @@ void PLANET1::AstroidFunction()
 	}
 	else if (astralHit8 == true)
 	{
-		astralCounter + 1;
+		astralCounter += 1;
 	}
 	if (astralHit9 == false)
 	{
@@ -889,7 +889,7 @@ void PLANET1::AstroidFunction()
 	}
 	else if (astralHit9 == true)
 	{
-		astralCounter + 1;
+		astralCounter += 1;
 	}
 	if (astralHit10 == false)
 	{
@@ -902,7 +902,7 @@ void PLANET1::AstroidFunction()
 	}
 	else if (astralHit10 == true)
 	{
-		astralCounter + 1;
+		astralCounter += 1;
 	}
 
 	if (astralCounter < 10)
@@ -1046,8 +1046,6 @@ void PLANET1::RenderNPC(bool enableLight)
 	///////////////////////////HUMAN/////////////////////////////////
 
 	modelStack.PushMatrix();
-	//modelStack.Translate(temp.tx, temp.ty, temp.tz);
-	//modelStack.Rotate(temp.r_angle - temp.rotateNPC, 0, 1, 0);
 	modelStack.Scale(3.f, 4.f, 3.f);
 
 	RenderMesh(meshList[ARM], enableLight);
