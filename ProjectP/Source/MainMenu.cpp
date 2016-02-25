@@ -136,7 +136,7 @@ void MAINMENU::Render()
 		camera.up.x, camera.up.y, camera.up.z);
 	modelStack.LoadIdentity();
 	float i = 3;
-	for (st = menuList.rbegin(); st != menuList.rend(); ++st)
+	/*for (st = menuList.rbegin(); st != menuList.rend(); ++st)
 	{ 
 		RenderTextOnScreen(meshList[TEXT], *st, Color(1, 1, 1), 3, 3, i ++);
 	}
@@ -151,7 +151,7 @@ void MAINMENU::Render()
 	if (c_UserInterface::GetEnum()->UI == EXIT)
 	{
 		RenderTextOnScreen(meshList[TEXT], ">", Color(1, 1, 1), 3, 2, 3);
-	}
+	}*/
 }
 
 //void MAINMENU::RenderMesh(Mesh *mesh, bool enableLight)

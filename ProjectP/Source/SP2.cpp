@@ -827,11 +827,11 @@ void SP2::Render()
 		QuestSystem::GetInstance()->QuestList.push_back(Q_One);
 		
 	}
-	if (QuestSystem::GetInstance()->QuestList.size() != 0 && Application::IsKeyPressed('Q'))
+/*	if (QuestSystem::GetInstance()->QuestList.size() != 0 && Application::IsKeyPressed('Q'))
 	{
 		vector<Quest>::iterator qt = QuestSystem::GetInstance()->QuestList.begin();
 		RenderTextOnScreen(meshList[POSITION], qt->getName(), Color(0, 1, 1), 2, 5, 8);
-	}
+	}*/
 
 	RenderTextbox(One);
 
