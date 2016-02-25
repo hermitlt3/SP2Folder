@@ -119,6 +119,7 @@ void Application::Run()
 
 	Scene *currScene = scene0;
 
+	scene0->Init();
 	scene1->Init();
 	scene2->Init();
 	scene3->Init();

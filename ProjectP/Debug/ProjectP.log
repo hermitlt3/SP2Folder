@@ -1,130 +1,20 @@
-﻿Build started 2/25/2016 10:14:33 AM.
+﻿Build started 2/25/2016 10:41:27 AM.
      1>Project "C:\Users\n1507\Documents\SPtwo2\ProjectP\ProjectP.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\n1507\Documents\SPtwo2\\glew\include /IC:\Users\n1507\Documents\SPtwo2\\glfw\include /IC:\Users\n1507\Documents\SPtwo2\\Common\Source /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\Application.cpp Source\Camera.cpp Source\Camera2.cpp Source\Camera3.cpp Source\Collision.cpp Source\MainMenu.cpp Source\Movement.cpp Source\LoadOBJ.cpp Source\LoadTGA.cpp Source\main.cpp Source\Mesh.cpp Source\MeshBuilder.cpp Source\NPC.cpp Source\Planet1.cpp Source\Planet2.cpp Source\Planet3.cpp Source\Planet4.cpp Source\Planet5.cpp Source\Quest.cpp Source\ReadFromExtern.cpp Source\shader.cpp Source\SP2.cpp Source\Utility.cpp
-         Utility.cpp
-         SP2.cpp
-         shader.cpp
-         ReadFromExtern.cpp
-         Quest.cpp
-         Planet5.cpp
-         Planet4.cpp
-         Planet3.cpp
-         Planet2.cpp
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(465): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(467): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(468): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(469): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(470): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(471): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(473): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(474): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(476): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(478): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(491): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(497): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(503): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(504): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(513): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(515): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(516): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(517): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(518): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(519): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(521): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(522): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(524): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(526): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(539): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(545): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(551): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(552): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(896): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(906): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(913): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(921): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(929): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(942): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(944): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(951): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(953): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(960): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(962): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(969): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(971): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(978): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(980): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(987): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(989): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(996): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(998): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1005): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1007): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1017): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1019): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1026): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1028): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1035): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1037): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1044): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1046): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1053): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1055): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1062): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1064): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1071): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1073): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1080): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1082): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1092): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1094): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1101): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1103): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1110): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1112): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1119): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1121): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1128): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1130): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1137): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1139): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1146): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1148): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1155): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1157): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1167): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1169): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1176): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1178): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1185): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1187): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1194): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1196): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1203): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1205): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1212): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1214): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1221): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1223): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1230): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1232): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1542): warning C4244: 'argument' : conversion from 'double' to 'GLenum', possible loss of data
-     1>c:\users\n1507\documents\sptwo2\projectp\source\planet2.cpp(1548): warning C4244: 'argument' : conversion from 'double' to 'GLenum', possible loss of data
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\n1507\Documents\SPtwo2\\glew\include /IC:\Users\n1507\Documents\SPtwo2\\glfw\include /IC:\Users\n1507\Documents\SPtwo2\\Common\Source /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\Application.cpp Source\Planet1.cpp
          Planet1.cpp
-         NPC.cpp
-         MeshBuilder.cpp
-         Mesh.cpp
-         main.cpp
-         LoadTGA.cpp
-         LoadOBJ.cpp
-         Movement.cpp
-         MainMenu.cpp
-         Collision.cpp
-         Camera3.cpp
+     1>c:\users\n1507\documents\sptwo2\projectp\source\planet1.cpp(788): warning C4552: '+' : operator has no effect; expected operator with side-effect
+     1>c:\users\n1507\documents\sptwo2\projectp\source\planet1.cpp(801): warning C4552: '+' : operator has no effect; expected operator with side-effect
+     1>c:\users\n1507\documents\sptwo2\projectp\source\planet1.cpp(814): warning C4552: '+' : operator has no effect; expected operator with side-effect
+     1>c:\users\n1507\documents\sptwo2\projectp\source\planet1.cpp(827): warning C4552: '+' : operator has no effect; expected operator with side-effect
+     1>c:\users\n1507\documents\sptwo2\projectp\source\planet1.cpp(840): warning C4552: '+' : operator has no effect; expected operator with side-effect
+     1>c:\users\n1507\documents\sptwo2\projectp\source\planet1.cpp(853): warning C4552: '+' : operator has no effect; expected operator with side-effect
+     1>c:\users\n1507\documents\sptwo2\projectp\source\planet1.cpp(866): warning C4552: '+' : operator has no effect; expected operator with side-effect
+     1>c:\users\n1507\documents\sptwo2\projectp\source\planet1.cpp(879): warning C4552: '+' : operator has no effect; expected operator with side-effect
+     1>c:\users\n1507\documents\sptwo2\projectp\source\planet1.cpp(892): warning C4552: '+' : operator has no effect; expected operator with side-effect
+     1>c:\users\n1507\documents\sptwo2\projectp\source\planet1.cpp(905): warning C4552: '+' : operator has no effect; expected operator with side-effect
          Generating Code...
          Compiling...
-         Camera2.cpp
-         Camera.cpp
          Application.cpp
          Generating Code...
        Link:
@@ -151,10 +41,9 @@
          Debug\shader.obj
          Debug\SP2.obj
          Debug\Utility.obj
-     1>LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
          ProjectP.vcxproj -> C:\Users\n1507\Documents\SPtwo2\Debug\ProjectP.exe
      1>Done Building Project "C:\Users\n1507\Documents\SPtwo2\ProjectP\ProjectP.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:09.91
+Time Elapsed 00:00:01.51
