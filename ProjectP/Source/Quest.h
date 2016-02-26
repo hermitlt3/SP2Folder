@@ -17,20 +17,20 @@ private:
 	MainQuest(){};
 };
 
+enum QUEST_STATE
+{
+	ONE,
+	TWO,
+	THREE,
+	FOUR
+};
+
 class Quest
 {
 public:
 	Quest();
 	void setName(string name);
 	bool b_Complete(bool b_complete);
-	enum QUEST_STATE
-	{
-		ONE,
-		TWO,
-		THREE,
-		FOUR
-	};
-	QUEST_STATE q_state;
 	string getName();
 
 private:

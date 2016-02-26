@@ -194,6 +194,10 @@ void PLANET4::Init()
 	NPC1_t.Set(90.f, 0.f, 0.f);
 	NPC1_r.Set(0.f, 90.f, 0.f);
 	One.attriSet(NPC1_t, NPC1_r, "P4_1.txt");
+	Planet4_1.setName("Completion");
+	Planet4_2.setName("Depletion");
+	Planet4_3.setName("Relaxation");
+	Planet4_4.setName("Critical");
 }
 
 static float ROT_LIMIT = 45.f;
@@ -228,7 +232,7 @@ void PLANET4::Update(double dt)
 	if (Application::IsKeyPressed('P'))
 		light[0].position.y += (float)(LSPEED * dt);
 
-	One.Interaction(camera, Vector3(90.f, 0.f, -20.f), Vector3(20.f, 0.f, 20.f), true);
+	One.Interaction(camera, Vector3(90.f, 0.f, -20.f), Vector3(20.f, 0.f, 20.f));
 	One.Communication();
 }
 

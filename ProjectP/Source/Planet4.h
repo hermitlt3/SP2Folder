@@ -109,9 +109,16 @@ private:
 
 	StopNPC One;
 
-
 	Vector3 NPC1_t;
 	Vector3 NPC1_r;
+
+	Quest Planet4_1;
+	Quest Planet4_2;
+	Quest Planet4_3;
+	Quest Planet4_4;
+
+	QUEST_STATE Planet4QS = ONE;
+
 };
 
 

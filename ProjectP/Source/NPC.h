@@ -13,7 +13,7 @@ class StopNPC
 public:
 	StopNPC();
 	void attriSet(Vector3 translate, Vector3 rotate, const char *file_path);
-	void Interaction(Camera3 camera, Vector3 interactCoord, Vector3 radius, bool bool_);
+	void Interaction(Camera3 camera, Vector3 interactCoord, Vector3 radius);
 	void Interaction(Camera3 camera, bool b_talk);
 	void Communication();
 	void LoadSentences();
