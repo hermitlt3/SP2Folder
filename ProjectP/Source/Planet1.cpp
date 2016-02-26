@@ -11,12 +11,15 @@
 #include "Collision.h"
 #include "Movement.h"
 
-Vector3 Camera3::bullets(0, 0, 0);
 Vector3 Camera3::positions(0, 0, 0);
+Vector3 Camera3::bullets(0, 0, 0);
 
 #include <sstream>
 #include <iomanip>
 #include <fstream>
+
+
+
 PLANET1::PLANET1()
 {
 }
@@ -24,6 +27,7 @@ PLANET1::PLANET1()
 PLANET1::~PLANET1()
 {
 }
+
 
 void PLANET1::Init()
 {
@@ -223,6 +227,13 @@ void PLANET1::Init()
 	meshList[BACK] = MeshBuilder::GenerateQuad("back", Color(1, 1, 1));
 	meshList[BACK]->textureID = LoadTGA("Image//redplanet_bk.tga");
 
+	meshList[ASTEROID] = MeshBuilder::GenerateOBJ("asteroid", "OBJ//asteroid.obj");
+	meshList[ASTEROID]->textureID = LoadTGA("Image//asteroid.tga");
+	meshList[ASTEROID]->material.kAmbient.Set(0.8f, 0.8f, 0.8f);
+	meshList[ASTEROID]->material.kDiffuse.Set(0.8f, 0.8f, 0.8f);
+	meshList[ASTEROID]->material.kSpecular.Set(0.8f, 0.8f, 0.8f);
+	meshList[ASTEROID]->material.kShininess = 1.5f;
+
 	meshList[POSITION] = MeshBuilder::GenerateText("keymsg", 16, 16);
 	meshList[POSITION]->textureID = LoadTGA("Image//Redressed.tga");
 
@@ -244,9 +255,89 @@ void PLANET1::SimpleVariables()
 	rotateA = 5.f;
 	rotateB = 110.f;
 	rotateC = 5.f;
+	rotateA2 = 0.f;
+	rotateB2 = 90.f;
+	rotateC2 = 0.f;
 	nearFiringRange = false;
 	firingRangeX = 500.f;
 	firingRangeZ = 0.f;
+	typeOfFire = 0;
+	firingNow = 0;
+	rateOfFire = 10;
+
+	astralHit1 = false;
+	astralHit2 = false;
+	astralHit3 = false;
+	astralHit4 = false;
+	astralHit5 = false;
+	astralHit6 = false;
+	astralHit7 = false;
+	astralHit8 = false;
+	astralHit9 = false;
+	astralHit10 = false;
+
+	AstralHit1 = false;
+	AstralHit2 = false;
+	AstralHit3 = false;
+	AstralHit4 = false;
+	AstralHit5 = false;
+	AstralHit6 = false;
+	AstralHit7 = false;
+	AstralHit8 = false;
+	AstralHit9 = false;
+	AstralHit10 = false;
+
+	astral1X = 1300.f;
+	astral1Y = 100.f;
+	astral1Z = -1200.f;
+
+	astral2X = 400.f;
+	astral2Y = 200.f;
+	astral2Z = -600.f;
+
+	astral3X = 0.f;
+	astral3Y = 250.f;
+	astral3Z = -1000.f;
+
+	astral4X = 1050.f;
+	astral4Y = 300.f;
+	astral4Z = -300.f;
+
+	astral5X = 250.f;
+	astral5Y = 200.f;
+	astral5Z = 0.f;
+
+	astral6X = -700.f;
+	astral6Y = 600.f;
+	astral6Z = 0.f;
+		  
+	astral7X = 700.f;
+	astral7Y = 1000.f;
+	astral7Z = 700.f;
+
+	astral8X = 700.f;
+	astral8Y = 1000.f;
+	astral8Z = 700.f;
+
+	astral9X = 700.f;
+	astral9Y = 1000.f;
+	astral9Z = 700.f;
+
+	astral10X = 700.f;
+	astral10Y = 1000.f;
+	astral10Z = 700.f;
+
+	astralFinish1 = false;
+	astralFinish2 = false;
+	astralFinish3 = false;
+	astralFinish4 = false;
+	astralFinish5 = false;
+	astralFinish6 = false;
+	astralFinish7 = false;
+	astralFinish8 = false;
+	astralFinish9 = false;
+	astralFinish10 = false;
+	ironSight = false;
 }
 
 void PLANET1::Update(double dt)
@@ -264,6 +355,167 @@ void PLANET1::Update(double dt)
 	camera.Update(dt);
 
 	MethCalculations();
+	//Shooting
+	if (Application::IsKeyPressed(VK_LBUTTON))
+	{
+		if (firingNow < rateOfFire)
+		{
+			firingNow += 5;
+		}
+		if (firingNow == rateOfFire)
+		{
+			firingNow = 0;
+			ShotsFired.push_back(Camera3::positions);
+			DirectionFired.push_back(Camera3::bullets);
+		}
+	}
+	moreShooting();
+
+	//Astroid 1
+	if (astral1X >= 1300 && astralFinish1 == false)
+	{
+		astralFinish1 = true;
+	}
+	if (astralFinish1 == true)
+	{
+		astral1X -= (float)(100 * dt);
+		rotateAstral1 += (float)(90 * dt);
+	}
+	if (astral1X <= -1300 && astralFinish1 == true)
+	{
+		astralFinish1 = false;
+	}
+	if (astralFinish1 == false)
+	{
+		astral1X += (float)(100 * dt);
+		rotateAstral1 += (float)(90 * dt);
+	}
+
+	//Astroid 2
+	if (astral2X >= 400 && astral2Z >= -600 && astralFinish2 == false)
+	{
+		astralFinish2 = true;
+	}
+	if (astralFinish2 == true)
+	{
+		astral2X -= (float)(100 * dt);
+		astral2Z -= (float)(120 * dt);
+		rotateAstral1 += (float)(90 * dt);
+	}
+	if (astral2X <= 0 && astral2Z <= -1000 && astralFinish2 == true)
+	{
+		astralFinish2 = false;
+	}
+	if (astralFinish2 == false)
+	{
+		astral2X += (float)(100 * dt);
+		astral2Z += (float)(120 * dt);
+		rotateAstral1 += (float)(90 * dt);
+	}
+
+	//Astroid 3
+	if ((astral3X >= 0 && astral3Z <= -1000) && astralFinish3 == false)
+	{
+		astralFinish3 = true;
+	}
+	if (astralFinish3 == true)
+	{
+		astral3X -= (float)(100 * dt);
+		astral3Z += (float)(120 * dt);
+		rotateAstral1 += (float)(90 * dt);
+	}
+	if ((astral3X <= -400 && astral3Z >= -600) && astralFinish3 == true)
+	{
+		astralFinish3 = false;
+	}
+	if (astralFinish3 == false)
+	{
+		astral3X += (float)(100 * dt);
+		astral3Z -= (float)(120 * dt);
+		rotateAstral1 += (float)(90 * dt);
+	}
+
+	//Astroid 4
+	if ((astral4X >= 1050 && astral4Z <= -350) && astralFinish4 == false)
+	{
+		astralFinish4 = true;
+	}
+	if (astralFinish4 == true)
+	{
+		astral4X -= (float)(100 * dt);
+		astral4Z += (float)(100 * dt);
+		rotateAstral1 += (float)(90 * dt);
+	}
+	if ((astral4X <= 350 && astral4Z >= 350) && astralFinish4 == true)
+	{
+		astralFinish4 = false;
+	}
+	if (astralFinish4 == false)
+	{
+		astral4X += (float)(100 * dt);
+		astral4Z -= (float)(100 * dt);
+		rotateAstral1 += (float)(90 * dt);
+	}
+
+	//Astroid 4
+	if ((astral5X >= 1050 && astral5Z <= -350) && astralFinish5 == false)
+	{
+		astralFinish5 = true;
+	}
+	if (astralFinish5 == true)
+	{
+		astral5X -= (float)(100 * dt);
+		astral5Z += (float)(100 * dt);
+		rotateAstral1 += (float)(90 * dt);
+	}
+	if ((astral5X <= 350 && astral5Z >= 350) && astralFinish5 == true)
+	{
+		astralFinish5 = false;
+	}
+	if (astralFinish5 == false)
+	{
+		astral5X += (float)(100 * dt);
+		astral5Z -= (float)(100 * dt);
+		rotateAstral1 += (float)(90 * dt);
+	}
+
+	//Astroid 6
+	if ((astral6X <= -700 && astral6Z <= 0) && astralFinish6 == false)
+	{
+		astralFinish6 = true;
+	}
+	if (astralFinish6 == true)
+	{
+		astral6X += (float)(100 * dt);
+		astral6Z += (float)(100 * dt);
+		rotateAstral1 += (float)(90 * dt);
+	}
+	if ((astral6X >= -300 && astral6Z >= 400) && astralFinish6 == true)
+	{
+		astralFinish6 = false;
+	}
+	if (astralFinish6 == false)
+	{
+		astral6X -= (float)(100 * dt);
+		astral6Z -= (float)(100 * dt);
+		rotateAstral1 += (float)(90 * dt);
+	}
+
+	//Finish
+
+	if (Application::IsKeyPressed('Q'))
+	{
+		astralHit1 = true;
+		astralHit2 = true;
+		astralHit3 = true;
+		astralHit4 = true;
+		astralHit5 = true;
+		astralHit6 = true;
+		astralHit7 = true;
+		astralHit8 = true;
+		astralHit9 = true;
+		astralHit10 = true;
+	}
 
 	if ((rangeGunX <= 70) && (rangeGunZ <= 30) && (inRange == false))
 	{
@@ -299,20 +551,14 @@ void PLANET1::Update(double dt)
 		light[0].position.y -= (float)(LSPEED * dt);
 	if (Application::IsKeyPressed('P'))
 		light[0].position.y += (float)(LSPEED * dt);
-
-	//Shooting
-	if (Application::IsKeyPressed(VK_LBUTTON))
+	if (Application::IsKeyPressed(VK_RBUTTON) && ironSight == false && holdingGun ==  true)
 	{
-		something.push_back(Camera3::positions);
-		anotherSomething.push_back(Camera3::bullets);
-		if (((Camera3::positions.x > 2500) || (Camera3::positions.x < -2500)) || ((Camera3::positions.y > 2500) || (Camera3::positions.y < -2500)) || ((Camera3::positions.z > 2500) || (Camera3::positions.z < -2500)))
-			if ((((Camera3::bullets.x > 2500) || (Camera3::bullets.x < -2500)) || ((Camera3::bullets.y > 2500) || (Camera3::bullets.y < -2500)) || ((Camera3::bullets.z > 2500) || (Camera3::bullets.z < -2500))))
-			{
-				something.erase(something.begin() + 200);
-				anotherSomething.pop_back();
-			}
+		ironSight = true;
 	}
-	moreShooting();
+	else if ((Application::IsKeyPressed(VK_RBUTTON) && ironSight == true && holdingGun == true))
+	{
+		ironSight = false;
+	}
 
 	charMovement(MS_reverse, 20.f, MS_rotate, 3.f, dt);
 
@@ -330,12 +576,6 @@ void PLANET1::Update(double dt)
 	collisionCheck(0.f, 2500.f, camera, Vector3(1250.f, 0.f, 1250.f));
 	collisionCheck(0.f, -2500.f, camera, Vector3(1250.f, 0.f, 1250.f));
 	collisionCheck(-2500.f, 0.f, camera, Vector3(1250.f, 0.f, 1250.f));
-
-	collisionCheck(2500.f, 0.f, camera, Vector3(1250.f, 0.f, 1250.f));
-	collisionCheck(0.f, 2500.f, camera, Vector3(1250.f, 0.f, 1250.f));
-	collisionCheck(0.f, -2500.f, camera, Vector3(1250.f, 0.f, 1250.f));
-	collisionCheck(-2500.f, 0.f, camera, Vector3(1250.f, 0.f, 1250.f));
-
 
 	//if (pla2npc.rotateNPC < pla2npc.Interaction(camera, 15.f))
 	//	pla2npc.rotateNPC += (float)(50.0 * dt);
@@ -468,6 +708,13 @@ void PLANET1::Render()
 	modelStack.PopMatrix();
 	///////////////////////   SMALL WALLS   ///////////////////////////
 
+	AstroidFunction();
+
+	/*std::ostringstream Testing;
+	Testing << "Astral6X= " << astral6X << " Astral6Z= " << astral6Z;
+	RenderTextOnScreen(meshList[POSITION], Testing.str(), Color(0, 1, 1), 2, 1, 25);*/
+	///////////////////////  ASTRAL FINISH  ///////////////////////////
+
 	RenderNPC(false);
 	RenderHandOnScreen();
 
@@ -496,6 +743,10 @@ void PLANET1::Render()
 		std::ostringstream Ammunition;
 		Ammunition << "You have Unlimited Power. Its ok :)";
 		RenderTextOnScreen(meshList[POSITION], Ammunition.str(), Color(0, 1, 1), 2, 1, 28);
+
+		/*std::ostringstream Test;
+		Test << "rotateA2= " << rotateA2 << " rotateB2 = " << rotateB2 << " rotateC2 = " << rotateC2;
+		RenderTextOnScreen(meshList[POSITION],Test.str(), Color(0, 1, 1), 2, 1, 24);*/
 	}
 
 	if (nearFiringRange == true)
@@ -549,6 +800,153 @@ void PLANET1::RenderMesh(Mesh *mesh, bool enableLight)
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
+}
+
+void PLANET1::AstroidFunction()
+{
+	if (astralHit1 == false)
+	{
+		modelStack.PushMatrix();
+		modelStack.Translate(astral1X, astral1Y, astral1Z);
+		modelStack.Rotate(rotateAstral1, 0, 1, 0);
+		modelStack.Scale(3, 3, 3);
+		RenderMesh(meshList[ASTEROID], true); // asteroid
+		modelStack.PopMatrix();
+	}
+	else if (astralHit1 == true)
+	{
+		AstralHit1 =1;
+	}
+	if (astralHit2 == false)
+	{
+		modelStack.PushMatrix();
+		modelStack.Translate(astral2X, astral2Y, astral2Z);
+		modelStack.Rotate(rotateAstral1, 0, 1, 0);
+		modelStack.Scale(3, 3, 3);
+		RenderMesh(meshList[ASTEROID], true); // asteroid
+		modelStack.PopMatrix();
+	}
+	else if (astralHit2 == true)
+	{
+		AstralHit2 =1;
+	}
+	if (astralHit3 == false)
+	{
+		modelStack.PushMatrix();
+		modelStack.Translate(astral3X, astral3Y, astral3Z);
+		modelStack.Rotate(rotateAstral1, 0, 1, 0);
+		modelStack.Scale(3, 3, 3);
+		RenderMesh(meshList[ASTEROID], true); // asteroid
+		modelStack.PopMatrix();
+	}
+	else if (astralHit3 == true)
+	{
+		AstralHit3 =1;
+	}
+	if (astralHit4 == false)
+	{
+		modelStack.PushMatrix();
+		modelStack.Translate(astral4X, astral4Y, astral4Z);
+		modelStack.Rotate(rotateAstral1, 0, 1, 0);
+		modelStack.Scale(3, 3, 3);
+		RenderMesh(meshList[ASTEROID], true); // asteroid
+		modelStack.PopMatrix();
+	}
+	else if (astralHit4 == true)
+	{
+		AstralHit4 =1;
+	}
+	if (astralHit5 == false)
+	{
+		modelStack.PushMatrix();
+		modelStack.Translate(astral5X, astral5Y, astral5Z);
+		modelStack.Rotate(rotateAstral1, 0, 1, 0);
+		modelStack.Scale(3, 3, 3);
+		RenderMesh(meshList[ASTEROID], true); // asteroid
+		modelStack.PopMatrix();
+	}
+	else if (astralHit5 == true)
+	{
+		AstralHit5 =1;
+	}
+	if (astralHit6 == false)
+	{
+		modelStack.PushMatrix();
+		modelStack.Translate(astral6X, astral6Y, astral6Z);
+		modelStack.Rotate(rotateAstral1, 0, 1, 0);
+		modelStack.Scale(3, 3, 3);
+		RenderMesh(meshList[ASTEROID], true); // asteroid
+		modelStack.PopMatrix();
+	}
+	else if (astralHit6 == true)
+	{
+		AstralHit6 =1;
+	}
+	if (astralHit7 == false)
+	{
+		modelStack.PushMatrix();
+		modelStack.Translate(astral7X, astral7Y, astral7Z);
+		modelStack.Rotate(rotateAstral1, 0, 1, 0);
+		modelStack.Scale(3, 3, 3);
+		RenderMesh(meshList[ASTEROID], true); // asteroid
+		modelStack.PopMatrix();
+	}
+	else if (astralHit7 == true)
+	{
+		AstralHit7 =1;
+	}
+	if (astralHit8 == false)
+	{
+		modelStack.PushMatrix();
+		modelStack.Translate(astral8X, astral8Y, astral8Z);
+		modelStack.Rotate(rotateAstral1, 0, 1, 0);
+		modelStack.Scale(3, 3, 3);
+		RenderMesh(meshList[ASTEROID], true); // asteroid
+		modelStack.PopMatrix();
+	}
+	else if (astralHit8 == true)
+	{
+		AstralHit8 =1;
+	}
+	if (astralHit9 == false)
+	{
+		modelStack.PushMatrix();
+		modelStack.Translate(astral9X, astral9Y, astral9Z);
+		modelStack.Rotate(rotateAstral1, 0, 1, 0);
+		modelStack.Scale(3, 3, 3);
+		RenderMesh(meshList[ASTEROID], true); // asteroid
+		modelStack.PopMatrix();
+	}
+	else if (astralHit9 == true)
+	{
+		AstralHit9 =1;
+	}
+	if (astralHit10 == false)
+	{
+		modelStack.PushMatrix();
+		modelStack.Translate(astral10X, astral10Y, astral10Z);
+		modelStack.Rotate(rotateAstral1, 0, 1, 0);
+		modelStack.Scale(3, 3, 3);
+		RenderMesh(meshList[ASTEROID], true); // asteroid
+		modelStack.PopMatrix();
+	}
+	else if (astralHit10 == true)
+	{
+		AstralHit10 =1;
+	}
+
+	if (AstralHit1 == true && AstralHit2 == true && AstralHit3 == true && AstralHit4 == true && AstralHit5 == true && AstralHit6 == true && AstralHit7 == true && AstralHit8 == true && AstralHit9 == true && AstralHit10 == true)
+	{
+		std::ostringstream AstralFinished;
+		AstralFinished << "All Asteroids Shot";
+		RenderTextOnScreen(meshList[POSITION], AstralFinished.str(), Color(0, 1, 1), 2, 1, 25);
+	}
+	else
+	{
+		std::ostringstream AstralCount;
+		AstralCount << "You  have not completed your mission";
+		RenderTextOnScreen(meshList[POSITION], AstralCount.str(), Color(0, 1, 1), 2, 1, 25);
+	}
 }
 
 void PLANET1::RenderSkyBox()
@@ -705,30 +1103,61 @@ void PLANET1::RenderNPC(bool enableLight)
 
 void PLANET1::RenderHandOnScreen()
 {
-	glDisable(GL_DEPTH_TEST);
+	if (ironSight == false)
+	{
+		glDisable(GL_DEPTH_TEST);
 
-	//Add these code just after glDisable(GL_DEPTH_TEST);
-	Mtx44 ortho;
-	ortho.SetToOrtho(0, 80, 0, 60, -20, 20); //size of screen UI
-	projectionStack.PushMatrix();
-	projectionStack.LoadMatrix(ortho);
-	viewStack.PushMatrix();
-	viewStack.LoadIdentity(); //No need camera for ortho mode
-	modelStack.PushMatrix();
-	modelStack.LoadIdentity(); //Reset modelStack
-	modelStack.Translate(55 + MS_rotate / 2, -10 - MS_rotate / 6, 15);
-	modelStack.Rotate(155, 1, 0, 0);
-	modelStack.Rotate(-127, 0, 1, 0);
-	modelStack.Rotate(23, 0, 0, 1);
-	modelStack.Scale(6, 12, 8);
-	RenderMesh(meshList[ARM2], false);
+		//Add these code just after glDisable(GL_DEPTH_TEST);
+		Mtx44 ortho;
+		ortho.SetToOrtho(0, 80, 0, 60, -20, 20); //size of screen UI
+		projectionStack.PushMatrix();
+		projectionStack.LoadMatrix(ortho);
+		viewStack.PushMatrix();
+		viewStack.LoadIdentity(); //No need camera for ortho mode
+		modelStack.PushMatrix();
+		modelStack.LoadIdentity(); //Reset modelStack
+		modelStack.Translate(55 + MS_rotate / 2, -10 - MS_rotate / 6, 15);
+		modelStack.Rotate(155, 1, 0, 0);
+		modelStack.Rotate(-127, 0, 1, 0);
+		modelStack.Rotate(23, 0, 0, 1);
+		modelStack.Scale(6, 12, 8);
+		RenderMesh(meshList[ARM2], false);
 
-	//Add these code just before glEnable(GL_DEPTH_TEST);
-	projectionStack.PopMatrix();
-	viewStack.PopMatrix();
-	modelStack.PopMatrix();
+		//Add these code just before glEnable(GL_DEPTH_TEST);
+		projectionStack.PopMatrix();
+		viewStack.PopMatrix();
+		modelStack.PopMatrix();
 
-	glEnable(GL_DEPTH_TEST);
+		glEnable(GL_DEPTH_TEST);
+	}
+	
+	else if (ironSight  ==  true)
+	{
+		glDisable(GL_DEPTH_TEST);
+
+		//Add these code just after glDisable(GL_DEPTH_TEST);
+		Mtx44 ortho;
+		ortho.SetToOrtho(0, 80, 0, 60, -20, 20); //size of screen UI
+		projectionStack.PushMatrix();
+		projectionStack.LoadMatrix(ortho);
+		viewStack.PushMatrix();
+		viewStack.LoadIdentity(); //No need camera for ortho mode
+		modelStack.PushMatrix();
+		modelStack.LoadIdentity(); //Reset modelStack
+		modelStack.Translate(40 + MS_rotate / 2, 20 + MS_rotate / 6, 15);
+		modelStack.Rotate(rotateA2, 1, 0, 0);
+		modelStack.Rotate(0, 0, 1, 0);
+		modelStack.Rotate(rotateC2, 0, 0, 1);
+		modelStack.Scale(6, 12, 8);
+		RenderMesh(meshList[ARM2], false);
+
+		//Add these code just before glEnable(GL_DEPTH_TEST);
+		projectionStack.PopMatrix();
+		viewStack.PopMatrix();
+		modelStack.PopMatrix();
+
+		glEnable(GL_DEPTH_TEST);
+	}
 }
 
 void PLANET1::renderGunUI()
@@ -758,36 +1187,66 @@ void PLANET1::renderGunUI()
 
 void PLANET1::renderGunOnHand()
 {
-	glDisable(GL_DEPTH_TEST);
+	if (ironSight == false)
+	{
+		glDisable(GL_DEPTH_TEST);
 
-	//Add these code just after glDisable(GL_DEPTH_TEST);
-	Mtx44 ortho;
-	ortho.SetToOrtho(0, 80, 0, 60, -40, 40); //size of screen UI
-	projectionStack.PushMatrix();
-	projectionStack.LoadMatrix(ortho);
-	viewStack.PushMatrix();
-	viewStack.LoadIdentity(); //No need camera for ortho mode
-	modelStack.PushMatrix();
-	modelStack.LoadIdentity(); //Reset modelStack
-	modelStack.Translate(55 + MS_rotate / 2, 10 - MS_rotate / 6, 0);
-	modelStack.Rotate(rotateA, 1, 0, 0);
-	modelStack.Rotate(rotateB, 0, 1, 0);
-	modelStack.Rotate(rotateC, 0, 0, 1);
-	modelStack.Scale(5, 5, 5);
-	RenderMesh(meshList[GUN], false);
+		//Add these code just after glDisable(GL_DEPTH_TEST);
+		Mtx44 ortho;
+		ortho.SetToOrtho(0, 80, 0, 60, -40, 40); //size of screen UI
+		projectionStack.PushMatrix();
+		projectionStack.LoadMatrix(ortho);
+		viewStack.PushMatrix();
+		viewStack.LoadIdentity(); //No need camera for ortho mode
+		modelStack.PushMatrix();
+		modelStack.LoadIdentity(); //Reset modelStack
+		modelStack.Translate(55 + MS_rotate / 2, 10 - MS_rotate / 6, 0);
+		modelStack.Rotate(rotateA, 1, 0, 0);
+		modelStack.Rotate(rotateB, 0, 1, 0);
+		modelStack.Rotate(rotateC, 0, 0, 1);
+		modelStack.Scale(5, 5, 5);
+		RenderMesh(meshList[GUN], false);
 
-	//Add these code just before glEnable(GL_DEPTH_TEST);
-	projectionStack.PopMatrix();
-	viewStack.PopMatrix();
-	modelStack.PopMatrix();
+		//Add these code just before glEnable(GL_DEPTH_TEST);
+		projectionStack.PopMatrix();
+		viewStack.PopMatrix();
+		modelStack.PopMatrix();
 
-	glEnable(GL_DEPTH_TEST);
+		glEnable(GL_DEPTH_TEST);
+	}
+	if (ironSight == true)
+	{
+		glDisable(GL_DEPTH_TEST);
+
+		//Add these code just after glDisable(GL_DEPTH_TEST);
+		Mtx44 ortho;
+		ortho.SetToOrtho(0, 80, 0, 60, -40, 40); //size of screen UI
+		projectionStack.PushMatrix();
+		projectionStack.LoadMatrix(ortho);
+		viewStack.PushMatrix();
+		viewStack.LoadIdentity(); //No need camera for ortho mode
+		modelStack.PushMatrix();
+		modelStack.LoadIdentity(); //Reset modelStack
+		modelStack.Translate(40 + MS_rotate / 2, 20 + MS_rotate / 6, 0);
+		modelStack.Rotate(rotateA2, 1, 0, 0);
+		modelStack.Rotate(rotateB2, 0, 1, 0);
+		modelStack.Rotate(rotateC2, 0, 0, 1);
+		modelStack.Scale(5, 5, 5);
+		RenderMesh(meshList[GUN], false);
+
+		//Add these code just before glEnable(GL_DEPTH_TEST);
+		projectionStack.PopMatrix();
+		viewStack.PopMatrix();
+		modelStack.PopMatrix();
+
+		glEnable(GL_DEPTH_TEST);
+	}
 }
 
 //Shooting Functions
 void PLANET1::shooting()
 {
-	for (std::vector<Vector3>::iterator counter = something.begin(); counter != something.end(); ++counter)
+	for (std::vector<Vector3>::iterator counter = ShotsFired.begin(); counter != ShotsFired.end(); ++counter)
 	{
 		Vector3 store = *counter;
 		modelStack.PushMatrix();
@@ -799,16 +1258,95 @@ void PLANET1::shooting()
 }
 void PLANET1::moreShooting()
 {
-	std::vector<Vector3>::iterator one = something.begin();
-	std::vector<Vector3>::iterator two = anotherSomething.begin();
-	while (one != something.end())
+	vector<Vector3>::iterator counter = ShotsFired.begin();
+	vector<Vector3>::iterator counter2 = DirectionFired.begin();
+	while (counter != ShotsFired.end())
 	{
-		*one += *two;
-		*one++;
-		*two++;
-	}
+		Vector3 temp = *counter;
+		*counter += *counter2;
 
-	std::cout << "Distance is= " << std::distance(something.begin(), something.end()) << '/n' << std::endl;
+		if (bulletCollision(temp, Vector3(astral1X, astral1Y, astral1Z)))
+		{
+			counter = ShotsFired.erase(counter);
+			counter2 = DirectionFired.erase(counter2);
+			astralHit1 = true;
+		}
+		if (bulletCollision(temp, Vector3(astral2X, astral2Y, astral2Z)))
+		{
+			counter = ShotsFired.erase(counter);
+			counter2 = DirectionFired.erase(counter2);
+			astralHit2 = true;
+		}
+		if (bulletCollision(temp, Vector3(astral3X, astral3Y, astral3Z)))
+		{
+			counter = ShotsFired.erase(counter);
+			counter2 = DirectionFired.erase(counter2);
+			astralHit3 = true;
+		}
+		if (bulletCollision(temp, Vector3(astral4X, astral4Y, astral4Z)))
+		{
+			counter = ShotsFired.erase(counter);
+			counter2 = DirectionFired.erase(counter2);
+			astralHit4 = true;
+		}
+		if (bulletCollision(temp, Vector3(astral5X, astral5Y, astral5Z)))
+		{
+			counter = ShotsFired.erase(counter);
+			counter2 = DirectionFired.erase(counter2);
+			astralHit5 = true;
+		}
+		if (bulletCollision(temp, Vector3(astral6X, astral6Y, astral6Z)))
+		{
+			counter = ShotsFired.erase(counter);
+			counter2 = DirectionFired.erase(counter2);
+			astralHit6 = true;
+		}
+		if (bulletCollision(temp, Vector3(astral7X, astral7Y, astral7Z)))
+		{
+			counter = ShotsFired.erase(counter);
+			counter2 = DirectionFired.erase(counter2);
+			astralHit7 = true;
+		}
+		if (bulletCollision(temp, Vector3(astral8X, astral8Y, astral8Z)))
+		{
+			counter = ShotsFired.erase(counter);
+			counter2 = DirectionFired.erase(counter2);
+			astralHit8 = true;
+		}
+		if (bulletCollision(temp, Vector3(astral9X, astral9Y, astral9Z)))
+		{
+			counter = ShotsFired.erase(counter);
+			counter2 = DirectionFired.erase(counter2);
+			astralHit9 = true;
+		}
+		if (bulletCollision(temp, Vector3(astral10X, astral10Y, astral10Z)))
+		{
+			counter = ShotsFired.erase(counter);
+			counter2 = DirectionFired.erase(counter2);
+			astralHit10 = true;
+		}
+		else if (temp.y <= 0 || temp.y >= 1500 || temp.x >= 1500 || temp.z >= 1500 || temp.x <= -1500 || temp.z <= -1500)
+		{
+			counter = ShotsFired.erase(counter);
+			counter2 = DirectionFired.erase(counter2);
+		}
+		else
+		{
+			*counter++;
+			*counter2++;
+		}
+	}
+}
+bool PLANET1::bulletCollision(Vector3 bulletPosition, Vector3 targetPosition)
+{
+	if (bulletPosition.x > (targetPosition.x - 10) && bulletPosition.x < (targetPosition.x + 10) && bulletPosition.y >(targetPosition.y - 10) && bulletPosition.y < (targetPosition.y + 10) && bulletPosition.z >(targetPosition.z - 10) && bulletPosition.z < (targetPosition.z + 10))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 void PLANET1::Exit()

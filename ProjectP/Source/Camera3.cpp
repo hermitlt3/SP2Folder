@@ -26,7 +26,7 @@ void Camera3::Update(double dt)
 {
 	const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 	static const float CAMERA_SPEED = 100.f;
-	static const float BULLET_SPEED = 300.f;
+	static const float BULLET_SPEED = 500.f;
 	POINT mousepos;
 	int midX = mode->width / 2;
 	int midY = mode->height / 2;
@@ -117,7 +117,6 @@ void Camera3::Update(double dt)
 	{
 		Reset();
 	}
-	
 }
 
 void Camera3::Reset()

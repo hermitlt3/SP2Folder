@@ -21,6 +21,13 @@ public:
 	virtual void Reset();
 	static Vector3 bullets;
 	static Vector3 positions;
+
+	static float positionsX;
+	static float positionsY;
+	static float positionsZ;
+	static float bulletsX;
+	static float bulletsY;
+	static float bulletsZ;
 };
 
 #endif

@@ -591,8 +591,6 @@ void PLANET5::Render()
 	RenderMesh(meshList[GEMCASE], true);
 	modelStack.PopMatrix();
 
-
-
 	modelStack.PushMatrix();
 	modelStack.Translate(-25.0f, translategem2 - 5.7f, -81.5f);
 	modelStack.Rotate(22.0f, 1, 0, 0);

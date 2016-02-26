@@ -124,9 +124,11 @@ private:
 	float GunX, GunZ, rangeGunX, rangeGunZ;
 	bool inRange, holdingGun;
 	float rotateA, rotateB, rotateC;
+	float rotateA2, rotateB2, rotateC2;
 	float firingRangeX, firingRangeZ;
 	float rangeFiringRangeX, rangeFiringRangeZ;
 	bool nearFiringRange;
+	int firingNow, rateOfFire, typeOfFire;
 	void SimpleVariables();
 	void MethCalculations();
 	void gunFunctioning();
@@ -134,9 +136,29 @@ private:
 	void renderGunUI();
 	void shooting();
 	float test2 = 0;
+	bool bulletCollision(Vector3 bulletPosition, Vector3 targetPosition);
+	bool  astralHit1, astralHit2, astralHit3, astralHit4, astralHit5, astralHit6, astralHit7, astralHit8, astralHit9, astralHit10;
+	bool  AstralHit1, AstralHit2, AstralHit3, AstralHit4, AstralHit5, AstralHit6, AstralHit7, AstralHit8, AstralHit9, AstralHit10;
+	int astralCounter;
+	float astral1X, astral1Y, astral1Z;
+	float astral2X, astral2Y, astral2Z;
+	float astral3X, astral3Y, astral3Z;
+	float astral4X, astral4Y, astral4Z;
+	float astral5X, astral5Y, astral5Z;
+	float astral6X, astral6Y, astral6Z;
+	float astral7X, astral7Y, astral7Z;
+	float astral8X, astral8Y, astral8Z;
+	float astral9X, astral9Y, astral9Z;
+	float astral10X, astral10Y, astral10Z;
+	bool astralFinish1, astralFinish2, astralFinish3, astralFinish4, astralFinish5, astralFinish6, astralFinish7, astralFinish8, astralFinish9, astralFinish10;
+	float rotateAstral1;
+	void AstroidFunction();
+	void CheatSystem();
+	bool ironSight;
+
 	//For Shooting
-	vector<Vector3> something;
-	vector<Vector3> anotherSomething;
+	vector<Vector3> ShotsFired;
+	vector<Vector3> DirectionFired;
 	void moreShooting();
 };
 
