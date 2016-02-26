@@ -18,6 +18,7 @@
 #include "Planet4.h"
 #include "Planet5.h"
 #include "Gamemode.h"
+#include "MainMenu.h"
 
 GLFWwindow* m_window;
 const unsigned char FPS = 60; // FPS of this game
@@ -108,53 +109,54 @@ void Application::Init()
 void Application::Run()
 {
 	//Main Loop
+	Scene *scene0 = new MAINMENU();
 	Scene *scene1 = new SP2();
 	Scene *scene2 = new PLANET1();
-//	Scene *scene3 = new PLANET2();
-//	Scene *scene4 = new PLANET3();
-//	Scene *scene5 = new PLANET4();
+	Scene *scene3 = new PLANET2();
+	Scene *scene4 = new PLANET3();
+	Scene *scene5 = new PLANET4();
 	Scene *scene6 = new PLANET5();
 
-	Scene *currScene = scene2;
+	Scene *currScene = scene5;
 
+	scene0->Init();
 	scene1->Init();
 	scene2->Init();
-//	scene3->Init();
-//	scene4->Init();
-//	scene5->Init();
+	scene3->Init();
+	scene4->Init();
+	scene5->Init();
 	scene6->Init();
 
 	m_timer.startTimer();    // Start timer to calculate how long it takes to render this frame
-	while (!glfwWindowShouldClose(m_window) && !IsKeyPressed(VK_ESCAPE))
+	while ((!glfwWindowShouldClose(m_window) && !(c_UserInterface::GetEnum()->quitGame)))
 	{
+		if (IsKeyPressed('P'))
+		{
+			currScene = scene0;
+		}
 		if (GameMode::GetInstance()->gameState == 1)
 		{
 			currScene = scene1;
-			GameMode::GetInstance()->gameState = 0;
 		}
 
 		else if (GameMode::GetInstance()->gameState == 2)
 		{
 			currScene = scene2;
-			GameMode::GetInstance()->gameState = 0;
 		}
 
-		/*else if (GameMode::GetInstance()->gameState == 3)
+		else if (GameMode::GetInstance()->gameState == 3)
 		{
 			currScene = scene3;
-			GameMode::GetInstance()->gameState = 0;
-		}*/
+		}
 
 		else if (GameMode::GetInstance()->gameState == 4)
 		{
-			//currScene = scene4;
-			GameMode::GetInstance()->gameState = 0;
+			currScene = scene4;
 		}
 
 		else if (GameMode::GetInstance()->gameState == 5)
 		{
-		//	currScene = scene5;
-			GameMode::GetInstance()->gameState = 0;
+			currScene = scene5;
 		}
 
 		else if (GameMode::GetInstance()->gameState == 6)
@@ -171,6 +173,7 @@ void Application::Run()
         m_timer.waitUntil(frameTime);       // Frame rate limiter. Limits each frame to a specified time in ms.   
 
 	} //Check if the ESC key had been pressed or if the window had been closed
+	
 	currScene->Exit();
 	delete currScene;
 }

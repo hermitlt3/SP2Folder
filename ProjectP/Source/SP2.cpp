@@ -10,7 +10,7 @@
 #include "GameMode.h"
 #include "Movement.h"
 #include "Collision.h"
-#include "NPC.h"
+
 
 #include <sstream>
 #include <iomanip>
@@ -126,6 +126,9 @@ void SP2::Init()
 	glUniform1f(m_parameters[U_LIGHT1_KQ], light[1].kQ);
 
 	glUniform1i(m_parameters[U_NUMLIGHTS], 2);
+
+	meshList[TEXTBOX] = MeshBuilder::GenerateCube("TEXTBOX", Color(1, 1, 1));
+	meshList[TEXTBOX]->textureID = LoadTGA("Image//asteroid.tga");
 
 	meshList[GEO_LIGHTBALL] = MeshBuilder::GenerateSphere("LIGHT", Color(1, 1, 1), 36, 36);
 	meshList[PLATFORM_FRONT] = MeshBuilder::GenerateQuad("front", Color(1, 1, 1));
@@ -273,7 +276,7 @@ void SP2::Init()
 	meshList[BASE]->material.kSpecular.Set(0.6f, 0.6f, 0.6f);
 	meshList[BASE]->material.kShininess = 1.f;
 
-	glassFrontColli.Set(120.f, 0.f, 30.1f);
+	glassFrontColli.Set(120.f, 0.f, 5.f);
 	glassSideColli.Set(5.f, 0.f, 5.f);
 	baseBackColli.Set(240.f, 0.f, 5.f);
 	wheelLightColli.Set(30.f, 0.f, 20.f);
@@ -363,20 +366,17 @@ void SP2::Init()
 	MS_rotate = 0.f;
 	MS_reverse = false;
 
-	meshList[POSITION] = MeshBuilder::GenerateText("keymsg", 16, 16);
+	meshList[POSITION] = MeshBuilder::GenerateText("text", 16, 16);
 	meshList[POSITION]->textureID = LoadTGA("Image//Redressed.tga");
 
 	LoadCollision("PlatformColli.txt", ColliX, ColliZ);
 
-/*	platNPCone.tx = 30.f;
-	platNPCone.ty = 3.f;
-	platNPCone.tz = -30.f;
-	platNPCone.r_angle = 180.f;
+	translate.Set(60.f, 0.f, -30.f);
+	rotate.Set(0.f, 90.f + One.rotateNPC, 0.f);
 
-	platNPCtwo.tx = 60.f;
-	platNPCtwo.ty = 3.f;
-	platNPCtwo.tz = -50.f;
-	platNPCtwo.r_angle = 0.f;*/
+
+	One.attriSet(translate, rotate, "test.txt");
+	Q_One.setName("Fire");
 }
 static float ROT_LIMIT = 45.f;
 static float SCALE_LIMIT = 5.f;
@@ -386,6 +386,15 @@ bool MS_reverse = false;
 
 void SP2::Update(double dt)
 {
+	if (One.talk != One.sentences.end())
+		testes = true;
+	else
+		testes = false;
+
+	One.Interaction(camera, testes);
+	
+	One.Communication();
+
 	if (Application::IsKeyPressed('1')) //enable back face culling
 		glEnable(GL_CULL_FACE);
 	if (Application::IsKeyPressed('2')) //disable back face culling
@@ -479,18 +488,14 @@ void SP2::Update(double dt)
 		translateAsteroid2 += (float)(20 * dt);
 	}
 	charMovement(MS_reverse, 20.f, MS_rotate, 3.f, dt);
-//	platNPCone.rotateNPC =	platNPCone.Interaction(camera, 20.f);
-	if (test < platNPCone.rotateNPC)// && (platNPCone.rotateP))
-		test += (float)(50 * dt);
-	if (test > platNPCone.rotateNPC)// && (platNPCone.rotateN))
-		test -= (float)(50 * dt);
+	One.delayTime(dt);
+	One.Interaction(camera, Vector3(60.f, 0.f, -50.f), Vector3(30.f, 0.f, 20.f), true);
 }
 
 void SP2::Render()
 {
 	std::ostringstream fps;
 	std::ostringstream aaa;
-	fps << "tar: " << platNPCone.rotateNPC;
 	aaa << "pos: " <<camera.position.x << " " << camera.position.y << " " << camera.position.z;
 	
 	// Render VBO here
@@ -811,12 +816,27 @@ void SP2::Render()
 
 	modelStack.PopMatrix();			//END OF PLATFORM HIERARCHY
 
-
-	RenderNPC(platNPCone, false);
-	RenderNPC(platNPCtwo, false);
+	RenderNPC(One,false);
 	RenderHandOnScreen();
-	RenderTextOnScreen(meshList[POSITION], fps.str(), Color(0, 1, 1), 2, 5, 6);
+	fps << *One.talk;
+
+	std::ostringstream ooo;
+	ooo << One.rotateNPC;
+	if (!One.b_Quest && One.b_Chat)
+		RenderTextOnScreen(meshList[POSITION], fps.str(), Color(0, 1, 1), 2, 5, 5);
 	RenderTextOnScreen(meshList[POSITION], aaa.str(), Color(0, 1, 1), 2, 5, 3);
+	if (One.b_Quest)
+	{
+		QuestSystem::GetInstance()->QuestList.push_back(Q_One);
+		
+	}
+	if (QuestSystem::GetInstance()->QuestList.size() != 0 && Application::IsKeyPressed('Q'))
+	{
+		vector<Quest>::iterator qt = QuestSystem::GetInstance()->QuestList.begin();
+		RenderTextOnScreen(meshList[POSITION], qt->getName(), Color(0, 1, 1), 2, 5, 8);
+	}
+
+	RenderTextbox(One);
 
 }
 
@@ -825,9 +845,11 @@ void SP2::RenderNPC(StopNPC &temp, bool enableLight)
 	///////////////////////////HUMAN/////////////////////////////////
 
 	modelStack.PushMatrix();
-	//modelStack.Translate(temp.tx, temp.ty, temp.tz);
-	modelStack.Rotate(test, 0, 1, 0);
-	modelStack.Scale(3.f, 4.f, 3.f);
+	modelStack.Translate(temp.getTranslate().x, temp.getTranslate().y, temp.getTranslate().z);
+	modelStack.Rotate(temp.getRotate().x, 1, 0, 0);
+	modelStack.Rotate(temp.getRotate().y  + temp.rotateNPC, 0, 1, 0);
+	modelStack.Rotate(temp.getRotate().z, 0, 0, 1);
+	modelStack.Scale(3.f, 3.f, 3.f);
 
 	RenderMesh(meshList[ARM], enableLight);
 
@@ -843,7 +865,7 @@ void SP2::RenderNPC(StopNPC &temp, bool enableLight)
 	RenderMesh(meshList[LEG2], enableLight);
 	modelStack.PopMatrix();
 
-	RenderMesh(meshList[CHEST], toggleLight);
+	RenderMesh(meshList[CHEST], enableLight);
 	RenderMesh(meshList[HEAD], enableLight);
 
 	modelStack.PopMatrix();
@@ -997,7 +1019,7 @@ void SP2::RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float si
 	for (unsigned i = 0; i < text.length(); ++i)
 	{
 		Mtx44 characterSpacing;
-		characterSpacing.SetToTranslation(i * 0.6f, 0, 0); //1.0f is the spacing of each character, you may change this value
+		characterSpacing.SetToTranslation(i * 0.5f, 0, 0); //1.0f is the spacing of each character, you may change this value
 		Mtx44 MVP = projectionStack.Top() * viewStack.Top() * modelStack.Top() * characterSpacing;
 		glUniformMatrix4fv(m_parameters[U_MVP], 1, GL_FALSE, &MVP.a[0]);
 
@@ -1033,6 +1055,33 @@ void SP2::RenderHandOnScreen()
 	modelStack.Rotate(23, 0, 0, 1);
 	modelStack.Scale(6, 12, 8);
 	RenderMesh(meshList[ARM2], false);
+
+	//Add these code just before glEnable(GL_DEPTH_TEST);
+	projectionStack.PopMatrix();
+	viewStack.PopMatrix();
+	modelStack.PopMatrix();
+
+	glEnable(GL_DEPTH_TEST);
+}
+
+void SP2::RenderTextbox(StopNPC temp)
+{
+	glDisable(GL_DEPTH_TEST);
+
+	//Add these code just after glDisable(GL_DEPTH_TEST);
+	Mtx44 ortho;
+	ortho.SetToOrtho(0, 80, 0, 60, -20, 20); //size of screen UI
+	projectionStack.PushMatrix();
+	projectionStack.LoadMatrix(ortho);
+	viewStack.PushMatrix();
+	viewStack.LoadIdentity(); //No need camera for ortho mode
+	modelStack.PushMatrix();
+	modelStack.LoadIdentity(); //Reset modelStack
+	modelStack.Translate(40.f, 10.f, 10.f);
+	modelStack.Rotate(180, 0, 0, 1);
+	modelStack.Scale(70, 12, 0);
+	if (temp.b_Chat)
+	RenderMesh(meshList[TEXTBOX], false);
 
 	//Add these code just before glEnable(GL_DEPTH_TEST);
 	projectionStack.PopMatrix();

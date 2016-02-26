@@ -87,6 +87,7 @@
     <ClCompile Include="Source\Camera2.cpp" />
     <ClCompile Include="Source\Camera3.cpp" />
     <ClCompile Include="Source\Collision.cpp" />
+    <ClCompile Include="Source\MainMenu.cpp" />
     <ClCompile Include="Source\Movement.cpp" />
     <ClCompile Include="Source\LoadOBJ.cpp" />
     <ClCompile Include="Source\LoadTGA.cpp" />
@@ -111,6 +112,7 @@
     <ClInclude Include="Source\Camera2.h" />
     <ClInclude Include="Source\Camera3.h" />
     <ClInclude Include="Source\Collision.h" />
+    <ClInclude Include="Source\MainMenu.h" />
     <ClInclude Include="Source\Quest.h" />
     <ClInclude Include="Source\QuestSystem.h" />
     <ClInclude Include="Source\ReadFromExtern.h" />

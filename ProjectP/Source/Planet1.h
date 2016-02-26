@@ -136,9 +136,15 @@ private:
 	void renderGunUI();
 	void shooting();
 	float test2 = 0;
+<<<<<<< HEAD
 	bool bulletCollision(Vector3 bulletPosition, Vector3 targetPosition);
 	bool  astralHit1, astralHit2, astralHit3, astralHit4, astralHit5, astralHit6, astralHit7, astralHit8, astralHit9, astralHit10;
 	bool  AstralHit1, AstralHit2, AstralHit3, AstralHit4, AstralHit5, AstralHit6, AstralHit7, AstralHit8, AstralHit9, AstralHit10;
+=======
+
+	bool bulletCollision(Vector3 bulletPosition, Vector3 targetPosition);
+	bool  astralHit1, astralHit2, astralHit3, astralHit4, astralHit5, astralHit6, astralHit7, astralHit8, astralHit9, astralHit10;
+>>>>>>> e6984df0f69e6d11589fff09d58b4a0763af4da3
 	int astralCounter;
 	float astral1X, astral1Y, astral1Z;
 	float astral2X, astral2Y, astral2Z;
@@ -154,7 +160,11 @@ private:
 	float rotateAstral1;
 	void AstroidFunction();
 	void CheatSystem();
+<<<<<<< HEAD
 	bool ironSight;
+=======
+
+>>>>>>> e6984df0f69e6d11589fff09d58b4a0763af4da3
 
 	//For Shooting
 	vector<Vector3> ShotsFired;

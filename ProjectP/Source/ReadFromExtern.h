@@ -8,4 +8,8 @@ bool LoadCollision(
 	std::vector<float> & collisionZ
 );
 
+bool LoadText(
+	const char *file_path,
+	std::vector<std::string> & List
+);
 #endif //READ_FROM_EXTERN_H_

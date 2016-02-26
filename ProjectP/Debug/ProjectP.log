@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿Build started 26/2/2016 3:39:10 PM.
      1>Project "F:\SP2\ProjectP\ProjectP.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
@@ -28,7 +29,30 @@
          Debug\Utility.obj
          ProjectP.vcxproj -> F:\SP2\Debug\ProjectP.exe
      1>Done Building Project "F:\SP2\ProjectP\ProjectP.vcxproj" (Build target(s)).
+=======
+﻿Build started 2/25/2016 4:45:45 PM.
+     1>Project "C:\Users\n1507\Documents\SPtwo2\ProjectP\ProjectP.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\n1507\Documents\SPtwo2\\glew\include /IC:\Users\n1507\Documents\SPtwo2\\glfw\include /IC:\Users\n1507\Documents\SPtwo2\\Common\Source /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\Application.cpp Source\NPC.cpp Source\Planet1.cpp Source\Planet3.cpp Source\Planet4.cpp Source\Quest.cpp Source\SP2.cpp
+         Quest.cpp
+         Planet4.cpp
+         NPC.cpp
+         Generating Code...
+         Compiling...
+         SP2.cpp
+     1>c:\users\n1507\documents\sptwo2\projectp\source\sp2.cpp(492): error C2661: 'StopNPC::Interaction' : no overloaded function takes 4 arguments
+         Planet3.cpp
+         Application.cpp
+         Generating Code...
+         Skipping... (no relevant changes detected)
+         Planet1.cpp
+     1>Done Building Project "C:\Users\n1507\Documents\SPtwo2\ProjectP\ProjectP.vcxproj" (Build target(s)) -- FAILED.
+>>>>>>> e6984df0f69e6d11589fff09d58b4a0763af4da3
 
-Build succeeded.
+Build FAILED.
 
+<<<<<<< HEAD
 Time Elapsed 00:00:04.80
+=======
+Time Elapsed 00:00:03.88
+>>>>>>> e6984df0f69e6d11589fff09d58b4a0763af4da3

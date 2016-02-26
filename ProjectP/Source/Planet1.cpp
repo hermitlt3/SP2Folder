@@ -275,6 +275,7 @@ void PLANET1::SimpleVariables()
 	astralHit8 = false;
 	astralHit9 = false;
 	astralHit10 = false;
+<<<<<<< HEAD
 
 	AstralHit1 = false;
 	AstralHit2 = false;
@@ -286,6 +287,9 @@ void PLANET1::SimpleVariables()
 	AstralHit8 = false;
 	AstralHit9 = false;
 	AstralHit10 = false;
+=======
+	astralCounter = 0;
+>>>>>>> e6984df0f69e6d11589fff09d58b4a0763af4da3
 
 	astral1X = 1300.f;
 	astral1Y = 100.f;
@@ -310,7 +314,11 @@ void PLANET1::SimpleVariables()
 	astral6X = -700.f;
 	astral6Y = 600.f;
 	astral6Z = 0.f;
+<<<<<<< HEAD
 		  
+=======
+
+>>>>>>> e6984df0f69e6d11589fff09d58b4a0763af4da3
 	astral7X = 700.f;
 	astral7Y = 1000.f;
 	astral7Z = 700.f;
@@ -337,7 +345,10 @@ void PLANET1::SimpleVariables()
 	astralFinish8 = false;
 	astralFinish9 = false;
 	astralFinish10 = false;
+<<<<<<< HEAD
 	ironSight = false;
+=======
+>>>>>>> e6984df0f69e6d11589fff09d58b4a0763af4da3
 }
 
 void PLANET1::Update(double dt)
@@ -551,6 +562,7 @@ void PLANET1::Update(double dt)
 		light[0].position.y -= (float)(LSPEED * dt);
 	if (Application::IsKeyPressed('P'))
 		light[0].position.y += (float)(LSPEED * dt);
+<<<<<<< HEAD
 	if (Application::IsKeyPressed(VK_RBUTTON) && ironSight == false && holdingGun ==  true)
 	{
 		ironSight = true;
@@ -559,6 +571,8 @@ void PLANET1::Update(double dt)
 	{
 		ironSight = false;
 	}
+=======
+>>>>>>> e6984df0f69e6d11589fff09d58b4a0763af4da3
 
 	charMovement(MS_reverse, 20.f, MS_rotate, 3.f, dt);
 
@@ -600,7 +614,7 @@ void PLANET1::MethCalculations()
 
 	//charMovement(MS_reverse, 20.f, MS_rotate, 3.f, dt);
 
-	collisionCheck(125.f, 0.f, camera, Vector3(2.f,0.f,126.f));
+	collisionCheck(125.f, 0.f, camera, Vector3(2.f, 0.f, 126.f));
 	collisionCheck(-125.f, 0.f, camera, Vector3(2.f, 0.f, 126.f));
 	collisionCheck(0.f, 125.f, camera, Vector3(126.f, 0.f, 2.f));
 	collisionCheck(0.f, -125.f, camera, Vector3(126.f, 0.f, 2.f));
@@ -815,7 +829,11 @@ void PLANET1::AstroidFunction()
 	}
 	else if (astralHit1 == true)
 	{
+<<<<<<< HEAD
 		AstralHit1 =1;
+=======
+		astralCounter += 1;
+>>>>>>> e6984df0f69e6d11589fff09d58b4a0763af4da3
 	}
 	if (astralHit2 == false)
 	{
@@ -828,7 +846,11 @@ void PLANET1::AstroidFunction()
 	}
 	else if (astralHit2 == true)
 	{
+<<<<<<< HEAD
 		AstralHit2 =1;
+=======
+		astralCounter += 1;
+>>>>>>> e6984df0f69e6d11589fff09d58b4a0763af4da3
 	}
 	if (astralHit3 == false)
 	{
@@ -841,7 +863,11 @@ void PLANET1::AstroidFunction()
 	}
 	else if (astralHit3 == true)
 	{
+<<<<<<< HEAD
 		AstralHit3 =1;
+=======
+		astralCounter += 1;
+>>>>>>> e6984df0f69e6d11589fff09d58b4a0763af4da3
 	}
 	if (astralHit4 == false)
 	{
@@ -854,7 +880,11 @@ void PLANET1::AstroidFunction()
 	}
 	else if (astralHit4 == true)
 	{
+<<<<<<< HEAD
 		AstralHit4 =1;
+=======
+		astralCounter += 1;
+>>>>>>> e6984df0f69e6d11589fff09d58b4a0763af4da3
 	}
 	if (astralHit5 == false)
 	{
@@ -867,7 +897,11 @@ void PLANET1::AstroidFunction()
 	}
 	else if (astralHit5 == true)
 	{
+<<<<<<< HEAD
 		AstralHit5 =1;
+=======
+		astralCounter += 1;
+>>>>>>> e6984df0f69e6d11589fff09d58b4a0763af4da3
 	}
 	if (astralHit6 == false)
 	{
@@ -880,7 +914,11 @@ void PLANET1::AstroidFunction()
 	}
 	else if (astralHit6 == true)
 	{
+<<<<<<< HEAD
 		AstralHit6 =1;
+=======
+		astralCounter += 1;
+>>>>>>> e6984df0f69e6d11589fff09d58b4a0763af4da3
 	}
 	if (astralHit7 == false)
 	{
@@ -893,7 +931,11 @@ void PLANET1::AstroidFunction()
 	}
 	else if (astralHit7 == true)
 	{
+<<<<<<< HEAD
 		AstralHit7 =1;
+=======
+		astralCounter += 1;
+>>>>>>> e6984df0f69e6d11589fff09d58b4a0763af4da3
 	}
 	if (astralHit8 == false)
 	{
@@ -906,7 +948,11 @@ void PLANET1::AstroidFunction()
 	}
 	else if (astralHit8 == true)
 	{
+<<<<<<< HEAD
 		AstralHit8 =1;
+=======
+		astralCounter += 1;
+>>>>>>> e6984df0f69e6d11589fff09d58b4a0763af4da3
 	}
 	if (astralHit9 == false)
 	{
@@ -919,7 +965,11 @@ void PLANET1::AstroidFunction()
 	}
 	else if (astralHit9 == true)
 	{
+<<<<<<< HEAD
 		AstralHit9 =1;
+=======
+		astralCounter += 1;
+>>>>>>> e6984df0f69e6d11589fff09d58b4a0763af4da3
 	}
 	if (astralHit10 == false)
 	{
@@ -932,21 +982,37 @@ void PLANET1::AstroidFunction()
 	}
 	else if (astralHit10 == true)
 	{
+<<<<<<< HEAD
 		AstralHit10 =1;
 	}
 
 	if (AstralHit1 == true && AstralHit2 == true && AstralHit3 == true && AstralHit4 == true && AstralHit5 == true && AstralHit6 == true && AstralHit7 == true && AstralHit8 == true && AstralHit9 == true && AstralHit10 == true)
+=======
+		astralCounter += 1;
+	}
+
+	if (astralCounter < 10)
+	{
+		std::ostringstream AstralCount;
+		AstralCount << "Asteroids Shot= " << astralCounter;
+		RenderTextOnScreen(meshList[POSITION], AstralCount.str(), Color(0, 1, 1), 2, 1, 25);
+	}
+	else if (astralCounter == 10)
+>>>>>>> e6984df0f69e6d11589fff09d58b4a0763af4da3
 	{
 		std::ostringstream AstralFinished;
 		AstralFinished << "All Asteroids Shot";
 		RenderTextOnScreen(meshList[POSITION], AstralFinished.str(), Color(0, 1, 1), 2, 1, 25);
 	}
+<<<<<<< HEAD
 	else
 	{
 		std::ostringstream AstralCount;
 		AstralCount << "You  have not completed your mission";
 		RenderTextOnScreen(meshList[POSITION], AstralCount.str(), Color(0, 1, 1), 2, 1, 25);
 	}
+=======
+>>>>>>> e6984df0f69e6d11589fff09d58b4a0763af4da3
 }
 
 void PLANET1::RenderSkyBox()
@@ -1076,8 +1142,6 @@ void PLANET1::RenderNPC(bool enableLight)
 	///////////////////////////HUMAN/////////////////////////////////
 
 	modelStack.PushMatrix();
-	//modelStack.Translate(temp.tx, temp.ty, temp.tz);
-	//modelStack.Rotate(temp.r_angle - temp.rotateNPC, 0, 1, 0);
 	modelStack.Scale(3.f, 4.f, 3.f);
 
 	RenderMesh(meshList[ARM], enableLight);
@@ -1264,6 +1328,7 @@ void PLANET1::moreShooting()
 	{
 		Vector3 temp = *counter;
 		*counter += *counter2;
+<<<<<<< HEAD
 
 		if (bulletCollision(temp, Vector3(astral1X, astral1Y, astral1Z)))
 		{
@@ -1337,6 +1402,82 @@ void PLANET1::moreShooting()
 		}
 	}
 }
+=======
+
+		if (bulletCollision(temp, Vector3(astral1X, astral1Y, astral1Z)))
+		{
+			counter = ShotsFired.erase(counter);
+			counter2 = DirectionFired.erase(counter2);
+			astralHit1 = true;
+		}
+		if (bulletCollision(temp, Vector3(astral2X, astral2Y, astral2Z)))
+		{
+			counter = ShotsFired.erase(counter);
+			counter2 = DirectionFired.erase(counter2);
+			astralHit2 = true;
+		}
+		if (bulletCollision(temp, Vector3(astral3X, astral3Y, astral3Z)))
+		{
+			counter = ShotsFired.erase(counter);
+			counter2 = DirectionFired.erase(counter2);
+			astralHit3 = true;
+		}
+		if (bulletCollision(temp, Vector3(astral4X, astral4Y, astral4Z)))
+		{
+			counter = ShotsFired.erase(counter);
+			counter2 = DirectionFired.erase(counter2);
+			astralHit4 = true;
+		}
+		if (bulletCollision(temp, Vector3(astral5X, astral5Y, astral5Z)))
+		{
+			counter = ShotsFired.erase(counter);
+			counter2 = DirectionFired.erase(counter2);
+			astralHit5 = true;
+		}
+		if (bulletCollision(temp, Vector3(astral6X, astral6Y, astral6Z)))
+		{
+			counter = ShotsFired.erase(counter);
+			counter2 = DirectionFired.erase(counter2);
+			astralHit6 = true;
+		}
+		if (bulletCollision(temp, Vector3(astral7X, astral7Y, astral7Z)))
+		{
+			counter = ShotsFired.erase(counter);
+			counter2 = DirectionFired.erase(counter2);
+			astralHit7 = true;
+		}
+		if (bulletCollision(temp, Vector3(astral8X, astral8Y, astral8Z)))
+		{
+			counter = ShotsFired.erase(counter);
+			counter2 = DirectionFired.erase(counter2);
+			astralHit8 = true;
+		}
+		if (bulletCollision(temp, Vector3(astral9X, astral9Y, astral9Z)))
+		{
+			counter = ShotsFired.erase(counter);
+			counter2 = DirectionFired.erase(counter2);
+			astralHit9 = true;
+		}
+		if (bulletCollision(temp, Vector3(astral10X, astral10Y, astral10Z)))
+		{
+			counter = ShotsFired.erase(counter);
+			counter2 = DirectionFired.erase(counter2);
+			astralHit10 = true;
+		}
+		else if (temp.y <= 0 || temp.y >= 1500 || temp.x >= 1500 || temp.z >= 1500 || temp.x <= -1500 || temp.z <= -1500)
+		{
+			counter = ShotsFired.erase(counter);
+			counter2 = DirectionFired.erase(counter2);
+		}
+		else
+		{
+			*counter++;
+			*counter2++;
+		}
+	}
+}
+
+>>>>>>> e6984df0f69e6d11589fff09d58b4a0763af4da3
 bool PLANET1::bulletCollision(Vector3 bulletPosition, Vector3 targetPosition)
 {
 	if (bulletPosition.x > (targetPosition.x - 10) && bulletPosition.x < (targetPosition.x + 10) && bulletPosition.y >(targetPosition.y - 10) && bulletPosition.y < (targetPosition.y + 10) && bulletPosition.z >(targetPosition.z - 10) && bulletPosition.z < (targetPosition.z + 10))
