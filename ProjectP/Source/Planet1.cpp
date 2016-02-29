@@ -258,7 +258,6 @@ void PLANET1::SimpleVariables()
 	rotateA2 = 0.f;
 	rotateB2 = 90.f;
 	rotateC2 = 0.f;
-	nearFiringRange = false;
 	firingRangeX = 500.f;
 	firingRangeZ = 0.f;
 	typeOfFire = 0;
@@ -272,10 +271,6 @@ void PLANET1::SimpleVariables()
 	astralHit5 = false;
 	astralHit6 = false;
 	astralHit7 = false;
-	astralHit8 = false;
-	astralHit9 = false;
-	astralHit10 = false;
-
 	AstralHit1 = false;
 	AstralHit2 = false;
 	AstralHit3 = false;
@@ -283,49 +278,28 @@ void PLANET1::SimpleVariables()
 	AstralHit5 = false;
 	AstralHit6 = false;
 	AstralHit7 = false;
-	AstralHit8 = false;
-	AstralHit9 = false;
 	astralCounter = 0;
-
 	astral1X = 1300.f;
 	astral1Y = 100.f;
 	astral1Z = -1200.f;
-
 	astral2X = 400.f;
 	astral2Y = 200.f;
 	astral2Z = -600.f;
-
 	astral3X = 0.f;
 	astral3Y = 250.f;
 	astral3Z = -1000.f;
-
 	astral4X = 1050.f;
 	astral4Y = 300.f;
 	astral4Z = -300.f;
-
 	astral5X = 250.f;
 	astral5Y = 200.f;
 	astral5Z = 0.f;
-
 	astral6X = -700.f;
 	astral6Y = 600.f;
 	astral6Z = 0.f;
 	astral7X = 700.f;
 	astral7Y = 1000.f;
 	astral7Z = 700.f;
-
-	astral8X = 700.f;
-	astral8Y = 1000.f;
-	astral8Z = 700.f;
-
-	astral9X = 700.f;
-	astral9Y = 1000.f;
-	astral9Z = 700.f;
-
-	astral10X = 700.f;
-	astral10Y = 1000.f;
-	astral10Z = 700.f;
-
 	astralFinish1 = false;
 	astralFinish2 = false;
 	astralFinish3 = false;
@@ -333,10 +307,8 @@ void PLANET1::SimpleVariables()
 	astralFinish5 = false;
 	astralFinish6 = false;
 	astralFinish7 = false;
-	astralFinish8 = false;
-	astralFinish9 = false;
-	astralFinish10 = false;
 	ironSight = false;
+	missionComplete = false;
 }
 
 void PLANET1::Update(double dt)
@@ -511,12 +483,9 @@ void PLANET1::Update(double dt)
 		astralHit5 = true;
 		astralHit6 = true;
 		astralHit7 = true;
-		astralHit8 = true;
-		astralHit9 = true;
-		astralHit10 = true;
 	}
 
-	if ((rangeGunX <= 70) && (rangeGunZ <= 30) && (inRange == false))
+	if ((rangeGunX <= 70) && (rangeGunZ <= 30))
 	{
 		inRange = true;
 		if ((Application::IsKeyPressed('E')))
@@ -527,15 +496,6 @@ void PLANET1::Update(double dt)
 	else
 	{
 		inRange = false;
-	}
-
-	if ((rangeFiringRangeX <= 50) && (rangeFiringRangeZ <= 50) && (nearFiringRange == false))
-	{
-		nearFiringRange = true;
-	}
-	else
-	{
-		nearFiringRange = false;
 	}
 
 	if (Application::IsKeyPressed('I'))
@@ -593,10 +553,6 @@ void PLANET1::MethCalculations()
 	{
 		rangeGunZ *= -1;
 	}
-	rangeFiringRangeX = camera.position.x - firingRangeX;
-	if (rangeFiringRangeX < 0) { rangeFiringRangeX *= -1; }
-	rangeFiringRangeZ = camera.position.z - firingRangeZ;
-	if (rangeFiringRangeZ < 0) { rangeFiringRangeZ *= -1; }
 
 	//charMovement(MS_reverse, 20.f, MS_rotate, 3.f, dt);
 
@@ -657,12 +613,6 @@ void PLANET1::Render()
 	modelStack.Scale(2500.f, 0.f, 2500.f);
 	RenderMesh(meshList[GROUND], false);
 	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(firingRangeX, -19.9f, firingRangeZ);
-	modelStack.Scale(20.f, 0.f, 20.f);
-	RenderMesh(meshList[QUAD], false);
-	modelStack.PopMatrix();
 	///////////////////////     GROUND      ///////////////////////////
 
 	///////////////////////   GIANT WALLS   ///////////////////////////
@@ -709,23 +659,11 @@ void PLANET1::Render()
 	///////////////////////   SMALL WALLS   ///////////////////////////
 
 	AstroidFunction();
-
-	/*std::ostringstream Testing;
-	Testing << "Astral6X= " << astral6X << " Astral6Z= " << astral6Z;
-	RenderTextOnScreen(meshList[POSITION], Testing.str(), Color(0, 1, 1), 2, 1, 25);*/
-	///////////////////////  ASTRAL FINISH  ///////////////////////////
-
 	RenderNPC(false);
 	RenderHandOnScreen();
 
 	if (holdingGun == false)
 	{
-		std::ostringstream inRangeGunz;
-		inRangeGunz << "Press E to pick up the Gun ";
-		if (inRange == true)
-		{
-			RenderTextOnScreen(meshList[POSITION], inRangeGunz.str(), Color(0, 0, 0), 2, 10, 15);
-		}
 		modelStack.PushMatrix();
 		modelStack.Translate(GunX, 0.f, GunZ);
 		modelStack.Rotate(90.f, 0, 1, 0);
@@ -733,6 +671,12 @@ void PLANET1::Render()
 		modelStack.Scale(5.f, 5.f, 5.f);
 		RenderMesh(meshList[GUN], false);
 		modelStack.PopMatrix();
+		if (inRange == true)
+		{
+			std::ostringstream inRangeGunz;
+			inRangeGunz << "Press E to pick up the Gun ";
+			RenderTextOnScreen(meshList[POSITION], inRangeGunz.str(), Color(0, 1, 1), 2, 10, 15);
+		}
 	}
 	else if (holdingGun == true)
 	{
@@ -743,17 +687,6 @@ void PLANET1::Render()
 		std::ostringstream Ammunition;
 		Ammunition << "You have Unlimited Power. Its ok :)";
 		RenderTextOnScreen(meshList[POSITION], Ammunition.str(), Color(0, 1, 1), 2, 1, 28);
-
-		/*std::ostringstream Test;
-		Test << "rotateA2= " << rotateA2 << " rotateB2 = " << rotateB2 << " rotateC2 = " << rotateC2;
-		RenderTextOnScreen(meshList[POSITION],Test.str(), Color(0, 1, 1), 2, 1, 24);*/
-	}
-
-	if (nearFiringRange == true)
-	{
-		std::ostringstream firingRange;
-		firingRange << "Press E to toggle Asteroids";
-		RenderTextOnScreen(meshList[POSITION], firingRange.str(), Color(0, 1, 1), 2, 1, 14);
 	}
 	std::ostringstream position;
 	position << "pos: X= " << camera.position.x << " Y= " << camera.position.y << " Z= " << camera.position.z;
@@ -895,56 +828,24 @@ void PLANET1::AstroidFunction()
 	{
 		AstralHit7 =1;
 	}
-	if (astralHit8 == false)
-	{
-		modelStack.PushMatrix();
-		modelStack.Translate(astral8X, astral8Y, astral8Z);
-		modelStack.Rotate(rotateAstral1, 0, 1, 0);
-		modelStack.Scale(3, 3, 3);
-		RenderMesh(meshList[ASTEROID], true); // asteroid
-		modelStack.PopMatrix();
-	}
-	else if (astralHit8 == true)
-	{
-		AstralHit8 =1;
-	}
-	if (astralHit9 == false)
-	{
-		modelStack.PushMatrix();
-		modelStack.Translate(astral9X, astral9Y, astral9Z);
-		modelStack.Rotate(rotateAstral1, 0, 1, 0);
-		modelStack.Scale(3, 3, 3);
-		RenderMesh(meshList[ASTEROID], true); // asteroid
-		modelStack.PopMatrix();
-	}
-	else if (astralHit9 == true)
-	{
-		AstralHit9 =1;
-	}
-	if (astralHit10 == false)
-	{
-		modelStack.PushMatrix();
-		modelStack.Translate(astral10X, astral10Y, astral10Z);
-		modelStack.Rotate(rotateAstral1, 0, 1, 0);
-		modelStack.Scale(3, 3, 3);
-		RenderMesh(meshList[ASTEROID], true); // asteroid
-		modelStack.PopMatrix();
-	}
-	else if (astralHit10 == true)
-	{
-		AstralHit10 =1;
-	}
 
-	if (AstralHit1 == true && AstralHit2 == true && AstralHit3 == true && AstralHit4 == true && AstralHit5 == true && AstralHit6 == true && AstralHit7 == true && AstralHit8 == true && AstralHit9 == true && AstralHit10 == true)
+	if (AstralHit1 == true && AstralHit2 == true && AstralHit3 == true && AstralHit4 == true && AstralHit5 == true && AstralHit6 == true && AstralHit7 == true )
 	{
 		astralCounter += 1;
 	}
 	else
 	{
-
 		std::ostringstream AstralCount;
 		AstralCount << "You  have not completed your mission";
 		RenderTextOnScreen(meshList[POSITION], AstralCount.str(), Color(0, 1, 1), 2, 1, 25);
+	}
+	if (astralCounter >= 10)
+	{
+		std::ostringstream AstralCount;
+		AstralCount << "Mission Complete";
+		RenderTextOnScreen(meshList[POSITION], AstralCount.str(), Color(0, 1, 1), 2, 1, 25);
+
+		missionComplete = true;
 	}
 }
 
@@ -1303,24 +1204,6 @@ void PLANET1::moreShooting()
 			counter = ShotsFired.erase(counter);
 			counter2 = DirectionFired.erase(counter2);
 			astralHit7 = true;
-		}
-		if (bulletCollision(temp, Vector3(astral8X, astral8Y, astral8Z)))
-		{
-			counter = ShotsFired.erase(counter);
-			counter2 = DirectionFired.erase(counter2);
-			astralHit8 = true;
-		}
-		if (bulletCollision(temp, Vector3(astral9X, astral9Y, astral9Z)))
-		{
-			counter = ShotsFired.erase(counter);
-			counter2 = DirectionFired.erase(counter2);
-			astralHit9 = true;
-		}
-		if (bulletCollision(temp, Vector3(astral10X, astral10Y, astral10Z)))
-		{
-			counter = ShotsFired.erase(counter);
-			counter2 = DirectionFired.erase(counter2);
-			astralHit10 = true;
 		}
 		else if (temp.y <= 0 || temp.y >= 1500 || temp.x >= 1500 || temp.z >= 1500 || temp.x <= -1500 || temp.z <= -1500)
 		{

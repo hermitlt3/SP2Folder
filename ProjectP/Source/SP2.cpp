@@ -489,7 +489,7 @@ void SP2::Update(double dt)
 	}
 	charMovement(MS_reverse, 20.f, MS_rotate, 3.f, dt);
 	One.delayTime(dt);
-	One.Interaction(camera, Vector3(60.f, 0.f, -50.f), Vector3(30.f, 0.f, 20.f), true);
+//	One.Interaction(camera, Vector3(60.f, 0.f, -50.f), Vector3(30.f, 0.f, 20.f), true);
 }
 
 void SP2::Render()
